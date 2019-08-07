@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    <SecurityGroupPermission groupId="FULLADMIN" permissionId="BORAGENCY_ADMIN"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="BORAGENCY_CREATE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="BORAGENCY_DELETE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="BORAGENCY_UPDATE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="BORAGENCY_VIEW"/>
+    <SecurityGroupPermission groupId="VIEWADMIN" permissionId="BORAGENCY_VIEW"/>
+    <SecurityGroupPermission groupId="BIZADMIN" permissionId="BORAGENCY_ADMIN"/>
+</entity-engine-xml>

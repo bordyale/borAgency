@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    <SecurityPermission description="View operations in the BorAgency Component." permissionId="BORAGENCY_VIEW"/>
+    <SecurityPermission description="Create operations in the BorAgency Component." permissionId="BORAGENCY_CREATE"/>
+    <SecurityPermission description="Update operations in the BorAgency Component." permissionId="BORAGENCY_UPDATE"/>
+    <SecurityPermission description="Delete operations in the BorAgency Component." permissionId="BORAGENCY_DELETE"/>
+    <SecurityPermission description="ALL operations in the BorAgency Component." permissionId="BORAGENCY_ADMIN"/>
+
+    <SecurityGroupPermission groupId="SUPER" permissionId="BORAGENCY_ADMIN"/>
+
+</entity-engine-xml>
