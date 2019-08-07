@@ -1,6 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-        xmlns="http://ofbiz.apache.org/Widget-Form" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Form http://ofbiz.apache.org/dtds/widget-form.xsd">
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://ofbiz.apache.org/Widget-Form"
+	xsi:schemaLocation="http://ofbiz.apache.org/Widget-Form http://ofbiz.apache.org/dtds/widget-form.xsd">
 
+
+
+	<form name="FindContractors" type="single" target="findcontractors"
+		default-entity-name="Shipment">
+
+		<field name="noConditionFind">
+			<hidden value="Y" /><!-- if this isn't there then with all fields 
+				empty no query will be done -->
+		</field>
+		<field name="name" title="${uiLabelMap.CommonName}">
+
+			<text size="10" maxlength="20" />
+		</field>
+
+		<field name="searchButton" title="${uiLabelMap.CommonFind}"
+			widget-style="smallSubmit">
+			<submit button-type="button" />
+		</field>
+
+
+	</form>
+
+
+	<form name="ListContractors" type="list" list-name="listIt"
+		paginate-target="findcontractors" odd-row-style="alternate-row"
+		default-table-style="basic-table hover-bar" header-row-style="header-row-2"
+		override-list-size="true">
+		<actions>
+			<service service-name="performFind" result-map="result"
+				result-map-list="listIt">
+				<field-map field-name="inputFields" from-field="parameters" />
+				<field-map field-name="entityName" value="BorContractor" />
+				<field-map field-name="orderBy" from-field="sortField" />
+			</service>
+		</actions>
+
+		<field name="contractorId" title="${uiLabelMap.ShippingshipmentId}"
+			widget-style="buttontext" sort-field="true">
+			<display />
+		</field>
+
+		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext"
+			sort-field="true">
+			<display />
+		</field>
+
+
+	</form>
+	<form name="EditContractor" type="single" target="updateContractor"
+		title="" default-map-name="contractor" default-entity-name="BorContractor">
+		<alt-target use-when="contractor==null" target="createContractor" />
+		<!-- <auto-fields-service service-name="updateShipment"/> -->
+		<field use-when="shipping!=null" name="shipmentId"
+			title="${uiLabelMap.ShippingshipmentId}">
+			<display />
+		</field>
+		<field use-when="shipping==null @and shipmentId==null" name="shipmentId"
+			title="${uiLabelMap.ShippingshipmentId}">
+			<ignored />
+		</field>
+		<field use-when="shipping==null @and shipmentId!=null" name="shipmentId"
+			title="${uiLabelMap.ShippingshipmentId}">
+			<display description="${uiLabelMap.CommonCannotBeFound}: [${shipmentId}]"
+				also-hidden="false" />
+		</field>
+
+		<field use-when="shipping==null" name="shipmentTypeId">
+			<hidden value="SALES_SHIPMENT" />
+		</field>
+		<field name="estimatedShipDate">
+			<date-time />
+		</field>
+
+		<field name="submitButton" use-when="shipping==null" title="${uiLabelMap.CommonCreate}">
+			<submit button-type="button" />
+		</field>
+		<field name="submitButton" use-when="shipping!=null" title="${uiLabelMap.CommonUpdate}">
+			<submit button-type="button" />
+		</field>
+		<!-- <field name="deleteLink" use-when="shipping!=null" title=" " widget-style="buttontext"> 
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteShipping" 
+			also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}" 
+			image-location="${iconsLocation}/delete.png"> <parameter param-name="shipmentId"/> 
+			</hyperlink> </field> -->
+
+
+	</form>
 
 </forms>

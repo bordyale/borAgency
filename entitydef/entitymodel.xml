@@ -1,12 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entitymodel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/entitymodel.xsd">
-    <!-- ========================================================= -->
-    <!-- ======================== Defaults ======================= -->
-    <!-- ========================================================= -->
-    <title>Entity of BorAgency Component</title>
-    <description>None</description>
-    <copyright></copyright>
-    <version></version>
+	xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/entitymodel.xsd">
+	<!-- ========================================================= -->
+	<!-- ======================== Defaults ======================= -->
+	<!-- ========================================================= -->
+	<title>Entity of BorAgency Component</title>
+	<description>None</description>
+	<copyright></copyright>
+	<version></version>
+
+	<entity entity-name="BorCondition" package-name="org.apache.ofbiz.order.boragency"
+		never-cache="true" title="Condition Entity">
+		<field name="conditionId" type="id-ne"></field>
+		<field name="productId" type="id-ne"></field>
+		<field name="pricelistId" type="id-ne"></field>
+		<field name="contractId" type="id-ne"></field>
+		<field name="clientId" type="id-ne"></field>
+		<field name="validFrom" type="date-time"></field>
+		<field name="validTo" type="date-time"></field>
+		<field name="startingPrice" type="fixed-point"></field>
+		<field name="sc1" type="fixed-point"></field>
+		<field name="sc2" type="fixed-point"></field>
+		<field name="sc3" type="fixed-point"></field>
+		<field name="sc4" type="fixed-point"></field>
+		<field name="sc5" type="fixed-point"></field>
+		<prim-key field="conditionId" />
+		<relation type="one" fk-name="pricelistId" rel-entity-name="BorPriceList">
+			<key-map field-name="pricelistId" />
+		</relation>
+		<relation type="one" fk-name="productId" rel-entity-name="BorProduct">
+			<key-map field-name="productId" />
+		</relation>
+		<relation type="one" fk-name="contractId" rel-entity-name="BorContract">
+			<key-map field-name="contractId" />
+		</relation>
+		<relation type="one" fk-name="clientId" rel-entity-name="BorClient">
+			<key-map field-name="clientId" />
+		</relation>
+	</entity>
+
+	<entity entity-name="BorContractor" package-name="org.apache.ofbiz.order.boragency"
+		never-cache="true" title="Condition Entity">
+		<field name="contractorId" type="id-ne"></field>
+		<field name="name" type="value"></field>
+		<prim-key field="contractorId" />
+	</entity>
+
+	<entity entity-name="BorPriceList" package-name="org.apache.ofbiz.order.boragency"
+		never-cache="true" title="Condition Entity">
+		<field name="pricelistId" type="id-ne"></field>
+		<field name="contractorId" type="id-ne"></field>
+		<field name="description" type="value"></field>
+		<prim-key field="pricelistId" />
+		<relation type="one" fk-name="contractorId" rel-entity-name="BorContractor">
+			<key-map field-name="contractorId" />
+		</relation>
+	</entity>
+
+	<entity entity-name="BorPriceListDetail" package-name="org.apache.ofbiz.order.boragency"
+		never-cache="true" title="Condition Entity">
+		<field name="pricelistId" type="id-ne"></field>
+		<field name="pricelistdetailId" type="id-ne"></field>
+		<field name="productId" type="id-ne"></field>
+		<field name="price" type="fixed-point"></field>
+		<prim-key field="pricelistId" />
+		<prim-key field="pricelistdetailId" />
+		<relation type="one" fk-name="pricelistId" rel-entity-name="BorPriceList">
+			<key-map field-name="pricelistId" />
+		</relation>
+	</entity>
+
+	<entity entity-name="BorProduct" package-name="org.apache.ofbiz.order.boragency"
+		never-cache="true" title="Condition Entity">
+		<field name="productId" type="id-ne"></field>
+		<field name="description" type="value"></field>
+		<prim-key field="productId" />
+	</entity>
+
+	<entity entity-name="BorContract" package-name="org.apache.ofbiz.order.boragency"
+		never-cache="true" title="Condition Entity">
+		<field name="contractId" type="id-ne"></field>
+		<field name="description" type="value"></field>
+		<prim-key field="contractId" />
+	</entity>
+
+	<entity entity-name="BorContractDetail" package-name="org.apache.ofbiz.order.boragency"
+		never-cache="true" title="Condition Entity">
+		<field name="contractId" type="id-ne"></field>
+		<field name="contractDetailId" type="id-ne"></field>
+		<field name="value" type="fixed-point"></field>
+		<prim-key field="contractId" />
+		<prim-key field="contractDetailId" />
+		<relation type="one" fk-name="contractId" rel-entity-name="BorContract">
+			<key-map field-name="contractId" />
+		</relation>
+	</entity>
+
+	<entity entity-name="BorClient" package-name="org.apache.ofbiz.order.boragency"
+		never-cache="true" title="Condition Entity">
+		<field name="clientId" type="id-ne"></field>
+		<field name="description" type="value"></field>
+		<prim-key field="clientId" />
+	</entity>
+
+
+
 
 </entitymodel>

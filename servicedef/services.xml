@@ -1,14 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
-    <description>BorAgency Services</description>
-    <vendor></vendor>
-    <version>1.0</version>
+	xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
+	<description>BorAgency Services</description>
+	<vendor></vendor>
+	<version>1.0</version>
 
-    <service name="noSyntaxError" engine="interface">
-        <description>
+	<service name="noSyntaxError" engine="interface">
+		<description>
             Dummy service to prevent empty files and syntax error - Remove when the 1st real service will be added here 
         </description>
-    </service> 
-    
+	</service>
+
+
+
+
+
+	<service name="createContractor" default-entity-name="BorContractor"
+		engine="entity-auto" invoke="create" auth="true">
+		<description>Create Work Papers entry</description>
+		<permission-service service-name="borAgencyGenericPermission"
+			main-action="CREATE" />
+		<auto-attributes include="pk" mode="OUT" optional="false" />
+		<auto-attributes include="pk" mode="IN" optional="false" />
+		<auto-attributes include="nonpk" mode="IN" optional="true" />
+	</service>
+	<service name="updateContractor" default-entity-name="BorContractor"
+		engine="entity-auto" invoke="update" auth="true">
+		<description>Update a Example</description>
+		<permission-service service-name="borAgencyGenericPermission"
+			main-action="UPDATE" />
+		<auto-attributes include="pk" mode="IN" optional="false" />
+		<auto-attributes include="nonpk" mode="IN" optional="true" />
+	</service>
+	<service name="deleteContractor" default-entity-name="BorContractor"
+		engine="entity-auto" invoke="delete" auth="true">
+		<description>Delete a VfShipmentItem</description>
+		<permission-service service-name="borAgencyGenericPermission"
+			main-action="DELETE" />
+		<auto-attributes include="pk" mode="IN" optional="false" />
+	</service>
+
+	<service name="borAgencyGenericPermission" engine="simple"
+		location="component://borAgency/minilang/borAgencyPermissionServices.xml"
+		invoke="borAgencyPermissionService">
+		<implements service="permissionInterface" />
+	</service>
+
 </services>
