@@ -49,4 +49,8 @@
 		<value xml:lang="en">New</value>
 		<value xml:lang="it">Nuovo</value>
 	</property>
+	<property key="Name">
+		<value xml:lang="en">Name</value>
+		<value xml:lang="it">Nome</value>
+	</property>
 </resource>

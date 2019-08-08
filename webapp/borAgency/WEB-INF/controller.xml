@@ -117,8 +117,8 @@
 		<response name="success" type="view" value="findProducts" />
 		<response name="error" type="view" value="findProducts" />
 	</request-map>
-	
-	
+
+
 	<request-map uri="findPriceLists">
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="findPriceLists" />
@@ -154,7 +154,38 @@
 
 
 
-
+	<request-map uri="findContracts">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="findContracts" />
+	</request-map>
+	<request-map uri="EditContractLayer">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="EditContractLayer" />
+	</request-map>
+	<request-map uri="EditContract">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="EditContract" />
+	</request-map>
+	<request-map uri="createContract">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="createContract" />
+		<response name="success" type="request-redirect" value="EditContract">
+			<redirect-parameter name="contractId" />
+		</response>
+		<response name="error" type="view" value="EditContract" />
+	</request-map>
+	<request-map uri="updateContract">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="updateContract" />
+		<response name="success" type="view" value="EditContract" />
+		<response name="error" type="view" value="EditContract" />
+	</request-map>
+	<request-map uri="deleteContract">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="deleteContract" />
+		<response name="success" type="view" value="findContracts" />
+		<response name="error" type="view" value="findContracts" />
+	</request-map>
 
 
 
@@ -197,14 +228,22 @@
 		page="component://borAgency/widget/BorAgencyScreens.xml#EditProductLayer" />
 	<view-map name="EditProduct" type="screen"
 		page="component://borAgency/widget/BorAgencyScreens.xml#EditProduct" />
-		
-		
-		<view-map name="findPriceLists" type="screen"
+
+
+	<view-map name="findPriceLists" type="screen"
 		page="component://borAgency/widget/BorAgencyScreens.xml#FindPriceLists" />
 	<view-map name="EditPriceListLayer" type="screen"
 		page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceListLayer" />
 	<view-map name="EditPriceList" type="screen"
 		page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceList" />
+
+
+	<view-map name="findContracts" type="screen"
+		page="component://borAgency/widget/BorAgencyScreens.xml#FindContracts" />
+	<view-map name="EditContractLayer" type="screen"
+		page="component://borAgency/widget/BorAgencyScreens.xml#EditContractLayer" />
+	<view-map name="EditContract" type="screen"
+		page="component://borAgency/widget/BorAgencyScreens.xml#EditContract" />
 
 
 </site-conf>

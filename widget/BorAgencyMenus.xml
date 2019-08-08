@@ -13,27 +13,34 @@
 			</condition>
 			<link target="findcontractors" />
 		</menu-item>
-		
+
 		<menu-item name="findclients" title="${uiLabelMap.Clients}">
 			<condition>
 				<if-has-permission permission="BORAGENCY" action="_VIEW" />
 			</condition>
 			<link target="findclients" />
 		</menu-item>
-		
-		
+
+
 		<menu-item name="findProducts" title="${uiLabelMap.Products}">
 			<condition>
 				<if-has-permission permission="BORAGENCY" action="_VIEW" />
 			</condition>
 			<link target="findProducts" />
 		</menu-item>
-		
+
 		<menu-item name="findPriceLists" title="${uiLabelMap.PriceLists}">
 			<condition>
 				<if-has-permission permission="BORAGENCY" action="_VIEW" />
 			</condition>
 			<link target="findPriceLists" />
+		</menu-item>
+
+		<menu-item name="findContracts" title="${uiLabelMap.Contracts}">
+			<condition>
+				<if-has-permission permission="BORAGENCY" action="_VIEW" />
+			</condition>
+			<link target="findContracts" />
 		</menu-item>
 	</menu>
 </menus>

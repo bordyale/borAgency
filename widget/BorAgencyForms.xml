@@ -375,5 +375,104 @@
 
 	</form>
 
+	<form name="FindContracts" type="single" target="findContracts"
+		default-entity-name="Shipment">
 
+		<field name="noConditionFind">
+			<hidden value="Y" /><!-- if this isn't there then with all fields 
+				empty no query will be done -->
+		</field>
+		<field name="name" title="${uiLabelMap.CommonName}">
+
+			<text size="10" maxlength="20" />
+		</field>
+
+		<field name="searchButton" title="${uiLabelMap.CommonFind}"
+			widget-style="smallSubmit">
+			<submit button-type="button" />
+		</field>
+
+
+	</form>
+
+
+	<form name="ListContracts" type="list" list-name="listIt"
+		paginate-target="findContracts" odd-row-style="alternate-row"
+		default-table-style="basic-table hover-bar" header-row-style="header-row-2"
+		override-list-size="true">
+		<actions>
+			<service service-name="performFind" result-map="result"
+				result-map-list="listIt">
+				<field-map field-name="inputFields" from-field="parameters" />
+				<field-map field-name="entityName" value="BorContract" />
+				<field-map field-name="orderBy" from-field="sortField" />
+			</service>
+		</actions>
+
+		<field name="contractId" title="${uiLabelMap.GeneralId}"
+			widget-style="buttontext" sort-field="true">
+			<display />
+		</field>
+		
+		<field name="contractorId" title="${uiLabelMap.Contractors}" widget-style="buttontext"
+			sort-field="true">
+			<display />
+
+
+		</field>
+
+		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext"
+			sort-field="true">
+			<display />
+
+
+		</field>
+
+
+		<field name="deleteLink" title=" " widget-style="buttontext">
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteContract"
+				also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}"
+				image-location="${iconsLocation}/delete.png">
+				<parameter param-name="contractId" />
+			</hyperlink>
+		</field>
+
+
+	</form>
+	<form name="EditContract" type="single" target="updateContract"
+		title="" default-map-name="Contract" default-entity-name="BorContract">
+		<alt-target use-when="Contract==null" target="createContract" />
+		<!-- <auto-fields-service service-name="updateShipment"/> -->
+		<field use-when="Contract!=null" name="contractId" title="${uiLabelMap.ContractId}">
+			<display />
+		</field>
+
+		<field name="contractorId" title="${uiLabelMap.ContractorId}">
+			<text size="10" maxlength="20" />
+		</field>
+		<field use-when="Contract==null @and contractId==null" name="contractId"
+			title="${uiLabelMap.GeneralId}">
+			<ignored />
+		</field>
+
+
+		<field name="name">
+			<text size="10" maxlength="20" />
+		</field>
+
+
+		<field name="submitButton" use-when="Contract==null" title="${uiLabelMap.CommonCreate}">
+			<submit button-type="button" />
+		</field>
+		<field name="submitButton" use-when="Contract!=null" title="${uiLabelMap.CommonUpdate}">
+			<submit button-type="button" />
+		</field>
+		<!-- <field name="deleteLink" use-when="shipping!=null" title=" " widget-style="buttontext"> 
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteShipping" 
+			also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}" 
+			image-location="${iconsLocation}/delete.png"> <parameter param-name="shipmentId"/> 
+			</hyperlink> </field> -->
+
+
+	</form>
 </forms>
