@@ -20,5 +20,13 @@
 			</condition>
 			<link target="findclients" />
 		</menu-item>
+		
+		
+		<menu-item name="findProducts" title="${uiLabelMap.Products}">
+			<condition>
+				<if-has-permission permission="BORAGENCY" action="_VIEW" />
+			</condition>
+			<link target="findProducts" />
+		</menu-item>
 	</menu>
 </menus>

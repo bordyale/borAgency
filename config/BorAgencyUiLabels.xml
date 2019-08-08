@@ -28,4 +28,16 @@
         <value xml:lang="en">Clients</value>
         <value xml:lang="it">Clienti</value>
     </property>
+    <property key="Products">
+        <value xml:lang="en">Products</value>
+        <value xml:lang="it">Prodotti</value>
+    </property>
+    <property key="GeneralId">
+        <value xml:lang="en">Identifier</value>
+        <value xml:lang="it">Identificativo</value>
+    </property>
+    <property key="NewCommon">
+        <value xml:lang="en">New</value>
+        <value xml:lang="it">Nuovo</value>
+    </property>
 </resource>

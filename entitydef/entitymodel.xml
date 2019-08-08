@@ -73,7 +73,7 @@
 	<entity entity-name="BorProduct" package-name="org.apache.ofbiz.order.boragency"
 		never-cache="true" title="Condition Entity">
 		<field name="productId" type="id-ne"></field>
-		<field name="description" type="value"></field>
+		<field name="name" type="value"></field>
 		<prim-key field="productId" />
 	</entity>
 

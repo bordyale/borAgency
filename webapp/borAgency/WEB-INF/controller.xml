@@ -47,11 +47,9 @@
 		<response name="success" type="view" value="findcontractors" />
 		<response name="error" type="view" value="findcontractors" />
 	</request-map>
-	
-	
-	
-	
-	
+
+
+
 	<request-map uri="findclients">
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="findclients" />
@@ -84,20 +82,55 @@
 		<response name="success" type="view" value="findclients" />
 		<response name="error" type="view" value="findclients" />
 	</request-map>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+	<request-map uri="findProducts">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="findProducts" />
+	</request-map>
+	<request-map uri="EditProductLayer">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="EditProductLayer" />
+	</request-map>
+	<request-map uri="EditProduct">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="EditProduct" />
+	</request-map>
+	<request-map uri="createProduct">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="createProduct" />
+		<response name="success" type="request-redirect" value="EditProduct">
+			<redirect-parameter name="ProductId" />
+		</response>
+		<response name="error" type="view" value="EditProduct" />
+	</request-map>
+	<request-map uri="updateProduct">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="updateProduct" />
+		<response name="success" type="view" value="EditProduct" />
+		<response name="error" type="view" value="EditProduct" />
+	</request-map>
+	<request-map uri="deleteProduct">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="deleteProduct" />
+		<response name="success" type="view" value="findProducts" />
+		<response name="error" type="view" value="findProducts" />
+	</request-map>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	<!-- Request Mappings -->
 	<request-map uri="main">
@@ -114,14 +147,22 @@
 		page="component://borAgency/widget/BorAgencyScreens.xml#EditContractorLayer" />
 	<view-map name="EditContractor" type="screen"
 		page="component://borAgency/widget/BorAgencyScreens.xml#EditContractor" />
-		
-		
+
+
 	<view-map name="findclients" type="screen"
 		page="component://borAgency/widget/BorAgencyScreens.xml#FindClients" />
 	<view-map name="EditClientLayer" type="screen"
 		page="component://borAgency/widget/BorAgencyScreens.xml#EditClientLayer" />
 	<view-map name="EditClient" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditClient" />	
-		
+		page="component://borAgency/widget/BorAgencyScreens.xml#EditClient" />
+
+
+	<view-map name="findProducts" type="screen"
+		page="component://borAgency/widget/BorAgencyScreens.xml#FindProducts" />
+	<view-map name="EditProductLayer" type="screen"
+		page="component://borAgency/widget/BorAgencyScreens.xml#EditProductLayer" />
+	<view-map name="EditProduct" type="screen"
+		page="component://borAgency/widget/BorAgencyScreens.xml#EditProduct" />
+
 
 </site-conf>
