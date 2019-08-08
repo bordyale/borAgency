@@ -47,6 +47,17 @@
 		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext"
 			sort-field="true">
 			<display />
+
+
+		</field>
+
+
+		<field name="deleteLink" title=" " widget-style="buttontext">
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteContractor"
+				also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}"
+				image-location="${iconsLocation}/delete.png">
+				<parameter param-name="contractorId" />
+			</hyperlink>
 		</field>
 
 
@@ -55,31 +66,25 @@
 		title="" default-map-name="contractor" default-entity-name="BorContractor">
 		<alt-target use-when="contractor==null" target="createContractor" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
-		<field use-when="shipping!=null" name="shipmentId"
-			title="${uiLabelMap.ShippingshipmentId}">
+		<field use-when="contractor!=null" name="contractorId"
+			title="${uiLabelMap.ContractorId}">
 			<display />
 		</field>
-		<field use-when="shipping==null @and shipmentId==null" name="shipmentId"
-			title="${uiLabelMap.ShippingshipmentId}">
+		<field use-when="contractor==null @and contractorId==null" name="contractorId"
+			title="${uiLabelMap.ContractorId}">
 			<ignored />
 		</field>
-		<field use-when="shipping==null @and shipmentId!=null" name="shipmentId"
-			title="${uiLabelMap.ShippingshipmentId}">
-			<display description="${uiLabelMap.CommonCannotBeFound}: [${shipmentId}]"
-				also-hidden="false" />
+
+
+		<field name="name">
+			<text size="10" maxlength="20" />
 		</field>
 
-		<field use-when="shipping==null" name="shipmentTypeId">
-			<hidden value="SALES_SHIPMENT" />
-		</field>
-		<field name="estimatedShipDate">
-			<date-time />
-		</field>
 
-		<field name="submitButton" use-when="shipping==null" title="${uiLabelMap.CommonCreate}">
+		<field name="submitButton" use-when="contractor==null" title="${uiLabelMap.CommonCreate}">
 			<submit button-type="button" />
 		</field>
-		<field name="submitButton" use-when="shipping!=null" title="${uiLabelMap.CommonUpdate}">
+		<field name="submitButton" use-when="contractor!=null" title="${uiLabelMap.CommonUpdate}">
 			<submit button-type="button" />
 		</field>
 		<!-- <field name="deleteLink" use-when="shipping!=null" title=" " widget-style="buttontext"> 

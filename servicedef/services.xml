@@ -20,9 +20,9 @@
 		<description>Create Work Papers entry</description>
 		<permission-service service-name="borAgencyGenericPermission"
 			main-action="CREATE" />
-		<auto-attributes include="pk" mode="OUT" optional="false" />
-		<auto-attributes include="pk" mode="IN" optional="false" />
-		<auto-attributes include="nonpk" mode="IN" optional="true" />
+		<auto-attributes include="pk" mode="OUT" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+        <override name="name" optional="false"/>
 	</service>
 	<service name="updateContractor" default-entity-name="BorContractor"
 		engine="entity-auto" invoke="update" auth="true">

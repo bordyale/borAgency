@@ -23,6 +23,31 @@
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="EditContractorLayer" />
 	</request-map>
+	<request-map uri="EditContractor">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="EditContractor" />
+	</request-map>
+	
+	<request-map uri="createContractor">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="createContractor" />
+		<response name="success" type="request-redirect" value="EditContractor">
+			<redirect-parameter name="contractorId" />
+		</response>
+		<response name="error" type="view" value="EditContractor" />
+	</request-map>
+	<request-map uri="updateContractor">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="updateContractor" />
+		<response name="success" type="view" value="EditContractor" />
+		<response name="error" type="view" value="EditContractor" />
+	</request-map>
+	<request-map uri="deleteContractor">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="deleteContractor" />
+		<response name="success" type="view" value="findcontractors" />
+		<response name="error" type="view" value="findcontractors" />
+	</request-map>
 
 	<!-- Request Mappings -->
 	<request-map uri="main">
@@ -37,4 +62,6 @@
 		page="component://borAgency/widget/BorAgencyScreens.xml#FindContractors" />
 	<view-map name="EditContractorLayer" type="screen"
 		page="component://borAgency/widget/BorAgencyScreens.xml#EditContractorLayer" />
+	<view-map name="EditContractor" type="screen"
+		page="component://borAgency/widget/BorAgencyScreens.xml#EditContractor" />
 </site-conf>

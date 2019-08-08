@@ -23,7 +23,7 @@
 		<section>
 			<actions>
 				<set field="titleProperty" value="FindContractor" />
-				<set field="headerItem" value="findcontractor" />
+				<set field="headerItem" value="findcontractors" />
 
 				<set field="formShippingListName" value="${groovy: return 'ListContractors';}" />
 				<!-- <script location="component://vforder/groovyScripts/FindShipping.groovy" 
@@ -81,5 +81,33 @@
 			</widgets>
 		</section>
 	</screen>
+	
+	<screen name="EditContractor">
+		<section>
+			<actions>
+				<set field="titleProperty" value="FindContractor" />
+				<set field="headerItem" value="findcontractors" />
+				<set field="contractorId" from-field="parameters.contractorId" />
+				<!-- <set field="workpapersId" from-field="parameters.workpapersId" /> -->
+				<entity-one entity-name="BorContractor" value-field="contractor" />
+			</actions>
+			<widgets>
+				<decorator-screen name="BorAgencyCommonDecorator"
+					location="${parameters.mainDecoratorLocation}">
+					<decorator-section name="body">
+						
+						
+								<include-form name="EditContractor"
+									location="component://borAgency/widget/BorAgencyForms.xml" />
+							
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
+	
+	
+	
+	
 
 </screens>
