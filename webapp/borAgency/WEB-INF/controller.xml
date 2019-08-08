@@ -117,6 +117,40 @@
 		<response name="success" type="view" value="findProducts" />
 		<response name="error" type="view" value="findProducts" />
 	</request-map>
+	
+	
+	<request-map uri="findPriceLists">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="findPriceLists" />
+	</request-map>
+	<request-map uri="EditPriceListLayer">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="EditPriceListLayer" />
+	</request-map>
+	<request-map uri="EditPriceList">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="EditPriceList" />
+	</request-map>
+	<request-map uri="createPriceList">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="createPriceList" />
+		<response name="success" type="request-redirect" value="EditPriceList">
+			<redirect-parameter name="pricelistId" />
+		</response>
+		<response name="error" type="view" value="EditPriceList" />
+	</request-map>
+	<request-map uri="updatePriceList">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="updatePriceList" />
+		<response name="success" type="view" value="EditPriceList" />
+		<response name="error" type="view" value="EditPriceList" />
+	</request-map>
+	<request-map uri="deletePriceList">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="deletePriceList" />
+		<response name="success" type="view" value="findPriceLists" />
+		<response name="error" type="view" value="findPriceLists" />
+	</request-map>
 
 
 
@@ -163,6 +197,14 @@
 		page="component://borAgency/widget/BorAgencyScreens.xml#EditProductLayer" />
 	<view-map name="EditProduct" type="screen"
 		page="component://borAgency/widget/BorAgencyScreens.xml#EditProduct" />
+		
+		
+		<view-map name="findPriceLists" type="screen"
+		page="component://borAgency/widget/BorAgencyScreens.xml#FindPriceLists" />
+	<view-map name="EditPriceListLayer" type="screen"
+		page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceListLayer" />
+	<view-map name="EditPriceList" type="screen"
+		page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceList" />
 
 
 </site-conf>

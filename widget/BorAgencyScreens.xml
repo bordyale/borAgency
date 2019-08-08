@@ -283,7 +283,92 @@
 		</section>
 	</screen>
 	
+		<screen name="FindPriceLists">
+		<section>
+			<actions>
+				<set field="titleProperty" value="FindPriceList" />
+				<set field="headerItem" value="findPriceLists" />
+
+				<set field="formShippingListName" value="${groovy: return 'ListPriceLists';}" />
+				<!-- <script location="component://vforder/groovyScripts/FindShipping.groovy" 
+					/> -->
+
+				<!-- asmselect parameters, must be prefixed by asm_ for SetMultipleSelectJs.ftl -->
+
+			</actions>
+			<widgets>
+				<decorator-screen name="BorAgencyCommonDecorator"
+					location="${parameters.mainDecoratorLocation}">
+					<decorator-section name="body">
+						<section>
+							<widgets>
+								<decorator-screen name="FindScreenDecorator"
+									location="component://common/widget/CommonScreens.xml">
+									<decorator-section name="menu-bar">
+										<container style="button-bar">
+											<link target="EditPriceListLayer" link-type="layered-modal"
+												text="${uiLabelMap.NewCommon}" style="buttontext create" />
+										</container>
+									</decorator-section>
+									<decorator-section name="search-options">
+										<include-form name="FindPriceLists"
+											location="component://borAgency/widget/BorAgencyForms.xml" />
+									</decorator-section>
+									<decorator-section name="search-results">
+										<include-form name="${formShippingListName}"
+											location="component://borAgency/widget/BorAgencyForms.xml" />
+									</decorator-section>
+								</decorator-screen>
+							</widgets>
+						</section>
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
 	
+	<screen name="EditPriceListLayer">
+		<section>
+			<actions>	
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap"
+					global="true" />
+				<property-map resource="CommonUiLabels" map-name="uiLabelMap"
+					global="true" />
+				<set field="titleProperty" value="PageTitleEditShipping" />
+				<set field="tabButtonItem" value="findPriceLists" />
+				<set field="PriceListId" from-field="parameters.PriceListId" />
+				<entity-one entity-name="BorPriceList" value-field="PriceList" />
+			</actions>
+			<widgets>
+				<include-form name="EditPriceList"
+					location="component://borAgency/widget/BorAgencyForms.xml" />
+			</widgets>
+		</section>
+	</screen>
+	
+	<screen name="EditPriceList">
+		<section>
+			<actions>
+				<set field="titleProperty" value="FindPriceList" />
+				<set field="headerItem" value="findPriceLists" />
+				<set field="pricelistId" from-field="parameters.pricelistId" />
+				<!-- <set field="workpapersId" from-field="parameters.workpapersId" /> -->
+				<entity-one entity-name="BorPriceList" value-field="PriceList" />
+			</actions>
+			<widgets>
+				<decorator-screen name="BorAgencyCommonDecorator"
+					location="${parameters.mainDecoratorLocation}">
+					<decorator-section name="body">
+						
+						
+								<include-form name="EditPriceList"
+									location="component://borAgency/widget/BorAgencyForms.xml" />
+							
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
 	
 
 </screens>

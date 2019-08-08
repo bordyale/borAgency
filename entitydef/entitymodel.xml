@@ -50,7 +50,7 @@
 		never-cache="true" title="Condition Entity">
 		<field name="pricelistId" type="id-ne"></field>
 		<field name="contractorId" type="id-ne"></field>
-		<field name="description" type="value"></field>
+		<field name="name" type="value"></field>
 		<prim-key field="pricelistId" />
 		<relation type="one" fk-name="contractorId" rel-entity-name="BorContractor">
 			<key-map field-name="contractorId" />

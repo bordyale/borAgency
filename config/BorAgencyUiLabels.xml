@@ -1,43 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/ofbiz-properties.xsd">
-    <property key="BorAgencyApplication">
-        <value xml:lang="en">BorAgency Application</value>
-        <value xml:lang="zh">BorAgency应用程序</value>
-        <value xml:lang="zh-TW">BorAgency應用程式</value>
-    </property>
-    <property key="BorAgencyCompanyName">
-        <value xml:lang="en">OFBiz: BorAgency</value>
-        <value xml:lang="zh-TW">OFBiz: BorAgency</value>
-    </property>
-    <property key="BorAgencyCompanySubtitle">
-        <value xml:lang="en">Part of the Apache OFBiz Family of Open Source Software</value>
-        <value xml:lang="it">Un modulo della famiglia di software open source Apache OFBiz</value>
-        <value xml:lang="zh">开源软件OFBiz的组成部分</value>
-        <value xml:lang="zh-TW">開源軟體OFBiz的組成部分</value>
-    </property>
-    <property key="BorAgencyViewPermissionError">
-        <value xml:lang="en">You are not allowed to view this page.</value>
-        <value xml:lang="zh">不允许你浏览这个页面。</value>
-        <value xml:lang="zh-TW">不允許您檢視這個頁面.</value>
-    </property>
-    <property key="Contractors">
-        <value xml:lang="en">Contractors</value>
-        <value xml:lang="it">Mandanti</value>
-    </property>
-    <property key="Clients">
-        <value xml:lang="en">Clients</value>
-        <value xml:lang="it">Clienti</value>
-    </property>
-    <property key="Products">
-        <value xml:lang="en">Products</value>
-        <value xml:lang="it">Prodotti</value>
-    </property>
-    <property key="GeneralId">
-        <value xml:lang="en">Identifier</value>
-        <value xml:lang="it">Identificativo</value>
-    </property>
-    <property key="NewCommon">
-        <value xml:lang="en">New</value>
-        <value xml:lang="it">Nuovo</value>
-    </property>
+<resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/ofbiz-properties.xsd">
+	<property key="BorAgencyApplication">
+		<value xml:lang="en">BorAgency Application</value>
+		<value xml:lang="zh">BorAgency应用程序</value>
+		<value xml:lang="zh-TW">BorAgency應用程式</value>
+	</property>
+	<property key="BorAgencyCompanyName">
+		<value xml:lang="en">OFBiz: BorAgency</value>
+		<value xml:lang="zh-TW">OFBiz: BorAgency</value>
+	</property>
+	<property key="BorAgencyCompanySubtitle">
+		<value xml:lang="en">Part of the Apache OFBiz Family of Open Source Software</value>
+		<value xml:lang="it">Un modulo della famiglia di software open source Apache OFBiz</value>
+		<value xml:lang="zh">开源软件OFBiz的组成部分</value>
+		<value xml:lang="zh-TW">開源軟體OFBiz的組成部分</value>
+	</property>
+	<property key="BorAgencyViewPermissionError">
+		<value xml:lang="en">You are not allowed to view this page.</value>
+		<value xml:lang="zh">不允许你浏览这个页面。</value>
+		<value xml:lang="zh-TW">不允許您檢視這個頁面.</value>
+	</property>
+	<property key="Contractors">
+		<value xml:lang="en">Contractors</value>
+		<value xml:lang="it">Mandanti</value>
+	</property>
+	<property key="Clients">
+		<value xml:lang="en">Clients</value>
+		<value xml:lang="it">Clienti</value>
+	</property>
+	<property key="Products">
+		<value xml:lang="en">Products</value>
+		<value xml:lang="it">Prodotti</value>
+	</property>
+	<property key="PriceLists">
+		<value xml:lang="en">Price Lists</value>
+		<value xml:lang="it">Listini</value>
+	</property>
+	<property key="Contracts">
+		<value xml:lang="en">Contracts</value>
+		<value xml:lang="it">Contratti</value>
+	</property>
+	<property key="GeneralId">
+		<value xml:lang="en">Identifier</value>
+		<value xml:lang="it">Identificativo</value>
+	</property>
+	<property key="NewCommon">
+		<value xml:lang="en">New</value>
+		<value xml:lang="it">Nuovo</value>
+	</property>
 </resource>
