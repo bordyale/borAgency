@@ -65,7 +65,7 @@
 	
 	<screen name="EditContractorLayer">
 		<section>
-			<actions>
+			<actions>	
 				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap"
 					global="true" />
 				<property-map resource="CommonUiLabels" map-name="uiLabelMap"
@@ -98,6 +98,95 @@
 						
 						
 								<include-form name="EditContractor"
+									location="component://borAgency/widget/BorAgencyForms.xml" />
+							
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
+	
+	
+	
+	<screen name="FindClients">
+		<section>
+			<actions>
+				<set field="titleProperty" value="FindClient" />
+				<set field="headerItem" value="findclients" />
+
+				<set field="formShippingListName" value="${groovy: return 'ListClients';}" />
+				<!-- <script location="component://vforder/groovyScripts/FindShipping.groovy" 
+					/> -->
+
+				<!-- asmselect parameters, must be prefixed by asm_ for SetMultipleSelectJs.ftl -->
+
+			</actions>
+			<widgets>
+				<decorator-screen name="BorAgencyCommonDecorator"
+					location="${parameters.mainDecoratorLocation}">
+					<decorator-section name="body">
+						<section>
+							<widgets>
+								<decorator-screen name="FindScreenDecorator"
+									location="component://common/widget/CommonScreens.xml">
+									<decorator-section name="menu-bar">
+										<container style="button-bar">
+											<link target="EditClientLayer" link-type="layered-modal"
+												text="${uiLabelMap.NewClient}" style="buttontext create" />
+										</container>
+									</decorator-section>
+									<decorator-section name="search-options">
+										<include-form name="FindClients"
+											location="component://borAgency/widget/BorAgencyForms.xml" />
+									</decorator-section>
+									<decorator-section name="search-results">
+										<include-form name="${formShippingListName}"
+											location="component://borAgency/widget/BorAgencyForms.xml" />
+									</decorator-section>
+								</decorator-screen>
+							</widgets>
+						</section>
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
+	
+	<screen name="EditClientLayer">
+		<section>
+			<actions>	
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap"
+					global="true" />
+				<property-map resource="CommonUiLabels" map-name="uiLabelMap"
+					global="true" />
+				<set field="titleProperty" value="PageTitleEditShipping" />
+				<set field="tabButtonItem" value="findclients" />
+				<set field="clientId" from-field="parameters.clientId" />
+				<entity-one entity-name="BorClient" value-field="client" />
+			</actions>
+			<widgets>
+				<include-form name="EditClient"
+					location="component://borAgency/widget/BorAgencyForms.xml" />
+			</widgets>
+		</section>
+	</screen>
+	
+	<screen name="EditClient">
+		<section>
+			<actions>
+				<set field="titleProperty" value="FindClient" />
+				<set field="headerItem" value="findclients" />
+				<set field="clientId" from-field="parameters.clientId" />
+				<!-- <set field="workpapersId" from-field="parameters.workpapersId" /> -->
+				<entity-one entity-name="BorClient" value-field="client" />
+			</actions>
+			<widgets>
+				<decorator-screen name="BorAgencyCommonDecorator"
+					location="${parameters.mainDecoratorLocation}">
+					<decorator-section name="body">
+						
+						
+								<include-form name="EditClient"
 									location="component://borAgency/widget/BorAgencyForms.xml" />
 							
 					</decorator-section>

@@ -27,7 +27,6 @@
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="EditContractor" />
 	</request-map>
-	
 	<request-map uri="createContractor">
 		<security https="true" auth="true" />
 		<event type="service" path="" invoke="createContractor" />
@@ -48,6 +47,57 @@
 		<response name="success" type="view" value="findcontractors" />
 		<response name="error" type="view" value="findcontractors" />
 	</request-map>
+	
+	
+	
+	
+	
+	<request-map uri="findclients">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="findclients" />
+	</request-map>
+	<request-map uri="EditClientLayer">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="EditClientLayer" />
+	</request-map>
+	<request-map uri="EditClient">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="EditClient" />
+	</request-map>
+	<request-map uri="createClient">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="createClient" />
+		<response name="success" type="request-redirect" value="EditClient">
+			<redirect-parameter name="clientId" />
+		</response>
+		<response name="error" type="view" value="EditClient" />
+	</request-map>
+	<request-map uri="updateClient">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="updateClient" />
+		<response name="success" type="view" value="EditClient" />
+		<response name="error" type="view" value="EditClient" />
+	</request-map>
+	<request-map uri="deleteClient">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="deleteClient" />
+		<response name="success" type="view" value="findclients" />
+		<response name="error" type="view" value="findclients" />
+	</request-map>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	<!-- Request Mappings -->
 	<request-map uri="main">
@@ -64,4 +114,14 @@
 		page="component://borAgency/widget/BorAgencyScreens.xml#EditContractorLayer" />
 	<view-map name="EditContractor" type="screen"
 		page="component://borAgency/widget/BorAgencyScreens.xml#EditContractor" />
+		
+		
+	<view-map name="findclients" type="screen"
+		page="component://borAgency/widget/BorAgencyScreens.xml#FindClients" />
+	<view-map name="EditClientLayer" type="screen"
+		page="component://borAgency/widget/BorAgencyScreens.xml#EditClientLayer" />
+	<view-map name="EditClient" type="screen"
+		page="component://borAgency/widget/BorAgencyScreens.xml#EditClient" />	
+		
+
 </site-conf>

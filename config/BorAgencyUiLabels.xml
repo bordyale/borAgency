@@ -24,4 +24,8 @@
         <value xml:lang="en">Contractors</value>
         <value xml:lang="it">Mandanti</value>
     </property>
+    <property key="Clients">
+        <value xml:lang="en">Clients</value>
+        <value xml:lang="it">Clienti</value>
+    </property>
 </resource>

@@ -95,5 +95,102 @@
 
 
 	</form>
+	
+	
+	
+	<form name="FindClients" type="single" target="findclients"
+		default-entity-name="Shipment">
+
+		<field name="noConditionFind">
+			<hidden value="Y" /><!-- if this isn't there then with all fields 
+				empty no query will be done -->
+		</field>
+		<field name="name" title="${uiLabelMap.CommonName}">
+
+			<text size="10" maxlength="20" />
+		</field>
+
+		<field name="searchButton" title="${uiLabelMap.CommonFind}"
+			widget-style="smallSubmit">
+			<submit button-type="button" />
+		</field>
+
+
+	</form>
+
+
+	<form name="ListClients" type="list" list-name="listIt"
+		paginate-target="findclients" odd-row-style="alternate-row"
+		default-table-style="basic-table hover-bar" header-row-style="header-row-2"
+		override-list-size="true">
+		<actions>
+			<service service-name="performFind" result-map="result"
+				result-map-list="listIt">
+				<field-map field-name="inputFields" from-field="parameters" />
+				<field-map field-name="entityName" value="BorClient" />
+				<field-map field-name="orderBy" from-field="sortField" />
+			</service>
+		</actions>
+
+		<field name="clientId" title="${uiLabelMap.ShippingshipmentId}"
+			widget-style="buttontext" sort-field="true">
+			<display />
+		</field>
+
+		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext"
+			sort-field="true">
+			<display />
+
+
+		</field>
+
+
+		<field name="deleteLink" title=" " widget-style="buttontext">
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteClient"
+				also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}"
+				image-location="${iconsLocation}/delete.png">
+				<parameter param-name="clientId" />
+			</hyperlink>
+		</field>
+
+
+	</form>
+	<form name="EditClient" type="single" target="updateClient"
+		title="" default-map-name="client" default-entity-name="BorClient">
+		<alt-target use-when="client==null" target="createClient" />
+		<!-- <auto-fields-service service-name="updateShipment"/> -->
+		<field use-when="client!=null" name="clientId"
+			title="${uiLabelMap.ClientId}">
+			<display />
+		</field>
+		<field use-when="client==null @and clientId==null" name="clientId"
+			title="${uiLabelMap.ClientId}">
+			<ignored />
+		</field>
+
+
+		<field name="name">
+			<text size="10" maxlength="20" />
+		</field>
+
+
+		<field name="submitButton" use-when="client==null" title="${uiLabelMap.CommonCreate}">
+			<submit button-type="button" />
+		</field>
+		<field name="submitButton" use-when="client!=null" title="${uiLabelMap.CommonUpdate}">
+			<submit button-type="button" />
+		</field>
+		<!-- <field name="deleteLink" use-when="shipping!=null" title=" " widget-style="buttontext"> 
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteShipping" 
+			also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}" 
+			image-location="${iconsLocation}/delete.png"> <parameter param-name="shipmentId"/> 
+			</hyperlink> </field> -->
+
+
+	</form>
+	
+	
+	
+	
 
 </forms>
