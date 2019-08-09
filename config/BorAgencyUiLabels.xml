@@ -37,6 +37,10 @@
 		<value xml:lang="en">Price Lists</value>
 		<value xml:lang="it">Listini</value>
 	</property>
+	<property key="PriceListDetails">
+		<value xml:lang="en">Price List Details</value>
+		<value xml:lang="it">Listini dettagli</value>
+	</property>
 	<property key="Contracts">
 		<value xml:lang="en">Contracts</value>
 		<value xml:lang="it">Contratti</value>

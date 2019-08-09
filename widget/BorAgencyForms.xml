@@ -316,7 +316,9 @@
 
 		<field name="pricelistId" title="${uiLabelMap.GeneralId}"
 			widget-style="buttontext" sort-field="true">
-			<display />
+			<hyperlink description="${pricelistId}" target="EditPriceList" also-hidden="false">
+                <parameter param-name="pricelistId"/>
+            </hyperlink>
 		</field>
 
 		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext"

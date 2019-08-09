@@ -288,6 +288,7 @@
 			<actions>
 				<set field="titleProperty" value="FindPriceList" />
 				<set field="headerItem" value="findPriceLists" />
+				
 
 				<set field="formShippingListName" value="${groovy: return 'ListPriceLists';}" />
 				<!-- <script location="component://vforder/groovyScripts/FindShipping.groovy" 
@@ -349,20 +350,38 @@
 	<screen name="EditPriceList">
 		<section>
 			<actions>
-				<set field="titleProperty" value="FindPriceList" />
+				<set field="titleProperty" value="EditPriceList" />
 				<set field="headerItem" value="findPriceLists" />
 				<set field="pricelistId" from-field="parameters.pricelistId" />
 				<!-- <set field="workpapersId" from-field="parameters.workpapersId" /> -->
+				<set field="tabButtonItem" value="EditPriceList" />
 				<entity-one entity-name="BorPriceList" value-field="PriceList" />
 			</actions>
 			<widgets>
 				<decorator-screen name="BorAgencyCommonDecorator"
 					location="${parameters.mainDecoratorLocation}">
 					<decorator-section name="body">
-
-
-						<include-form name="EditPriceList"
-							location="component://borAgency/widget/BorAgencyForms.xml" />
+						<section>
+							<condition>
+								<and>
+									<not>
+										<if-empty field="PriceList" />
+									</not><!-- This is a check useful when only seed data are loaded -->
+								</and>
+							</condition>
+							<widgets>
+								<include-menu name="EditPriceList"
+									location="component://borAgency/widget/BorAgencyMenus.xml" />
+							</widgets>
+						</section>
+						<section>
+							<widgets>
+								<screenlet title="${uiLabelMap.ExampleFeature}">
+									<include-form name="EditPriceList"
+										location="component://borAgency/widget/BorAgencyForms.xml" />
+								</screenlet>
+							</widgets>
+						</section>
 
 					</decorator-section>
 				</decorator-screen>
