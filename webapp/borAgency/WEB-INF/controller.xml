@@ -189,9 +189,12 @@
 
 
 
+	<!-- Lookup request mappings -->
 
-
-
+	<request-map uri="LookupContractor">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="LookupContractor" />
+	</request-map>
 
 
 
@@ -244,6 +247,10 @@
 		page="component://borAgency/widget/BorAgencyScreens.xml#EditContractLayer" />
 	<view-map name="EditContract" type="screen"
 		page="component://borAgency/widget/BorAgencyScreens.xml#EditContract" />
+
+
+	<view-map name="LookupContractor" type="screen"
+		page="component://borAgency/widget/LookupScreens.xml#LookupContractor" />
 
 
 </site-conf>

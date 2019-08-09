@@ -349,7 +349,7 @@
 		</field>
 
 		<field name="contractorId" title="${uiLabelMap.ContractorId}">
-			<text size="10" maxlength="20" />
+			<lookup target-form-name="LookupContractor" />
 		</field>
 		<field use-when="PriceList==null @and pricelistId==null" name="pricelistId"
 			title="${uiLabelMap.GeneralId}">
