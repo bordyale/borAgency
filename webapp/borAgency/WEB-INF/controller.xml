@@ -99,7 +99,7 @@
 	</request-map>
 	<request-map uri="createProduct">
 		<security https="true" auth="true" />
-		<event type="service" path="" invoke="createProduct" />
+		<event type="service" path="" invoke="createBorProduct" />
 		<response name="success" type="request-redirect" value="EditProduct">
 			<redirect-parameter name="ProductId" />
 		</response>
@@ -107,13 +107,13 @@
 	</request-map>
 	<request-map uri="updateProduct">
 		<security https="true" auth="true" />
-		<event type="service" path="" invoke="updateProduct" />
+		<event type="service" path="" invoke="updateBorProduct" />
 		<response name="success" type="view" value="EditProduct" />
 		<response name="error" type="view" value="EditProduct" />
 	</request-map>
 	<request-map uri="deleteProduct">
 		<security https="true" auth="true" />
-		<event type="service" path="" invoke="deleteProduct" />
+		<event type="service" path="" invoke="deleteBorProduct" />
 		<response name="success" type="view" value="findProducts" />
 		<response name="error" type="view" value="findProducts" />
 	</request-map>

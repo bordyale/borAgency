@@ -66,7 +66,7 @@
 		<auto-attributes include="pk" mode="IN" optional="false" />
 	</service>
 
-	<service name="createProduct" default-entity-name="BorProduct"
+	<service name="createBorProduct" default-entity-name="BorProduct"
 		engine="entity-auto" invoke="create" auth="true">
 		<description>Create Work Papers entry</description>
 		<permission-service service-name="borAgencyGenericPermission"
@@ -75,7 +75,7 @@
 		<auto-attributes include="nonpk" mode="IN" optional="true" />
 		<override name="name" optional="false" />
 	</service>
-	<service name="updateProduct" default-entity-name="BorProduct"
+	<service name="updateBorProduct" default-entity-name="BorProduct"
 		engine="entity-auto" invoke="update" auth="true">
 		<description>Update a Example</description>
 		<permission-service service-name="borAgencyGenericPermission"
@@ -83,7 +83,7 @@
 		<auto-attributes include="pk" mode="IN" optional="false" />
 		<auto-attributes include="nonpk" mode="IN" optional="true" />
 	</service>
-	<service name="deleteProduct" default-entity-name="BorProduct"
+	<service name="deleteBorProduct" default-entity-name="BorProduct"
 		engine="entity-auto" invoke="delete" auth="true">
 		<description>Delete a VfShipmentItem</description>
 		<permission-service service-name="borAgencyGenericPermission"
