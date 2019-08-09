@@ -101,7 +101,7 @@
 		<security https="true" auth="true" />
 		<event type="service" path="" invoke="createBorProduct" />
 		<response name="success" type="request-redirect" value="EditProduct">
-			<redirect-parameter name="ProductId" />
+			<redirect-parameter name="productId" />
 		</response>
 		<response name="error" type="view" value="EditProduct" />
 	</request-map>
@@ -152,7 +152,10 @@
 		<response name="error" type="view" value="findPriceLists" />
 	</request-map>
 
-
+	<request-map uri="EditPriceListDetail">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="EditPriceListDetail" />
+	</request-map>
 
 	<request-map uri="findContracts">
 		<security https="true" auth="true" />
@@ -239,6 +242,8 @@
 		page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceListLayer" />
 	<view-map name="EditPriceList" type="screen"
 		page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceList" />
+	<view-map name="EditPriceListDetail" type="screen"
+		page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceListDetail" />
 
 
 	<view-map name="findContracts" type="screen"

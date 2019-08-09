@@ -196,6 +196,9 @@
 			<hidden value="Y" /><!-- if this isn't there then with all fields 
 				empty no query will be done -->
 		</field>
+		<field name="contractorId" title="${uiLabelMap.ContractorId}">
+			<lookup target-form-name="LookupContractor" />
+		</field>
 		<field name="name" title="${uiLabelMap.CommonName}">
 
 			<text size="10" maxlength="20" />
@@ -225,7 +228,11 @@
 
 		<field name="productId" title="${uiLabelMap.GeneralId}"
 			widget-style="buttontext" sort-field="true">
-			<display />
+			<hyperlink description="${productId}" target="EditProduct"
+				also-hidden="false">
+				<parameter param-name="productId" />
+				<parameter param-name="contractorId" />
+			</hyperlink>
 		</field>
 
 		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext"
@@ -257,6 +264,9 @@
 			title="${uiLabelMap.GeneralId}">
 			<ignored />
 		</field>
+		<field name="contractorId" title="${uiLabelMap.ContractorId}">
+			<lookup target-form-name="LookupContractor" />
+		</field>
 
 
 		<field name="name">
@@ -287,6 +297,9 @@
 			<hidden value="Y" /><!-- if this isn't there then with all fields 
 				empty no query will be done -->
 		</field>
+		<field name="contractorId" title="${uiLabelMap.ContractorId}">
+			<lookup target-form-name="LookupContractor" />
+		</field>
 		<field name="name" title="${uiLabelMap.CommonName}">
 
 			<text size="10" maxlength="20" />
@@ -316,9 +329,11 @@
 
 		<field name="pricelistId" title="${uiLabelMap.GeneralId}"
 			widget-style="buttontext" sort-field="true">
-			<hyperlink description="${pricelistId}" target="EditPriceList" also-hidden="false">
-                <parameter param-name="pricelistId"/>
-            </hyperlink>
+			<hyperlink description="${pricelistId}" target="EditPriceList"
+				also-hidden="false">
+				<parameter param-name="pricelistId" />
+				<parameter param-name="contractorId" />
+			</hyperlink>
 		</field>
 
 		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext"
@@ -415,9 +430,9 @@
 			widget-style="buttontext" sort-field="true">
 			<display />
 		</field>
-		
-		<field name="contractorId" title="${uiLabelMap.Contractors}" widget-style="buttontext"
-			sort-field="true">
+
+		<field name="contractorId" title="${uiLabelMap.Contractors}"
+			widget-style="buttontext" sort-field="true">
 			<display />
 
 

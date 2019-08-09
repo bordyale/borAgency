@@ -48,11 +48,13 @@
         <menu-item name="EditPriceList" title="${uiLabelMap.PriceLists}">
             <link target="EditPriceList">
                 <parameter param-name="pricelistId"/>
+                <parameter param-name="contractorId"/>
             </link>
         </menu-item>
         <menu-item name="EditPriceListDetail" title="${uiLabelMap.PriceListDetails}">
             <link target="EditPriceListDetail">
                 <parameter param-name="pricelistId"/>
+                <parameter param-name="contractorId"/>
             </link>
         </menu-item>
      
