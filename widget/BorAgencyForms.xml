@@ -332,7 +332,6 @@
 			<hyperlink description="${pricelistId}" target="EditPriceList"
 				also-hidden="false">
 				<parameter param-name="pricelistId" />
-				<parameter param-name="contractorId" />
 			</hyperlink>
 		</field>
 
@@ -388,9 +387,62 @@
 			also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}" 
 			image-location="${iconsLocation}/delete.png"> <parameter param-name="shipmentId"/> 
 			</hyperlink> </field> -->
-
-
 	</form>
+
+	<form name="ListPriceListDetails" type="list" list-name="exampleItems"
+		target="updatePriceListDetail">
+		<actions>
+			<entity-condition entity-name="BorPriceListDetail">
+				<condition-expr field-name="pricelistId" from-field="pricelistId" />
+				<order-by field-name="pricelistdetailId" />
+			</entity-condition>
+		</actions>
+		<auto-fields-service service-name="updatePriceListDetail" />
+		<field name="pricelistId">
+			<hidden />
+		</field>
+		<field name="pricelistdetailId" title="${uiLabelMap.CommonItem}">
+			<display />
+		</field>
+		<field name="productId">
+			<display />
+		</field>
+		
+		<field name="price">
+			<display />
+		</field>
+		<field name="deleteLink" title=" " widget-style="buttontext">
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deletePriceListDetail"
+				also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}"
+				image-location="${iconsLocation}/delete.png">
+				<parameter param-name="pricelistId" />
+				<parameter param-name="pricelistdetailId" />
+				<parameter param-name="contractorId" />
+			</hyperlink>
+		</field>
+		<field name="submitButton" title="${uiLabelMap.CommonUpdate}">
+			<submit button-type="button" />
+		</field>
+	</form>
+
+	<form name="AddPriceListDetails" type="single" target="createPriceListDetail"
+		title="">
+		<auto-fields-service service-name="createPriceListDetail" />
+		<field name="pricelistId">
+			<hidden />
+		</field>
+		<field name="productId">
+			<lookup target-form-name="LookupProduct" />
+		</field>
+		<field name="pricelistdetailId">
+			<ignored /><!-- this will be auto-sequenced -->
+		</field>
+		<field name="submitButton" title="${uiLabelMap.CommonAdd}">
+			<submit button-type="button" request-confirmation="true" />
+		</field>
+	</form>
+
+
 
 	<form name="FindContracts" type="single" target="findContracts"
 		default-entity-name="Shipment">

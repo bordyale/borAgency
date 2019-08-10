@@ -353,10 +353,10 @@
 				<set field="titleProperty" value="EditPriceList" />
 				<set field="headerItem" value="findPriceLists" />
 				<set field="pricelistId" from-field="parameters.pricelistId" />
-				<set field="contractorId" from-field="parameters.contractorId" />
 				<!-- <set field="workpapersId" from-field="parameters.workpapersId" /> -->
 				<set field="tabButtonItem" value="EditPriceList" />
 				<entity-one entity-name="BorPriceList" value-field="PriceList" />
+				<set field="contractorId" from-field="PriceList.contractorId" />
 			</actions>
 			<widgets>
 				<decorator-screen name="BorAgencyCommonDecorator"
@@ -395,10 +395,11 @@
 				<set field="titleProperty" value="EditPriceListDetail" />
 				<set field="headerItem" value="findPriceLists" />
 				<set field="pricelistId" from-field="parameters.pricelistId" />
-				<set field="contractorId" from-field="parameters.contractorId" />
 				<!-- <set field="workpapersId" from-field="parameters.workpapersId" /> -->
 				<set field="tabButtonItem" value="EditPriceListDetail" />
 				<entity-one entity-name="BorPriceListDetail" value-field="PriceListDetail" />
+				<entity-one entity-name="BorPriceList" value-field="PriceList" />
+				<set field="contractorId" from-field="PriceList.contractorId" />
 			</actions>
 			<widgets>
 				<decorator-screen name="BorAgencyCommonDecorator"
@@ -414,10 +415,10 @@
 						<section>
 							<widgets>
 								<screenlet title="${uiLabelMap.PriceLists}">
-									<include-form name="ListExampleItems"
-										location="component://example/widget/example/ExampleForms.xml" />
-									<include-form name="AddExampleItem"
-										location="component://example/widget/example/ExampleForms.xml" />
+									<include-form name="ListPriceListDetails"
+										location="component://borAgency/widget/BorAgencyForms.xml" />
+									<include-form name="AddPriceListDetails"
+										location="component://borAgency/widget/BorAgencyForms.xml" />
 								</screenlet>
 							</widgets>
 						</section>

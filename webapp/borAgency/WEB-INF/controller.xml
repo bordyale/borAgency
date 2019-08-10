@@ -152,6 +152,29 @@
 		<response name="error" type="view" value="findPriceLists" />
 	</request-map>
 
+	<request-map uri="createPriceListDetail">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="createPriceListDetail" />
+		<response name="success" type="request-redirect" value="EditPriceListDetail">
+			<redirect-parameter name="pricelistId" />
+			<redirect-parameter name="contractorId" />
+		</response>
+		<response name="error" type="view" value="EditPriceListDetail" />
+	</request-map>
+	<request-map uri="updatePriceListDetail">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="updatePriceListDetail" />
+		<response name="success" type="view" value="EditPriceListDetail" />
+		<response name="error" type="view" value="EditPriceListDetail" />
+	</request-map>
+	<request-map uri="deletePriceListDetail">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="deletePriceListDetail" />
+		<response name="success" type="view" value="EditPriceListDetail" />
+		<response name="error" type="view" value="EditPriceListDetail" />
+	</request-map>
+
+
 	<request-map uri="EditPriceListDetail">
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="EditPriceListDetail" />
@@ -197,6 +220,10 @@
 	<request-map uri="LookupContractor">
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="LookupContractor" />
+	</request-map>
+	<request-map uri="LookupProduct">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="LookupProduct" />
 	</request-map>
 
 
@@ -256,6 +283,8 @@
 
 	<view-map name="LookupContractor" type="screen"
 		page="component://borAgency/widget/LookupScreens.xml#LookupContractor" />
+	<view-map name="LookupProduct" type="screen"
+		page="component://borAgency/widget/LookupScreens.xml#LookupProduct" />
 
 
 </site-conf>
