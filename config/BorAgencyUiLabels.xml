@@ -39,11 +39,15 @@
 	</property>
 	<property key="PriceListDetails">
 		<value xml:lang="en">Price List Details</value>
-		<value xml:lang="it">Listini dettagli</value>
+		<value xml:lang="it">Listino dettagli</value>
 	</property>
 	<property key="Contracts">
 		<value xml:lang="en">Contracts</value>
 		<value xml:lang="it">Contratti</value>
+	</property>
+	<property key="ContractDetails">
+		<value xml:lang="en">Price List Details</value>
+		<value xml:lang="it">Contratto dettagli</value>
 	</property>
 	<property key="GeneralId">
 		<value xml:lang="en">Identifier</value>

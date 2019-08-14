@@ -98,10 +98,11 @@
 	<entity entity-name="BorContractDetail" package-name="org.apache.ofbiz.order.boragency"
 		never-cache="true" title="Condition Entity">
 		<field name="contractId" type="id-ne"></field>
-		<field name="contractDetailId" type="id-ne"></field>
+		<field name="contractdetailId" type="id-ne"></field>
+		<field name="name" type="value"></field>
 		<field name="value" type="fixed-point"></field>
 		<prim-key field="contractId" />
-		<prim-key field="contractDetailId" />
+		<prim-key field="contractdetailId" />
 		<relation type="one" fk-name="contractId" rel-entity-name="BorContract">
 			<key-map field-name="contractId" />
 		</relation>

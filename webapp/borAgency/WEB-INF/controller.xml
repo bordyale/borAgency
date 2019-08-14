@@ -214,6 +214,40 @@
 	</request-map>
 
 
+	<request-map uri="createContractDetail">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="createContractDetail" />
+		<response name="success" type="request-redirect" value="EditContractDetail">
+			<redirect-parameter name="contractId" />
+			<redirect-parameter name="contractorId" />
+		</response>
+		<response name="error" type="view" value="EditContractDetail" />
+	</request-map>
+	<request-map uri="updateContractDetail">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="updateContractDetail" />
+		<response name="success" type="view" value="EditContractDetail" />
+		<response name="error" type="view" value="EditContractDetail" />
+	</request-map>
+	<request-map uri="deleteContractDetail">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="deleteContractDetail" />
+		<response name="success" type="view" value="EditContractDetail" />
+		<response name="error" type="view" value="EditContractDetail" />
+	</request-map>
+
+
+	<request-map uri="EditContractDetail">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="EditContractDetail" />
+	</request-map>
+
+
+
+
+
+
+
 
 	<!-- Lookup request mappings -->
 
@@ -279,6 +313,8 @@
 		page="component://borAgency/widget/BorAgencyScreens.xml#EditContractLayer" />
 	<view-map name="EditContract" type="screen"
 		page="component://borAgency/widget/BorAgencyScreens.xml#EditContract" />
+	<view-map name="EditContractDetail" type="screen"
+		page="component://borAgency/widget/BorAgencyScreens.xml#EditContractDetail" />
 
 
 	<view-map name="LookupContractor" type="screen"

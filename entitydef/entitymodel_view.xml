@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor 
+	license agreements. See the NOTICE file distributed with this work for additional 
+	information regarding copyright ownership. The ASF licenses this file to 
+	you under the Apache License, Version 2.0 (the "License"); you may not use 
+	this file except in compliance with the License. You may obtain a copy of 
+	the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required 
+	by applicable law or agreed to in writing, software distributed under the 
+	License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. See the License for the specific 
+	language governing permissions and limitations under the License. -->
+
+<entitymodel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/entitymodel.xsd">
+	<!-- ========================================================= -->
+	<!-- ======================== Defaults ======================= -->
+	<!-- ========================================================= -->
+	<title>Entity of an Apache OFBiz Component</title>
+	<description>None</description>
+	<version>1.0</version>
+
+	<view-entity entity-name="ProductContractorView"
+		package-name="org.apache.ofbiz.borAgency">
+		<member-entity entity-alias="CONTR" entity-name="BorContractor" />
+		<member-entity entity-alias="PROD" entity-name="BorProduct" />
+		<alias-all entity-alias="CONTR">
+			<exclude field="name" />
+		</alias-all>
+		<alias-all entity-alias="PROD" />
+		<alias name="contractorName" entity-alias="CONTR" field="name"/>
+		<view-link entity-alias="CONTR" rel-entity-alias="PROD">
+			<key-map field-name="contractorId" />
+		</view-link>
+	</view-entity>
+	
+	<view-entity entity-name="PriceListContractorView"
+		package-name="org.apache.ofbiz.borAgency">
+		<member-entity entity-alias="CONTR" entity-name="BorContractor" />
+		<member-entity entity-alias="PLIST" entity-name="BorPriceList" />
+		<alias-all entity-alias="CONTR">
+			<exclude field="name" />
+		</alias-all>
+		<alias-all entity-alias="PLIST" />
+		<alias name="contractorName" entity-alias="CONTR" field="name"/>
+		<view-link entity-alias="CONTR" rel-entity-alias="PLIST">
+			<key-map field-name="contractorId" />
+		</view-link>
+	</view-entity>
+	
+	<view-entity entity-name="ContractContractorView"
+		package-name="org.apache.ofbiz.borAgency">
+		<member-entity entity-alias="CONTR" entity-name="BorContractor" />
+		<member-entity entity-alias="CON" entity-name="BorContract" />
+		<alias-all entity-alias="CONTR">
+			<exclude field="name" />
+		</alias-all>
+		<alias-all entity-alias="CON" />
+		<alias name="contractorName" entity-alias="CONTR" field="name"/>
+		<view-link entity-alias="CONTR" rel-entity-alias="CON">
+			<key-map field-name="contractorId" />
+		</view-link>
+	</view-entity>
+
+
+</entitymodel>

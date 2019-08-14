@@ -504,10 +504,63 @@
 				<decorator-screen name="BorAgencyCommonDecorator"
 					location="${parameters.mainDecoratorLocation}">
 					<decorator-section name="body">
+						<section>
+							<condition>
+								<and>
+									<not>
+										<if-empty field="Contract" />
+									</not><!-- This is a check useful when only seed data are loaded -->
+								</and>
+							</condition>
+							<widgets>
+								<include-menu name="EditContract"
+									location="component://borAgency/widget/BorAgencyMenus.xml" />
+							</widgets>
+						</section>
 
 
 						<include-form name="EditContract"
 							location="component://borAgency/widget/BorAgencyForms.xml" />
+
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
+	
+		<screen name="EditContractDetail">
+		<section>
+			<actions>
+				<set field="titleProperty" value="EditContractDetail" />
+				<set field="headerItem" value="findContracts" />
+				<set field="contractId" from-field="parameters.contractId" />
+				<!-- <set field="workpapersId" from-field="parameters.workpapersId" /> -->
+				<set field="tabButtonItem" value="EditContractDetail" />
+				<entity-one entity-name="BorContractDetail" value-field="ContractDetail" />
+				<entity-one entity-name="BorContract" value-field="Contract" />
+				<set field="contractorId" from-field="Contract.contractorId" />
+			</actions>
+			<widgets>
+				<decorator-screen name="BorAgencyCommonDecorator"
+					location="${parameters.mainDecoratorLocation}">
+					<decorator-section name="body">
+						<section>
+
+							<widgets>
+								<include-menu name="EditContract"
+									location="component://borAgency/widget/BorAgencyMenus.xml" />
+							</widgets>
+						</section>
+						<section>
+							<widgets>
+								<screenlet title="${uiLabelMap.Contracts}">
+									<include-form name="ListContractDetails"
+										location="component://borAgency/widget/BorAgencyForms.xml" />
+									<include-form name="AddContractDetails"
+										location="component://borAgency/widget/BorAgencyForms.xml" />
+								</screenlet>
+							</widgets>
+						</section>
 
 					</decorator-section>
 				</decorator-screen>

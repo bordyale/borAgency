@@ -221,7 +221,7 @@
 			<service service-name="performFind" result-map="result"
 				result-map-list="listIt">
 				<field-map field-name="inputFields" from-field="parameters" />
-				<field-map field-name="entityName" value="BorProduct" />
+				<field-map field-name="entityName" value="ProductContractorView" />
 				<field-map field-name="orderBy" from-field="sortField" />
 			</service>
 		</actions>
@@ -235,11 +235,14 @@
 			</hyperlink>
 		</field>
 
+		<field name="contractorName" title="${uiLabelMap.Name}"
+			widget-style="buttontext" sort-field="true">
+			<display />
+		</field>
+
 		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext"
 			sort-field="true">
 			<display />
-
-
 		</field>
 
 
@@ -322,7 +325,7 @@
 			<service service-name="performFind" result-map="result"
 				result-map-list="listIt">
 				<field-map field-name="inputFields" from-field="parameters" />
-				<field-map field-name="entityName" value="BorPriceList" />
+				<field-map field-name="entityName" value="PriceListContractorView" />
 				<field-map field-name="orderBy" from-field="sortField" />
 			</service>
 		</actions>
@@ -333,6 +336,11 @@
 				also-hidden="false">
 				<parameter param-name="pricelistId" />
 			</hyperlink>
+		</field>
+
+		<field name="contractorName" title="${uiLabelMap.Contractors}"
+			widget-style="buttontext" sort-field="true">
+			<display />
 		</field>
 
 		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext"
@@ -407,7 +415,7 @@
 		<field name="productId">
 			<display />
 		</field>
-		
+
 		<field name="price">
 			<display />
 		</field>
@@ -420,9 +428,8 @@
 				<parameter param-name="contractorId" />
 			</hyperlink>
 		</field>
-		<field name="submitButton" title="${uiLabelMap.CommonUpdate}">
-			<submit button-type="button" />
-		</field>
+		<!-- <field name="submitButton" title="${uiLabelMap.CommonUpdate}"> <submit 
+			button-type="button" /> </field> -->
 	</form>
 
 	<form name="AddPriceListDetails" type="single" target="createPriceListDetail"
@@ -451,6 +458,9 @@
 			<hidden value="Y" /><!-- if this isn't there then with all fields 
 				empty no query will be done -->
 		</field>
+		<field name="contractorId" title="${uiLabelMap.ContractorId}">
+			<lookup target-form-name="LookupContractor" />
+		</field>
 		<field name="name" title="${uiLabelMap.CommonName}">
 
 			<text size="10" maxlength="20" />
@@ -473,21 +483,22 @@
 			<service service-name="performFind" result-map="result"
 				result-map-list="listIt">
 				<field-map field-name="inputFields" from-field="parameters" />
-				<field-map field-name="entityName" value="BorContract" />
+				<field-map field-name="entityName" value="ContractContractorView" />
 				<field-map field-name="orderBy" from-field="sortField" />
 			</service>
 		</actions>
 
 		<field name="contractId" title="${uiLabelMap.GeneralId}"
 			widget-style="buttontext" sort-field="true">
-			<display />
+			<hyperlink description="${contractId}" target="EditContract"
+				also-hidden="false">
+				<parameter param-name="contractId" />
+			</hyperlink>
 		</field>
 
-		<field name="contractorId" title="${uiLabelMap.Contractors}"
+		<field name="contractorName" title="${uiLabelMap.Contractors}"
 			widget-style="buttontext" sort-field="true">
 			<display />
-
-
 		</field>
 
 		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext"
@@ -517,7 +528,7 @@
 		</field>
 
 		<field name="contractorId" title="${uiLabelMap.ContractorId}">
-			<text size="10" maxlength="20" />
+			<lookup target-form-name="LookupContractor" />
 		</field>
 		<field use-when="Contract==null @and contractId==null" name="contractId"
 			title="${uiLabelMap.GeneralId}">
@@ -544,4 +555,60 @@
 
 
 	</form>
+
+
+	<form name="ListContractDetails" type="list" list-name="exampleItems"
+		target="updateContractDetail">
+		<actions>
+			<entity-condition entity-name="BorContractDetail">
+				<condition-expr field-name="contractId" from-field="contractId" />
+				<order-by field-name="contractdetailId" />
+			</entity-condition>
+		</actions>
+		<auto-fields-service service-name="updateContractDetail" />
+		<field name="contractId">
+			<hidden />
+		</field>
+		<field name="contractdetailId" title="${uiLabelMap.CommonItem}">
+			<display />
+		</field>
+		<field name="name">
+			<display />
+		</field>
+
+		<field name="value">
+			<display />
+		</field>
+		<field name="deleteLink" title=" " widget-style="buttontext">
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteContractDetail"
+				also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}"
+				image-location="${iconsLocation}/delete.png">
+				<parameter param-name="contractId" />
+				<parameter param-name="contractdetailId" />
+				<parameter param-name="contractorId" />
+			</hyperlink>
+		</field>
+		<!-- <field name="submitButton" title="${uiLabelMap.CommonUpdate}"> <submit 
+			button-type="button" /> </field> -->
+	</form>
+
+	<form name="AddContractDetails" type="single" target="createContractDetail"
+		title="">
+		<auto-fields-service service-name="createContractDetail" />
+		<field name="contractId">
+			<hidden />
+		</field>
+		<field name="name">
+			<text size="10" maxlength="20" />
+		</field>
+		<field name="contractdetailId">
+			<ignored /><!-- this will be auto-sequenced -->
+		</field>
+		<field name="submitButton" title="${uiLabelMap.CommonAdd}">
+			<submit button-type="button" request-confirmation="true" />
+		</field>
+	</form>
+
+
+
 </forms>
