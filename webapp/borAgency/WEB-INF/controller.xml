@@ -244,7 +244,10 @@
 
 
 
-
+	<request-map uri="findConditions">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="findConditions" />
+	</request-map>
 
 
 
@@ -315,6 +318,10 @@
 		page="component://borAgency/widget/BorAgencyScreens.xml#EditContract" />
 	<view-map name="EditContractDetail" type="screen"
 		page="component://borAgency/widget/BorAgencyScreens.xml#EditContractDetail" />
+
+
+	<view-map name="findConditions" type="screen"
+		page="component://borAgency/widget/BorAgencyScreens.xml#FindConditions" />
 
 
 	<view-map name="LookupContractor" type="screen"

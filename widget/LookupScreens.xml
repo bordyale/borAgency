@@ -73,6 +73,7 @@
 			<actions>
 				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap"
 					global="true" />
+				<set field="contractorId" from-field="parameters.contractorId" />
 				<set field="title" value="${uiLabelMap.borLookupProduct}" />
 				<set field="queryString" from-field="result.queryString" />
 				<set field="viewIndex" from-field="parameters.VIEW_INDEX" type="Integer"
@@ -97,7 +98,8 @@
 
 				<!-- optional: additional entity condition (named andCondition) added 
 					to search query -->
-				 <script location="component://borAgency/groovyScripts/StatusCondition.groovy"/> 
+				<script location="component://borAgency/groovyScripts/StatusCondition.groovy" />
+				<set field="andCondition" value="${context.andCondition}"/>
 			</actions>
 			<widgets>
 				<decorator-screen name="LookupDecorator"
@@ -114,5 +116,34 @@
 			</widgets>
 		</section>
 	</screen>
+	
+	
+	
+	<screen name="LookupInventoryItem">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="title" value="${uiLabelMap.ProductLookupInventory}"/>
+                <set field="queryString" from-field="result.queryString"/>
+                <set field="entityName" value="InventoryItem"/>
+                <set field="searchFields" value="[inventoryItemId]"/>
+                <script location="component://product/groovyScripts/catalog/GetSupplierInventories.groovy"/>
+                <set field="andCondition" value="${context.andCondition}"/>
+                <script location="component://product/groovyScripts/facility/inventory/LookupInventoryItems.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="LookupDecorator" location="component://common/widget/CommonScreens.xml">
+                    <decorator-section name="search-results">
+                        <platform-specific><html><html-template location="component://product/template/lookup/LookupInventoryItems.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+	
+	
+	
+	
 
 </screens>

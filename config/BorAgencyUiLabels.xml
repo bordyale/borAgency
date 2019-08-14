@@ -61,4 +61,12 @@
 		<value xml:lang="en">Name</value>
 		<value xml:lang="it">Nome</value>
 	</property>
+	<property key="Conditions">
+		<value xml:lang="en">Conditions</value>
+		<value xml:lang="it">Condizioni</value>
+	</property>
+	<property key="Filter">
+		<value xml:lang="en">Filter</value>
+		<value xml:lang="it">Filtri</value>
+	</property>
 </resource>

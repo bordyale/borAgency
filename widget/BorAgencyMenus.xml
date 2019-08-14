@@ -4,9 +4,8 @@
 	xsi:schemaLocation="http://ofbiz.apache.org/Widget-Menu http://ofbiz.apache.org/dtds/widget-menu.xsd">
 	<menu name="MainAppBar" title="${uiLabelMap.BorAgencyApplication}"
 		extends="CommonAppBarMenu" extends-resource="component://common/widget/CommonMenus.xml">
-		<!-- <menu-item name="main" title="${uiLabelMap.CommonMain}">
-			<link target="main" />
-		</menu-item> -->
+		<!-- <menu-item name="main" title="${uiLabelMap.CommonMain}"> <link target="main" 
+			/> </menu-item> -->
 		<menu-item name="findcontractors" title="${uiLabelMap.Contractors}">
 			<condition>
 				<if-has-permission permission="BORAGENCY" action="_VIEW" />
@@ -42,6 +41,17 @@
 			</condition>
 			<link target="findContracts" />
 		</menu-item>
+		
+		<menu-item name="findConditions" title="${uiLabelMap.Conditions}">
+			<condition>
+				<if-has-permission permission="BORAGENCY" action="_VIEW" />
+			</condition>
+			<link target="findConditions" />
+		</menu-item>
+		
+		
+		
+		
 	</menu>
 
 	<menu name="EditPriceList" extends="CommonTabBarMenu"

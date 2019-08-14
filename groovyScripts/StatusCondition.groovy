@@ -21,9 +21,8 @@ import org.apache.ofbiz.entity.condition.EntityCondition
 import org.apache.ofbiz.entity.condition.EntityOperator
 
 
+String contractorId = parameters.contractorId
 
-contractorId = parameters.contractorId
-
-
-context.andCondition = EntityCondition.makeCondition("contractorId", EntityOperator.EQUALS, "10000")
+exprList = [EntityCondition.makeCondition("contractorId", EntityOperator.EQUALS, contractorId)]
+context.andCondition = EntityCondition.makeCondition(exprList, EntityOperator.AND)
 
