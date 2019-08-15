@@ -109,4 +109,8 @@
 		<value xml:lang="en">Edit Contract</value>
 		<value xml:lang="it">Modifica Contratto</value>
 	</property>
+	<property key="ContractorId">
+		<value xml:lang="en">Contractor Id</value>
+		<value xml:lang="it">Id mandante</value>
+	</property>
 </resource>

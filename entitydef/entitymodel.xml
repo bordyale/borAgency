@@ -60,11 +60,10 @@
 	<entity entity-name="BorPriceListDetail" package-name="org.apache.ofbiz.order.boragency"
 		never-cache="true" title="Condition Entity">
 		<field name="pricelistId" type="id-ne"></field>
-		<field name="pricelistdetailId" type="id-ne"></field>
 		<field name="productId" type="id-ne"></field>
 		<field name="price" type="fixed-point"></field>
 		<prim-key field="pricelistId" />
-		<prim-key field="pricelistdetailId" />
+		<prim-key field="productId" />
 		<relation type="one" fk-name="pricelistId" rel-entity-name="BorPriceList">
 			<key-map field-name="pricelistId" />
 		</relation>

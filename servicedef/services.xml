@@ -126,7 +126,6 @@
 			main-action="CREATE" />
 		<auto-attributes include="pk" mode="IN" optional="false" />
 		<auto-attributes include="nonpk" mode="IN" optional="true" />
-		<override name="pricelistdetailId" mode="OUT" />
 		<override name="name" optional="false" />
 	</service>
 	<service name="updatePriceListDetail" default-entity-name="BorPriceListDetail"

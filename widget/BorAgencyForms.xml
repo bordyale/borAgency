@@ -9,7 +9,7 @@
 		<field name="noConditionFind">
 			<hidden value="Y" /><!-- if this isn't there then with all fields empty no query will be done -->
 		</field>
-		<field name="name" title="${uiLabelMap.CommonName}">
+		<field name="name" title="${uiLabelMap.Name}">
 
 			<text size="10" maxlength="20" />
 		</field>
@@ -95,7 +95,7 @@
 		<field name="noConditionFind">
 			<hidden value="Y" /><!-- if this isn't there then with all fields empty no query will be done -->
 		</field>
-		<field name="name" title="${uiLabelMap.CommonName}">
+		<field name="name" title="${uiLabelMap.Name}">
 
 			<text size="10" maxlength="20" />
 		</field>
@@ -273,7 +273,7 @@
 		<field name="contractorId" title="${uiLabelMap.ContractorId}">
 			<lookup target-form-name="LookupContractor" />
 		</field>
-		<field name="name" title="${uiLabelMap.CommonName}">
+		<field name="name" title="${uiLabelMap.Name}">
 
 			<text size="10" maxlength="20" />
 		</field>
@@ -360,16 +360,14 @@
 		<actions>
 			<entity-condition entity-name="BorPriceListDetail">
 				<condition-expr field-name="pricelistId" from-field="pricelistId" />
-				<order-by field-name="pricelistdetailId" />
+				<order-by field-name="productId" />
 			</entity-condition>
 		</actions>
 		<auto-fields-service service-name="updatePriceListDetail" />
 		<field name="pricelistId">
 			<hidden />
 		</field>
-		<field name="pricelistdetailId" title="${uiLabelMap.CommonItem}">
-			<display />
-		</field>
+		
 		<field name="productId">
 			<display />
 		</field>
@@ -381,8 +379,7 @@
 			<hyperlink description="${uiLabelMap.CommonDelete}" target="deletePriceListDetail" also-hidden="false"
 				confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png">
 				<parameter param-name="pricelistId" />
-				<parameter param-name="pricelistdetailId" />
-				<parameter param-name="contractorId" />
+				<parameter param-name="productId" />
 			</hyperlink>
 		</field>
 		<!-- <field name="submitButton" title="${uiLabelMap.CommonUpdate}"> <submit button-type="button" /> </field> -->
@@ -395,9 +392,6 @@
 		</field>
 		<field name="productId" title="${uiLabelMap.ProductId}">
 			<lookup target-form-name="LookupProduct?contractorId=${contractorId}" />
-		</field>
-		<field name="pricelistdetailId">
-			<ignored /><!-- this will be auto-sequenced -->
 		</field>
 		<field name="submitButton" title="${uiLabelMap.CommonAdd}">
 			<submit button-type="button" request-confirmation="true" />
@@ -414,7 +408,7 @@
 		<field name="contractorId" title="${uiLabelMap.ContractorId}">
 			<lookup target-form-name="LookupContractor" />
 		</field>
-		<field name="name" title="${uiLabelMap.CommonName}">
+		<field name="name" title="${uiLabelMap.Name}">
 
 			<text size="10" maxlength="20" />
 		</field>
@@ -566,24 +560,21 @@
 	<form name="ListConditions" type="list" list-name="listIt" paginate-target="findConditions" odd-row-style="alternate-row"
 		default-table-style="basic-table hover-bar" header-row-style="header-row-2" override-list-size="true">
 		<actions>
+			<set field="requestParameters.noConditionFind" value="Y" />
+			<set field="entityName" value="ConditionView" />
 			<service service-name="performFind" result-map="result" result-map-list="listIt">
-				<field-map field-name="inputFields" from-field="parameters" />
-				<field-map field-name="entityName" value="ConditionView" />
+				<field-map field-name="inputFields" from-field="requestParameters" />
+				<field-map field-name="entityName" from-field="entityName" />
 				<field-map field-name="orderBy" from-field="sortField" />
 			</service>
 		</actions>
 
 		<field name="conditionId">
-			<hidden />
+			<display />
 		</field>
 
 
-		<field name="contractorName" title="${uiLabelMap.Contractors}" widget-style="buttontext" sort-field="true">
-			<display />
-		</field>
-		<field name="productName" title="${uiLabelMap.Products}" widget-style="buttontext" sort-field="true">
-			<display />
-		</field>
+		
 
 
 		<field name="deleteLink" title=" " widget-style="buttontext">
@@ -603,9 +594,7 @@
 
 	<form name="AddCondition" type="single" target="createCondition" title="">
 		<auto-fields-service service-name="createCondition" />
-		<field name="contractorId" title="${uiLabelMap.ContractorId}">
-			<lookup target-form-name="LookupContractor" />
-		</field>
+		
 		<field name="productId" title="${uiLabelMap.ProductId}">
 			<lookup target-form-name="LookupProduct?contractorId=${contractorId}" />
 		</field>

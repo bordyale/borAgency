@@ -526,7 +526,7 @@
 						<screenlet title="${uiLabelMap.Conditions}">
 							<include-form name="ListConditions" location="component://borAgency/widget/BorAgencyForms.xml" />
 						</screenlet>
-						<screenlet title="${uiLabelMap.ExtraShipped}">
+						<screenlet title="${uiLabelMap.AddCondition}">
 							<include-form name="AddCondition" location="component://borAgency/widget/BorAgencyForms.xml" />
 						</screenlet>
 					</decorator-section>
