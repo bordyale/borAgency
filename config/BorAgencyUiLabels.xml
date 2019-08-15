@@ -69,4 +69,44 @@
 		<value xml:lang="en">Filter</value>
 		<value xml:lang="it">Filtri</value>
 	</property>
+	<property key="FindContractor">
+		<value xml:lang="en">Find Contractor</value>
+		<value xml:lang="it">Ricerca Mandante</value>
+	</property>
+	<property key="FindClient">
+		<value xml:lang="en">Find Client</value>
+		<value xml:lang="it">Ricerca Cliente</value>
+	</property>
+	<property key="FindProduct">
+		<value xml:lang="en">Find Product</value>
+		<value xml:lang="it">Ricerca Prodotto</value>
+	</property>
+	<property key="FindPriceList">
+		<value xml:lang="en">Find Price List</value>
+		<value xml:lang="it">Ricerca Listino</value>
+	</property>
+	<property key="FindContract">
+		<value xml:lang="en">Find Contract</value>
+		<value xml:lang="it">Ricerca Contratto</value>
+	</property>
+	<property key="EditContractor">
+		<value xml:lang="en">Edit Contractor</value>
+		<value xml:lang="it">Modifica Mandante</value>
+	</property>
+	<property key="EditClient">
+		<value xml:lang="en">Edit Client</value>
+		<value xml:lang="it">Modifica Cliente</value>
+	</property>
+	<property key="EditProduct">
+		<value xml:lang="en">Edit Product</value>
+		<value xml:lang="it">Modifica Prodotto</value>
+	</property>
+	<property key="EditPriceList">
+		<value xml:lang="en">Edit Price List</value>
+		<value xml:lang="it">Modifica Listino</value>
+	</property>
+	<property key="EditContract">
+		<value xml:lang="en">Edit Contract</value>
+		<value xml:lang="it">Modifica Contratto</value>
+	</property>
 </resource>

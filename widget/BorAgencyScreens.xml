@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://ofbiz.apache.org/Widget-Screen"
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ofbiz.apache.org/Widget-Screen"
 	xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
 
 	<screen name="main">
 		<section>
 			<actions>
-				<set field="headerItem" value="main" /><!-- this highlights the selected 
-					menu-item with name "main" -->
+				<set field="headerItem" value="main" /><!-- this highlights the selected menu-item with name "main" -->
 			</actions>
 			<widgets>
-				<decorator-screen name="BorAgencyCommonDecorator"
-					location="${parameters.mainDecoratorLocation}">
+				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">
 					<decorator-section name="body">
 					</decorator-section>
 				</decorator-screen>
@@ -26,33 +23,28 @@
 				<set field="headerItem" value="findcontractors" />
 
 				<set field="formShippingListName" value="${groovy: return 'ListContractors';}" />
-				<!-- <script location="component://vforder/groovyScripts/FindShipping.groovy" 
-					/> -->
+				<!-- <script location="component://vforder/groovyScripts/FindShipping.groovy" /> -->
 
 				<!-- asmselect parameters, must be prefixed by asm_ for SetMultipleSelectJs.ftl -->
 
 			</actions>
 			<widgets>
-				<decorator-screen name="BorAgencyCommonDecorator"
-					location="${parameters.mainDecoratorLocation}">
+				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">
 					<decorator-section name="body">
 						<section>
 							<widgets>
-								<decorator-screen name="FindScreenDecorator"
-									location="component://common/widget/CommonScreens.xml">
+								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
-											<link target="EditContractorLayer" link-type="layered-modal"
-												text="${uiLabelMap.NewCommon}" style="buttontext create" />
+											<link target="EditContractorLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}"
+												style="buttontext create" />
 										</container>
 									</decorator-section>
 									<decorator-section name="search-options">
-										<include-form name="FindContractors"
-											location="component://borAgency/widget/BorAgencyForms.xml" />
+										<include-form name="FindContractors" location="component://borAgency/widget/BorAgencyForms.xml" />
 									</decorator-section>
 									<decorator-section name="search-results">
-										<include-form name="${formShippingListName}"
-											location="component://borAgency/widget/BorAgencyForms.xml" />
+										<include-form name="${formShippingListName}" location="component://borAgency/widget/BorAgencyForms.xml" />
 									</decorator-section>
 								</decorator-screen>
 							</widgets>
@@ -66,18 +58,15 @@
 	<screen name="EditContractorLayer">
 		<section>
 			<actions>
-				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap"
-					global="true" />
-				<property-map resource="CommonUiLabels" map-name="uiLabelMap"
-					global="true" />
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
+				<property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true" />
 				<set field="titleProperty" value="PageTitleEditShipping" />
 				<set field="tabButtonItem" value="findcontractors" />
 				<set field="contractorId" from-field="parameters.contractorId" />
 				<entity-one entity-name="BorContractor" value-field="contractor" />
 			</actions>
 			<widgets>
-				<include-form name="EditContractor"
-					location="component://borAgency/widget/BorAgencyForms.xml" />
+				<include-form name="EditContractor" location="component://borAgency/widget/BorAgencyForms.xml" />
 			</widgets>
 		</section>
 	</screen>
@@ -92,13 +81,11 @@
 				<entity-one entity-name="BorContractor" value-field="contractor" />
 			</actions>
 			<widgets>
-				<decorator-screen name="BorAgencyCommonDecorator"
-					location="${parameters.mainDecoratorLocation}">
+				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">
 					<decorator-section name="body">
-
-
-						<include-form name="EditContractor"
-							location="component://borAgency/widget/BorAgencyForms.xml" />
+						<screenlet title="${uiLabelMap.EditContractor}">
+							<include-form name="EditContractor" location="component://borAgency/widget/BorAgencyForms.xml" />
+						</screenlet>
 
 					</decorator-section>
 				</decorator-screen>
@@ -115,33 +102,27 @@
 				<set field="headerItem" value="findclients" />
 
 				<set field="formShippingListName" value="${groovy: return 'ListClients';}" />
-				<!-- <script location="component://vforder/groovyScripts/FindShipping.groovy" 
-					/> -->
+				<!-- <script location="component://vforder/groovyScripts/FindShipping.groovy" /> -->
 
 				<!-- asmselect parameters, must be prefixed by asm_ for SetMultipleSelectJs.ftl -->
 
 			</actions>
 			<widgets>
-				<decorator-screen name="BorAgencyCommonDecorator"
-					location="${parameters.mainDecoratorLocation}">
+				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">
 					<decorator-section name="body">
 						<section>
 							<widgets>
-								<decorator-screen name="FindScreenDecorator"
-									location="component://common/widget/CommonScreens.xml">
+								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
-											<link target="EditClientLayer" link-type="layered-modal"
-												text="${uiLabelMap.NewCommon}" style="buttontext create" />
+											<link target="EditClientLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
 										</container>
 									</decorator-section>
 									<decorator-section name="search-options">
-										<include-form name="FindClients"
-											location="component://borAgency/widget/BorAgencyForms.xml" />
+										<include-form name="FindClients" location="component://borAgency/widget/BorAgencyForms.xml" />
 									</decorator-section>
 									<decorator-section name="search-results">
-										<include-form name="${formShippingListName}"
-											location="component://borAgency/widget/BorAgencyForms.xml" />
+										<include-form name="${formShippingListName}" location="component://borAgency/widget/BorAgencyForms.xml" />
 									</decorator-section>
 								</decorator-screen>
 							</widgets>
@@ -155,18 +136,15 @@
 	<screen name="EditClientLayer">
 		<section>
 			<actions>
-				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap"
-					global="true" />
-				<property-map resource="CommonUiLabels" map-name="uiLabelMap"
-					global="true" />
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
+				<property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true" />
 				<set field="titleProperty" value="PageTitleEditShipping" />
 				<set field="tabButtonItem" value="findclients" />
 				<set field="clientId" from-field="parameters.clientId" />
 				<entity-one entity-name="BorClient" value-field="client" />
 			</actions>
 			<widgets>
-				<include-form name="EditClient"
-					location="component://borAgency/widget/BorAgencyForms.xml" />
+				<include-form name="EditClient" location="component://borAgency/widget/BorAgencyForms.xml" />
 			</widgets>
 		</section>
 	</screen>
@@ -181,13 +159,12 @@
 				<entity-one entity-name="BorClient" value-field="client" />
 			</actions>
 			<widgets>
-				<decorator-screen name="BorAgencyCommonDecorator"
-					location="${parameters.mainDecoratorLocation}">
+				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">
 					<decorator-section name="body">
 
-
-						<include-form name="EditClient"
-							location="component://borAgency/widget/BorAgencyForms.xml" />
+						<screenlet title="${uiLabelMap.EditClient}">
+							<include-form name="EditClient" location="component://borAgency/widget/BorAgencyForms.xml" />
+						</screenlet>
 
 					</decorator-section>
 				</decorator-screen>
@@ -203,33 +180,27 @@
 				<set field="headerItem" value="findProducts" />
 
 				<set field="formShippingListName" value="${groovy: return 'ListProducts';}" />
-				<!-- <script location="component://vforder/groovyScripts/FindShipping.groovy" 
-					/> -->
+				<!-- <script location="component://vforder/groovyScripts/FindShipping.groovy" /> -->
 
 				<!-- asmselect parameters, must be prefixed by asm_ for SetMultipleSelectJs.ftl -->
 
 			</actions>
 			<widgets>
-				<decorator-screen name="BorAgencyCommonDecorator"
-					location="${parameters.mainDecoratorLocation}">
+				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">
 					<decorator-section name="body">
 						<section>
 							<widgets>
-								<decorator-screen name="FindScreenDecorator"
-									location="component://common/widget/CommonScreens.xml">
+								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
-											<link target="EditProductLayer" link-type="layered-modal"
-												text="${uiLabelMap.NewCommon}" style="buttontext create" />
+											<link target="EditProductLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
 										</container>
 									</decorator-section>
 									<decorator-section name="search-options">
-										<include-form name="FindProducts"
-											location="component://borAgency/widget/BorAgencyForms.xml" />
+										<include-form name="FindProducts" location="component://borAgency/widget/BorAgencyForms.xml" />
 									</decorator-section>
 									<decorator-section name="search-results">
-										<include-form name="${formShippingListName}"
-											location="component://borAgency/widget/BorAgencyForms.xml" />
+										<include-form name="${formShippingListName}" location="component://borAgency/widget/BorAgencyForms.xml" />
 									</decorator-section>
 								</decorator-screen>
 							</widgets>
@@ -243,18 +214,15 @@
 	<screen name="EditProductLayer">
 		<section>
 			<actions>
-				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap"
-					global="true" />
-				<property-map resource="CommonUiLabels" map-name="uiLabelMap"
-					global="true" />
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
+				<property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true" />
 				<set field="titleProperty" value="PageTitleEditShipping" />
 				<set field="tabButtonItem" value="findProducts" />
 				<set field="ProductId" from-field="parameters.ProductId" />
 				<entity-one entity-name="BorProduct" value-field="Product" />
 			</actions>
 			<widgets>
-				<include-form name="EditProduct"
-					location="component://borAgency/widget/BorAgencyForms.xml" />
+				<include-form name="EditProduct" location="component://borAgency/widget/BorAgencyForms.xml" />
 			</widgets>
 		</section>
 	</screen>
@@ -269,13 +237,12 @@
 				<entity-one entity-name="BorProduct" value-field="Product" />
 			</actions>
 			<widgets>
-				<decorator-screen name="BorAgencyCommonDecorator"
-					location="${parameters.mainDecoratorLocation}">
+				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">
 					<decorator-section name="body">
 
-
-						<include-form name="EditProduct"
-							location="component://borAgency/widget/BorAgencyForms.xml" />
+						<screenlet title="${uiLabelMap.EditProduct}">
+							<include-form name="EditProduct" location="component://borAgency/widget/BorAgencyForms.xml" />
+						</screenlet>
 
 					</decorator-section>
 				</decorator-screen>
@@ -291,33 +258,28 @@
 
 
 				<set field="formShippingListName" value="${groovy: return 'ListPriceLists';}" />
-				<!-- <script location="component://vforder/groovyScripts/FindShipping.groovy" 
-					/> -->
+				<!-- <script location="component://vforder/groovyScripts/FindShipping.groovy" /> -->
 
 				<!-- asmselect parameters, must be prefixed by asm_ for SetMultipleSelectJs.ftl -->
 
 			</actions>
 			<widgets>
-				<decorator-screen name="BorAgencyCommonDecorator"
-					location="${parameters.mainDecoratorLocation}">
+				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">
 					<decorator-section name="body">
 						<section>
 							<widgets>
-								<decorator-screen name="FindScreenDecorator"
-									location="component://common/widget/CommonScreens.xml">
+								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
-											<link target="EditPriceListLayer" link-type="layered-modal"
-												text="${uiLabelMap.NewCommon}" style="buttontext create" />
+											<link target="EditPriceListLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}"
+												style="buttontext create" />
 										</container>
 									</decorator-section>
 									<decorator-section name="search-options">
-										<include-form name="FindPriceLists"
-											location="component://borAgency/widget/BorAgencyForms.xml" />
+										<include-form name="FindPriceLists" location="component://borAgency/widget/BorAgencyForms.xml" />
 									</decorator-section>
 									<decorator-section name="search-results">
-										<include-form name="${formShippingListName}"
-											location="component://borAgency/widget/BorAgencyForms.xml" />
+										<include-form name="${formShippingListName}" location="component://borAgency/widget/BorAgencyForms.xml" />
 									</decorator-section>
 								</decorator-screen>
 							</widgets>
@@ -331,18 +293,15 @@
 	<screen name="EditPriceListLayer">
 		<section>
 			<actions>
-				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap"
-					global="true" />
-				<property-map resource="CommonUiLabels" map-name="uiLabelMap"
-					global="true" />
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
+				<property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true" />
 				<set field="titleProperty" value="PageTitleEditShipping" />
 				<set field="tabButtonItem" value="findPriceLists" />
 				<set field="PriceListId" from-field="parameters.PriceListId" />
 				<entity-one entity-name="BorPriceList" value-field="PriceList" />
 			</actions>
 			<widgets>
-				<include-form name="EditPriceList"
-					location="component://borAgency/widget/BorAgencyForms.xml" />
+				<include-form name="EditPriceList" location="component://borAgency/widget/BorAgencyForms.xml" />
 			</widgets>
 		</section>
 	</screen>
@@ -359,8 +318,7 @@
 				<set field="contractorId" from-field="PriceList.contractorId" />
 			</actions>
 			<widgets>
-				<decorator-screen name="BorAgencyCommonDecorator"
-					location="${parameters.mainDecoratorLocation}">
+				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">
 					<decorator-section name="body">
 						<section>
 							<condition>
@@ -371,15 +329,13 @@
 								</and>
 							</condition>
 							<widgets>
-								<include-menu name="EditPriceList"
-									location="component://borAgency/widget/BorAgencyMenus.xml" />
+								<include-menu name="EditPriceList" location="component://borAgency/widget/BorAgencyMenus.xml" />
 							</widgets>
 						</section>
 						<section>
 							<widgets>
-								<screenlet title="${uiLabelMap.PriceLists}">
-									<include-form name="EditPriceList"
-										location="component://borAgency/widget/BorAgencyForms.xml" />
+								<screenlet title="${uiLabelMap.EditPriceList}">
+									<include-form name="EditPriceList" location="component://borAgency/widget/BorAgencyForms.xml" />
 								</screenlet>
 							</widgets>
 						</section>
@@ -402,23 +358,19 @@
 				<set field="contractorId" from-field="PriceList.contractorId" />
 			</actions>
 			<widgets>
-				<decorator-screen name="BorAgencyCommonDecorator"
-					location="${parameters.mainDecoratorLocation}">
+				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">
 					<decorator-section name="body">
 						<section>
 
 							<widgets>
-								<include-menu name="EditPriceList"
-									location="component://borAgency/widget/BorAgencyMenus.xml" />
+								<include-menu name="EditPriceList" location="component://borAgency/widget/BorAgencyMenus.xml" />
 							</widgets>
 						</section>
 						<section>
 							<widgets>
-								<screenlet title="${uiLabelMap.PriceLists}">
-									<include-form name="ListPriceListDetails"
-										location="component://borAgency/widget/BorAgencyForms.xml" />
-									<include-form name="AddPriceListDetails"
-										location="component://borAgency/widget/BorAgencyForms.xml" />
+								<screenlet title="${uiLabelMap.PriceList}">
+									<include-form name="ListPriceListDetails" location="component://borAgency/widget/BorAgencyForms.xml" />
+									<include-form name="AddPriceListDetails" location="component://borAgency/widget/BorAgencyForms.xml" />
 								</screenlet>
 							</widgets>
 						</section>
@@ -435,33 +387,28 @@
 				<set field="headerItem" value="findContracts" />
 
 				<set field="formShippingListName" value="${groovy: return 'ListContracts';}" />
-				<!-- <script location="component://vforder/groovyScripts/FindShipping.groovy" 
-					/> -->
+				<!-- <script location="component://vforder/groovyScripts/FindShipping.groovy" /> -->
 
 				<!-- asmselect parameters, must be prefixed by asm_ for SetMultipleSelectJs.ftl -->
 
 			</actions>
 			<widgets>
-				<decorator-screen name="BorAgencyCommonDecorator"
-					location="${parameters.mainDecoratorLocation}">
+				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">
 					<decorator-section name="body">
 						<section>
 							<widgets>
-								<decorator-screen name="FindScreenDecorator"
-									location="component://common/widget/CommonScreens.xml">
+								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
-											<link target="EditContractLayer" link-type="layered-modal"
-												text="${uiLabelMap.NewCommon}" style="buttontext create" />
+											<link target="EditContractLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}"
+												style="buttontext create" />
 										</container>
 									</decorator-section>
 									<decorator-section name="search-options">
-										<include-form name="FindContracts"
-											location="component://borAgency/widget/BorAgencyForms.xml" />
+										<include-form name="FindContracts" location="component://borAgency/widget/BorAgencyForms.xml" />
 									</decorator-section>
 									<decorator-section name="search-results">
-										<include-form name="${formShippingListName}"
-											location="component://borAgency/widget/BorAgencyForms.xml" />
+										<include-form name="${formShippingListName}" location="component://borAgency/widget/BorAgencyForms.xml" />
 									</decorator-section>
 								</decorator-screen>
 							</widgets>
@@ -475,18 +422,15 @@
 	<screen name="EditContractLayer">
 		<section>
 			<actions>
-				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap"
-					global="true" />
-				<property-map resource="CommonUiLabels" map-name="uiLabelMap"
-					global="true" />
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
+				<property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true" />
 				<set field="titleProperty" value="PageTitleEditShipping" />
 				<set field="tabButtonItem" value="findContracts" />
 				<set field="ContractId" from-field="parameters.ContractId" />
 				<entity-one entity-name="BorContract" value-field="Contract" />
 			</actions>
 			<widgets>
-				<include-form name="EditContract"
-					location="component://borAgency/widget/BorAgencyForms.xml" />
+				<include-form name="EditContract" location="component://borAgency/widget/BorAgencyForms.xml" />
 			</widgets>
 		</section>
 	</screen>
@@ -501,8 +445,7 @@
 				<entity-one entity-name="BorContract" value-field="Contract" />
 			</actions>
 			<widgets>
-				<decorator-screen name="BorAgencyCommonDecorator"
-					location="${parameters.mainDecoratorLocation}">
+				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">
 					<decorator-section name="body">
 						<section>
 							<condition>
@@ -513,14 +456,13 @@
 								</and>
 							</condition>
 							<widgets>
-								<include-menu name="EditContract"
-									location="component://borAgency/widget/BorAgencyMenus.xml" />
+								<include-menu name="EditContract" location="component://borAgency/widget/BorAgencyMenus.xml" />
 							</widgets>
 						</section>
 
-
-						<include-form name="EditContract"
-							location="component://borAgency/widget/BorAgencyForms.xml" />
+						<screenlet title="${uiLabelMap.EditContract}">
+							<include-form name="EditContract" location="component://borAgency/widget/BorAgencyForms.xml" />
+						</screenlet>
 
 					</decorator-section>
 				</decorator-screen>
@@ -541,23 +483,19 @@
 				<set field="contractorId" from-field="Contract.contractorId" />
 			</actions>
 			<widgets>
-				<decorator-screen name="BorAgencyCommonDecorator"
-					location="${parameters.mainDecoratorLocation}">
+				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">
 					<decorator-section name="body">
 						<section>
 
 							<widgets>
-								<include-menu name="EditContract"
-									location="component://borAgency/widget/BorAgencyMenus.xml" />
+								<include-menu name="EditContract" location="component://borAgency/widget/BorAgencyMenus.xml" />
 							</widgets>
 						</section>
 						<section>
 							<widgets>
-								<screenlet title="${uiLabelMap.Contracts}">
-									<include-form name="ListContractDetails"
-										location="component://borAgency/widget/BorAgencyForms.xml" />
-									<include-form name="AddContractDetails"
-										location="component://borAgency/widget/BorAgencyForms.xml" />
+								<screenlet title="${uiLabelMap.EditContract}">
+									<include-form name="ListContractDetails" location="component://borAgency/widget/BorAgencyForms.xml" />
+									<include-form name="AddContractDetails" location="component://borAgency/widget/BorAgencyForms.xml" />
 								</screenlet>
 							</widgets>
 						</section>
@@ -574,30 +512,22 @@
 			<actions>
 				<set field="contractorId" from-field="parameters.contractorId" />
 				<set field="headerItem" value="findConditions" />
-				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer"
-					default-value="200" />
-				<!-- <script location="component://vforder/groovyScripts/ShipmentsReport.groovy" 
-					/> -->
+				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
+				<!-- <script location="component://vforder/groovyScripts/ShipmentsReport.groovy" /> -->
 			</actions>
 			<widgets>
-				<decorator-screen name="BorAgencyCommonDecorator"
-					location="${parameters.mainDecoratorLocation}">
+				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">
 					<decorator-section name="body">
-						<!-- <container style="button-bar"> <link target="ShipmentsReportPdf" 
-							text="${uiLabelMap.CommonPdf}" style="buttontext create" target-window="_blank"> 
-							<parameter param-name="fromDate" /> <parameter param-name="thruDate" /> </link> 
-							</container> -->
+						<!-- <container style="button-bar"> <link target="ShipmentsReportPdf" text="${uiLabelMap.CommonPdf}" style="buttontext create" 
+							target-window="_blank"> <parameter param-name="fromDate" /> <parameter param-name="thruDate" /> </link> </container> -->
 						<screenlet title="${uiLabelMap.Filter}">
-							<include-form name="FilterConditions"
-								location="component://borAgency/widget/BorAgencyForms.xml" />
+							<include-form name="FilterConditions" location="component://borAgency/widget/BorAgencyForms.xml" />
 						</screenlet>
 						<screenlet title="${uiLabelMap.Conditions}">
-							<include-form name="ListConditions"
-								location="component://borAgency/widget/BorAgencyForms.xml" />
+							<include-form name="ListConditions" location="component://borAgency/widget/BorAgencyForms.xml" />
 						</screenlet>
 						<screenlet title="${uiLabelMap.ExtraShipped}">
-							<include-form name="AddCondition"
-								location="component://borAgency/widget/BorAgencyForms.xml" />
+							<include-form name="AddCondition" location="component://borAgency/widget/BorAgencyForms.xml" />
 						</screenlet>
 					</decorator-section>
 				</decorator-screen>

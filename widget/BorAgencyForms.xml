@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://ofbiz.apache.org/Widget-Form"
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ofbiz.apache.org/Widget-Form"
 	xsi:schemaLocation="http://ofbiz.apache.org/Widget-Form http://ofbiz.apache.org/dtds/widget-form.xsd">
 
 
 
-	<form name="FindContractors" type="single" target="findcontractors"
-		default-entity-name="Shipment">
+	<form name="FindContractors" type="single" target="findcontractors" default-entity-name="Shipment">
 
 		<field name="noConditionFind">
-			<hidden value="Y" /><!-- if this isn't there then with all fields 
-				empty no query will be done -->
+			<hidden value="Y" /><!-- if this isn't there then with all fields empty no query will be done -->
 		</field>
 		<field name="name" title="${uiLabelMap.CommonName}">
 
 			<text size="10" maxlength="20" />
 		</field>
 
-		<field name="searchButton" title="${uiLabelMap.CommonFind}"
-			widget-style="smallSubmit">
+		<field name="searchButton" title="${uiLabelMap.CommonFind}" widget-style="smallSubmit">
 			<submit button-type="button" />
 		</field>
 
@@ -26,26 +22,27 @@
 	</form>
 
 
-	<form name="ListContractors" type="list" list-name="listIt"
-		paginate-target="findcontractors" odd-row-style="alternate-row"
-		default-table-style="basic-table hover-bar" header-row-style="header-row-2"
-		override-list-size="true">
+	<form name="ListContractors" type="list" list-name="listIt" paginate-target="findcontractors" odd-row-style="alternate-row"
+		default-table-style="basic-table hover-bar" header-row-style="header-row-2" override-list-size="true">
 		<actions>
-			<service service-name="performFind" result-map="result"
-				result-map-list="listIt">
-				<field-map field-name="inputFields" from-field="parameters" />
-				<field-map field-name="entityName" value="BorContractor" />
+			<set field="requestParameters.noConditionFind" value="Y" />
+			<set field="entityName" value="BorContractor" />
+			<service service-name="performFind" result-map="result" result-map-list="listIt">
+				<field-map field-name="inputFields" from-field="requestParameters" />
+				<field-map field-name="entityName" from-field="entityName" />
 				<field-map field-name="orderBy" from-field="sortField" />
+				<field-map field-name="viewIndex" from-field="viewIndex" />
+				<field-map field-name="viewSize" from-field="viewSize" />
 			</service>
 		</actions>
 
-		<field name="contractorId" title="${uiLabelMap.GeneralId}"
-			widget-style="buttontext" sort-field="true">
-			<display />
+		<field name="contractorId" title="${uiLabelMap.GeneralId}" widget-style="buttontext" sort-field="true">
+			<hyperlink description="${contractorId}" target="EditContractor" also-hidden="false">
+				<parameter param-name="contractorId" />
+			</hyperlink>
 		</field>
 
-		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext"
-			sort-field="true">
+		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext" sort-field="true">
 			<display />
 
 
@@ -53,25 +50,22 @@
 
 
 		<field name="deleteLink" title=" " widget-style="buttontext">
-			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteContractor"
-				also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}"
-				image-location="${iconsLocation}/delete.png">
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteContractor" also-hidden="false"
+				confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png">
 				<parameter param-name="contractorId" />
 			</hyperlink>
 		</field>
 
 
 	</form>
-	<form name="EditContractor" type="single" target="updateContractor"
-		title="" default-map-name="contractor" default-entity-name="BorContractor">
+	<form name="EditContractor" type="single" target="updateContractor" title="" default-map-name="contractor"
+		default-entity-name="BorContractor">
 		<alt-target use-when="contractor==null" target="createContractor" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
-		<field use-when="contractor!=null" name="contractorId"
-			title="${uiLabelMap.GeneralId}">
+		<field use-when="contractor!=null" name="contractorId" title="${uiLabelMap.GeneralId}">
 			<display />
 		</field>
-		<field use-when="contractor==null @and contractorId==null" name="contractorId"
-			title="${uiLabelMap.GeneralId}">
+		<field use-when="contractor==null @and contractorId==null" name="contractorId" title="${uiLabelMap.GeneralId}">
 			<ignored />
 		</field>
 
@@ -87,31 +81,26 @@
 		<field name="submitButton" use-when="contractor!=null" title="${uiLabelMap.CommonUpdate}">
 			<submit button-type="button" />
 		</field>
-		<!-- <field name="deleteLink" use-when="shipping!=null" title=" " widget-style="buttontext"> 
-			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteShipping" 
-			also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}" 
-			image-location="${iconsLocation}/delete.png"> <parameter param-name="shipmentId"/> 
-			</hyperlink> </field> -->
+		<!-- <field name="deleteLink" use-when="shipping!=null" title=" " widget-style="buttontext"> <hyperlink description="${uiLabelMap.CommonDelete}" 
+			target="deleteShipping" also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png"> 
+			<parameter param-name="shipmentId"/> </hyperlink> </field> -->
 
 
 	</form>
 
 
 
-	<form name="FindClients" type="single" target="findclients"
-		default-entity-name="Shipment">
+	<form name="FindClients" type="single" target="findclients" default-entity-name="Shipment">
 
 		<field name="noConditionFind">
-			<hidden value="Y" /><!-- if this isn't there then with all fields 
-				empty no query will be done -->
+			<hidden value="Y" /><!-- if this isn't there then with all fields empty no query will be done -->
 		</field>
 		<field name="name" title="${uiLabelMap.CommonName}">
 
 			<text size="10" maxlength="20" />
 		</field>
 
-		<field name="searchButton" title="${uiLabelMap.CommonFind}"
-			widget-style="smallSubmit">
+		<field name="searchButton" title="${uiLabelMap.CommonFind}" widget-style="smallSubmit">
 			<submit button-type="button" />
 		</field>
 
@@ -119,26 +108,25 @@
 	</form>
 
 
-	<form name="ListClients" type="list" list-name="listIt"
-		paginate-target="findclients" odd-row-style="alternate-row"
-		default-table-style="basic-table hover-bar" header-row-style="header-row-2"
-		override-list-size="true">
+	<form name="ListClients" type="list" list-name="listIt" paginate-target="findclients" odd-row-style="alternate-row"
+		default-table-style="basic-table hover-bar" header-row-style="header-row-2" override-list-size="true">
 		<actions>
-			<service service-name="performFind" result-map="result"
-				result-map-list="listIt">
-				<field-map field-name="inputFields" from-field="parameters" />
-				<field-map field-name="entityName" value="BorClient" />
+			<set field="requestParameters.noConditionFind" value="Y" />
+			<set field="entityName" value="BorClient" />
+			<service service-name="performFind" result-map="result" result-map-list="listIt">
+				<field-map field-name="inputFields" from-field="requestParameters" />
+				<field-map field-name="entityName" from-field="entityName" />
 				<field-map field-name="orderBy" from-field="sortField" />
 			</service>
 		</actions>
 
-		<field name="clientId" title="${uiLabelMap.GeneralId}"
-			widget-style="buttontext" sort-field="true">
-			<display />
+		<field name="clientId" title="${uiLabelMap.GeneralId}" widget-style="buttontext" sort-field="true">
+			<hyperlink description="${clientId}" target="EditClient" also-hidden="false">
+				<parameter param-name="clientId" />
+			</hyperlink>
 		</field>
 
-		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext"
-			sort-field="true">
+		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext" sort-field="true">
 			<display />
 
 
@@ -146,24 +134,22 @@
 
 
 		<field name="deleteLink" title=" " widget-style="buttontext">
-			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteClient"
-				also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}"
-				image-location="${iconsLocation}/delete.png">
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteClient" also-hidden="false"
+				confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png">
 				<parameter param-name="clientId" />
 			</hyperlink>
 		</field>
 
 
 	</form>
-	<form name="EditClient" type="single" target="updateClient" title=""
-		default-map-name="client" default-entity-name="BorClient">
+	<form name="EditClient" type="single" target="updateClient" title="" default-map-name="client"
+		default-entity-name="BorClient">
 		<alt-target use-when="client==null" target="createClient" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
 		<field use-when="client!=null" name="clientId" title="${uiLabelMap.ClientId}">
 			<display />
 		</field>
-		<field use-when="client==null @and clientId==null" name="clientId"
-			title="${uiLabelMap.GeneralId}">
+		<field use-when="client==null @and clientId==null" name="clientId" title="${uiLabelMap.GeneralId}">
 			<ignored />
 		</field>
 
@@ -179,33 +165,28 @@
 		<field name="submitButton" use-when="client!=null" title="${uiLabelMap.CommonUpdate}">
 			<submit button-type="button" />
 		</field>
-		<!-- <field name="deleteLink" use-when="shipping!=null" title=" " widget-style="buttontext"> 
-			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteShipping" 
-			also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}" 
-			image-location="${iconsLocation}/delete.png"> <parameter param-name="shipmentId"/> 
-			</hyperlink> </field> -->
+		<!-- <field name="deleteLink" use-when="shipping!=null" title=" " widget-style="buttontext"> <hyperlink description="${uiLabelMap.CommonDelete}" 
+			target="deleteShipping" also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png"> 
+			<parameter param-name="shipmentId"/> </hyperlink> </field> -->
 
 
 	</form>
 
 
-	<form name="FindProducts" type="single" target="findProducts"
-		default-entity-name="Shipment">
+	<form name="FindProducts" type="single" target="findProducts" default-entity-name="Shipment">
 
 		<field name="noConditionFind">
-			<hidden value="Y" /><!-- if this isn't there then with all fields 
-				empty no query will be done -->
+			<hidden value="Y" /><!-- if this isn't there then with all fields empty no query will be done -->
 		</field>
 		<field name="contractorId" title="${uiLabelMap.ContractorId}">
 			<lookup target-form-name="LookupContractor" />
 		</field>
-		<field name="name" title="${uiLabelMap.CommonName}">
+		<field name="name" title="${uiLabelMap.Name}">
 
 			<text size="10" maxlength="20" />
 		</field>
 
-		<field name="searchButton" title="${uiLabelMap.CommonFind}"
-			widget-style="smallSubmit">
+		<field name="searchButton" title="${uiLabelMap.CommonFind}" widget-style="smallSubmit">
 			<submit button-type="button" />
 		</field>
 
@@ -213,58 +194,51 @@
 	</form>
 
 
-	<form name="ListProducts" type="list" list-name="listIt"
-		paginate-target="findProducts" odd-row-style="alternate-row"
-		default-table-style="basic-table hover-bar" header-row-style="header-row-2"
-		override-list-size="true">
+	<form name="ListProducts" type="list" list-name="listIt" paginate-target="findProducts" odd-row-style="alternate-row"
+		default-table-style="basic-table hover-bar" header-row-style="header-row-2" override-list-size="true">
 		<actions>
-			<service service-name="performFind" result-map="result"
-				result-map-list="listIt">
-				<field-map field-name="inputFields" from-field="parameters" />
-				<field-map field-name="entityName" value="ProductContractorView" />
+			<set field="requestParameters.noConditionFind" value="Y" />
+			<set field="entityName" value="ProductContractorView" />
+			<service service-name="performFind" result-map="result" result-map-list="listIt">
+				<field-map field-name="inputFields" from-field="requestParameters" />
+				<field-map field-name="entityName" from-field="entityName" />
 				<field-map field-name="orderBy" from-field="sortField" />
 			</service>
 		</actions>
 
-		<field name="productId" title="${uiLabelMap.GeneralId}"
-			widget-style="buttontext" sort-field="true">
-			<hyperlink description="${productId}" target="EditProduct"
-				also-hidden="false">
+		<field name="productId" title="${uiLabelMap.GeneralId}" widget-style="buttontext" sort-field="true">
+			<hyperlink description="${productId}" target="EditProduct" also-hidden="false">
 				<parameter param-name="productId" />
 				<parameter param-name="contractorId" />
 			</hyperlink>
 		</field>
 
-		<field name="contractorName" title="${uiLabelMap.Name}"
-			widget-style="buttontext" sort-field="true">
+		<field name="contractorName" title="${uiLabelMap.Name}" widget-style="buttontext" sort-field="true">
 			<display />
 		</field>
 
-		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext"
-			sort-field="true">
+		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext" sort-field="true">
 			<display />
 		</field>
 
 
 		<field name="deleteLink" title=" " widget-style="buttontext">
-			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteProduct"
-				also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}"
-				image-location="${iconsLocation}/delete.png">
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteProduct" also-hidden="false"
+				confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png">
 				<parameter param-name="productId" />
 			</hyperlink>
 		</field>
 
 
 	</form>
-	<form name="EditProduct" type="single" target="updateProduct"
-		title="" default-map-name="Product" default-entity-name="BorProduct">
+	<form name="EditProduct" type="single" target="updateProduct" title="" default-map-name="Product"
+		default-entity-name="BorProduct">
 		<alt-target use-when="Product==null" target="createProduct" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
 		<field use-when="Product!=null" name="productId" title="${uiLabelMap.ProductId}">
 			<display />
 		</field>
-		<field use-when="Product==null @and productId==null" name="productId"
-			title="${uiLabelMap.GeneralId}">
+		<field use-when="Product==null @and productId==null" name="productId" title="${uiLabelMap.GeneralId}">
 			<ignored />
 		</field>
 		<field name="contractorId" title="${uiLabelMap.ContractorId}">
@@ -283,22 +257,18 @@
 		<field name="submitButton" use-when="Product!=null" title="${uiLabelMap.CommonUpdate}">
 			<submit button-type="button" />
 		</field>
-		<!-- <field name="deleteLink" use-when="shipping!=null" title=" " widget-style="buttontext"> 
-			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteShipping" 
-			also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}" 
-			image-location="${iconsLocation}/delete.png"> <parameter param-name="shipmentId"/> 
-			</hyperlink> </field> -->
+		<!-- <field name="deleteLink" use-when="shipping!=null" title=" " widget-style="buttontext"> <hyperlink description="${uiLabelMap.CommonDelete}" 
+			target="deleteShipping" also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png"> 
+			<parameter param-name="shipmentId"/> </hyperlink> </field> -->
 
 
 	</form>
 
 
-	<form name="FindPriceLists" type="single" target="findPriceLists"
-		default-entity-name="Shipment">
+	<form name="FindPriceLists" type="single" target="findPriceLists" default-entity-name="Shipment">
 
 		<field name="noConditionFind">
-			<hidden value="Y" /><!-- if this isn't there then with all fields 
-				empty no query will be done -->
+			<hidden value="Y" /><!-- if this isn't there then with all fields empty no query will be done -->
 		</field>
 		<field name="contractorId" title="${uiLabelMap.ContractorId}">
 			<lookup target-form-name="LookupContractor" />
@@ -308,8 +278,7 @@
 			<text size="10" maxlength="20" />
 		</field>
 
-		<field name="searchButton" title="${uiLabelMap.CommonFind}"
-			widget-style="smallSubmit">
+		<field name="searchButton" title="${uiLabelMap.CommonFind}" widget-style="smallSubmit">
 			<submit button-type="button" />
 		</field>
 
@@ -317,34 +286,29 @@
 	</form>
 
 
-	<form name="ListPriceLists" type="list" list-name="listIt"
-		paginate-target="findPriceLists" odd-row-style="alternate-row"
-		default-table-style="basic-table hover-bar" header-row-style="header-row-2"
-		override-list-size="true">
+	<form name="ListPriceLists" type="list" list-name="listIt" paginate-target="findPriceLists" odd-row-style="alternate-row"
+		default-table-style="basic-table hover-bar" header-row-style="header-row-2" override-list-size="true">
 		<actions>
-			<service service-name="performFind" result-map="result"
-				result-map-list="listIt">
-				<field-map field-name="inputFields" from-field="parameters" />
-				<field-map field-name="entityName" value="PriceListContractorView" />
+			<set field="requestParameters.noConditionFind" value="Y" />
+			<set field="entityName" value="PriceListContractorView" />
+			<service service-name="performFind" result-map="result" result-map-list="listIt">
+				<field-map field-name="inputFields" from-field="requestParameters" />
+				<field-map field-name="entityName" from-field="entityName" />
 				<field-map field-name="orderBy" from-field="sortField" />
 			</service>
 		</actions>
 
-		<field name="pricelistId" title="${uiLabelMap.GeneralId}"
-			widget-style="buttontext" sort-field="true">
-			<hyperlink description="${pricelistId}" target="EditPriceList"
-				also-hidden="false">
+		<field name="pricelistId" title="${uiLabelMap.GeneralId}" widget-style="buttontext" sort-field="true">
+			<hyperlink description="${pricelistId}" target="EditPriceList" also-hidden="false">
 				<parameter param-name="pricelistId" />
 			</hyperlink>
 		</field>
 
-		<field name="contractorName" title="${uiLabelMap.Contractors}"
-			widget-style="buttontext" sort-field="true">
+		<field name="contractorName" title="${uiLabelMap.Contractors}" widget-style="buttontext" sort-field="true">
 			<display />
 		</field>
 
-		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext"
-			sort-field="true">
+		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext" sort-field="true">
 			<display />
 
 
@@ -352,29 +316,26 @@
 
 
 		<field name="deleteLink" title=" " widget-style="buttontext">
-			<hyperlink description="${uiLabelMap.CommonDelete}" target="deletePriceList"
-				also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}"
-				image-location="${iconsLocation}/delete.png">
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deletePriceList" also-hidden="false"
+				confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png">
 				<parameter param-name="pricelistId" />
 			</hyperlink>
 		</field>
 
 
 	</form>
-	<form name="EditPriceList" type="single" target="updatePriceList"
-		title="" default-map-name="PriceList" default-entity-name="BorPriceList">
+	<form name="EditPriceList" type="single" target="updatePriceList" title="" default-map-name="PriceList"
+		default-entity-name="BorPriceList">
 		<alt-target use-when="PriceList==null" target="createPriceList" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
-		<field use-when="PriceList!=null" name="pricelistId"
-			title="${uiLabelMap.PriceListId}">
+		<field use-when="PriceList!=null" name="pricelistId" title="${uiLabelMap.PriceListId}">
 			<display />
 		</field>
 
 		<field name="contractorId" title="${uiLabelMap.ContractorId}">
 			<lookup target-form-name="LookupContractor" />
 		</field>
-		<field use-when="PriceList==null @and pricelistId==null" name="pricelistId"
-			title="${uiLabelMap.GeneralId}">
+		<field use-when="PriceList==null @and pricelistId==null" name="pricelistId" title="${uiLabelMap.GeneralId}">
 			<ignored />
 		</field>
 
@@ -390,15 +351,12 @@
 		<field name="submitButton" use-when="PriceList!=null" title="${uiLabelMap.CommonUpdate}">
 			<submit button-type="button" />
 		</field>
-		<!-- <field name="deleteLink" use-when="shipping!=null" title=" " widget-style="buttontext"> 
-			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteShipping" 
-			also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}" 
-			image-location="${iconsLocation}/delete.png"> <parameter param-name="shipmentId"/> 
-			</hyperlink> </field> -->
+		<!-- <field name="deleteLink" use-when="shipping!=null" title=" " widget-style="buttontext"> <hyperlink description="${uiLabelMap.CommonDelete}" 
+			target="deleteShipping" also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png"> 
+			<parameter param-name="shipmentId"/> </hyperlink> </field> -->
 	</form>
 
-	<form name="ListPriceListDetails" type="list" list-name="exampleItems"
-		target="updatePriceListDetail">
+	<form name="ListPriceListDetails" type="list" list-name="exampleItems" target="updatePriceListDetail">
 		<actions>
 			<entity-condition entity-name="BorPriceListDetail">
 				<condition-expr field-name="pricelistId" from-field="pricelistId" />
@@ -420,26 +378,23 @@
 			<display />
 		</field>
 		<field name="deleteLink" title=" " widget-style="buttontext">
-			<hyperlink description="${uiLabelMap.CommonDelete}" target="deletePriceListDetail"
-				also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}"
-				image-location="${iconsLocation}/delete.png">
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deletePriceListDetail" also-hidden="false"
+				confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png">
 				<parameter param-name="pricelistId" />
 				<parameter param-name="pricelistdetailId" />
 				<parameter param-name="contractorId" />
 			</hyperlink>
 		</field>
-		<!-- <field name="submitButton" title="${uiLabelMap.CommonUpdate}"> <submit 
-			button-type="button" /> </field> -->
+		<!-- <field name="submitButton" title="${uiLabelMap.CommonUpdate}"> <submit button-type="button" /> </field> -->
 	</form>
 
-	<form name="AddPriceListDetails" type="single" target="createPriceListDetail"
-		title="">
+	<form name="AddPriceListDetails" type="single" target="createPriceListDetail" title="">
 		<auto-fields-service service-name="createPriceListDetail" />
 		<field name="pricelistId">
 			<hidden />
 		</field>
 		<field name="productId" title="${uiLabelMap.ProductId}">
-			<lookup target-form-name="LookupProduct?contractorId=${contractorId}"/>
+			<lookup target-form-name="LookupProduct?contractorId=${contractorId}" />
 		</field>
 		<field name="pricelistdetailId">
 			<ignored /><!-- this will be auto-sequenced -->
@@ -451,12 +406,10 @@
 
 
 
-	<form name="FindContracts" type="single" target="findContracts"
-		default-entity-name="Shipment">
+	<form name="FindContracts" type="single" target="findContracts" default-entity-name="Shipment">
 
 		<field name="noConditionFind">
-			<hidden value="Y" /><!-- if this isn't there then with all fields 
-				empty no query will be done -->
+			<hidden value="Y" /><!-- if this isn't there then with all fields empty no query will be done -->
 		</field>
 		<field name="contractorId" title="${uiLabelMap.ContractorId}">
 			<lookup target-form-name="LookupContractor" />
@@ -466,8 +419,7 @@
 			<text size="10" maxlength="20" />
 		</field>
 
-		<field name="searchButton" title="${uiLabelMap.CommonFind}"
-			widget-style="smallSubmit">
+		<field name="searchButton" title="${uiLabelMap.CommonFind}" widget-style="smallSubmit">
 			<submit button-type="button" />
 		</field>
 
@@ -475,34 +427,29 @@
 	</form>
 
 
-	<form name="ListContracts" type="list" list-name="listIt"
-		paginate-target="findContracts" odd-row-style="alternate-row"
-		default-table-style="basic-table hover-bar" header-row-style="header-row-2"
-		override-list-size="true">
+	<form name="ListContracts" type="list" list-name="listIt" paginate-target="findContracts" odd-row-style="alternate-row"
+		default-table-style="basic-table hover-bar" header-row-style="header-row-2" override-list-size="true">
 		<actions>
-			<service service-name="performFind" result-map="result"
-				result-map-list="listIt">
-				<field-map field-name="inputFields" from-field="parameters" />
-				<field-map field-name="entityName" value="ContractContractorView" />
+			<set field="requestParameters.noConditionFind" value="Y" />
+			<set field="entityName" value="ContractContractorView" />
+			<service service-name="performFind" result-map="result" result-map-list="listIt">
+				<field-map field-name="inputFields" from-field="requestParameters" />
+				<field-map field-name="entityName" from-field="entityName" />
 				<field-map field-name="orderBy" from-field="sortField" />
 			</service>
 		</actions>
 
-		<field name="contractId" title="${uiLabelMap.GeneralId}"
-			widget-style="buttontext" sort-field="true">
-			<hyperlink description="${contractId}" target="EditContract"
-				also-hidden="false">
+		<field name="contractId" title="${uiLabelMap.GeneralId}" widget-style="buttontext" sort-field="true">
+			<hyperlink description="${contractId}" target="EditContract" also-hidden="false">
 				<parameter param-name="contractId" />
 			</hyperlink>
 		</field>
 
-		<field name="contractorName" title="${uiLabelMap.Contractors}"
-			widget-style="buttontext" sort-field="true">
+		<field name="contractorName" title="${uiLabelMap.Contractors}" widget-style="buttontext" sort-field="true">
 			<display />
 		</field>
 
-		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext"
-			sort-field="true">
+		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext" sort-field="true">
 			<display />
 
 
@@ -510,17 +457,16 @@
 
 
 		<field name="deleteLink" title=" " widget-style="buttontext">
-			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteContract"
-				also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}"
-				image-location="${iconsLocation}/delete.png">
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteContract" also-hidden="false"
+				confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png">
 				<parameter param-name="contractId" />
 			</hyperlink>
 		</field>
 
 
 	</form>
-	<form name="EditContract" type="single" target="updateContract"
-		title="" default-map-name="Contract" default-entity-name="BorContract">
+	<form name="EditContract" type="single" target="updateContract" title="" default-map-name="Contract"
+		default-entity-name="BorContract">
 		<alt-target use-when="Contract==null" target="createContract" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
 		<field use-when="Contract!=null" name="contractId" title="${uiLabelMap.ContractId}">
@@ -530,8 +476,7 @@
 		<field name="contractorId" title="${uiLabelMap.ContractorId}">
 			<lookup target-form-name="LookupContractor" />
 		</field>
-		<field use-when="Contract==null @and contractId==null" name="contractId"
-			title="${uiLabelMap.GeneralId}">
+		<field use-when="Contract==null @and contractId==null" name="contractId" title="${uiLabelMap.GeneralId}">
 			<ignored />
 		</field>
 
@@ -547,18 +492,15 @@
 		<field name="submitButton" use-when="Contract!=null" title="${uiLabelMap.CommonUpdate}">
 			<submit button-type="button" />
 		</field>
-		<!-- <field name="deleteLink" use-when="shipping!=null" title=" " widget-style="buttontext"> 
-			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteShipping" 
-			also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}" 
-			image-location="${iconsLocation}/delete.png"> <parameter param-name="shipmentId"/> 
-			</hyperlink> </field> -->
+		<!-- <field name="deleteLink" use-when="shipping!=null" title=" " widget-style="buttontext"> <hyperlink description="${uiLabelMap.CommonDelete}" 
+			target="deleteShipping" also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png"> 
+			<parameter param-name="shipmentId"/> </hyperlink> </field> -->
 
 
 	</form>
 
 
-	<form name="ListContractDetails" type="list" list-name="exampleItems"
-		target="updateContractDetail">
+	<form name="ListContractDetails" type="list" list-name="exampleItems" target="updateContractDetail">
 		<actions>
 			<entity-condition entity-name="BorContractDetail">
 				<condition-expr field-name="contractId" from-field="contractId" />
@@ -580,20 +522,17 @@
 			<display />
 		</field>
 		<field name="deleteLink" title=" " widget-style="buttontext">
-			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteContractDetail"
-				also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}"
-				image-location="${iconsLocation}/delete.png">
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteContractDetail" also-hidden="false"
+				confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png">
 				<parameter param-name="contractId" />
 				<parameter param-name="contractdetailId" />
 				<parameter param-name="contractorId" />
 			</hyperlink>
 		</field>
-		<!-- <field name="submitButton" title="${uiLabelMap.CommonUpdate}"> <submit 
-			button-type="button" /> </field> -->
+		<!-- <field name="submitButton" title="${uiLabelMap.CommonUpdate}"> <submit button-type="button" /> </field> -->
 	</form>
 
-	<form name="AddContractDetails" type="single" target="createContractDetail"
-		title="">
+	<form name="AddContractDetails" type="single" target="createContractDetail" title="">
 		<auto-fields-service service-name="createContractDetail" />
 		<field name="contractId">
 			<hidden />
@@ -616,8 +555,7 @@
 		</field>
 
 
-		<field name="searchButton" title="${uiLabelMap.CommonFind}"
-			widget-style="smallSubmit">
+		<field name="searchButton" title="${uiLabelMap.CommonFind}" widget-style="smallSubmit">
 			<submit button-type="button" />
 		</field>
 
@@ -625,13 +563,10 @@
 	</form>
 
 
-	<form name="ListConditions" type="list" list-name="listIt"
-		paginate-target="findConditions" odd-row-style="alternate-row"
-		default-table-style="basic-table hover-bar" header-row-style="header-row-2"
-		override-list-size="true">
+	<form name="ListConditions" type="list" list-name="listIt" paginate-target="findConditions" odd-row-style="alternate-row"
+		default-table-style="basic-table hover-bar" header-row-style="header-row-2" override-list-size="true">
 		<actions>
-			<service service-name="performFind" result-map="result"
-				result-map-list="listIt">
+			<service service-name="performFind" result-map="result" result-map-list="listIt">
 				<field-map field-name="inputFields" from-field="parameters" />
 				<field-map field-name="entityName" value="ConditionView" />
 				<field-map field-name="orderBy" from-field="sortField" />
@@ -643,20 +578,17 @@
 		</field>
 
 
-		<field name="contractorName" title="${uiLabelMap.Contractors}"
-			widget-style="buttontext" sort-field="true">
+		<field name="contractorName" title="${uiLabelMap.Contractors}" widget-style="buttontext" sort-field="true">
 			<display />
 		</field>
-		<field name="productName" title="${uiLabelMap.Products}"
-			widget-style="buttontext" sort-field="true">
+		<field name="productName" title="${uiLabelMap.Products}" widget-style="buttontext" sort-field="true">
 			<display />
 		</field>
 
 
 		<field name="deleteLink" title=" " widget-style="buttontext">
-			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteContractor"
-				also-hidden="false" confirmation-message="${uiLabelMap.CommonConfirmDelete}"
-				image-location="${iconsLocation}/delete.png">
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteContractor" also-hidden="false"
+				confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png">
 				<parameter param-name="conditionId" />
 			</hyperlink>
 		</field>
@@ -669,14 +601,13 @@
 
 
 
-	<form name="AddCondition" type="single" target="createCondition"
-		title="">
+	<form name="AddCondition" type="single" target="createCondition" title="">
 		<auto-fields-service service-name="createCondition" />
 		<field name="contractorId" title="${uiLabelMap.ContractorId}">
 			<lookup target-form-name="LookupContractor" />
 		</field>
 		<field name="productId" title="${uiLabelMap.ProductId}">
-			<lookup target-form-name="LookupProduct?contractorId=${contractorId}"/>
+			<lookup target-form-name="LookupProduct?contractorId=${contractorId}" />
 		</field>
 
 		<field name="submitButton" title="${uiLabelMap.CommonAdd}">
