@@ -113,4 +113,16 @@
 		<value xml:lang="en">Contractor Id</value>
 		<value xml:lang="it">Id mandante</value>
 	</property>
+	<property key="ClientId">
+		<value xml:lang="en">Client Id</value>
+		<value xml:lang="it">Id cliente</value>
+	</property>
+	<property key="ProductId">
+		<value xml:lang="en">Product Id</value>
+		<value xml:lang="it">Id prodotto</value>
+	</property>
+	<property key="PriceListId">
+		<value xml:lang="en">Price List Id</value>
+		<value xml:lang="it">Id listino</value>
+	</property>
 </resource>

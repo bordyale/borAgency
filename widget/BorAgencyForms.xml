@@ -367,7 +367,7 @@
 		<field name="pricelistId">
 			<hidden />
 		</field>
-		
+
 		<field name="productId">
 			<display />
 		</field>
@@ -572,13 +572,45 @@
 		<field name="conditionId">
 			<display />
 		</field>
-
-
+		<field name="contractorName">
+			<display />
+		</field>
+		<field name="clientName">
+			<display />
+		</field>
+		<field name="pricelistName">
+			<display />
+		</field>
+		<field name="productName">
+			<display />
+		</field>
+		<field name="price">
+			<display />
+		</field>
 		
+		
+		<field name="sc1">
+			<display />
+		</field>
+		<field name="sc2">
+			<display />
+		</field>
+		<field name="sc3">
+			<display />
+		</field>
+		<field name="sc4">
+			<display />
+		</field>
+		<field name="sc5">
+			<display />
+		</field>
+
+
+
 
 
 		<field name="deleteLink" title=" " widget-style="buttontext">
-			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteContractor" also-hidden="false"
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteCondition" also-hidden="false"
 				confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png">
 				<parameter param-name="conditionId" />
 			</hyperlink>
@@ -594,9 +626,15 @@
 
 	<form name="AddCondition" type="single" target="createCondition" title="">
 		<auto-fields-service service-name="createCondition" />
-		
+
 		<field name="productId" title="${uiLabelMap.ProductId}">
 			<lookup target-form-name="LookupProduct?contractorId=${contractorId}" />
+		</field>
+		<field name="clientId" title="${uiLabelMap.ClientId}">
+			<lookup target-form-name="LookupClient" />
+		</field>
+		<field name="pricelistId" title="${uiLabelMap.PriceListId}">
+			<lookup target-form-name="LookupPriceList" />
 		</field>
 
 		<field name="submitButton" title="${uiLabelMap.CommonAdd}">

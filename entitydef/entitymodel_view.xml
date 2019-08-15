@@ -58,6 +58,8 @@
 	<view-entity entity-name="ConditionView" package-name="org.apache.ofbiz.borAgency">
 		<member-entity entity-alias="CONTR" entity-name="BorContractor" />
 		<member-entity entity-alias="PROD" entity-name="BorProduct" />
+		<member-entity entity-alias="PLIST" entity-name="BorPriceList" />
+		<member-entity entity-alias="PLISTD" entity-name="BorPriceListDetail" />
 		<member-entity entity-alias="CLI" entity-name="BorClient" />
 		<member-entity entity-alias="COND" entity-name="BorCondition" />
 		<alias-all entity-alias="CONTR">
@@ -69,17 +71,28 @@
 		<alias-all entity-alias="CLI">
 			<exclude field="name" />
 		</alias-all>
+		<alias-all entity-alias="PLIST">
+			<exclude field="name" />
+		</alias-all>
 		<alias-all entity-alias="COND" />
 		<alias-all entity-alias="PLIST" />
 		<alias-all entity-alias="PLISTD" />
 		<alias name="contractorName" entity-alias="CONTR" field="name" />
 		<alias name="productName" entity-alias="PROD" field="name" />
 		<alias name="clientName" entity-alias="CLI" field="name" />
+		<alias name="pricelistName" entity-alias="PLIST" field="name" />
 		<view-link entity-alias="COND" rel-entity-alias="PROD">
 			<key-map field-name="productId" />
 		</view-link>
 		<view-link entity-alias="COND" rel-entity-alias="CLI">
 			<key-map field-name="clientId" />
+		</view-link>
+		<view-link entity-alias="COND" rel-entity-alias="PLIST" rel-optional="true">
+			<key-map field-name="pricelistId" />
+		</view-link>
+		<view-link entity-alias="COND" rel-entity-alias="PLISTD" rel-optional="true">
+			<key-map field-name="pricelistId" />
+			<key-map field-name="productId" />
 		</view-link>
 		<view-link entity-alias="PROD" rel-entity-alias="CONTR">
 			<key-map field-name="contractorId" />

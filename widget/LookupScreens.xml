@@ -1,35 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor 
-	license agreements. See the NOTICE file distributed with this work for additional 
-	information regarding copyright ownership. The ASF licenses this file to 
-	you under the Apache License, Version 2.0 (the "License"); you may not use 
-	this file except in compliance with the License. You may obtain a copy of 
-	the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required 
-	by applicable law or agreed to in writing, software distributed under the 
-	License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS 
-	OF ANY KIND, either express or implied. See the License for the specific 
-	language governing permissions and limitations under the License. -->
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE file distributed 
+	with this work for additional information regarding copyright ownership. The ASF licenses this file to you under the Apache License, 
+	Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License 
+	at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under 
+	the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License 
+	for the specific language governing permissions and limitations under the License. -->
 
-<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://ofbiz.apache.org/Widget-Screen"
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ofbiz.apache.org/Widget-Screen"
 	xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
 	<screen name="LookupContractor">
 		<section>
 			<condition>
-				<if-service-permission service-name="borAgencyGenericPermission"
-					main-action="VIEW" />
+				<if-service-permission service-name="borAgencyGenericPermission" main-action="VIEW" />
 			</condition>
 			<actions>
-				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap"
-					global="true" />
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
 				<set field="title" value="${uiLabelMap.borLookupContractor}" />
 				<set field="queryString" from-field="result.queryString" />
-				<set field="viewIndex" from-field="parameters.VIEW_INDEX" type="Integer"
-					default-value="0" />
-				<property-to-field resource="widget"
-					property="widget.form.defaultViewSize" field="viewSizeDefaultValue" />
-				<set field="viewSize" from-field="parameters.VIEW_SIZE" type="Integer"
-					default-value="${viewSizeDefaultValue}" />
+				<set field="viewIndex" from-field="parameters.VIEW_INDEX" type="Integer" default-value="0" />
+				<property-to-field resource="widget" property="widget.form.defaultViewSize" field="viewSizeDefaultValue" />
+				<set field="viewSize" from-field="parameters.VIEW_SIZE" type="Integer" default-value="${viewSizeDefaultValue}" />
 
 				<!-- entries needed for lookup ajax auto completer -->
 				<!-- required: entity to search in -->
@@ -37,27 +27,22 @@
 
 				<!-- required: fields to search a match -->
 				<!-- the first element from searchFields is returned after user selection -->
-				<!-- it might be hidden based on widget.autocompleter.displayReturnField 
-					property in widget.properties -->
+				<!-- it might be hidden based on widget.autocompleter.displayReturnField property in widget.properties -->
 				<set field="searchFields" value="[contractorId, name]" />
 
 				<!-- optional: fields to display in the given order, default is searchFields -->
 				<set field="displayFields" value="[name]" />
 
-				<!-- optional: additional entity condition (named andCondition) added 
-					to search query -->
+				<!-- optional: additional entity condition (named andCondition) added to search query -->
 				<!-- <script location="component://party/groovyScripts/party/StatusCondition.groovy"/> -->
 			</actions>
 			<widgets>
-				<decorator-screen name="LookupDecorator"
-					location="component://common/widget/CommonScreens.xml">
+				<decorator-screen name="LookupDecorator" location="component://common/widget/CommonScreens.xml">
 					<decorator-section name="search-options">
-						<include-form name="LookupContractor"
-							location="component://borAgency/widget/LookupForms.xml" />
+						<include-form name="LookupContractor" location="component://borAgency/widget/LookupForms.xml" />
 					</decorator-section>
 					<decorator-section name="search-results">
-						<include-form name="ListLookupContractor"
-							location="component://borAgency/widget/LookupForms.xml" />
+						<include-form name="ListLookupContractor" location="component://borAgency/widget/LookupForms.xml" />
 					</decorator-section>
 				</decorator-screen>
 			</widgets>
@@ -67,21 +52,16 @@
 	<screen name="LookupProduct">
 		<section>
 			<condition>
-				<if-service-permission service-name="borAgencyGenericPermission"
-					main-action="VIEW" />
+				<if-service-permission service-name="borAgencyGenericPermission" main-action="VIEW" />
 			</condition>
 			<actions>
-				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap"
-					global="true" />
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
 				<set field="contractorId" from-field="parameters.contractorId" />
 				<set field="title" value="${uiLabelMap.borLookupProduct}" />
 				<set field="queryString" from-field="result.queryString" />
-				<set field="viewIndex" from-field="parameters.VIEW_INDEX" type="Integer"
-					default-value="0" />
-				<property-to-field resource="widget"
-					property="widget.form.defaultViewSize" field="viewSizeDefaultValue" />
-				<set field="viewSize" from-field="parameters.VIEW_SIZE" type="Integer"
-					default-value="${viewSizeDefaultValue}" />
+				<set field="viewIndex" from-field="parameters.VIEW_INDEX" type="Integer" default-value="0" />
+				<property-to-field resource="widget" property="widget.form.defaultViewSize" field="viewSizeDefaultValue" />
+				<set field="viewSize" from-field="parameters.VIEW_SIZE" type="Integer" default-value="${viewSizeDefaultValue}" />
 
 				<!-- entries needed for lookup ajax auto completer -->
 				<!-- required: entity to search in -->
@@ -89,61 +69,115 @@
 
 				<!-- required: fields to search a match -->
 				<!-- the first element from searchFields is returned after user selection -->
-				<!-- it might be hidden based on widget.autocompleter.displayReturnField 
-					property in widget.properties -->
+				<!-- it might be hidden based on widget.autocompleter.displayReturnField property in widget.properties -->
 				<set field="searchFields" value="[productId, name]" />
 
 				<!-- optional: fields to display in the given order, default is searchFields -->
 				<set field="displayFields" value="[name]" />
 
-				<!-- optional: additional entity condition (named andCondition) added 
-					to search query -->
+				<!-- optional: additional entity condition (named andCondition) added to search query -->
 				<script location="component://borAgency/groovyScripts/StatusCondition.groovy" />
-				<set field="andCondition" value="${context.andCondition}"/>
+				<set field="andCondition" value="${context.andCondition}" />
 			</actions>
 			<widgets>
-				<decorator-screen name="LookupDecorator"
-					location="component://common/widget/CommonScreens.xml">
+				<decorator-screen name="LookupDecorator" location="component://common/widget/CommonScreens.xml">
 					<decorator-section name="search-options">
-						<include-form name="LookupProduct"
-							location="component://borAgency/widget/LookupForms.xml" />
+						<include-form name="LookupProduct" location="component://borAgency/widget/LookupForms.xml" />
 					</decorator-section>
 					<decorator-section name="search-results">
-						<include-form name="ListLookupProduct"
-							location="component://borAgency/widget/LookupForms.xml" />
+						<include-form name="ListLookupProduct" location="component://borAgency/widget/LookupForms.xml" />
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
+
+
+
+	<screen name="LookupClient">
+		<section>
+			<condition>
+				<if-service-permission service-name="borAgencyGenericPermission" main-action="VIEW" />
+			</condition>
+			<actions>
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
+				<set field="title" value="${uiLabelMap.borLookupClient}" />
+				<set field="queryString" from-field="result.queryString" />
+				<set field="viewIndex" from-field="parameters.VIEW_INDEX" type="Integer" default-value="0" />
+				<property-to-field resource="widget" property="widget.form.defaultViewSize" field="viewSizeDefaultValue" />
+				<set field="viewSize" from-field="parameters.VIEW_SIZE" type="Integer" default-value="${viewSizeDefaultValue}" />
+
+				<!-- entries needed for lookup ajax auto completer -->
+				<!-- required: entity to search in -->
+				<set field="entityName" value="BorClient" />
+
+				<!-- required: fields to search a match -->
+				<!-- the first element from searchFields is returned after user selection -->
+				<!-- it might be hidden based on widget.autocompleter.displayReturnField property in widget.properties -->
+				<set field="searchFields" value="[clientId, name]" />
+
+				<!-- optional: fields to display in the given order, default is searchFields -->
+				<set field="displayFields" value="[name]" />
+
+				<!-- optional: additional entity condition (named andCondition) added to search query -->
+				<!-- <script location="component://party/groovyScripts/party/StatusCondition.groovy"/> -->
+			</actions>
+			<widgets>
+				<decorator-screen name="LookupDecorator" location="component://common/widget/CommonScreens.xml">
+					<decorator-section name="search-options">
+						<include-form name="LookupClient" location="component://borAgency/widget/LookupForms.xml" />
+					</decorator-section>
+					<decorator-section name="search-results">
+						<include-form name="ListLookupClient" location="component://borAgency/widget/LookupForms.xml" />
 					</decorator-section>
 				</decorator-screen>
 			</widgets>
 		</section>
 	</screen>
 	
-	
-	
-	<screen name="LookupInventoryItem">
-        <section>
-            <actions>
-                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
-                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
-                <set field="title" value="${uiLabelMap.ProductLookupInventory}"/>
-                <set field="queryString" from-field="result.queryString"/>
-                <set field="entityName" value="InventoryItem"/>
-                <set field="searchFields" value="[inventoryItemId]"/>
-                <script location="component://product/groovyScripts/catalog/GetSupplierInventories.groovy"/>
-                <set field="andCondition" value="${context.andCondition}"/>
-                <script location="component://product/groovyScripts/facility/inventory/LookupInventoryItems.groovy"/>
-            </actions>
-            <widgets>
-                <decorator-screen name="LookupDecorator" location="component://common/widget/CommonScreens.xml">
-                    <decorator-section name="search-results">
-                        <platform-specific><html><html-template location="component://product/template/lookup/LookupInventoryItems.ftl"/></html></platform-specific>
-                    </decorator-section>
-                </decorator-screen>
-            </widgets>
-        </section>
-    </screen>
-	
-	
-	
-	
+	<screen name="LookupPriceList">
+		<section>
+			<condition>
+				<if-service-permission service-name="borAgencyGenericPermission" main-action="VIEW" />
+			</condition>
+			<actions>
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
+				<set field="title" value="${uiLabelMap.borLookupPriceList}" />
+				<set field="queryString" from-field="result.queryString" />
+				<set field="viewIndex" from-field="parameters.VIEW_INDEX" type="Integer" default-value="0" />
+				<property-to-field resource="widget" property="widget.form.defaultViewSize" field="viewSizeDefaultValue" />
+				<set field="viewSize" from-field="parameters.VIEW_SIZE" type="Integer" default-value="${viewSizeDefaultValue}" />
+
+				<!-- entries needed for lookup ajax auto completer -->
+				<!-- required: entity to search in -->
+				<set field="entityName" value="BorPriceList" />
+
+				<!-- required: fields to search a match -->
+				<!-- the first element from searchFields is returned after user selection -->
+				<!-- it might be hidden based on widget.autocompleter.displayReturnField property in widget.properties -->
+				<set field="searchFields" value="[pricelistId, name]" />
+
+				<!-- optional: fields to display in the given order, default is searchFields -->
+				<set field="displayFields" value="[name]" />
+
+				<!-- optional: additional entity condition (named andCondition) added to search query -->
+				<!-- <script location="component://party/groovyScripts/party/StatusCondition.groovy"/> -->
+			</actions>
+			<widgets>
+				<decorator-screen name="LookupDecorator" location="component://common/widget/CommonScreens.xml">
+					<decorator-section name="search-options">
+						<include-form name="LookupPriceList" location="component://borAgency/widget/LookupForms.xml" />
+					</decorator-section>
+					<decorator-section name="search-results">
+						<include-form name="ListLookupPriceList" location="component://borAgency/widget/LookupForms.xml" />
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
+
+
+
+
 
 </screens>
