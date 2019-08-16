@@ -134,7 +134,7 @@
 			</widgets>
 		</section>
 	</screen>
-	
+
 	<screen name="LookupPriceList">
 		<section>
 			<condition>
@@ -144,6 +144,7 @@
 				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
 				<set field="title" value="${uiLabelMap.borLookupPriceList}" />
 				<set field="queryString" from-field="result.queryString" />
+				<set field="contractorId" from-field="parameters.contractorId" />
 				<set field="viewIndex" from-field="parameters.VIEW_INDEX" type="Integer" default-value="0" />
 				<property-to-field resource="widget" property="widget.form.defaultViewSize" field="viewSizeDefaultValue" />
 				<set field="viewSize" from-field="parameters.VIEW_SIZE" type="Integer" default-value="${viewSizeDefaultValue}" />
@@ -161,7 +162,8 @@
 				<set field="displayFields" value="[name]" />
 
 				<!-- optional: additional entity condition (named andCondition) added to search query -->
-				<!-- <script location="component://party/groovyScripts/party/StatusCondition.groovy"/> -->
+				<script location="component://borAgency/groovyScripts/StatusCondition.groovy" />
+				<set field="andCondition" value="${context.andCondition}" />
 			</actions>
 			<widgets>
 				<decorator-screen name="LookupDecorator" location="component://common/widget/CommonScreens.xml">

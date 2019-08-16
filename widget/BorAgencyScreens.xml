@@ -510,10 +510,10 @@
 	<screen name="FindConditions">
 		<section>
 			<actions>
-				<set field="contractorId" from-field="parameters.contractorId" />
+				<set field="filcontractorId" from-field="parameters.filcontractorId" />
 				<set field="headerItem" value="findConditions" />
 				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
-				<!-- <script location="component://vforder/groovyScripts/ShipmentsReport.groovy" /> -->
+				<script location="component://borAgency/groovyScripts/ListConditions.groovy" /> 
 			</actions>
 			<widgets>
 				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">

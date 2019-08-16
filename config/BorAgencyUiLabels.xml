@@ -125,4 +125,12 @@
 		<value xml:lang="en">Price List Id</value>
 		<value xml:lang="it">Id listino</value>
 	</property>
+	<property key="PriceListPrice">
+		<value xml:lang="en">Price List Price</value>
+		<value xml:lang="it">Prezzo listno</value>
+	</property>
+	<property key="PriceNet">
+		<value xml:lang="en">Net Price</value>
+		<value xml:lang="it">Prezzo netto</value>
+	</property>
 </resource>
