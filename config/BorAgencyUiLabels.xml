@@ -133,4 +133,8 @@
 		<value xml:lang="en">Net Price</value>
 		<value xml:lang="it">Prezzo netto</value>
 	</property>
+	<property key="Filter">
+		<value xml:lang="en">Filter</value>
+		<value xml:lang="it">Applica filtri</value>
+	</property>
 </resource>

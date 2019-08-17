@@ -253,8 +253,12 @@
 		<event type="service" path="" invoke="createCondition" />
 		<response name="success" type="request-redirect" value="findConditions">
 			<redirect-parameter name="filcontractorId" />
+			<redirect-parameter name="filproductId" />
 		</response>
-		<response name="error" type="view" value="EditContractDetail" />
+		<response name="error" type="request-redirect" value="findConditions">
+			<redirect-parameter name="filcontractorId" />
+			<redirect-parameter name="filproductId" />
+		</response>
 	</request-map>
 	<request-map uri="deleteCondition">
 		<security https="true" auth="true" />

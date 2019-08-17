@@ -511,6 +511,7 @@
 		<section>
 			<actions>
 				<set field="filcontractorId" from-field="parameters.filcontractorId" />
+				<set field="filproductId" from-field="parameters.filproductId" />
 				<set field="headerItem" value="findConditions" />
 				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
 				<script location="component://borAgency/groovyScripts/ListConditions.groovy" /> 

@@ -28,10 +28,14 @@ import org.apache.ofbiz.entity.util.EntityUtil
 import java.sql.Timestamp
 
 filcontractorId = parameters.filcontractorId
+filproductId = parameters.filproductId
 
 List searchCond = []
 if (filcontractorId) {
 	searchCond.add(EntityCondition.makeCondition("contractorId", EntityOperator.EQUALS, filcontractorId))
+}
+if (filproductId) {
+	searchCond.add(EntityCondition.makeCondition("productId", EntityOperator.EQUALS, filproductId))
 }
 
 conditionsList = select("conditionId","contractorName","clientName","pricelistName","productName","price","startingPrice","sc1","sc2","sc3","sc4","sc5").from("ConditionView").where(searchCond).cache(false).queryList()
@@ -50,6 +54,9 @@ for (GenericValue entry: conditionsList){
 	BigDecimal startingPrice = entry.get("startingPrice")
 	e.put("startingPrice",startingPrice)
 	BigDecimal resultPrice = startingPrice ==null ? entry.get("price") : startingPrice
+	if (resultPrice == null) {
+		resultPrice = BigDecimal.ZERO
+	}
 	BigDecimal sc1 = entry.get("sc1")==null ? BigDecimal.ZERO : entry.get("sc1")
 	BigDecimal sc2 = entry.get("sc2")==null ? BigDecimal.ZERO : entry.get("sc2")
 	BigDecimal sc3 = entry.get("sc3")==null ? BigDecimal.ZERO : entry.get("sc3")

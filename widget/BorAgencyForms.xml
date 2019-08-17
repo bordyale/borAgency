@@ -142,7 +142,8 @@
 
 
 	</form>
-	<form name="EditClient" type="single" target="updateClient" title="" default-map-name="client" default-entity-name="BorClient">
+	<form name="EditClient" type="single" target="updateClient" title="" default-map-name="client"
+		default-entity-name="BorClient">
 		<alt-target use-when="client==null" target="createClient" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
 		<field use-when="client!=null" name="clientId" title="${uiLabelMap.ClientId}">
@@ -230,7 +231,8 @@
 
 
 	</form>
-	<form name="EditProduct" type="single" target="updateProduct" title="" default-map-name="Product" default-entity-name="BorProduct">
+	<form name="EditProduct" type="single" target="updateProduct" title="" default-map-name="Product"
+		default-entity-name="BorProduct">
 		<alt-target use-when="Product==null" target="createProduct" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
 		<field use-when="Product!=null" name="productId" title="${uiLabelMap.ProductId}">
@@ -322,7 +324,8 @@
 
 
 	</form>
-	<form name="EditPriceList" type="single" target="updatePriceList" title="" default-map-name="PriceList" default-entity-name="BorPriceList">
+	<form name="EditPriceList" type="single" target="updatePriceList" title="" default-map-name="PriceList"
+		default-entity-name="BorPriceList">
 		<alt-target use-when="PriceList==null" target="createPriceList" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
 		<field use-when="PriceList!=null" name="pricelistId" title="${uiLabelMap.PriceListId}">
@@ -456,7 +459,8 @@
 
 
 	</form>
-	<form name="EditContract" type="single" target="updateContract" title="" default-map-name="Contract" default-entity-name="BorContract">
+	<form name="EditContract" type="single" target="updateContract" title="" default-map-name="Contract"
+		default-entity-name="BorContract">
 		<alt-target use-when="Contract==null" target="createContract" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
 		<field use-when="Contract!=null" name="contractId" title="${uiLabelMap.ContractId}">
@@ -543,9 +547,12 @@
 		<field name="filcontractorId" title="${uiLabelMap.ContractorId}">
 			<lookup target-form-name="LookupContractor" />
 		</field>
+		<field name="filproductId" title="${uiLabelMap.ProductId}">
+			<lookup target-form-name="LookupProduct?contractorId=${filcontractorId}" />
+		</field>
 
 
-		<field name="searchButton" title="${uiLabelMap.CommonFind}" widget-style="smallSubmit">
+		<field name="searchButton" title="${uiLabelMap.Filter}" widget-style="smallSubmit">
 			<submit button-type="button" />
 		</field>
 
@@ -610,6 +617,9 @@
 			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteCondition" also-hidden="false"
 				confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png">
 				<parameter param-name="conditionId" />
+				<parameter param-name="filcontractorId" />
+				<parameter param-name="filproductId" />
+
 			</hyperlink>
 		</field>
 
@@ -617,14 +627,13 @@
 	</form>
 
 
-
-
-
-
 	<form name="AddCondition" type="single" target="createCondition" title="">
 		<auto-fields-service service-name="createCondition" />
 
 		<field name="filcontractorId">
+			<hidden />
+		</field>
+		<field name="filproductId">
 			<hidden />
 		</field>
 
