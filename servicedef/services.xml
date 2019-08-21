@@ -184,6 +184,7 @@
 		<auto-attributes include="nonpk" mode="IN" optional="true" />
 		<override name="contractdetailId" mode="OUT" />
 		<override name="name" optional="false" />
+		<override name="contractDetailType" optional="false" />
 	</service>
 	<service name="updateContractDetail" default-entity-name="BorContractDetail"
 		engine="entity-auto" invoke="update" auth="true">

@@ -142,8 +142,7 @@
 
 
 	</form>
-	<form name="EditClient" type="single" target="updateClient" title="" default-map-name="client"
-		default-entity-name="BorClient">
+	<form name="EditClient" type="single" target="updateClient" title="" default-map-name="client" default-entity-name="BorClient">
 		<alt-target use-when="client==null" target="createClient" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
 		<field use-when="client!=null" name="clientId" title="${uiLabelMap.ClientId}">
@@ -231,8 +230,7 @@
 
 
 	</form>
-	<form name="EditProduct" type="single" target="updateProduct" title="" default-map-name="Product"
-		default-entity-name="BorProduct">
+	<form name="EditProduct" type="single" target="updateProduct" title="" default-map-name="Product" default-entity-name="BorProduct">
 		<alt-target use-when="Product==null" target="createProduct" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
 		<field use-when="Product!=null" name="productId" title="${uiLabelMap.ProductId}">
@@ -324,8 +322,7 @@
 
 
 	</form>
-	<form name="EditPriceList" type="single" target="updatePriceList" title="" default-map-name="PriceList"
-		default-entity-name="BorPriceList">
+	<form name="EditPriceList" type="single" target="updatePriceList" title="" default-map-name="PriceList" default-entity-name="BorPriceList">
 		<alt-target use-when="PriceList==null" target="createPriceList" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
 		<field use-when="PriceList!=null" name="pricelistId" title="${uiLabelMap.PriceListId}">
@@ -459,8 +456,7 @@
 
 
 	</form>
-	<form name="EditContract" type="single" target="updateContract" title="" default-map-name="Contract"
-		default-entity-name="BorContract">
+	<form name="EditContract" type="single" target="updateContract" title="" default-map-name="Contract" default-entity-name="BorContract">
 		<alt-target use-when="Contract==null" target="createContract" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
 		<field use-when="Contract!=null" name="contractId" title="${uiLabelMap.ContractId}">
@@ -494,13 +490,8 @@
 	</form>
 
 
-	<form name="ListContractDetails" type="list" list-name="exampleItems" target="updateContractDetail">
-		<actions>
-			<entity-condition entity-name="BorContractDetail">
-				<condition-expr field-name="contractId" from-field="contractId" />
-				<order-by field-name="contractdetailId" />
-			</entity-condition>
-		</actions>
+	<form name="ListContractDetails" type="list" list-name="listIt" target="updateContractDetail">
+
 		<auto-fields-service service-name="updateContractDetail" />
 		<field name="contractId">
 			<hidden />
@@ -508,11 +499,20 @@
 		<field name="contractdetailId" title="${uiLabelMap.CommonItem}">
 			<display />
 		</field>
+		<field name="contractDetailType" title="${uiLabelMap.ContractDetailType}">
+			<display />
+		</field>
 		<field name="name">
 			<display />
 		</field>
 
 		<field name="value">
+			<display />
+		</field>
+		<field name="refRevenue" title="${uiLabelMap.RefRevenue}">
+			<display />
+		</field>
+		<field name="perc"  title="${uiLabelMap.Percentage}">
 			<display />
 		</field>
 		<field name="deleteLink" title=" " widget-style="buttontext">
@@ -527,11 +527,24 @@
 	</form>
 
 	<form name="AddContractDetails" type="single" target="createContractDetail" title="">
-		<auto-fields-service service-name="createContractDetail" />
 		<field name="contractId">
 			<hidden />
 		</field>
+		<field name="contractDetailType" title="${uiLabelMap.ContractDetailType}">
+			<drop-down allow-empty="false">
+				<entity-options entity-name="Enumeration" key-field-name="enumId" description="${description} [${enumCode}]">
+					<entity-constraint name="enumTypeId" value="CONTR_DETAIL_TYPE" />
+					<entity-order-by field-name="sequenceId" />
+				</entity-options>
+			</drop-down>
+		</field>
 		<field name="name">
+			<text size="10" maxlength="20" />
+		</field>
+		<field name="value">
+			<text size="10" maxlength="20" />
+		</field>
+		<field name="refRevenue" title="${uiLabelMap.RefRevenue}">
 			<text size="10" maxlength="20" />
 		</field>
 		<field name="contractdetailId">

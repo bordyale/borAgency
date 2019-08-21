@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<site-conf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://ofbiz.apache.org/Site-Conf"
+<site-conf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ofbiz.apache.org/Site-Conf"
 	xsi:schemaLocation="http://ofbiz.apache.org/Site-Conf http://ofbiz.apache.org/dtds/site-conf.xsd">
-	<!-- The controller elements that are common to all OFBiz components can 
-		be found in the following xml file. A component can override the elements 
-		found in the common-controller.xml file. -->
+	<!-- The controller elements that are common to all OFBiz components can be found in the following xml file. A component can override 
+		the elements found in the common-controller.xml file. -->
 	<include location="component://common/webcommon/WEB-INF/common-controller.xml" />
 
 	<description>BorAgency Component Site Configuration File</description>
@@ -12,8 +10,7 @@
 	<!-- Events to run on every request before security (chains exempt) -->
 	<!-- <preprocessor> </preprocessor> -->
 	<!-- Events to run on every request after all other processing (chains exempt) -->
-	<!-- <postprocessor> <event name="test" type="java" path="org.apache.ofbiz.webapp.event.TestEvent" 
-		invoke="test"/> </postprocessor> -->
+	<!-- <postprocessor> <event name="test" type="java" path="org.apache.ofbiz.webapp.event.TestEvent" invoke="test"/> </postprocessor> -->
 
 	<request-map uri="findcontractors">
 		<security https="true" auth="true" />
@@ -217,23 +214,32 @@
 	<request-map uri="createContractDetail">
 		<security https="true" auth="true" />
 		<event type="service" path="" invoke="createContractDetail" />
-		<response name="success" type="request-redirect" value="EditContractDetail">
+		<response name="success" type="request-redirect" value="updateContractValue">
 			<redirect-parameter name="contractId" />
-			<redirect-parameter name="contractorId" />
 		</response>
-		<response name="error" type="view" value="EditContractDetail" />
+		<response name="error" type="view" value="updateContractValue" />
 	</request-map>
-	<request-map uri="updateContractDetail">
-		<security https="true" auth="true" />
-		<event type="service" path="" invoke="updateContractDetail" />
-		<response name="success" type="view" value="EditContractDetail" />
-		<response name="error" type="view" value="EditContractDetail" />
-	</request-map>
+
+	<!-- <request-map uri="updateContractDetail"> <security https="true" auth="true" /> <event type="service" path="" invoke="updateContractDetail" 
+		/> <response name="success" type="view" value="EditContractDetail" /> <response name="error" type="view" value="EditContractDetail" 
+		/> </request-map> -->
 	<request-map uri="deleteContractDetail">
 		<security https="true" auth="true" />
 		<event type="service" path="" invoke="deleteContractDetail" />
-		<response name="success" type="view" value="EditContractDetail" />
+		<response name="success" type="request-redirect" value="updateContractValue">
+			<redirect-parameter name="contractId" />
+		</response>
 		<response name="error" type="view" value="EditContractDetail" />
+	</request-map>
+	<request-map uri="updateContractValue">
+		<security https="true" auth="true" />
+		<event type="java" path="org.apache.ofbiz.boragency.BorAgencyEvents" invoke="updateContractValue" />
+		<response name="success" type="request-redirect" value="EditContractDetail">
+			<redirect-parameter name="contractId" />
+		</response>
+		<response name="error" type="request-redirect" value="EditContractDetail">
+			<redirect-parameter name="contractId" />
+		</response>
 	</request-map>
 
 
@@ -301,63 +307,40 @@
 	</request-map>
 
 	<!-- View Mappings -->
-	<view-map name="main" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#main" />
-	<view-map name="findcontractors" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#FindContractors" />
-	<view-map name="EditContractorLayer" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditContractorLayer" />
-	<view-map name="EditContractor" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditContractor" />
+	<view-map name="main" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#main" />
+	<view-map name="findcontractors" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindContractors" />
+	<view-map name="EditContractorLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditContractorLayer" />
+	<view-map name="EditContractor" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditContractor" />
 
 
-	<view-map name="findclients" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#FindClients" />
-	<view-map name="EditClientLayer" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditClientLayer" />
-	<view-map name="EditClient" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditClient" />
+	<view-map name="findclients" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindClients" />
+	<view-map name="EditClientLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditClientLayer" />
+	<view-map name="EditClient" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditClient" />
 
 
-	<view-map name="findProducts" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#FindProducts" />
-	<view-map name="EditProductLayer" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditProductLayer" />
-	<view-map name="EditProduct" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditProduct" />
+	<view-map name="findProducts" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindProducts" />
+	<view-map name="EditProductLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditProductLayer" />
+	<view-map name="EditProduct" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditProduct" />
 
 
-	<view-map name="findPriceLists" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#FindPriceLists" />
-	<view-map name="EditPriceListLayer" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceListLayer" />
-	<view-map name="EditPriceList" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceList" />
-	<view-map name="EditPriceListDetail" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceListDetail" />
+	<view-map name="findPriceLists" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindPriceLists" />
+	<view-map name="EditPriceListLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceListLayer" />
+	<view-map name="EditPriceList" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceList" />
+	<view-map name="EditPriceListDetail" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceListDetail" />
 
 
-	<view-map name="findContracts" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#FindContracts" />
-	<view-map name="EditContractLayer" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditContractLayer" />
-	<view-map name="EditContract" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditContract" />
-	<view-map name="EditContractDetail" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditContractDetail" />
+	<view-map name="findContracts" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindContracts" />
+	<view-map name="EditContractLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditContractLayer" />
+	<view-map name="EditContract" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditContract" />
+	<view-map name="EditContractDetail" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditContractDetail" />
 
 
-	<view-map name="findConditions" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#FindConditions" />
+	<view-map name="findConditions" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindConditions" />
 
 
-	<view-map name="LookupContractor" type="screen"
-		page="component://borAgency/widget/LookupScreens.xml#LookupContractor" />
-	<view-map name="LookupProduct" type="screen"
-		page="component://borAgency/widget/LookupScreens.xml#LookupProduct" />
-	<view-map name="LookupClient" type="screen"
-		page="component://borAgency/widget/LookupScreens.xml#LookupClient" />
-	<view-map name="LookupPriceList" type="screen"
-		page="component://borAgency/widget/LookupScreens.xml#LookupPriceList" />
+	<view-map name="LookupContractor" type="screen" page="component://borAgency/widget/LookupScreens.xml#LookupContractor" />
+	<view-map name="LookupProduct" type="screen" page="component://borAgency/widget/LookupScreens.xml#LookupProduct" />
+	<view-map name="LookupClient" type="screen" page="component://borAgency/widget/LookupScreens.xml#LookupClient" />
+	<view-map name="LookupPriceList" type="screen" page="component://borAgency/widget/LookupScreens.xml#LookupPriceList" />
 
 </site-conf>

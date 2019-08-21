@@ -137,4 +137,20 @@
 		<value xml:lang="en">Filter</value>
 		<value xml:lang="it">Applica filtri</value>
 	</property>
+	<property key="ContractDetailType">
+		<value xml:lang="en">Contract Detail Type</value>
+		<value xml:lang="it">Tipo Posta Contractuale</value>
+	</property>
+	<property key="RefRevenue">
+		<value xml:lang="en">Ref Revenue</value>
+		<value xml:lang="it">Fatturato Riferimento</value>
+	</property>
+	<property key="Percentage">
+		<value xml:lang="en">Percentage</value>
+		<value xml:lang="it">Percentuale (%)</value>
+	</property>
+	<property key="TotalValue">
+		<value xml:lang="en">Total Value</value>
+		<value xml:lang="it">Valore Totale</value>
+	</property>
 </resource>
