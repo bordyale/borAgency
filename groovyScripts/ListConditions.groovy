@@ -38,7 +38,7 @@ if (filproductId) {
 	searchCond.add(EntityCondition.makeCondition("productId", EntityOperator.EQUALS, filproductId))
 }
 
-conditionsList = select("conditionId","contractorName","clientName","pricelistName","productName","price","startingPrice","sc1","sc2","sc3","sc4","sc5").from("ConditionView").where(searchCond).cache(false).queryList()
+conditionsList = select("conditionId","contractorName","clientName","pricelistName","productName","price","startingPrice","sc1","sc2","sc3","sc4","sc5","totalValue").from("ConditionView").where(searchCond).cache(false).queryList()
 
 conditionsList = EntityUtil.orderBy(conditionsList,  ["productId"])
 
@@ -62,16 +62,19 @@ for (GenericValue entry: conditionsList){
 	BigDecimal sc3 = entry.get("sc3")==null ? BigDecimal.ZERO : entry.get("sc3")
 	BigDecimal sc4 = entry.get("sc4")==null ? BigDecimal.ZERO : entry.get("sc4")
 	BigDecimal sc5 = entry.get("sc5")==null ? BigDecimal.ZERO : entry.get("sc5")
+	BigDecimal contractValue = entry.get("totalValue")==null ? BigDecimal.ZERO : entry.get("totalValue")
 	e.put("sc1",sc1)
 	e.put("sc2",sc2)
 	e.put("sc3",sc3)
 	e.put("sc4",sc4)
 	e.put("sc5",sc5)
+	e.put("contractValue",contractValue)
 	resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc1.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc1.divide(new BigDecimal(100))))
 	resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc2.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc2.divide(new BigDecimal(100))))
 	resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc3.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc3.divide(new BigDecimal(100))))
 	resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc4.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc4.divide(new BigDecimal(100))))
 	resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc5.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc5.divide(new BigDecimal(100))))
+	resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(contractValue.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : contractValue.divide(new BigDecimal(100))))
 	e.put("resultPrice",resultPrice)
 	hashMaps.add(e)
 }

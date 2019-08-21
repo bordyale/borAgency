@@ -618,6 +618,9 @@
 		<field name="sc5">
 			<display />
 		</field>
+		<field name="contractValue">
+			<display />
+		</field>
 		<field name="resultPrice">
 			<display />
 		</field>
@@ -652,6 +655,9 @@
 
 		<field name="productId" title="${uiLabelMap.ProductId}">
 			<lookup target-form-name="LookupProduct?contractorId=${filcontractorId}" />
+		</field>
+		<field name="contractId" title="${uiLabelMap.ContractId}">
+			<lookup target-form-name="LookupContract?contractorId=${filcontractorId}" />
 		</field>
 		<field name="clientId" title="${uiLabelMap.ClientId}">
 			<lookup target-form-name="LookupClient" />
