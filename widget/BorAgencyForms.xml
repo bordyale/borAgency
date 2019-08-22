@@ -512,10 +512,10 @@
 		<field name="refRevenue" title="${uiLabelMap.RefRevenue}">
 			<display />
 		</field>
-		<field name="perc"  title="${uiLabelMap.Percentage}">
+		<field name="perc" title="${uiLabelMap.Percentage}">
 			<display />
 		</field>
-		<field name="deleteLink" title=" " widget-style="buttontext">
+		<field name="deleteLink" use-when="modeLayer==null" title=" " widget-style="buttontext">
 			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteContractDetail" also-hidden="false"
 				confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png">
 				<parameter param-name="contractId" />
@@ -580,19 +580,19 @@
 			/> <field-map field-name="entityName" from-field="entityName" /> <field-map field-name="orderBy" from-field="sortField" /> </service> 
 			</actions> -->
 
-		<field name="conditionId">
+		<field name="conditionId" title="${uiLabelMap.GeneralId}">
 			<display />
 		</field>
-		<field name="contractorName">
+		<field name="contractorName" title="${uiLabelMap.ContractorName}">
 			<display />
 		</field>
-		<field name="clientName">
+		<field name="clientName" title="${uiLabelMap.ClientName}">
 			<display />
 		</field>
-		<field name="pricelistName">
+		<field name="pricelistName" title="${uiLabelMap.PriceListName}">
 			<display />
 		</field>
-		<field name="productName">
+		<field name="productName" title="${uiLabelMap.ProductName}">
 			<display />
 		</field>
 		<field name="price" title="${uiLabelMap.PriceListPrice}">
@@ -601,8 +601,6 @@
 		<field name="startingPrice" title="${uiLabelMap.PriceNet}">
 			<display />
 		</field>
-
-
 		<field name="sc1">
 			<display />
 		</field>
@@ -618,17 +616,14 @@
 		<field name="sc5">
 			<display />
 		</field>
-		<field name="contractValue">
+		<field name="contractValue" title="${uiLabelMap.ContractValue}">
+			<hyperlink description="${contractValue}" text="${uiLabelMap.NewCommon}" link-type="layered-modal" target="ContractDetailLayer" also-hidden="false">
+				<parameter param-name="contractId" />
+			</hyperlink>
+		</field>
+		<field name="resultPrice" title="${uiLabelMap.ResultPrice}">
 			<display />
 		</field>
-		<field name="resultPrice">
-			<display />
-		</field>
-
-
-
-
-
 		<field name="deleteLink" title=" " widget-style="buttontext">
 			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteCondition" also-hidden="false"
 				confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png">
@@ -638,8 +633,50 @@
 
 			</hyperlink>
 		</field>
-
-
+	</form>
+	<form name="ConditionExport" type="list" list-name="listIt" odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
+		<field name="conditionId" title="${uiLabelMap.GeneralId}">
+			<display />
+		</field>
+		<field name="contractorName" title="${uiLabelMap.ContractorName}">
+			<display />
+		</field>
+		<field name="clientName" title="${uiLabelMap.ClientName}">
+			<display />
+		</field>
+		<field name="pricelistName" title="${uiLabelMap.PriceListName}">
+			<display />
+		</field>
+		<field name="productName" title="${uiLabelMap.ProductName}">
+			<display />
+		</field>
+		<field name="price" title="${uiLabelMap.PriceListPrice}">
+			<display />
+		</field>
+		<field name="startingPrice" title="${uiLabelMap.PriceNet}">
+			<display />
+		</field>
+		<field name="sc1">
+			<display />
+		</field>
+		<field name="sc2">
+			<display />
+		</field>
+		<field name="sc3">
+			<display />
+		</field>
+		<field name="sc4">
+			<display />
+		</field>
+		<field name="sc5">
+			<display />
+		</field>
+		<field name="contractValue" title="${uiLabelMap.ContractValue}">
+			<display />
+		</field>
+		<field name="resultPrice" title="${uiLabelMap.ResultPrice}">
+			<display />
+		</field>
 	</form>
 
 
@@ -670,6 +707,8 @@
 			<submit button-type="button" request-confirmation="true" />
 		</field>
 	</form>
+
+
 
 
 

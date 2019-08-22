@@ -272,6 +272,14 @@
 		<response name="success" type="view" value="findConditions" />
 		<response name="error" type="view" value="findConditions" />
 	</request-map>
+	<request-map uri="ConditionExport.csv">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="ConditionExport"/>
+    </request-map>
+    <request-map uri="ContractDetailLayer">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="ContractDetailLayer" />
+	</request-map>
 
 
 
@@ -340,6 +348,8 @@
 
 
 	<view-map name="findConditions" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindConditions" />
+	<view-map name="ConditionExport" type="screencsv" page="component://borAgency/widget/BorAgencyScreens.xml#ConditionExportCsv" content-type="text/csv" encoding="none"/>
+	<view-map name="ContractDetailLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#ContractDetailLayer" />
 
 
 	<view-map name="LookupContractor" type="screen" page="component://borAgency/widget/LookupScreens.xml#LookupContractor" />

@@ -153,4 +153,36 @@
 		<value xml:lang="en">Total Value</value>
 		<value xml:lang="it">Valore Totale</value>
 	</property>
+	<property key="ContractorName">
+		<value xml:lang="en">Contractor Name</value>
+		<value xml:lang="it">Nome Azienda</value>
+	</property>
+	<property key="ClientName">
+		<value xml:lang="en">Client Name</value>
+		<value xml:lang="it">Nome Cliente</value>
+	</property>
+	<property key="PriceListName">
+		<value xml:lang="en">Price List Name</value>
+		<value xml:lang="it">Nome Listino</value>
+	</property>
+	<property key="ProductName">
+		<value xml:lang="en">Product Name</value>
+		<value xml:lang="it">Nome Prodotto</value>
+	</property>
+	<property key="ContractValue">
+		<value xml:lang="en">Contract Value</value>
+		<value xml:lang="it">Valore Contratto</value>
+	</property>
+	<property key="ResultPrice">
+		<value xml:lang="en">Result Price</value>
+		<value xml:lang="it">Prezzo Risultante</value>
+	</property>
+	<property key="ContractName">
+		<value xml:lang="en">Contract Name</value>
+		<value xml:lang="it">Nome Contratto</value>
+	</property>
+	<property key="CommonInfos">
+		<value xml:lang="en">Informations</value>
+		<value xml:lang="it">Informazioni</value>
+	</property>
 </resource>

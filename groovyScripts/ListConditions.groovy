@@ -38,7 +38,7 @@ if (filproductId) {
 	searchCond.add(EntityCondition.makeCondition("productId", EntityOperator.EQUALS, filproductId))
 }
 
-conditionsList = select("conditionId","contractorName","clientName","pricelistName","productName","price","startingPrice","sc1","sc2","sc3","sc4","sc5","totalValue").from("ConditionView").where(searchCond).cache(false).queryList()
+conditionsList = select("conditionId","contractorName","clientName","pricelistName","productName","price","startingPrice","sc1","sc2","sc3","sc4","sc5","contractId","totalValue").from("ConditionView").where(searchCond).cache(false).queryList()
 
 conditionsList = EntityUtil.orderBy(conditionsList,  ["productId"])
 
@@ -46,6 +46,7 @@ List<HashMap<String,Object>> hashMaps = new ArrayList<HashMap<String,Object>>()
 for (GenericValue entry: conditionsList){
 	Map<String,Object> e = new HashMap<String,Object>()
 	e.put("conditionId",entry.get("conditionId"))
+	e.put("contractId",entry.get("contractId"))
 	e.put("contractorName",entry.get("contractorName"))
 	e.put("clientName",entry.get("clientName"))
 	e.put("pricelistName",entry.get("pricelistName"))

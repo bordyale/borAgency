@@ -522,8 +522,12 @@
 			<widgets>
 				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">
 					<decorator-section name="body">
-						<!-- <container style="button-bar"> <link target="ShipmentsReportPdf" text="${uiLabelMap.CommonPdf}" style="buttontext create" 
-							target-window="_blank"> <parameter param-name="fromDate" /> <parameter param-name="thruDate" /> </link> </container> -->
+						<container style="button-bar">
+							<link target="ConditionExport.csv" text="${uiLabelMap.CommonExport}" style="buttontext create" target-window="_blank">
+								<parameter param-name="filcontractorId" />
+								<parameter param-name="filproductId" />
+							</link>
+						</container>
 						<screenlet title="${uiLabelMap.Filter}">
 							<include-form name="FilterConditions" location="component://borAgency/widget/BorAgencyForms.xml" />
 						</screenlet>
@@ -535,6 +539,59 @@
 						</screenlet>
 					</decorator-section>
 				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
+
+	<screen name="ConditionExportCsv">
+		<section>
+			<actions>
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
+				<property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true" />
+				<set field="filcontractorId" from-field="parameters.filcontractorId" />
+				<set field="filproductId" from-field="parameters.filproductId" />
+
+				<set field="viewIndex" from-field="parameters.VIEW_INDEX" type="Integer" default-value="0" />
+				<property-to-field resource="widget" property="widget.form.defaultViewSize" field="viewSizeDefaultValue" />
+				<set field="viewSize" from-field="parameters.VIEW_SIZE" type="Integer" default-value="${viewSizeDefaultValue}" />
+
+				<!-- <entity-one entity-name="Facility" value-field="facility" use-cache="true"/> -->
+				<script location="component://borAgency/groovyScripts/ListConditions.groovy" />
+			</actions>
+			<widgets>
+				<container>
+					<label style="h2" text="${uiLabelMap.Conditions}" />
+				</container>
+				<include-form name="ConditionExport" location="component://borAgency/widget/BorAgencyForms.xml" />
+
+			</widgets>
+		</section>
+	</screen>
+
+	<screen name="ContractDetailLayer">
+		<section>
+			<actions>
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
+				<property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true" />
+				<set field="contractId" from-field="parameters.contractId" />
+				<!-- <set field="workpapersId" from-field="parameters.workpapersId" /> -->
+				<set field="tabButtonItem" value="EditContractDetail" />
+				<set field="modeLayer" value="Y" />
+				<entity-one entity-name="BorContractDetail" value-field="ContractDetail" />
+				<entity-one entity-name="BorContract" value-field="Contract" />
+				<set field="contractorId" from-field="Contract.contractorId" />
+				<script location="component://borAgency/groovyScripts/ContractDetail.groovy" />
+			</actions>
+			<widgets>
+				<screenlet title="${uiLabelMap.CommonInfos}">
+					<container>
+						<label style="h2" text="${uiLabelMap.GeneralId} : ${Contract.contractId}" />
+					</container>
+					<container>
+						<label style="h2" text="${uiLabelMap.ContractName} : ${Contract.name}" />
+					</container>
+				</screenlet>
+				<include-form name="ListContractDetails" location="component://borAgency/widget/BorAgencyForms.xml" />
 			</widgets>
 		</section>
 	</screen>
