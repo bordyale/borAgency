@@ -185,4 +185,16 @@
 		<value xml:lang="en">Informations</value>
 		<value xml:lang="it">Informazioni</value>
 	</property>
+	<property key="IsProductBought">
+		<value xml:lang="en">Product Bought</value>
+		<value xml:lang="it">Prodotto Acquistato</value>
+	</property>
+	<property key="ValidFrom">
+		<value xml:lang="en">Valid From</value>
+		<value xml:lang="it">Valida Da</value>
+	</property>
+	<property key="ValidTo">
+		<value xml:lang="en">Valid To</value>
+		<value xml:lang="it">Valido Fino A</value>
+	</property>
 </resource>

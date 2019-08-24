@@ -272,6 +272,12 @@
 		<response name="success" type="view" value="findConditions" />
 		<response name="error" type="view" value="findConditions" />
 	</request-map>
+	<request-map uri="updateCondition">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="updateCondition" />
+		<response name="success" type="view" value="findConditions" />
+		<response name="error" type="view" value="findConditions" />
+	</request-map>
 	<request-map uri="ConditionExport.csv">
         <security https="true" auth="true"/>
         <response name="success" type="view" value="ConditionExport"/>

@@ -38,7 +38,7 @@ if (filproductId) {
 	searchCond.add(EntityCondition.makeCondition("productId", EntityOperator.EQUALS, filproductId))
 }
 
-conditionsList = select("conditionId","contractorName","clientName","pricelistName","productName","price","startingPrice","sc1","sc2","sc3","sc4","sc5","contractId","totalValue").from("ConditionView").where(searchCond).cache(false).queryList()
+conditionsList = select("conditionId","contractorName","clientName","pricelistName","productName","price","startingPrice","sc1","sc2","sc3","sc4","sc5","contractId","totalValue","isProductBought","validFrom","validTo").from("ConditionView").where(searchCond).cache(false).queryList()
 
 conditionsList = EntityUtil.orderBy(conditionsList,  ["productId"])
 
@@ -52,6 +52,9 @@ for (GenericValue entry: conditionsList){
 	e.put("pricelistName",entry.get("pricelistName"))
 	e.put("productName",entry.get("productName"))
 	e.put("price",entry.get("price"))
+	e.put("isProductBought",entry.get("isProductBought"))
+	e.put("validFrom",entry.get("validFrom"))
+	e.put("validTo",entry.get("validTo"))
 	BigDecimal startingPrice = entry.get("startingPrice")
 	e.put("startingPrice",startingPrice)
 	BigDecimal resultPrice = startingPrice ==null ? entry.get("price") : startingPrice
