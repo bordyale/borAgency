@@ -9,8 +9,8 @@
 	<copyright></copyright>
 	<version></version>
 
-	<entity entity-name="BorCondition" package-name="org.apache.ofbiz.order.boragency"
-		never-cache="true" title="Condition Entity">
+	<entity entity-name="BorCondition" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
+		title="Condition Entity">
 		<field name="conditionId" type="id-ne"></field>
 		<field name="productId" type="id-ne"></field>
 		<field name="pricelistId" type="id-ne"></field>
@@ -40,15 +40,15 @@
 		</relation>
 	</entity>
 
-	<entity entity-name="BorContractor" package-name="org.apache.ofbiz.order.boragency"
-		never-cache="true" title="Condition Entity">
+	<entity entity-name="BorContractor" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
+		title="Condition Entity">
 		<field name="contractorId" type="id-ne"></field>
 		<field name="name" type="value"></field>
 		<prim-key field="contractorId" />
 	</entity>
 
-	<entity entity-name="BorPriceList" package-name="org.apache.ofbiz.order.boragency"
-		never-cache="true" title="Condition Entity">
+	<entity entity-name="BorPriceList" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
+		title="Condition Entity">
 		<field name="pricelistId" type="id-ne"></field>
 		<field name="contractorId" type="id-ne"></field>
 		<field name="name" type="value"></field>
@@ -58,8 +58,8 @@
 		</relation>
 	</entity>
 
-	<entity entity-name="BorPriceListDetail" package-name="org.apache.ofbiz.order.boragency"
-		never-cache="true" title="Condition Entity">
+	<entity entity-name="BorPriceListDetail" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
+		title="Condition Entity">
 		<field name="pricelistId" type="id-ne"></field>
 		<field name="productId" type="id-ne"></field>
 		<field name="price" type="fixed-point"></field>
@@ -73,8 +73,8 @@
 		</relation>
 	</entity>
 
-	<entity entity-name="BorProduct" package-name="org.apache.ofbiz.order.boragency"
-		never-cache="true" title="Condition Entity">
+	<entity entity-name="BorProduct" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
+		title="Condition Entity">
 		<field name="productId" type="id-ne"></field>
 		<field name="contractorId" type="id-ne"></field>
 		<field name="name" type="value"></field>
@@ -84,20 +84,22 @@
 		</relation>
 	</entity>
 
-	<entity entity-name="BorContract" package-name="org.apache.ofbiz.order.boragency"
-		never-cache="true" title="Condition Entity">
+	<entity entity-name="BorContract" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
+		title="Condition Entity">
 		<field name="contractId" type="id-ne"></field>
 		<field name="contractorId" type="id-ne"></field>
 		<field name="name" type="value"></field>
 		<field name="totalValue" type="fixed-point"></field>
+		<field name="validFrom" type="date-time"></field>
+		<field name="validTo" type="date-time"></field>
 		<prim-key field="contractId" />
 		<relation type="one" fk-name="contractorId" rel-entity-name="BorContractor">
 			<key-map field-name="contractorId" />
 		</relation>
 	</entity>
 
-	<entity entity-name="BorContractDetail" package-name="org.apache.ofbiz.order.boragency"
-		never-cache="true" title="Condition Entity">
+	<entity entity-name="BorContractDetail" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
+		title="Condition Entity">
 		<field name="contractId" type="id-ne"></field>
 		<field name="contractdetailId" type="id-ne"></field>
 		<field name="contractDetailType" type="id-ne"></field>
@@ -111,8 +113,8 @@
 		</relation>
 	</entity>
 
-	<entity entity-name="BorClient" package-name="org.apache.ofbiz.order.boragency"
-		never-cache="true" title="Condition Entity">
+	<entity entity-name="BorClient" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
+		title="Condition Entity">
 		<field name="clientId" type="id-ne"></field>
 		<field name="name" type="value"></field>
 		<prim-key field="clientId" />

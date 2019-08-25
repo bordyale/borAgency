@@ -445,14 +445,19 @@
 
 		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext" sort-field="true">
 			<display />
-
-
 		</field>
+		<field name="validFrom" title="${uiLabelMap.ValidFrom}">
+			<display type="date" />
+		</field>
+		<field name="validTo" title="${uiLabelMap.ValidTo}">
+			<display type="date" />
+		</field>
+
 
 
 		<field name="deleteLink" title=" " widget-style="buttontext">
 			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteContract" also-hidden="false"
-				confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png">
+				confirmation-message="${uiLabelMap.CommonConfirmDelete}">
 				<parameter param-name="contractId" />
 			</hyperlink>
 		</field>
@@ -477,6 +482,12 @@
 
 		<field name="name">
 			<text size="10" maxlength="20" />
+		</field>
+		<field name="validFrom" title="${uiLabelMap.ValidFrom}">
+			<date-time type="date" />
+		</field>
+		<field name="validTo" title="${uiLabelMap.ValidTo}">
+			<date-time type="date" />
 		</field>
 
 
@@ -521,7 +532,7 @@
 		</field>
 		<field name="deleteLink" use-when="modeLayer==null" title=" " widget-style="buttontext">
 			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteContractDetail" also-hidden="false"
-				confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png">
+				confirmation-message="${uiLabelMap.CommonConfirmDelete}">
 				<parameter param-name="contractId" />
 				<parameter param-name="contractdetailId" />
 				<parameter param-name="contractorId" />
@@ -754,7 +765,7 @@
 		<field name="validFrom" required-field="true">
 			<hidden value="${nowTimestamp}" />
 		</field>
-		<field name="validTo">
+		<field name="validTo" title="${uiLabelMap.ValidTo}">
 			<date-time type="date" />
 		</field>
 
