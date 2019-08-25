@@ -29,6 +29,7 @@ import java.sql.Timestamp
 
 filcontractorId = parameters.filcontractorId
 filproductId = parameters.filproductId
+filclientId = parameters.filclientId
 
 List searchCond = []
 if (filcontractorId) {
@@ -36,6 +37,9 @@ if (filcontractorId) {
 }
 if (filproductId) {
 	searchCond.add(EntityCondition.makeCondition("productId", EntityOperator.EQUALS, filproductId))
+}
+if (filclientId) {
+	searchCond.add(EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, filclientId))
 }
 
 conditionsList = select("conditionId","contractorName","clientName","pricelistName","productName","price","startingPrice","sc1","sc2","sc3","sc4","sc5","contractId","totalValue","isProductBought","validFrom","validTo").from("ConditionView").where(searchCond).cache(false).queryList()

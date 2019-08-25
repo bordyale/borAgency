@@ -560,9 +560,12 @@
 	</form>
 
 
-	<form name="FilterConditions" type="single" target="findConditions">
+	<form name="FilterGeneral" type="single" target="findConditions">
 		<field name="filcontractorId" title="${uiLabelMap.ContractorId}">
 			<lookup target-form-name="LookupContractor" />
+		</field>
+		<field name="filclientId" title="${uiLabelMap.ClientId}">
+			<lookup target-form-name="LookupClient" />
 		</field>
 		<field name="filproductId" title="${uiLabelMap.ProductId}">
 			<lookup target-form-name="LookupProduct?contractorId=${filcontractorId}" />
@@ -577,8 +580,9 @@
 	</form>
 
 
-	<form name="ListConditions" type="list" list-name="listIt" target="updateCondition" paginate-target="updateCondition" odd-row-style="alternate-row"
-		default-table-style="basic-table hover-bar" header-row-style="header-row-2" override-list-size="true">
+	<form name="ListConditions" type="list" list-name="listIt" target="updateCondition" paginate-target="updateCondition"
+		odd-row-style="alternate-row" default-table-style="basic-table hover-bar" header-row-style="header-row-2"
+		separate-columns="true">
 		<!-- <actions> <set field="requestParameters.noConditionFind" value="Y" /> <set field="entityName" value="ConditionView" /> <service 
 			service-name="performFind" result-map="result" result-map-list="listIt"> <field-map field-name="inputFields" from-field="requestParameters" 
 			/> <field-map field-name="entityName" from-field="entityName" /> <field-map field-name="orderBy" from-field="sortField" /> </service> 
@@ -587,6 +591,9 @@
 			<hidden />
 		</field>
 		<field name="filproductId">
+			<hidden />
+		</field>
+		<field name="filclientId">
 			<hidden />
 		</field>
 		<field name="conditionId" title="${uiLabelMap.GeneralId}">
@@ -604,12 +611,7 @@
 		<field name="productName" title="${uiLabelMap.ProductName}">
 			<display />
 		</field>
-		<field name="isProductBought" title="${uiLabelMap.IsProductBought}">
-			<drop-down allow-empty="true">
-				<option key="Y" description="${uiLabelMap.CommonY}" />
-				<option key="N" description="${uiLabelMap.CommonN}" />
-			</drop-down>
-		</field>
+
 		<field name="price" title="${uiLabelMap.PriceListPrice}">
 			<display />
 		</field>
@@ -640,23 +642,36 @@
 		<field name="resultPrice" title="${uiLabelMap.ResultPrice}">
 			<display />
 		</field>
-		
-		
+
+
 		<field name="deleteLink" title=" " widget-style="buttontext">
 			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteCondition" also-hidden="false"
-				confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png">
+				confirmation-message="${uiLabelMap.CommonConfirmDelete}">
 				<parameter param-name="conditionId" />
 				<parameter param-name="filcontractorId" />
 				<parameter param-name="filproductId" />
+				<parameter param-name="filclientId" />
 			</hyperlink>
 		</field>
-		
+
+
+		<field name="validFrom" title="${uiLabelMap.ValidFrom}">
+			<display type="date" />
+		</field>
+
+		<field name="validTo" title="${uiLabelMap.ValidTo}">
+			<date-time type="date" />
+		</field>
+		<field name="isProductBought" title="${uiLabelMap.IsProductBought}">
+			<drop-down allow-empty="true">
+				<option key="Y" description="${uiLabelMap.CommonY}" />
+				<option key="N" description="${uiLabelMap.CommonN}" />
+			</drop-down>
+		</field>
 		<field name="submitButton" title="${uiLabelMap.CommonUpdate}">
 			<submit button-type="button" />
 		</field>
-		<field name="validFrom" title="${uiLabelMap.ValidFrom}">
-			<display />
-		</field>
+
 	</form>
 	<form name="ConditionExport" type="list" list-name="listIt" odd-row-style="alternate-row"
 		default-table-style="basic-table hover-bar">
@@ -714,14 +729,17 @@
 		<field name="filproductId">
 			<hidden />
 		</field>
+		<field name="filclientId">
+			<hidden />
+		</field>
 
-		<field name="productId" title="${uiLabelMap.ProductId}">
+		<field name="productId" title="${uiLabelMap.ProductId}" required-field="true">
 			<lookup target-form-name="LookupProduct?contractorId=${filcontractorId}" />
 		</field>
 		<field name="contractId" title="${uiLabelMap.ContractId}">
 			<lookup target-form-name="LookupContract?contractorId=${filcontractorId}" />
 		</field>
-		<field name="clientId" title="${uiLabelMap.ClientId}">
+		<field name="clientId" title="${uiLabelMap.ClientId}" required-field="true">
 			<lookup target-form-name="LookupClient" />
 		</field>
 		<field name="pricelistId" title="${uiLabelMap.PriceListId}">
@@ -732,6 +750,12 @@
 				<option key="Y" description="${uiLabelMap.CommonY}" />
 				<option key="N" description="${uiLabelMap.CommonN}" />
 			</drop-down>
+		</field>
+		<field name="validFrom" required-field="true">
+			<hidden value="${nowTimestamp}" />
+		</field>
+		<field name="validTo">
+			<date-time type="date" />
 		</field>
 
 		<field name="submitButton" title="${uiLabelMap.CommonAdd}">
