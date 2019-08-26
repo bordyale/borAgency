@@ -143,7 +143,8 @@
 
 
 	</form>
-	<form name="EditClient" type="single" target="updateClient" title="" default-map-name="client" default-entity-name="BorClient">
+	<form name="EditClient" type="single" target="updateClient" title="" default-map-name="client"
+		default-entity-name="BorClient">
 		<alt-target use-when="client==null" target="createClient" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
 		<field use-when="client!=null" name="clientId" title="${uiLabelMap.ClientId}">
@@ -231,7 +232,8 @@
 
 
 	</form>
-	<form name="EditProduct" type="single" target="updateProduct" title="" default-map-name="Product" default-entity-name="BorProduct">
+	<form name="EditProduct" type="single" target="updateProduct" title="" default-map-name="Product"
+		default-entity-name="BorProduct">
 		<alt-target use-when="Product==null" target="createProduct" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
 		<field use-when="Product!=null" name="productId" title="${uiLabelMap.ProductId}">
@@ -323,7 +325,8 @@
 
 
 	</form>
-	<form name="EditPriceList" type="single" target="updatePriceList" title="" default-map-name="PriceList" default-entity-name="BorPriceList">
+	<form name="EditPriceList" type="single" target="updatePriceList" title="" default-map-name="PriceList"
+		default-entity-name="BorPriceList">
 		<alt-target use-when="PriceList==null" target="createPriceList" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
 		<field use-when="PriceList!=null" name="pricelistId" title="${uiLabelMap.PriceListId}">
@@ -462,7 +465,8 @@
 
 
 	</form>
-	<form name="EditContract" type="single" target="updateContract" title="" default-map-name="Contract" default-entity-name="BorContract">
+	<form name="EditContract" type="single" target="updateContract" title="" default-map-name="Contract"
+		default-entity-name="BorContract">
 		<alt-target use-when="Contract==null" target="createContract" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
 		<field use-when="Contract!=null" name="contractId" title="${uiLabelMap.ContractId}">
@@ -569,7 +573,7 @@
 
 
 	<form name="FilterGeneral" type="single" target="findConditions">
-		<alt-target use-when="priceCheckPage!=null" target="findPriceChecks" />
+		<alt-target use-when="priceCheckPage=='Y'" target="findPriceChecks" />
 		<field name="filcontractorId" title="${uiLabelMap.ContractorId}">
 			<lookup target-form-name="LookupContractor" />
 		</field>
@@ -590,7 +594,8 @@
 
 
 	<form name="ListConditions" type="list" list-name="listIt" target="updateCondition" paginate-target="updateCondition"
-		odd-row-style="alternate-row" default-table-style="basic-table hover-bar" header-row-style="header-row-2" separate-columns="true">
+		odd-row-style="alternate-row" default-table-style="basic-table hover-bar" header-row-style="header-row-2"
+		separate-columns="true">
 		<!-- <actions> <set field="requestParameters.noConditionFind" value="Y" /> <set field="entityName" value="ConditionView" /> <service 
 			service-name="performFind" result-map="result" result-map-list="listIt"> <field-map field-name="inputFields" from-field="requestParameters" 
 			/> <field-map field-name="entityName" from-field="entityName" /> <field-map field-name="orderBy" from-field="sortField" /> </service> 
@@ -642,8 +647,8 @@
 			<display />
 		</field>
 		<field name="contractValue" title="${uiLabelMap.ContractValue}">
-			<hyperlink description="${contractValue}" text="${uiLabelMap.NewCommon}" link-type="layered-modal" target="ContractDetailLayer"
-				also-hidden="false">
+			<hyperlink description="${contractValue}" text="${uiLabelMap.NewCommon}" link-type="layered-modal"
+				target="ContractDetailLayer" also-hidden="false">
 				<parameter param-name="contractId" />
 			</hyperlink>
 		</field>
@@ -681,7 +686,8 @@
 		</field>
 
 	</form>
-	<form name="ConditionExport" type="list" list-name="listIt" odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
+	<form name="ConditionExport" type="list" list-name="listIt" odd-row-style="alternate-row"
+		default-table-style="basic-table hover-bar">
 		<field name="conditionId" title="${uiLabelMap.GeneralId}">
 			<display />
 		</field>
@@ -820,7 +826,8 @@
 
 
 	<form name="ListPriceChecks" type="list" list-name="listIt" target="updatePriceCheck" paginate-target="updatePriceCheck"
-		odd-row-style="alternate-row" default-table-style="basic-table hover-bar" header-row-style="header-row-2" separate-columns="true">
+		odd-row-style="alternate-row" default-table-style="basic-table hover-bar" header-row-style="header-row-2"
+		separate-columns="true">
 
 		<field name="filcontractorId">
 			<hidden />
@@ -850,7 +857,7 @@
 		<field name="deleteLink" title=" " widget-style="buttontext">
 			<hyperlink description="${uiLabelMap.CommonDelete}" target="deletePriceCheck" also-hidden="false"
 				confirmation-message="${uiLabelMap.CommonConfirmDelete}">
-				<parameter param-name="conditionId" />
+				<parameter param-name="pricecheckId" />
 				<parameter param-name="filcontractorId" />
 				<parameter param-name="filproductId" />
 				<parameter param-name="filclientId" />
@@ -879,17 +886,18 @@
 		<field name="productId" title="${uiLabelMap.ProductId}" required-field="true">
 			<lookup target-form-name="LookupProduct?contractorId=${filcontractorId}" />
 		</field>
-		<field name="clientId" title="${uiLabelMap.ClientId}" required-field="true">
-			<lookup target-form-name="LookupClient" />
+		
+		<field name="clientshopId" title="${uiLabelMap.ClientShopId}" required-field="true">
+			<lookup target-form-name="LookupClientShop?clientId=${filclientId}" />
 		</field>
 
 		<field name="date">
-			<date-time type="date" />
+			<date-time type="date" default-value="${nowTimestamp}"/>
 		</field>
 		<field name="price">
 			<text size="10" maxlength="20" />
 		</field>
-		
+
 
 		<field name="submitButton" title="${uiLabelMap.CommonAdd}">
 			<submit button-type="button" request-confirmation="true" />

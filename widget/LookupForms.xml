@@ -128,7 +128,7 @@
 		</field>
 
 	</form>
-	
+
 	<form name="LookupPriceList" target="LookupPriceList" type="single" header-row-style="header-row"
 		default-table-style="basic-table">
 		<!--<auto-fields-entity entity-name="PartyNameView" default-field-type="find"/> -->
@@ -146,8 +146,8 @@
 		</field>
 	</form>
 
-	<form name="ListLookupPriceList" type="list" list-name="listIt" paginate-target="LookupPriceList" odd-row-style="alternate-row"
-		default-table-style="basic-table hover-bar">
+	<form name="ListLookupPriceList" type="list" list-name="listIt" paginate-target="LookupPriceList"
+		odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
 		<!-- <actions> <set field="inputFields" from-field="parameters"/> <set field="orderBy" value="contractorId"/> <set field="entityName" 
 			value="BorPriceList"/> <script location="component://party/groovyScripts/party/FindLookUp.groovy"/> </actions> -->
 		<actions>
@@ -168,7 +168,7 @@
 		</field>
 
 	</form>
-	
+
 	<form name="LookupContract" target="LookupContract" type="single" header-row-style="header-row"
 		default-table-style="basic-table">
 		<!--<auto-fields-entity entity-name="PartyNameView" default-field-type="find"/> -->
@@ -186,8 +186,8 @@
 		</field>
 	</form>
 
-	<form name="ListLookupContract" type="list" list-name="listIt" paginate-target="LookupContract" odd-row-style="alternate-row"
-		default-table-style="basic-table hover-bar">
+	<form name="ListLookupContract" type="list" list-name="listIt" paginate-target="LookupContract"
+		odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
 		<!-- <actions> <set field="inputFields" from-field="parameters"/> <set field="orderBy" value="contractorId"/> <set field="entityName" 
 			value="BorContractor"/> <script location="component://party/groovyScripts/party/FindLookUp.groovy"/> </actions> -->
 		<actions>
@@ -200,6 +200,49 @@
 		<!--<auto-fields-entity entity-name="PartyNameView" default-field-type="display"/> -->
 		<field name="contractId" title="${uiLabelMap.GeneralId}" widget-style="smallSubmit">
 			<hyperlink description="${contractId}" target="javascript:set_value('${contractId}')" also-hidden="false"
+				target-type="plain" />
+		</field>
+
+		<field name="name" title="${uiLabelMap.Name}">
+			<display />
+		</field>
+
+	</form>
+
+	<form name="LookupClientShop" target="LookupClientShop" type="single" header-row-style="header-row"
+		default-table-style="basic-table">
+		<!--<auto-fields-entity entity-name="PartyNameView" default-field-type="find"/> -->
+		<field name="clientId">
+			<hidden />
+		</field>
+		<field name="clientshopId" title="${uiLabelMap.GeneralId}">
+			<text-find />
+		</field>
+		<field name="name" title="${uiLabelMap.Name}">
+			<text-find />
+		</field>
+		<field name="noConditionFind">
+			<hidden value="Y" /><!-- if this isn't there then with all fields empty no query will be done -->
+		</field>
+		<field name="submitButton" title="${uiLabelMap.CommonFind}">
+			<submit button-type="button" />
+		</field>
+	</form>
+
+	<form name="ListLookupClientShop" type="list" list-name="listIt" paginate-target="LookupClientShop"
+		odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
+		<!-- <actions> <set field="inputFields" from-field="parameters"/> <set field="orderBy" value="contractorId"/> <set field="entityName" 
+			value="BorClient"/> <script location="component://party/groovyScripts/party/FindLookUp.groovy"/> </actions> -->
+		<actions>
+			<service service-name="performFind" result-map="result" result-map-list="listIt">
+				<field-map field-name="inputFields" from-field="parameters" />
+				<field-map field-name="entityName" value="BorClientShop" />
+			</service>
+
+		</actions>
+		<!--<auto-fields-entity entity-name="PartyNameView" default-field-type="display"/> -->
+		<field name="clientshopId" title="${uiLabelMap.GeneralId}" widget-style="smallSubmit">
+			<hyperlink description="${clientshopId}" target="javascript:set_value('${clientshopId}')" also-hidden="false"
 				target-type="plain" />
 		</field>
 

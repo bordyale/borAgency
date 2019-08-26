@@ -209,4 +209,12 @@
 		<value xml:lang="en">Price</value>
 		<value xml:lang="it">Prezzo</value>
 	</property>
+	<property key="ClientShopId">
+		<value xml:lang="en">Client Shop Id</value>
+		<value xml:lang="it">Id Punto Vendita</value>
+	</property>
+	<property key="AddPriceCheck">
+		<value xml:lang="en">Add Price Check</value>
+		<value xml:lang="it">Aggiungi rilevamento prezzi</value>
+	</property>
 </resource>

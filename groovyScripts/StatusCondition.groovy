@@ -21,8 +21,19 @@ import org.apache.ofbiz.entity.condition.EntityCondition
 import org.apache.ofbiz.entity.condition.EntityOperator
 
 
-String contractorId = parameters.contractorId
+contractorId = parameters.contractorId
 
-exprList = [EntityCondition.makeCondition("contractorId", EntityOperator.EQUALS, contractorId)]
-context.andCondition = EntityCondition.makeCondition(exprList, EntityOperator.AND)
+clientId = parameters.clientId
+
+List searchCond = []
+if (contractorId) {
+	searchCond.add(EntityCondition.makeCondition("contractorId", EntityOperator.EQUALS, contractorId))
+}
+
+if (clientId) {
+	searchCond.add(EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, clientId))
+}
+
+
+context.andCondition = EntityCondition.makeCondition(searchCond, EntityOperator.AND)
 

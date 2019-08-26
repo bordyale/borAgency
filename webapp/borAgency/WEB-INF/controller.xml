@@ -387,6 +387,10 @@
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="LookupContract" />
 	</request-map>
+	<request-map uri="LookupClientShop">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="LookupClientShop" />
+	</request-map>
 
 
 
@@ -440,6 +444,7 @@
 	<view-map name="LookupContractor" type="screen" page="component://borAgency/widget/LookupScreens.xml#LookupContractor" />
 	<view-map name="LookupProduct" type="screen" page="component://borAgency/widget/LookupScreens.xml#LookupProduct" />
 	<view-map name="LookupClient" type="screen" page="component://borAgency/widget/LookupScreens.xml#LookupClient" />
+	<view-map name="LookupClientShop" type="screen" page="component://borAgency/widget/LookupScreens.xml#LookupClientShop" />
 	<view-map name="LookupPriceList" type="screen" page="component://borAgency/widget/LookupScreens.xml#LookupPriceList" />
 	<view-map name="LookupContract" type="screen" page="component://borAgency/widget/LookupScreens.xml#LookupContract" />
 

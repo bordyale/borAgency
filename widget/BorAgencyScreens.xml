@@ -678,7 +678,7 @@
 						<screenlet title="${uiLabelMap.Filter}">
 							<include-form name="FilterGeneral" location="component://borAgency/widget/BorAgencyForms.xml" />
 						</screenlet>
-						<screenlet title="${uiLabelMap.PriceChecks}">
+						<screenlet title="${uiLabelMap.PriceCheck}">
 							<include-form name="ListPriceChecks" location="component://borAgency/widget/BorAgencyForms.xml" />
 						</screenlet>
 						<screenlet title="${uiLabelMap.AddPriceCheck}">
