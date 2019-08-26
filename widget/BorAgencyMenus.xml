@@ -45,6 +45,12 @@
 			</condition>
 			<link target="findConditions" />
 		</menu-item>
+		<menu-item name="findPriceChecks" title="${uiLabelMap.PriceCheck}">
+			<condition>
+				<if-has-permission permission="BORAGENCY" action="_VIEW" />
+			</condition>
+			<link target="findPriceChecks" />
+		</menu-item>
 
 
 

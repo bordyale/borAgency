@@ -121,13 +121,13 @@
 		</relation>
 	</entity>
 
-	<entity entity-name="BorPriceCeck" package-name="org.apache.ofbiz.order.boragency" never-cache="true" title="Condition Entity">
-		<field name="pricececkId" type="id-ne"></field>
+	<entity entity-name="BorPriceCheck" package-name="org.apache.ofbiz.order.boragency" never-cache="true" title="Condition Entity">
+		<field name="pricecheckId" type="id-ne"></field>
 		<field name="productId" type="id-ne"></field>
 		<field name="clientshopId" type="id-ne"></field>
 		<field name="date" type="date-time"></field>
 		<field name="price" type="fixed-point"></field>
-		<prim-key field="priceckeckId" />
+		<prim-key field="pricecheckId" />
 		<relation type="one" fk-name="productId" rel-entity-name="BorProduct">
 			<key-map field-name="productId" />
 		</relation>

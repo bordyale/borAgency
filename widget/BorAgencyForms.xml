@@ -61,6 +61,7 @@
 	<form name="EditContractor" type="single" target="updateContractor" title="" default-map-name="contractor"
 		default-entity-name="BorContractor">
 		<alt-target use-when="contractor==null" target="createContractor" />
+
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
 		<field use-when="contractor!=null" name="contractorId" title="${uiLabelMap.GeneralId}">
 			<display />
@@ -568,6 +569,7 @@
 
 
 	<form name="FilterGeneral" type="single" target="findConditions">
+		<alt-target use-when="priceCheckPage!=null" target="findPriceChecks" />
 		<field name="filcontractorId" title="${uiLabelMap.ContractorId}">
 			<lookup target-form-name="LookupContractor" />
 		</field>
@@ -815,6 +817,84 @@
 		</field>
 	</form>
 
+
+
+	<form name="ListPriceChecks" type="list" list-name="listIt" target="updatePriceCheck" paginate-target="updatePriceCheck"
+		odd-row-style="alternate-row" default-table-style="basic-table hover-bar" header-row-style="header-row-2" separate-columns="true">
+
+		<field name="filcontractorId">
+			<hidden />
+		</field>
+		<field name="filproductId">
+			<hidden />
+		</field>
+		<field name="filclientId">
+			<hidden />
+		</field>
+
+		<field name="clientName" title="${uiLabelMap.ClientName}">
+			<display />
+		</field>
+
+		<field name="productName" title="${uiLabelMap.ProductName}">
+			<display />
+		</field>
+
+		<field name="price" title="${uiLabelMap.Price}">
+			<display />
+		</field>
+		<field name="date" title="${uiLabelMap.CommonDate}">
+			<display type="date" />
+		</field>
+
+		<field name="deleteLink" title=" " widget-style="buttontext">
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deletePriceCheck" also-hidden="false"
+				confirmation-message="${uiLabelMap.CommonConfirmDelete}">
+				<parameter param-name="conditionId" />
+				<parameter param-name="filcontractorId" />
+				<parameter param-name="filproductId" />
+				<parameter param-name="filclientId" />
+			</hyperlink>
+		</field>
+
+
+
+
+
+	</form>
+
+	<form name="AddPriceCheck" type="single" target="createPriceCheck" title="">
+		<auto-fields-service service-name="createPriceCheck" />
+
+		<field name="filcontractorId">
+			<hidden />
+		</field>
+		<field name="filproductId">
+			<hidden />
+		</field>
+		<field name="filclientId">
+			<hidden />
+		</field>
+
+		<field name="productId" title="${uiLabelMap.ProductId}" required-field="true">
+			<lookup target-form-name="LookupProduct?contractorId=${filcontractorId}" />
+		</field>
+		<field name="clientId" title="${uiLabelMap.ClientId}" required-field="true">
+			<lookup target-form-name="LookupClient" />
+		</field>
+
+		<field name="date">
+			<date-time type="date" />
+		</field>
+		<field name="price">
+			<text size="10" maxlength="20" />
+		</field>
+		
+
+		<field name="submitButton" title="${uiLabelMap.CommonAdd}">
+			<submit button-type="button" request-confirmation="true" />
+		</field>
+	</form>
 
 
 

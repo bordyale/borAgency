@@ -201,4 +201,12 @@
 		<value xml:lang="en">Client Shops</value>
 		<value xml:lang="it">Punti Vendita</value>
 	</property>
+	<property key="PriceCheck">
+		<value xml:lang="en">Price Check</value>
+		<value xml:lang="it">Rilevamento Prezzi</value>
+	</property>
+	<property key="Price">
+		<value xml:lang="en">Price</value>
+		<value xml:lang="it">Prezzo</value>
+	</property>
 </resource>
