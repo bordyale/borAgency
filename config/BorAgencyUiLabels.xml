@@ -197,4 +197,8 @@
 		<value xml:lang="en">Valid To</value>
 		<value xml:lang="it">Valido Fino A</value>
 	</property>
+	<property key="ClientShops">
+		<value xml:lang="en">Client Shops</value>
+		<value xml:lang="it">Punti Vendita</value>
+	</property>
 </resource>

@@ -36,8 +36,7 @@
 								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
-											<link target="EditContractorLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}"
-												style="buttontext create" />
+											<link target="EditContractorLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
 										</container>
 									</decorator-section>
 									<decorator-section name="search-options">
@@ -154,6 +153,7 @@
 			<actions>
 				<set field="titleProperty" value="FindClient" />
 				<set field="headerItem" value="findclients" />
+				<set field="tabButtonItem" value="EditClient" />
 				<set field="clientId" from-field="parameters.clientId" />
 				<!-- <set field="workpapersId" from-field="parameters.workpapersId" /> -->
 				<entity-one entity-name="BorClient" value-field="client" />
@@ -161,6 +161,18 @@
 			<widgets>
 				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">
 					<decorator-section name="body">
+						<section>
+							<condition>
+								<and>
+									<not>
+										<if-empty field="client" />
+									</not><!-- This is a check useful when only seed data are loaded -->
+								</and>
+							</condition>
+							<widgets>
+								<include-menu name="EditClient" location="component://borAgency/widget/BorAgencyMenus.xml" />
+							</widgets>
+						</section>
 
 						<screenlet title="${uiLabelMap.EditClient}">
 							<include-form name="EditClient" location="component://borAgency/widget/BorAgencyForms.xml" />
@@ -171,6 +183,50 @@
 			</widgets>
 		</section>
 	</screen>
+
+
+	<screen name="EditClientShop">
+		<section>
+			<actions>
+				<set field="titleProperty" value="FindClient" />
+				<set field="headerItem" value="findclients" />
+				<set field="tabButtonItem" value="EditClientShops" />
+				<set field="clientId" from-field="parameters.clientId" />
+				<!-- <set field="workpapersId" from-field="parameters.workpapersId" /> -->
+				<entity-one entity-name="BorClient" value-field="client" />
+			</actions>
+			<widgets>
+				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">
+					<decorator-section name="body">
+						<section>
+							<condition>
+								<and>
+									<not>
+										<if-empty field="client" />
+									</not><!-- This is a check useful when only seed data are loaded -->
+								</and>
+							</condition>
+							<widgets>
+								<include-menu name="EditClient" location="component://borAgency/widget/BorAgencyMenus.xml" />
+							</widgets>
+						</section>
+
+						<screenlet title="${groovy: clientId ? uiLabelMap.ClientShops : uiLabelMap.NewContract}">
+							<include-form name="ListClientShop" location="component://borAgency/widget/BorAgencyForms.xml" />
+							<include-form name="AddClientShop" location="component://borAgency/widget/BorAgencyForms.xml" />
+						</screenlet>
+
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
+
+
+
+
+
+
 
 
 	<screen name="FindProducts">
@@ -271,8 +327,7 @@
 								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
-											<link target="EditPriceListLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}"
-												style="buttontext create" />
+											<link target="EditPriceListLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
 										</container>
 									</decorator-section>
 									<decorator-section name="search-options">
@@ -400,8 +455,7 @@
 								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
-											<link target="EditContractLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}"
-												style="buttontext create" />
+											<link target="EditContractLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
 										</container>
 									</decorator-section>
 									<decorator-section name="search-options">
@@ -441,6 +495,7 @@
 				<set field="titleProperty" value="FindContract" />
 				<set field="headerItem" value="findContracts" />
 				<set field="contractId" from-field="parameters.contractId" />
+				<set field="tabButtonItem" value="EditContract" />
 				<!-- <set field="workpapersId" from-field="parameters.workpapersId" /> -->
 				<entity-one entity-name="BorContract" value-field="Contract" />
 			</actions>
@@ -494,7 +549,7 @@
 						</section>
 						<section>
 							<widgets>
-								<screenlet title="${uiLabelMap.EditContract}">
+								<screenlet title="${groovy: contractId ? uiLabelMap.EditContract : uiLabelMap.NewContract}">
 									<include-form name="ListContractDetails" location="component://borAgency/widget/BorAgencyForms.xml" />
 
 									<container style="page-title">

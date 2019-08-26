@@ -6,8 +6,7 @@
 	the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License 
 	for the specific language governing permissions and limitations under the License. -->
 
-<entitymodel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/entitymodel.xsd">
+<entitymodel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/entitymodel.xsd">
 	<!-- ========================================================= -->
 	<!-- ======================== Defaults ======================= -->
 	<!-- ========================================================= -->
@@ -106,7 +105,57 @@
 		<view-link entity-alias="COND" rel-entity-alias="CONTRACT" rel-optional="true">
 			<key-map field-name="contractId" />
 		</view-link>
-		
+
+	</view-entity>
+
+	<view-entity entity-name="BorPriceCheckView" package-name="org.apache.ofbiz.borAgency">
+		<member-entity entity-alias="PRIC" entity-name="BorPriceCeck" />
+		<member-entity entity-alias="PROD" entity-name="BorProduct" />
+		<member-entity entity-alias="CLI" entity-name="BorClient" />
+		<member-entity entity-alias="CLISH" entity-name="BorClientShop" />
+		<alias-all entity-alias="PROD">
+			<exclude field="name" />
+		</alias-all>
+		<alias-all entity-alias="CLI">
+			<exclude field="name" />
+		</alias-all>
+		<alias-all entity-alias="CLISH">
+			<exclude field="name" />
+		</alias-all>
+		<alias-all entity-alias="PRIC" />
+		<alias name="productName" entity-alias="PROD" field="name" />
+		<alias name="clientName" entity-alias="CLI" field="name" />
+		<alias name="clientshopName" entity-alias="CLISH" field="name" />
+		<view-link entity-alias="PRIC" rel-entity-alias="PROD">
+			<key-map field-name="prodictId" />
+		</view-link>
+		<view-link entity-alias="PRIC" rel-entity-alias="CLISH">
+			<key-map field-name="clientshopId" />
+		</view-link>
+		<view-link entity-alias="CLISH" rel-entity-alias="CLI">
+			<key-map field-name="clienId" />
+		</view-link>
+	</view-entity>
+
+	<view-entity entity-name="BorPromotionView" package-name="org.apache.ofbiz.borAgency">
+		<member-entity entity-alias="PROM" entity-name="BorPromotion" />
+		<member-entity entity-alias="PROD" entity-name="BorProduct" />
+		<member-entity entity-alias="CLI" entity-name="BorClient" />
+		<alias-all entity-alias="PROD">
+			<exclude field="name" />
+		</alias-all>
+		<alias-all entity-alias="CLI">
+			<exclude field="name" />
+		</alias-all>
+		<alias-all entity-alias="PROM" />
+		<alias name="productName" entity-alias="PROD" field="name" />
+		<alias name="clientName" entity-alias="CLI" field="name" />
+		<view-link entity-alias="PROM" rel-entity-alias="PROD">
+			<key-map field-name="prodictId" />
+		</view-link>
+		<view-link entity-alias="PROM" rel-entity-alias="CLI">
+			<key-map field-name="clientId" />
+		</view-link>
 	</view-entity>
 
 
