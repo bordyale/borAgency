@@ -151,7 +151,7 @@
 		<alias name="productName" entity-alias="PROD" field="name" />
 		<alias name="clientName" entity-alias="CLI" field="name" />
 		<view-link entity-alias="PROM" rel-entity-alias="PROD">
-			<key-map field-name="prodictId" />
+			<key-map field-name="productId" />
 		</view-link>
 		<view-link entity-alias="PROM" rel-entity-alias="CLI">
 			<key-map field-name="clientId" />

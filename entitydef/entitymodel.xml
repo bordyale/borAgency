@@ -145,6 +145,8 @@
 		<field name="selloutFrom" type="date-time"></field>
 		<field name="selloutTo" type="date-time"></field>
 		<field name="discount" type="fixed-point"></field>
+		<field name="dateIns" type="date-time"></field>
+		<field name="isValid" type="value"></field>
 		<prim-key field="promotionId" />
 
 		<relation type="one" fk-name="productId" rel-entity-name="BorProduct">

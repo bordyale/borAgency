@@ -690,6 +690,42 @@
 		</section>
 	</screen>
 	
+	
+	<screen name="FindPromotions">
+		<section>
+			<actions>
+				<set field="filcontractorId" from-field="parameters.filcontractorId" />
+				<set field="filproductId" from-field="parameters.filproductId" />
+				<set field="filclientId" from-field="parameters.filclientId" />
+				<set field="headerItem" value="findPromotions" />
+				<set field="promotionPage" value="Y" />
+				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
+				<script location="component://borAgency/groovyScripts/ListPromotions.groovy" />
+			</actions>
+			<widgets>
+				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">
+					<decorator-section name="body">
+						<!-- <container style="button-bar">
+							<link target="PromotionExport.csv" text="${uiLabelMap.CommonExport}" style="buttontext create" target-window="_blank">
+								<parameter param-name="filcontractorId" />
+								<parameter param-name="filproductId" />
+							</link>
+						</container> -->
+						<screenlet title="${uiLabelMap.Filter}">
+							<include-form name="FilterGeneral" location="component://borAgency/widget/BorAgencyForms.xml" />
+						</screenlet>
+						<screenlet title="${uiLabelMap.Promotion}">
+							<include-form name="ListPromotions" location="component://borAgency/widget/BorAgencyForms.xml" />
+						</screenlet>
+						<screenlet title="${uiLabelMap.AddPromotion}">
+							<include-form name="AddPromotion" location="component://borAgency/widget/BorAgencyForms.xml" />
+						</screenlet>
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
+	
 
 
 </screens>

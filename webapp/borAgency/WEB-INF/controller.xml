@@ -364,6 +364,41 @@
 
 
 
+	<request-map uri="findPromotions">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="findPromotions" />
+	</request-map>
+	<request-map uri="createPromotion">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="createPromotion" />
+		<response name="success" type="request-redirect" value="findPromotions">
+			<redirect-parameter name="filcontractorId" />
+			<redirect-parameter name="filproductId" />
+			<redirect-parameter name="filclientId" />
+		</response>
+		<response name="error" type="request-redirect" value="findPromotions">
+			<redirect-parameter name="filcontractorId" />
+			<redirect-parameter name="filproductId" />
+			<redirect-parameter name="filclientId" />
+
+		</response>
+	</request-map>
+	<request-map uri="deletePromotion">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="deletePromotion" />
+		<response name="success" type="view" value="findPromotions" />
+		<response name="error" type="view" value="findPromotions" />
+	</request-map>
+	<request-map uri="updatePromotion">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="updatePromotion" />
+		<response name="success" type="view" value="findPromotions" />
+		<response name="error" type="view" value="findPromotions" />
+	</request-map>
+
+
+
+
 	<!-- Lookup request mappings -->
 
 	<request-map uri="LookupContractor">
@@ -439,6 +474,7 @@
 
 	<view-map name="findPriceChecks" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindPriceChecks" />
 
+	<view-map name="findPromotions" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindPromotions" />
 
 
 	<view-map name="LookupContractor" type="screen" page="component://borAgency/widget/LookupScreens.xml#LookupContractor" />

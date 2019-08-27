@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/ofbiz-properties.xsd">
+<resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/ofbiz-properties.xsd">
 	<property key="BorAgencyApplication">
 		<value xml:lang="en">BorAgency Application</value>
 		<value xml:lang="zh">BorAgency应用程序</value>
@@ -216,5 +215,33 @@
 	<property key="AddPriceCheck">
 		<value xml:lang="en">Add Price Check</value>
 		<value xml:lang="it">Aggiungi rilevamento prezzi</value>
+	</property>
+	<property key="Promotion">
+		<value xml:lang="en">Promotion</value>
+		<value xml:lang="it">Promozioni</value>
+	</property>
+	<property key="Discount">
+		<value xml:lang="en">Discount</value>
+		<value xml:lang="it">Sconto</value>
+	</property>
+	<property key="SellInFrom">
+		<value xml:lang="en">Sell In From</value>
+		<value xml:lang="it">Sell In Da</value>
+	</property>
+	<property key="SellInTo">
+		<value xml:lang="en">Sell In To</value>
+		<value xml:lang="it">Sell In A</value>
+	</property>
+	<property key="SellOutFrom">
+		<value xml:lang="en">Sell Out From</value>
+		<value xml:lang="it">Sell Out Da</value>
+	</property>
+	<property key="SellOutTo">
+		<value xml:lang="en">Sell Out To</value>
+		<value xml:lang="it">Sell Out A</value>
+	</property>
+	<property key="DateIns">
+		<value xml:lang="en">Create Date</value>
+		<value xml:lang="it">Data Inserimento</value>
 	</property>
 </resource>
