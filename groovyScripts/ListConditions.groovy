@@ -26,6 +26,7 @@ import org.apache.ofbiz.entity.condition.EntityCondition
 import org.apache.ofbiz.entity.GenericValue
 import org.apache.ofbiz.entity.util.EntityUtil
 import java.sql.Timestamp
+import java.math.RoundingMode
 
 filcontractorId = parameters.filcontractorId
 filproductId = parameters.filproductId
@@ -42,7 +43,7 @@ if (filclientId) {
 	searchCond.add(EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, filclientId))
 }
 
-conditionsList = select("conditionId","contractorName","clientName","pricelistName","productName","price","startingPrice","sc1","sc2","sc3","sc4","sc5","contractId","totalValue","isProductBought","validFrom","validTo").from("ConditionView").where(searchCond).cache(false).queryList()
+conditionsList = from("ConditionView").where(searchCond).cache(false).queryList()
 
 conditionsList = EntityUtil.orderBy(conditionsList,  ["productId"])
 
@@ -84,6 +85,25 @@ for (GenericValue entry: conditionsList){
 	resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc5.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc5.divide(new BigDecimal(100))))
 	resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(contractValue.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : contractValue.divide(new BigDecimal(100))))
 	e.put("resultPrice",resultPrice)
+
+	String productId = entry.get("productId")
+	String clientId = entry.get("clientId")
+
+	exprBldr = new org.apache.ofbiz.entity.condition.EntityConditionBuilder()
+	expr = exprBldr.AND() {
+		EQUALS(productId: productId)
+		EQUALS(clientId: clientId)
+	}
+	pricecheckList = from("BorPriceCheckView").where(expr).orderBy("date DESC").queryFirst()
+	if (pricecheckList){
+		BigDecimal priceCheckPrice = pricecheckList.get("price")
+		e.put("priceCheckPrice",priceCheckPrice)
+		//BigDecimal perc = priceCheckPrice.subtract(resultPrice).divide(resultPrice,2,RoundingMode.HALF_UP).multiply(new BigDecimal(100))
+		BigDecimal perc = priceCheckPrice.divide(resultPrice,2,RoundingMode.HALF_UP).multiply(new BigDecimal(100))
+		e.put("perc",perc)
+	}
+
+
 	hashMaps.add(e)
 }
 

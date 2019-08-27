@@ -661,6 +661,12 @@
 		<field name="resultPrice" title="${uiLabelMap.ResultPrice}">
 			<display />
 		</field>
+		<field name="priceCheckPrice" title="${uiLabelMap.PriceCheck}">
+			<display />
+		</field>
+		<field name="perc" title="${uiLabelMap.PercRic}">
+			<display />
+		</field>
 
 
 		<field name="deleteLink" title=" " widget-style="buttontext">

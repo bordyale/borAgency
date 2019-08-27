@@ -248,4 +248,8 @@
 		<value xml:lang="en">Client Type</value>
 		<value xml:lang="it">Tipo Cliente</value>
 	</property>
+	<property key="PercRic">
+		<value xml:lang="en">Percentage (%)</value>
+		<value xml:lang="it">Percentuale su ricavo (%)</value>
+	</property>
 </resource>
