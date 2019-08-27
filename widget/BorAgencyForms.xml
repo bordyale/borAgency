@@ -129,8 +129,9 @@
 
 		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext" sort-field="true">
 			<display />
-
-
+		</field>
+		<field name="clientType" title="${uiLabelMap.ClientType}" widget-style="buttontext" sort-field="true">
+			<display />
 		</field>
 
 
@@ -156,6 +157,15 @@
 
 		<field name="name">
 			<text size="10" maxlength="20" />
+		</field>
+
+		<field name="clientType" title="${uiLabelMap.ClientType}">
+			<drop-down allow-empty="false">
+				<entity-options entity-name="Enumeration" key-field-name="enumId" description="${description} [${enumCode}]">
+					<entity-constraint name="enumTypeId" value="BOR_CLIENT_TYPE" />
+					<entity-order-by field-name="sequenceId" />
+				</entity-options>
+			</drop-down>
 		</field>
 
 
@@ -545,7 +555,7 @@
 		<field name="contractDetailType" title="${uiLabelMap.ContractDetailType}">
 			<drop-down allow-empty="false">
 				<entity-options entity-name="Enumeration" key-field-name="enumId" description="${description} [${enumCode}]">
-					<entity-constraint name="enumTypeId" value="CONTR_DETAIL_TYPE" />
+					<entity-constraint name="enumTypeId" value="BOR_CONT_DETAIL_TYPE" />
 					<entity-order-by field-name="sequenceId" />
 				</entity-options>
 			</drop-down>

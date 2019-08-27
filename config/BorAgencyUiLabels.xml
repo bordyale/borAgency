@@ -244,4 +244,8 @@
 		<value xml:lang="en">Create Date</value>
 		<value xml:lang="it">Data Inserimento</value>
 	</property>
+	<property key="ClientType">
+		<value xml:lang="en">Client Type</value>
+		<value xml:lang="it">Tipo Cliente</value>
+	</property>
 </resource>
