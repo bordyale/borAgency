@@ -36,7 +36,8 @@
 								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
-											<link target="EditContractorLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
+											<link target="EditContractorLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}"
+												style="buttontext create" />
 										</container>
 									</decorator-section>
 									<decorator-section name="search-options">
@@ -363,7 +364,8 @@
 								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
-											<link target="EditPriceListLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
+											<link target="EditPriceListLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}"
+												style="buttontext create" />
 										</container>
 									</decorator-section>
 									<decorator-section name="search-options">
@@ -491,8 +493,15 @@
 								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
-											<link target="EditContractLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
+											<link target="EditContractLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}"
+												style="buttontext create" />
+											<link target="ContractExport.csv" text="${uiLabelMap.CommonExport}" style="buttontext create"
+												target-window="_blank">
+												<parameter param-name="filcontractorId" />
+												<parameter param-name="filproductId" />
+											</link>
 										</container>
+
 									</decorator-section>
 									<decorator-section name="search-options">
 										<include-form name="FilterGeneral" location="component://borAgency/widget/BorAgencyForms.xml" />

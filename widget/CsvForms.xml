@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ofbiz.apache.org/Widget-Form"
+	xsi:schemaLocation="http://ofbiz.apache.org/Widget-Form http://ofbiz.apache.org/dtds/widget-form.xsd">
+
+
+
+
+	<form name="ConditionExport" type="list" list-name="listIt" odd-row-style="alternate-row"
+		default-table-style="basic-table hover-bar">
+		<field name="conditionId" title="${uiLabelMap.GeneralId}">
+			<display />
+		</field>
+		<field name="contractorName" title="${uiLabelMap.ContractorName}">
+			<display />
+		</field>
+		<field name="clientName" title="${uiLabelMap.ClientName}">
+			<display />
+		</field>
+		<field name="pricelistName" title="${uiLabelMap.PriceListName}">
+			<display />
+		</field>
+		<field name="productName" title="${uiLabelMap.ProductName}">
+			<display />
+		</field>
+		<field name="price" title="${uiLabelMap.PriceListPrice}">
+			<display />
+		</field>
+		<field name="startingPrice" title="${uiLabelMap.PriceNet}">
+			<display />
+		</field>
+		<field name="sc1">
+			<display />
+		</field>
+		<field name="sc2">
+			<display />
+		</field>
+		<field name="sc3">
+			<display />
+		</field>
+		<field name="sc4">
+			<display />
+		</field>
+		<field name="sc5">
+			<display />
+		</field>
+		<field name="contractValue" title="${uiLabelMap.ContractValue}">
+			<display />
+		</field>
+		<field name="resultPrice" title="${uiLabelMap.ResultPrice}">
+			<display />
+		</field>
+	</form>
+
+	<form name="ContractExport" type="list" list-name="listIt" odd-row-style="alternate-row"
+		default-table-style="basic-table hover-bar">
+		<display />
+
+		<field name="contractorName" title="${uiLabelMap.Contractors}" widget-style="buttontext" sort-field="true">
+			<display />
+		</field>
+
+		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext" sort-field="true">
+			<display />
+		</field>
+		<field name="validFrom" title="${uiLabelMap.ValidFrom}">
+			<display type="date" />
+		</field>
+		<field name="validTo" title="${uiLabelMap.ValidTo}">
+			<display type="date" />
+		</field>
+
+	</form>
+
+
+
+
+
+
+
+</forms>
