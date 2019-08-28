@@ -594,6 +594,16 @@
 		<field use-when="clientnotePage=='Y'" name="clientId">
 			<hidden />
 		</field>
+		
+		<field use-when="clientnotePage!='Y' @and priceCheckPage!='Y'" name="filactiv" title="${uiLabelMap.Activ}">
+			<drop-down allow-empty="true">
+				<option key="Y" description="${uiLabelMap.CommonY}" />
+				<option key="N" description="${uiLabelMap.CommonN}" />
+			</drop-down>
+		</field>
+		
+		
+		
 
 		<field name="searchButton" title="${uiLabelMap.Filter}" widget-style="smallSubmit">
 			<submit button-type="button" />
@@ -616,6 +626,9 @@
 			<hidden />
 		</field>
 		<field name="filclientId">
+			<hidden />
+		</field>
+		<field name="filactiv">
 			<hidden />
 		</field>
 		<field name="conditionId" title="${uiLabelMap.GeneralId}">
@@ -679,6 +692,7 @@
 				<parameter param-name="filcontractorId" />
 				<parameter param-name="filproductId" />
 				<parameter param-name="filclientId" />
+				<parameter param-name="filactiv" />
 			</hyperlink>
 		</field>
 
@@ -757,6 +771,9 @@
 			<hidden />
 		</field>
 		<field name="filclientId">
+			<hidden />
+		</field>
+		<field name="filactiv">
 			<hidden />
 		</field>
 
@@ -999,6 +1016,9 @@
 		<field name="filclientId">
 			<hidden />
 		</field>
+		<field name="filactiv">
+			<hidden />
+		</field>
 
 		<field name="promotionId">
 			<hidden />
@@ -1038,6 +1058,7 @@
 				<parameter param-name="filcontractorId" />
 				<parameter param-name="filproductId" />
 				<parameter param-name="filclientId" />
+				<parameter param-name="filactiv" />
 			</hyperlink>
 		</field>
 		<field name="isValid" title="${uiLabelMap.IsValid}">
@@ -1063,6 +1084,9 @@
 			<hidden />
 		</field>
 		<field name="filclientId">
+			<hidden />
+		</field>
+		<field name="filactiv">
 			<hidden />
 		</field>
 
@@ -1093,7 +1117,7 @@
 			<hidden value="${nowTimestamp}" />
 		</field>
 		<field name="isValid">
-			<hidden />
+			<hidden value="Y"/>
 		</field>
 
 

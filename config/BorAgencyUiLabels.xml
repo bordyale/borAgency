@@ -256,4 +256,8 @@
 		<value xml:lang="en">Client Notes</value>
 		<value xml:lang="it">Note Cliente</value>
 	</property>
+	<property key="Activ">
+		<value xml:lang="en">Activ</value>
+		<value xml:lang="it">Solo Attivi</value>
+	</property>
 </resource>

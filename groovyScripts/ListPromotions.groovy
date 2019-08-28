@@ -30,6 +30,7 @@ import java.sql.Timestamp
 filcontractorId = parameters.filcontractorId
 filproductId = parameters.filproductId
 filclientId = parameters.filclientId
+filactiv = parameters.filactiv
 
 List searchCond = []
 if (filcontractorId) {
@@ -40,6 +41,9 @@ if (filproductId) {
 }
 if (filclientId) {
 	searchCond.add(EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, filclientId))
+}
+if (filactiv.equals("Y")) {
+	searchCond.add(EntityCondition.makeCondition("isValid",EntityOperator.EQUALS, "Y") )
 }
 
 promotionList = from("BorPromotionView").where(searchCond).cache(false).queryList()

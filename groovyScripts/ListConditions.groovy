@@ -31,6 +31,7 @@ import java.math.RoundingMode
 filcontractorId = parameters.filcontractorId
 filproductId = parameters.filproductId
 filclientId = parameters.filclientId
+filactiv = parameters.filactiv
 
 List searchCond = []
 if (filcontractorId) {
@@ -41,6 +42,9 @@ if (filproductId) {
 }
 if (filclientId) {
 	searchCond.add(EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, filclientId))
+}
+if (filactiv.equals("Y")) {
+	searchCond.add(EntityCondition.makeCondition("validTo",EntityOperator.EQUALS, null) )
 }
 
 conditionsList = from("ConditionView").where(searchCond).cache(false).queryList()

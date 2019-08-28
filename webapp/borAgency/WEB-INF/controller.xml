@@ -323,12 +323,13 @@
 			<redirect-parameter name="filcontractorId" />
 			<redirect-parameter name="filproductId" />
 			<redirect-parameter name="filclientId" />
+			<redirect-parameter name="filactiv" />
 		</response>
 		<response name="error" type="request-redirect" value="findConditions">
 			<redirect-parameter name="filcontractorId" />
 			<redirect-parameter name="filproductId" />
 			<redirect-parameter name="filclientId" />
-
+			<redirect-parameter name="filactiv" />
 		</response>
 	</request-map>
 	<request-map uri="deleteCondition">
@@ -400,12 +401,13 @@
 			<redirect-parameter name="filcontractorId" />
 			<redirect-parameter name="filproductId" />
 			<redirect-parameter name="filclientId" />
+			<redirect-parameter name="filactiv" />
 		</response>
 		<response name="error" type="request-redirect" value="findPromotions">
 			<redirect-parameter name="filcontractorId" />
 			<redirect-parameter name="filproductId" />
 			<redirect-parameter name="filclientId" />
-
+			<redirect-parameter name="filactiv" />
 		</response>
 	</request-map>
 	<request-map uri="deletePromotion">
