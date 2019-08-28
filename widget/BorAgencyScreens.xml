@@ -476,10 +476,10 @@
 			<actions>
 				<set field="titleProperty" value="FindContract" />
 				<set field="headerItem" value="findContracts" />
-
+				<set field="contractPage" value="Y" />
 				<set field="formShippingListName" value="${groovy: return 'ListContracts';}" />
 				<!-- <script location="component://vforder/groovyScripts/FindShipping.groovy" /> -->
-
+				<script location="component://borAgency/groovyScripts/ListContracts.groovy" />
 				<!-- asmselect parameters, must be prefixed by asm_ for SetMultipleSelectJs.ftl -->
 
 			</actions>
@@ -495,7 +495,7 @@
 										</container>
 									</decorator-section>
 									<decorator-section name="search-options">
-										<include-form name="FindContracts" location="component://borAgency/widget/BorAgencyForms.xml" />
+										<include-form name="FilterGeneral" location="component://borAgency/widget/BorAgencyForms.xml" />
 									</decorator-section>
 									<decorator-section name="search-results">
 										<include-form name="${formShippingListName}" location="component://borAgency/widget/BorAgencyForms.xml" />
@@ -607,9 +607,8 @@
 	<screen name="FindConditions">
 		<section>
 			<actions>
-				<!-- <set field="filcontractorId" from-field="parameters.filcontractorId" />
-				<set field="filproductId" from-field="parameters.filproductId" />
-				<set field="filclientId" from-field="parameters.filclientId" /> -->
+				<!-- <set field="filcontractorId" from-field="parameters.filcontractorId" /> <set field="filproductId" from-field="parameters.filproductId" 
+					/> <set field="filclientId" from-field="parameters.filclientId" /> -->
 				<set field="headerItem" value="findConditions" />
 				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
 				<script location="component://borAgency/groovyScripts/ListConditions.groovy" />
@@ -694,9 +693,8 @@
 	<screen name="FindPriceChecks">
 		<section>
 			<actions>
-				<!-- <set field="filcontractorId" from-field="parameters.filcontractorId" />
-				<set field="filproductId" from-field="parameters.filproductId" />
-				<set field="filclientId" from-field="parameters.filclientId" /> -->
+				<!-- <set field="filcontractorId" from-field="parameters.filcontractorId" /> <set field="filproductId" from-field="parameters.filproductId" 
+					/> <set field="filclientId" from-field="parameters.filclientId" /> -->
 				<set field="headerItem" value="findPriceChecks" />
 				<set field="priceCheckPage" value="Y" />
 				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
@@ -726,9 +724,8 @@
 	<screen name="FindPromotions">
 		<section>
 			<actions>
-				<!-- <set field="filcontractorId" from-field="parameters.filcontractorId" />
-				<set field="filproductId" from-field="parameters.filproductId" />
-				<set field="filclientId" from-field="parameters.filclientId" /> -->
+				<!-- <set field="filcontractorId" from-field="parameters.filcontractorId" /> <set field="filproductId" from-field="parameters.filproductId" 
+					/> <set field="filclientId" from-field="parameters.filclientId" /> -->
 				<set field="headerItem" value="findPromotions" />
 				<set field="promotionPage" value="Y" />
 				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />

@@ -431,7 +431,7 @@
 
 	<form name="ListContracts" type="list" list-name="listIt" paginate-target="findContracts" odd-row-style="alternate-row"
 		default-table-style="basic-table hover-bar" header-row-style="header-row-2" override-list-size="true">
-		<actions>
+		<!-- <actions>
 			<set field="requestParameters.noConditionFind" value="Y" />
 			<set field="entityName" value="ContractContractorView" />
 			<service service-name="performFind" result-map="result" result-map-list="listIt">
@@ -439,7 +439,7 @@
 				<field-map field-name="entityName" from-field="entityName" />
 				<field-map field-name="orderBy" from-field="sortField" />
 			</service>
-		</actions>
+		</actions> -->
 
 		<field name="contractId" title="${uiLabelMap.GeneralId}" widget-style="buttontext" sort-field="true">
 			<hyperlink description="${contractId}" target="EditContract" also-hidden="false">
@@ -582,13 +582,14 @@
 		<alt-target use-when="priceCheckPage=='Y'" target="findPriceChecks" />
 		<alt-target use-when="promotionPage=='Y'" target="findPromotions" />
 		<alt-target use-when="clientnotePage=='Y'" target="EditClientNote" />
+		<alt-target use-when="contractPage=='Y'" target="findContracts" />
 		<field name="filcontractorId" title="${uiLabelMap.ContractorId}">
 			<lookup target-form-name="LookupContractor" />
 		</field>
-		<field use-when="clientnotePage!='Y'" name="filclientId" title="${uiLabelMap.ClientId}">
+		<field use-when="clientnotePage!='Y' @and contractPage!='Y'" name="filclientId" title="${uiLabelMap.ClientId}">
 			<lookup target-form-name="LookupClient" />
 		</field>
-		<field use-when="clientnotePage!='Y'" name="filproductId" title="${uiLabelMap.ProductId}">
+		<field use-when="clientnotePage!='Y' @and contractPage!='Y'" name="filproductId" title="${uiLabelMap.ProductId}">
 			<lookup target-form-name="LookupProduct?contractorId=${filcontractorId}" />
 		</field>
 		<field use-when="clientnotePage=='Y'" name="clientId">
