@@ -63,6 +63,10 @@
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="EditClientShop" />
 	</request-map>
+	<request-map uri="EditClientNote">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="EditClientNote" />
+	</request-map>
 
 	<request-map uri="createClient">
 		<security https="true" auth="true" />
@@ -107,6 +111,27 @@
 		<response name="error" type="view" value="EditClientShop" />
 	</request-map>
 
+	<request-map uri="createClientNote">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="createBorNote" />
+		<response name="success" type="request-redirect" value="EditClientNote">
+			<redirect-parameter name="clientId" />
+			<redirect-parameter name="filcontractorId" />
+		</response>
+		<response name="error" type="view" value="EditClientNote" />
+	</request-map>
+	<request-map uri="updateClientNote">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="updateBorNote" />
+		<response name="success" type="view" value="EditClientNote" />
+		<response name="error" type="view" value="EditClientNote" />
+	</request-map>
+	<request-map uri="deleteClientNote">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="deleteBorNote" />
+		<response name="success" type="view" value="EditClientNote" />
+		<response name="error" type="view" value="EditClientNote" />
+	</request-map>
 
 
 
@@ -448,6 +473,7 @@
 	<view-map name="EditClientLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditClientLayer" />
 	<view-map name="EditClient" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditClient" />
 	<view-map name="EditClientShop" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditClientShop" />
+	<view-map name="EditClientNote" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditClientNote" />
 
 
 	<view-map name="findProducts" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindProducts" />

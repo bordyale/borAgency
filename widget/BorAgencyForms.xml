@@ -581,16 +581,19 @@
 	<form name="FilterGeneral" type="single" target="findConditions">
 		<alt-target use-when="priceCheckPage=='Y'" target="findPriceChecks" />
 		<alt-target use-when="promotionPage=='Y'" target="findPromotions" />
+		<alt-target use-when="clientnotePage=='Y'" target="EditClientNote" />
 		<field name="filcontractorId" title="${uiLabelMap.ContractorId}">
 			<lookup target-form-name="LookupContractor" />
 		</field>
-		<field name="filclientId" title="${uiLabelMap.ClientId}">
+		<field use-when="clientnotePage!='Y'" name="filclientId" title="${uiLabelMap.ClientId}">
 			<lookup target-form-name="LookupClient" />
 		</field>
-		<field name="filproductId" title="${uiLabelMap.ProductId}">
+		<field use-when="clientnotePage!='Y'" name="filproductId" title="${uiLabelMap.ProductId}">
 			<lookup target-form-name="LookupProduct?contractorId=${filcontractorId}" />
 		</field>
-
+		<field use-when="clientnotePage=='Y'" name="clientId">
+			<hidden />
+		</field>
 
 		<field name="searchButton" title="${uiLabelMap.Filter}" widget-style="smallSubmit">
 			<submit button-type="button" />
@@ -835,6 +838,76 @@
 	</form>
 
 
+	<form name="ListClientNote" type="list" list-name="listIt" target="updateClientNote" separate-columns="true">
+
+		<field name="clientId">
+			<hidden />
+		</field>
+		<field name="noteId">
+			<display />
+		</field>
+		<field name="contractorName">
+			<display />
+		</field>
+
+		<field name="contractorId">
+			<hidden />
+		</field>
+		<field name="contractorName">
+			<display />
+		</field>
+		<field name="noteName">
+			<display />
+		</field>
+		<field name="noteInfo">
+			<display size="50" />
+		</field>
+		<field name="contractorName">
+			<display />
+		</field>
+		<field name="noteName">
+			<display />
+		</field>
+		<field name="noteDateTime">
+			<display type="date" />
+		</field>
+
+
+		<field name="deleteLink" use-when="modeLayer==null" title=" " widget-style="buttontext">
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteClientNote" also-hidden="false"
+				confirmation-message="${uiLabelMap.CommonConfirmDelete}">
+				<parameter param-name="noteId" />
+				<parameter param-name="clientId" />
+			</hyperlink>
+		</field>
+		<!-- <field name="submitButton" title="${uiLabelMap.CommonUpdate}"> <submit button-type="button" /> </field> -->
+	</form>
+
+	<form name="AddClientNote" type="single" target="createClientNote" title="">
+		<auto-fields-service service-name="createBorNote" />
+		<field name="filcontractorId">
+			<hidden />
+		</field>
+		<field name="clientId">
+			<hidden />
+		</field>
+		<field name="contractorId" title="${uiLabelMap.ContractorId}">
+			<lookup target-form-name="LookupContractor" />
+		</field>
+		<field name="noteName">
+			<textarea cols="30" rows="1" />
+		</field>
+		<field name="noteInfo">
+			<textarea cols="30" rows="10" />
+		</field>
+
+
+		<field name="submitButton" title="${uiLabelMap.CommonSave}" widget-style="smallSubmit">
+			<submit button-type="text-link" />
+		</field>
+	</form>
+
+
 
 	<form name="ListPriceChecks" type="list" list-name="listIt" target="updatePriceCheck" paginate-target="updatePriceCheck"
 		odd-row-style="alternate-row" default-table-style="basic-table hover-bar" header-row-style="header-row-2" separate-columns="true">
@@ -1030,29 +1103,7 @@
 	</form>
 
 
-	<form name="AddPartyNote" type="single" target="createPartyNote" focus-field-name="noteId" header-row-style="header-row"
-		default-table-style="basic-table">
-		<auto-fields-service service-name="createPartyNote" />
-		<field name="partyId">
-			<hidden />
-		</field>
-		<field name="noteId" tooltip="${uiLabelMap.PartyOptional}">
-			<hidden />
-		</field>
-		<field name="noteName" title="${uiLabelMap.FormFieldTitle_noteName}" tooltip="${uiLabelMap.PartyOptional}">
-		</field>
-		<field name="note">
-			<textarea cols="70" rows="10" />
-		</field>
-		<field name="submitButton" title="${uiLabelMap.CommonSave}" widget-style="smallSubmit">
-			<submit button-type="text-link" />
-		</field>
-		<field name="cancelLink" title=" " widget-style="smallSubmit">
-			<hyperlink description="${uiLabelMap.CommonCancelDone}" target="${donePage}" also-hidden="false">
-				<parameter param-name="partyId" />
-			</hyperlink>
-		</field>
-	</form>
+
 
 
 

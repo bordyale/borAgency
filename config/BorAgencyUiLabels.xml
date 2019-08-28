@@ -252,4 +252,8 @@
 		<value xml:lang="en">Percentage (%)</value>
 		<value xml:lang="it">Percentuale su ricavo (%)</value>
 	</property>
+	<property key="ClientNotes">
+		<value xml:lang="en">Client Notes</value>
+		<value xml:lang="it">Note Cliente</value>
+	</property>
 </resource>
