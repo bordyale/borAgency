@@ -457,15 +457,22 @@
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="ConditionExport" />
 	</request-map>
-	<view-map name="ConditionExport" type="screencsv"
-		page="component://borAgency/widget/CsvScreens.xml#ConditionExportCsv" content-type="text/csv" encoding="none" />
+	<view-map name="ConditionExport" type="screencsv" page="component://borAgency/widget/CsvScreens.xml#ConditionExportCsv"
+		content-type="text/csv" encoding="none" />
 
 	<request-map uri="ContractExport.csv">
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="ContractExport" />
 	</request-map>
-	<view-map name="ContractExport" type="screencsv"
-		page="component://borAgency/widget/CsvScreens.xml#ContractExportCsv" content-type="text/csv" encoding="none" />
+	<view-map name="ContractExport" type="screencsv" page="component://borAgency/widget/CsvScreens.xml#ContractExportCsv"
+		content-type="text/csv" encoding="none" />
+
+	<request-map uri="PromotionExport.csv">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="PromotionExport" />
+	</request-map>
+	<view-map name="PromotionExport" type="screencsv" page="component://borAgency/widget/CsvScreens.xml#PromotionExportCsv"
+		content-type="text/csv" encoding="none" />
 
 
 

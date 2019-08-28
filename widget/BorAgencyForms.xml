@@ -429,7 +429,7 @@
 	</form>
 
 
-	<form name="ListContracts" type="list" list-name="listIt" paginate-target="findContracts" odd-row-style="alternate-row"
+	<form name="ListContracts" type="list" list-name="listContracts" paginate-target="findContracts" odd-row-style="alternate-row"
 		default-table-style="basic-table hover-bar" header-row-style="header-row-2" override-list-size="true">
 		<!-- <actions>
 			<set field="requestParameters.noConditionFind" value="Y" />
@@ -614,7 +614,7 @@
 	</form>
 
 
-	<form name="ListConditions" type="list" list-name="listIt" target="updateCondition" paginate-target="updateCondition"
+	<form name="ListConditions" type="list" list-name="listConditions" target="updateCondition" paginate-target="updateCondition"
 		odd-row-style="alternate-row" default-table-style="basic-table hover-bar" header-row-style="header-row-2" separate-columns="true">
 		<!-- <actions> <set field="requestParameters.noConditionFind" value="Y" /> <set field="entityName" value="ConditionView" /> <service 
 			service-name="performFind" result-map="result" result-map-list="listIt"> <field-map field-name="inputFields" from-field="requestParameters" 
@@ -856,7 +856,7 @@
 	</form>
 
 
-	<form name="ListClientNote" type="list" list-name="listIt" target="updateClientNote" separate-columns="true">
+	<form name="ListClientNote" type="list" list-name="listClientNotes" target="updateClientNote" separate-columns="true">
 
 		<field name="clientId">
 			<hidden />
@@ -927,7 +927,7 @@
 
 
 
-	<form name="ListPriceChecks" type="list" list-name="listIt" target="updatePriceCheck" paginate-target="updatePriceCheck"
+	<form name="ListPriceChecks" type="list" list-name="listPriceChecks" target="updatePriceCheck" paginate-target="updatePriceCheck"
 		odd-row-style="alternate-row" default-table-style="basic-table hover-bar" header-row-style="header-row-2" separate-columns="true">
 
 		<field name="filcontractorId">
@@ -1005,7 +1005,7 @@
 		</field>
 	</form>
 
-	<form name="ListPromotions" type="list" list-name="listIt" target="updatePromotion" paginate-target="updatePromotion"
+	<form name="ListPromotions" type="list" list-name="listPromotions" target="updatePromotion" paginate-target="updatePromotion"
 		odd-row-style="alternate-row" default-table-style="basic-table hover-bar" header-row-style="header-row-2" separate-columns="true">
 
 		<field name="filcontractorId">

@@ -69,4 +69,4 @@ for (GenericValue entry: promotionList){
 
 
 
-context.listIt = hashMaps
+context.listPromotions = hashMaps

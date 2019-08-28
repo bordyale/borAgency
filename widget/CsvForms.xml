@@ -5,7 +5,7 @@
 
 
 
-	<form name="ConditionExport" type="list" list-name="listIt" odd-row-style="alternate-row"
+	<form name="ConditionExport" type="list" list-name="listConditions" odd-row-style="alternate-row"
 		default-table-style="basic-table hover-bar">
 		<field name="conditionId" title="${uiLabelMap.GeneralId}">
 			<display />
@@ -51,9 +51,9 @@
 		</field>
 	</form>
 
-	<form name="ContractExport" type="list" list-name="listIt" odd-row-style="alternate-row"
+	<form name="ContractExport" type="list" list-name="listContracts" odd-row-style="alternate-row"
 		default-table-style="basic-table hover-bar">
-		<display />
+
 
 		<field name="contractorName" title="${uiLabelMap.Contractors}" widget-style="buttontext" sort-field="true">
 			<display />
@@ -67,6 +67,47 @@
 		</field>
 		<field name="validTo" title="${uiLabelMap.ValidTo}">
 			<display type="date" />
+		</field>
+
+	</form>
+
+	<form name="PromotionExport" type="list" list-name="listPromotions" odd-row-style="alternate-row"
+		default-table-style="basic-table hover-bar">
+
+		<field name="promotionId">
+			<hidden />
+		</field>
+
+
+
+		<field name="clientName" title="${uiLabelMap.ClientName}">
+			<display />
+		</field>
+
+		<field name="productName" title="${uiLabelMap.ProductName}">
+			<display />
+		</field>
+
+		<field name="discount" title="${uiLabelMap.Discount}">
+			<display />
+		</field>
+		<field name="sellinFrom" title="${uiLabelMap.SellInFrom}">
+			<display type="date" />
+		</field>
+		<field name="sellinTo" title="${uiLabelMap.SellInTo}">
+			<display type="date" />
+		</field>
+		<field name="selloutFrom" title="${uiLabelMap.SellOutFrom}">
+			<display type="date" />
+		</field>
+		<field name="selloutTo" title="${uiLabelMap.SellOutTo}">
+			<display type="date" />
+		</field>
+		<field name="dateIns" title="${uiLabelMap.DateIns}">
+			<display type="date" />
+		</field>
+		<field name="isValid" title="${uiLabelMap.IsValid}">
+			<display />
 		</field>
 
 	</form>

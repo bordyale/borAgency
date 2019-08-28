@@ -51,6 +51,30 @@
 			</widgets>
 		</section>
 	</screen>
+	
+	<screen name="PromotionExportCsv">
+		<section>
+			<actions>
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
+				<property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true" />
+
+
+				<set field="viewIndex" from-field="parameters.VIEW_INDEX" type="Integer" default-value="0" />
+				<property-to-field resource="widget" property="widget.form.defaultViewSize" field="viewSizeDefaultValue" />
+				<set field="viewSize" from-field="parameters.VIEW_SIZE" type="Integer" default-value="${viewSizeDefaultValue}" />
+
+				<!-- <entity-one entity-name="Facility" value-field="facility" use-cache="true"/> -->
+				<script location="component://borAgency/groovyScripts/ListPromotions.groovy" />
+			</actions>
+			<widgets>
+				<container>
+					<label style="h2" text="${uiLabelMap.Promotions}" />
+				</container>
+				<include-form name="PromotionExport" location="component://borAgency/widget/CsvForms.xml" />
+
+			</widgets>
+		</section>
+	</screen>
 
 
 

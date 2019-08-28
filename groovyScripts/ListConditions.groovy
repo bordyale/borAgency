@@ -113,4 +113,4 @@ for (GenericValue entry: conditionsList){
 
 
 
-context.listIt = hashMaps
+context.listConditions = hashMaps

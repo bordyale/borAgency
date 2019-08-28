@@ -61,4 +61,4 @@ for (GenericValue entry: pricecheckList){
 
 
 
-context.listIt = hashMaps
+context.listPriceChecks = hashMaps
