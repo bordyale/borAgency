@@ -117,6 +117,7 @@
 		<response name="success" type="request-redirect" value="EditClientNote">
 			<redirect-parameter name="clientId" />
 			<redirect-parameter name="filcontractorId" />
+			<redirect-parameter name="filclientnoteFrom" />
 		</response>
 		<response name="error" type="view" value="EditClientNote" />
 	</request-map>
@@ -399,12 +400,14 @@
 			<redirect-parameter name="filproductId" />
 			<redirect-parameter name="filclientId" />
 			<redirect-parameter name="filactiv" />
+			<redirect-parameter name="filpromotionFrom" />
 		</response>
 		<response name="error" type="request-redirect" value="findPromotions">
 			<redirect-parameter name="filcontractorId" />
 			<redirect-parameter name="filproductId" />
 			<redirect-parameter name="filclientId" />
 			<redirect-parameter name="filactiv" />
+			<redirect-parameter name="filpromotionFrom" />
 		</response>
 	</request-map>
 	<request-map uri="deletePromotion">
@@ -418,6 +421,11 @@
 		<event type="service" path="" invoke="updatePromotion" />
 		<response name="success" type="view" value="findPromotions" />
 		<response name="error" type="view" value="findPromotions" />
+	</request-map>
+
+	<request-map uri="findReports">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="findReports" />
 	</request-map>
 
 
@@ -457,36 +465,37 @@
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="ConditionExport" />
 	</request-map>
-	<view-map name="ConditionExport" type="screencsv" page="component://borAgency/widget/CsvScreens.xml#ConditionExportCsv"
-		content-type="text/csv" encoding="none" />
-
-	<request-map uri="ContractExport.csv">
-		<security https="true" auth="true" />
-		<response name="success" type="view" value="ContractExport" />
-	</request-map>
-	<view-map name="ContractExport" type="screencsv" page="component://borAgency/widget/CsvScreens.xml#ContractExportCsv"
-		content-type="text/csv" encoding="none" />
-
 	<request-map uri="PromotionExport.csv">
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="PromotionExport" />
 	</request-map>
-	<view-map name="PromotionExport" type="screencsv" page="component://borAgency/widget/CsvScreens.xml#PromotionExportCsv"
-		content-type="text/csv" encoding="none" />
-
-
-
-	<!-- Request Mappings -->
 	<request-map uri="main">
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="main" />
 	</request-map>
 
+	<!-- PDF export request mappings -->
+	<request-map uri="ReportExportPdf">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="ReportExportPdf" />
+	</request-map>
+
+
+	<view-map name="ConditionExport" type="screencsv" page="component://borAgency/widget/CsvScreens.xml#ConditionExportCsv"
+		content-type="text/csv" encoding="none" />
+	<view-map name="PromotionExport" type="screencsv" page="component://borAgency/widget/CsvScreens.xml#PromotionExportCsv"
+		content-type="text/csv" encoding="none" />
+
+	<view-map name="ReportExportPdf" type="screenfop" page="component://borAgency/widget/BorAgencyScreens.xml#ReportExportPdf"
+		content-type="application/pdf" encoding="none" />
+
+	<!-- Request Mappings -->
+
+
 	<!-- View Mappings -->
 	<view-map name="main" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#main" />
 	<view-map name="findcontractors" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindContractors" />
-	<view-map name="EditContractorLayer" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditContractorLayer" />
+	<view-map name="EditContractorLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditContractorLayer" />
 	<view-map name="EditContractor" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditContractor" />
 
 
@@ -498,34 +507,30 @@
 
 
 	<view-map name="findProducts" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindProducts" />
-	<view-map name="EditProductLayer" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditProductLayer" />
+	<view-map name="EditProductLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditProductLayer" />
 	<view-map name="EditProduct" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditProduct" />
 
 
 	<view-map name="findPriceLists" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindPriceLists" />
-	<view-map name="EditPriceListLayer" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceListLayer" />
+	<view-map name="EditPriceListLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceListLayer" />
 	<view-map name="EditPriceList" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceList" />
-	<view-map name="EditPriceListDetail" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceListDetail" />
+	<view-map name="EditPriceListDetail" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceListDetail" />
 
 
 	<view-map name="findContracts" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindContracts" />
-	<view-map name="EditContractLayer" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditContractLayer" />
+	<view-map name="EditContractLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditContractLayer" />
 	<view-map name="EditContract" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditContract" />
-	<view-map name="EditContractDetail" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditContractDetail" />
+	<view-map name="EditContractDetail" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditContractDetail" />
 
 
 	<view-map name="findConditions" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindConditions" />
-	<view-map name="ContractDetailLayer" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#ContractDetailLayer" />
+	<view-map name="ContractDetailLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#ContractDetailLayer" />
 
 	<view-map name="findPriceChecks" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindPriceChecks" />
 
 	<view-map name="findPromotions" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindPromotions" />
+
+	<view-map name="findReports" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindReports" />
 
 
 	<view-map name="LookupContractor" type="screen" page="component://borAgency/widget/LookupScreens.xml#LookupContractor" />

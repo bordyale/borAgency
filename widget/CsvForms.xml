@@ -5,8 +5,7 @@
 
 
 
-	<form name="ConditionExport" type="list" list-name="listConditions" odd-row-style="alternate-row"
-		default-table-style="basic-table hover-bar">
+	<form name="ConditionExport" type="list" list-name="listConditions" odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
 		<field name="conditionId" title="${uiLabelMap.GeneralId}">
 			<display />
 		</field>
@@ -49,10 +48,25 @@
 		<field name="resultPrice" title="${uiLabelMap.ResultPrice}">
 			<display />
 		</field>
+		<field name="priceCheckPrice" title="${uiLabelMap.PriceCheck}">
+			<display />
+		</field>
+		<field name="perc" title="${uiLabelMap.PercRic}">
+			<display />
+		</field>
+		<field name="validFrom" title="${uiLabelMap.ValidFrom}">
+			<display type="date" />
+		</field>
+
+		<field name="validTo" title="${uiLabelMap.ValidTo}">
+			<display type="date" />
+		</field>
+		<field name="isProductBought" title="${uiLabelMap.IsProductBought}">
+			<display />
+		</field>
 	</form>
 
-	<form name="ContractExport" type="list" list-name="listContracts" odd-row-style="alternate-row"
-		default-table-style="basic-table hover-bar">
+	<form name="ContractExport" type="list" list-name="listContracts" odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
 
 
 		<field name="contractorName" title="${uiLabelMap.Contractors}" widget-style="buttontext" sort-field="true">
@@ -71,8 +85,7 @@
 
 	</form>
 
-	<form name="PromotionExport" type="list" list-name="listPromotions" odd-row-style="alternate-row"
-		default-table-style="basic-table hover-bar">
+	<form name="PromotionExport" type="list" list-name="listPromotions" odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
 
 		<field name="promotionId">
 			<hidden />
@@ -109,6 +122,28 @@
 		<field name="isValid" title="${uiLabelMap.IsValid}">
 			<display />
 		</field>
+
+	</form>
+
+
+	<form name="ClientNoteExport" type="list" list-name="listClientNotes" odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
+		<field name="clientName" title="${uiLabelMap.ClientName}">
+			<display />
+		</field>
+
+		<field name="contractorName" title="${uiLabelMap.ContractorName}">
+			<display />
+		</field>
+		<field name="noteName" title="${uiLabelMap.NoteName}">
+			<display />
+		</field>
+		<field name="noteInfo" title="${uiLabelMap.Note}">
+			<display size="50" />
+		</field>
+		<field name="noteDateTime" title="${uiLabelMap.NoteDateTime}">
+			<display type="date" />
+		</field>
+
 
 	</form>
 

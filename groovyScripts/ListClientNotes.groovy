@@ -28,18 +28,18 @@ import org.apache.ofbiz.entity.util.EntityUtil
 import java.sql.Timestamp
 
 filcontractorId = parameters.filcontractorId
-filproductId = parameters.filproductId
 filclientId = parameters.filclientId
+filclientnoteFrom = parameters.filclientnoteFrom
 
 List searchCond = []
 if (filcontractorId) {
 	searchCond.add(EntityCondition.makeCondition("contractorId", EntityOperator.EQUALS, filcontractorId))
 }
-if (filproductId) {
-	searchCond.add(EntityCondition.makeCondition("productId", EntityOperator.EQUALS, filproductId))
-}
 if (filclientId) {
 	searchCond.add(EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, filclientId))
+}
+if (filclientnoteFrom) {
+	searchCond.add(EntityCondition.makeCondition("noteDateTime", EntityOperator.GREATER_THAN_EQUAL_TO, Timestamp.valueOf(filclientnoteFrom)))
 }
 
 pricecheckList = from("BorNoteView").where(searchCond).cache(false).orderBy("noteDateTime DESC").queryList()
@@ -52,6 +52,7 @@ for (GenericValue entry: pricecheckList){
 	e.put("contractorName",entry.get("contractorName"))
 	e.put("noteDateTime",entry.get("noteDateTime"))
 	e.put("clientId",entry.get("clientId"))
+	e.put("clientName",entry.get("clientName"))
 	e.put("noteName",entry.get("noteName"))
 	e.put("noteInfo",entry.get("noteInfo"))
 

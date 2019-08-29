@@ -49,7 +49,7 @@ if (filactiv.equals("Y")) {
 
 conditionsList = from("ConditionView").where(searchCond).cache(false).queryList()
 
-conditionsList = EntityUtil.orderBy(conditionsList,  ["productId"])
+conditionsList = EntityUtil.orderBy(conditionsList,  ["productName"])
 
 List<HashMap<String,Object>> hashMaps = new ArrayList<HashMap<String,Object>>()
 for (GenericValue entry: conditionsList){

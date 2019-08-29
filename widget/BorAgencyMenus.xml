@@ -51,12 +51,19 @@
 			</condition>
 			<link target="findPriceChecks" />
 		</menu-item>
-		
+
 		<menu-item name="findPromotions" title="${uiLabelMap.Promotion}">
 			<condition>
 				<if-has-permission permission="BORAGENCY" action="_VIEW" />
 			</condition>
 			<link target="findPromotions" />
+		</menu-item>
+
+		<menu-item name="findReports" title="${uiLabelMap.Report}">
+			<condition>
+				<if-has-permission permission="BORAGENCY" action="_VIEW" />
+			</condition>
+			<link target="findReports" />
 		</menu-item>
 
 

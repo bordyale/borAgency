@@ -256,8 +256,52 @@
 		<value xml:lang="en">Client Notes</value>
 		<value xml:lang="it">Note Cliente</value>
 	</property>
+	<property key="Promotions">
+		<value xml:lang="en">Promotions</value>
+		<value xml:lang="it">Promozioni</value>
+	</property>
 	<property key="Activ">
 		<value xml:lang="en">Activ</value>
 		<value xml:lang="it">Solo Attivi</value>
+	</property>
+	<property key="IsValud">
+		<value xml:lang="en">Is Activ</value>
+		<value xml:lang="it">Attiva</value>
+	</property>
+	<property key="Report">
+		<value xml:lang="en">Report</value>
+		<value xml:lang="it">Stampe</value>
+	</property>
+	<property key="filclientnoteFrom">
+		<value xml:lang="en">Filter Client Note From</value>
+		<value xml:lang="it">Note Da</value>
+	</property>
+	<property key="filpromotionFrom">
+		<value xml:lang="en">Sell in From</value>
+		<value xml:lang="it">Sell in Da</value>
+	</property>
+	<property key="NoteName">
+		<value xml:lang="en">Note Name</value>
+		<value xml:lang="it">Nome Nota</value>
+	</property>
+	<property key="Note">
+		<value xml:lang="en">Note</value>
+		<value xml:lang="it">Nota</value>
+	</property>
+	<property key="NoteDateTime">
+		<value xml:lang="en">Note Date</value>
+		<value xml:lang="it">Data Nota</value>
+	</property>
+	<property key="filshowConditions">
+		<value xml:lang="en">Show Conditions</value>
+		<value xml:lang="it">Mostra Condizioni</value>
+	</property>
+	<property key="filshowPromotions">
+		<value xml:lang="en">Show Promotions</value>
+		<value xml:lang="it">Mostra Promozioni</value>
+	</property>
+	<property key="filshowClientNotes">
+		<value xml:lang="en">Show Client Notes</value>
+		<value xml:lang="it">Mostra Note Cliente</value>
 	</property>
 </resource>

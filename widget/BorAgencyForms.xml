@@ -431,15 +431,10 @@
 
 	<form name="ListContracts" type="list" list-name="listContracts" paginate-target="findContracts" odd-row-style="alternate-row"
 		default-table-style="basic-table hover-bar" header-row-style="header-row-2" override-list-size="true">
-		<!-- <actions>
-			<set field="requestParameters.noConditionFind" value="Y" />
-			<set field="entityName" value="ContractContractorView" />
-			<service service-name="performFind" result-map="result" result-map-list="listIt">
-				<field-map field-name="inputFields" from-field="requestParameters" />
-				<field-map field-name="entityName" from-field="entityName" />
-				<field-map field-name="orderBy" from-field="sortField" />
-			</service>
-		</actions> -->
+		<!-- <actions> <set field="requestParameters.noConditionFind" value="Y" /> <set field="entityName" value="ContractContractorView" 
+			/> <service service-name="performFind" result-map="result" result-map-list="listIt"> <field-map field-name="inputFields" from-field="requestParameters" 
+			/> <field-map field-name="entityName" from-field="entityName" /> <field-map field-name="orderBy" from-field="sortField" /> </service> 
+			</actions> -->
 
 		<field name="contractId" title="${uiLabelMap.GeneralId}" widget-style="buttontext" sort-field="true">
 			<hyperlink description="${contractId}" target="EditContract" also-hidden="false">
@@ -583,6 +578,7 @@
 		<alt-target use-when="promotionPage=='Y'" target="findPromotions" />
 		<alt-target use-when="clientnotePage=='Y'" target="EditClientNote" />
 		<alt-target use-when="contractPage=='Y'" target="findContracts" />
+		<alt-target use-when="reportPage=='Y'" target="findReports" />
 		<field name="filcontractorId" title="${uiLabelMap.ContractorId}">
 			<lookup target-form-name="LookupContractor" />
 		</field>
@@ -595,16 +591,31 @@
 		<field use-when="clientnotePage=='Y'" name="clientId">
 			<hidden />
 		</field>
-		
+
 		<field use-when="clientnotePage!='Y' @and priceCheckPage!='Y'" name="filactiv" title="${uiLabelMap.Activ}">
 			<drop-down allow-empty="true">
 				<option key="Y" description="${uiLabelMap.CommonY}" />
 				<option key="N" description="${uiLabelMap.CommonN}" />
 			</drop-down>
 		</field>
+
+		<field use-when="clientnotePage=='Y' || reportPage=='Y'" name="filclientnoteFrom">
+			<date-time/>
+		</field>
+		<field use-when="promotionPage=='Y' || reportPage=='Y'" name="filpromotionFrom">
+			<date-time />
+		</field>
 		
-		
-		
+		<field use-when="reportPage=='Y'" name="filshowConditions">
+			<check all-checked="true"/>
+		</field>
+		<field use-when="reportPage=='Y'" name="filshowPromotions">
+			<check all-checked="true"/>
+		</field>
+		<field use-when="reportPage=='Y'" name="filshowClientNotes">
+			<check all-checked="true"/>
+		</field>
+
 
 		<field name="searchButton" title="${uiLabelMap.Filter}" widget-style="smallSubmit">
 			<submit button-type="button" />
@@ -861,32 +872,24 @@
 		<field name="clientId">
 			<hidden />
 		</field>
-		<field name="noteId">
-			<display />
-		</field>
-		<field name="contractorName">
-			<display />
-		</field>
-
 		<field name="contractorId">
 			<hidden />
 		</field>
-		<field name="contractorName">
+		<field name="noteId">
 			<display />
 		</field>
-		<field name="noteName">
+		<field name="contractorName" title="${uiLabelMap.ContractorName}">
 			<display />
 		</field>
-		<field name="noteInfo">
+		<field name="noteName" title="${uiLabelMap.NoteName}">
+			<display />
+		</field>
+		<field name="noteInfo" title="${uiLabelMap.Note}">
 			<display size="50" />
 		</field>
-		<field name="contractorName">
-			<display />
-		</field>
-		<field name="noteName">
-			<display />
-		</field>
-		<field name="noteDateTime">
+
+
+		<field name="noteDateTime" title="${uiLabelMap.NoteDateTime}">
 			<display type="date" />
 		</field>
 
@@ -1118,7 +1121,7 @@
 			<hidden value="${nowTimestamp}" />
 		</field>
 		<field name="isValid">
-			<hidden value="Y"/>
+			<hidden value="Y" />
 		</field>
 
 
