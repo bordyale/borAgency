@@ -32,6 +32,7 @@ filproductId = parameters.filproductId
 filclientId = parameters.filclientId
 filactiv = parameters.filactiv
 filpromotionFrom = parameters.filpromotionFrom
+filshowPromotions = parameters.filshowPromotions
 
 List searchCond = []
 if (filcontractorId) {
@@ -55,22 +56,23 @@ promotionList = from("BorPromotionView").where(searchCond).cache(false).queryLis
 promotionList = EntityUtil.orderBy(promotionList,  ["sellinFrom"])
 
 List<HashMap<String,Object>> hashMaps = new ArrayList<HashMap<String,Object>>()
-for (GenericValue entry: promotionList){
-	Map<String,Object> e = new HashMap<String,Object>()
-	e.put("promotionId",entry.get("promotionId"))
-	e.put("productName",entry.get("productName"))
-	e.put("clientName",entry.get("clientName"))
-	e.put("sellinFrom",entry.get("sellinFrom"))
-	e.put("sellinTo",entry.get("sellinTo"))
-	e.put("selloutFrom",entry.get("selloutFrom"))
-	e.put("selloutTo",entry.get("selloutTo"))
-	e.put("discount",entry.get("discount"))
-	e.put("isValid",entry.get("isValid"))
-	e.put("dateIns",entry.get("dateIns"))
-
-	hashMaps.add(e)
+if(filshowPromotions.equals("Y")){
+	for (GenericValue entry: promotionList){
+		Map<String,Object> e = new HashMap<String,Object>()
+		e.put("promotionId",entry.get("promotionId"))
+		e.put("productName",entry.get("productName"))
+		e.put("clientName",entry.get("clientName"))
+		e.put("sellinFrom",entry.get("sellinFrom"))
+		e.put("sellinTo",entry.get("sellinTo"))
+		e.put("selloutFrom",entry.get("selloutFrom"))
+		e.put("selloutTo",entry.get("selloutTo"))
+		e.put("discount",entry.get("discount"))
+		e.put("isValid",entry.get("isValid"))
+		e.put("dateIns",entry.get("dateIns"))
+	
+		hashMaps.add(e)
+	}
 }
-
 
 
 context.listPromotions = hashMaps

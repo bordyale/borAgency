@@ -18,22 +18,7 @@ under the License.
 -->
 
 <#escape x as x?xml>
-<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
-    <fo:layout-master-set>
-      <fo:simple-page-master master-name="main" page-height="8.5in" page-width="11in"
-        margin-top="0.1in" margin-bottom="1in" margin-left=".5in" margin-right="1in">
-          <fo:region-body margin-top="0.2in"/>
-          <fo:region-before extent="1in"/>
-          <fo:region-after extent="1in"/>
-      </fo:simple-page-master>
-    </fo:layout-master-set>
 
-
-  
-  <fo:page-sequence master-reference="main">
-  	
-	
-	<fo:flow flow-name="xsl-region-body" font-family="NotoSans">
             <fo:block>
               <#if listConditions?has_content>
 			  <fo:block font-size="13pt" font-weight="bold" text-align="center">
@@ -253,10 +238,5 @@ under the License.
               
                         
             </fo:block>
-	</fo:flow>
 
-  </fo:page-sequence>
-
-
-</fo:root>
 </#escape>

@@ -600,20 +600,32 @@
 		</field>
 
 		<field use-when="clientnotePage=='Y' || reportPage=='Y'" name="filclientnoteFrom">
-			<date-time/>
+			<date-time />
 		</field>
 		<field use-when="promotionPage=='Y' || reportPage=='Y'" name="filpromotionFrom">
 			<date-time />
 		</field>
-		
+
 		<field use-when="reportPage=='Y'" name="filshowConditions">
-			<check all-checked="true"/>
+			<check />
 		</field>
+		<field use-when="conditionPage=='Y'" name="filshowConditions">
+			<hidden value="Y" />
+		</field>
+
+
 		<field use-when="reportPage=='Y'" name="filshowPromotions">
-			<check all-checked="true"/>
+			<check />
 		</field>
+		<field use-when="promotionPage=='Y'" name="filshowPromotions">
+			<hidden value="Y" />
+		</field>
+
 		<field use-when="reportPage=='Y'" name="filshowClientNotes">
-			<check all-checked="true"/>
+			<check />
+		</field>
+		<field use-when="clientnotePage=='Y'" name="filshowClientNotes">
+			<hidden value="Y" />
 		</field>
 
 

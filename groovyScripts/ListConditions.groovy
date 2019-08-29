@@ -32,6 +32,7 @@ filcontractorId = parameters.filcontractorId
 filproductId = parameters.filproductId
 filclientId = parameters.filclientId
 filactiv = parameters.filactiv
+filshowConditions = parameters.filshowConditions
 
 List searchCond = []
 if (filcontractorId) {
@@ -52,63 +53,65 @@ conditionsList = from("ConditionView").where(searchCond).cache(false).queryList(
 conditionsList = EntityUtil.orderBy(conditionsList,  ["productName"])
 
 List<HashMap<String,Object>> hashMaps = new ArrayList<HashMap<String,Object>>()
-for (GenericValue entry: conditionsList){
-	Map<String,Object> e = new HashMap<String,Object>()
-	e.put("conditionId",entry.get("conditionId"))
-	e.put("contractId",entry.get("contractId"))
-	e.put("contractorName",entry.get("contractorName"))
-	e.put("clientName",entry.get("clientName"))
-	e.put("pricelistName",entry.get("pricelistName"))
-	e.put("productName",entry.get("productName"))
-	e.put("price",entry.get("price"))
-	e.put("isProductBought",entry.get("isProductBought"))
-	e.put("validFrom",entry.get("validFrom"))
-	e.put("validTo",entry.get("validTo"))
-	BigDecimal startingPrice = entry.get("startingPrice")
-	e.put("startingPrice",startingPrice)
-	BigDecimal resultPrice = startingPrice ==null ? entry.get("price") : startingPrice
-	if (resultPrice == null) {
-		resultPrice = BigDecimal.ZERO
+if(filshowConditions.equals("Y")){
+	for (GenericValue entry: conditionsList){
+		Map<String,Object> e = new HashMap<String,Object>()
+		e.put("conditionId",entry.get("conditionId"))
+		e.put("contractId",entry.get("contractId"))
+		e.put("contractorName",entry.get("contractorName"))
+		e.put("clientName",entry.get("clientName"))
+		e.put("pricelistName",entry.get("pricelistName"))
+		e.put("productName",entry.get("productName"))
+		e.put("price",entry.get("price"))
+		e.put("isProductBought",entry.get("isProductBought"))
+		e.put("validFrom",entry.get("validFrom"))
+		e.put("validTo",entry.get("validTo"))
+		BigDecimal startingPrice = entry.get("startingPrice")
+		e.put("startingPrice",startingPrice)
+		BigDecimal resultPrice = startingPrice ==null ? entry.get("price") : startingPrice
+		if (resultPrice == null) {
+			resultPrice = BigDecimal.ZERO
+		}
+		BigDecimal sc1 = entry.get("sc1")==null ? BigDecimal.ZERO : entry.get("sc1")
+		BigDecimal sc2 = entry.get("sc2")==null ? BigDecimal.ZERO : entry.get("sc2")
+		BigDecimal sc3 = entry.get("sc3")==null ? BigDecimal.ZERO : entry.get("sc3")
+		BigDecimal sc4 = entry.get("sc4")==null ? BigDecimal.ZERO : entry.get("sc4")
+		BigDecimal sc5 = entry.get("sc5")==null ? BigDecimal.ZERO : entry.get("sc5")
+		BigDecimal contractValue = entry.get("totalValue")==null ? BigDecimal.ZERO : entry.get("totalValue")
+		e.put("sc1",sc1)
+		e.put("sc2",sc2)
+		e.put("sc3",sc3)
+		e.put("sc4",sc4)
+		e.put("sc5",sc5)
+		e.put("contractValue",contractValue)
+		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc1.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc1.divide(new BigDecimal(100))))
+		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc2.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc2.divide(new BigDecimal(100))))
+		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc3.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc3.divide(new BigDecimal(100))))
+		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc4.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc4.divide(new BigDecimal(100))))
+		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc5.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc5.divide(new BigDecimal(100))))
+		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(contractValue.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : contractValue.divide(new BigDecimal(100))))
+		e.put("resultPrice",resultPrice)
+	
+		String productId = entry.get("productId")
+		String clientId = entry.get("clientId")
+	
+		exprBldr = new org.apache.ofbiz.entity.condition.EntityConditionBuilder()
+		expr = exprBldr.AND() {
+			EQUALS(productId: productId)
+			EQUALS(clientId: clientId)
+		}
+		pricecheckList = from("BorPriceCheckView").where(expr).orderBy("date DESC").queryFirst()
+		if (pricecheckList){
+			BigDecimal priceCheckPrice = pricecheckList.get("price")
+			e.put("priceCheckPrice",priceCheckPrice)
+			//BigDecimal perc = priceCheckPrice.subtract(resultPrice).divide(resultPrice,2,RoundingMode.HALF_UP).multiply(new BigDecimal(100))
+			BigDecimal perc = priceCheckPrice.divide(resultPrice,2,RoundingMode.HALF_UP).multiply(new BigDecimal(100))
+			e.put("perc",perc)
+		}
+	
+	
+		hashMaps.add(e)
 	}
-	BigDecimal sc1 = entry.get("sc1")==null ? BigDecimal.ZERO : entry.get("sc1")
-	BigDecimal sc2 = entry.get("sc2")==null ? BigDecimal.ZERO : entry.get("sc2")
-	BigDecimal sc3 = entry.get("sc3")==null ? BigDecimal.ZERO : entry.get("sc3")
-	BigDecimal sc4 = entry.get("sc4")==null ? BigDecimal.ZERO : entry.get("sc4")
-	BigDecimal sc5 = entry.get("sc5")==null ? BigDecimal.ZERO : entry.get("sc5")
-	BigDecimal contractValue = entry.get("totalValue")==null ? BigDecimal.ZERO : entry.get("totalValue")
-	e.put("sc1",sc1)
-	e.put("sc2",sc2)
-	e.put("sc3",sc3)
-	e.put("sc4",sc4)
-	e.put("sc5",sc5)
-	e.put("contractValue",contractValue)
-	resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc1.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc1.divide(new BigDecimal(100))))
-	resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc2.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc2.divide(new BigDecimal(100))))
-	resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc3.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc3.divide(new BigDecimal(100))))
-	resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc4.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc4.divide(new BigDecimal(100))))
-	resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc5.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc5.divide(new BigDecimal(100))))
-	resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(contractValue.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : contractValue.divide(new BigDecimal(100))))
-	e.put("resultPrice",resultPrice)
-
-	String productId = entry.get("productId")
-	String clientId = entry.get("clientId")
-
-	exprBldr = new org.apache.ofbiz.entity.condition.EntityConditionBuilder()
-	expr = exprBldr.AND() {
-		EQUALS(productId: productId)
-		EQUALS(clientId: clientId)
-	}
-	pricecheckList = from("BorPriceCheckView").where(expr).orderBy("date DESC").queryFirst()
-	if (pricecheckList){
-		BigDecimal priceCheckPrice = pricecheckList.get("price")
-		e.put("priceCheckPrice",priceCheckPrice)
-		//BigDecimal perc = priceCheckPrice.subtract(resultPrice).divide(resultPrice,2,RoundingMode.HALF_UP).multiply(new BigDecimal(100))
-		BigDecimal perc = priceCheckPrice.divide(resultPrice,2,RoundingMode.HALF_UP).multiply(new BigDecimal(100))
-		e.put("perc",perc)
-	}
-
-
-	hashMaps.add(e)
 }
 
 

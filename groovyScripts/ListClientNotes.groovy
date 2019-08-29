@@ -30,6 +30,7 @@ import java.sql.Timestamp
 filcontractorId = parameters.filcontractorId
 filclientId = parameters.filclientId
 filclientnoteFrom = parameters.filclientnoteFrom
+filshowClientNotes = parameters.filshowClientNotes
 
 List searchCond = []
 if (filcontractorId) {
@@ -46,17 +47,19 @@ pricecheckList = from("BorNoteView").where(searchCond).cache(false).orderBy("not
 
 
 List<HashMap<String,Object>> hashMaps = new ArrayList<HashMap<String,Object>>()
-for (GenericValue entry: pricecheckList){
-	Map<String,Object> e = new HashMap<String,Object>()
-	e.put("noteId",entry.get("noteId"))
-	e.put("contractorName",entry.get("contractorName"))
-	e.put("noteDateTime",entry.get("noteDateTime"))
-	e.put("clientId",entry.get("clientId"))
-	e.put("clientName",entry.get("clientName"))
-	e.put("noteName",entry.get("noteName"))
-	e.put("noteInfo",entry.get("noteInfo"))
-
-	hashMaps.add(e)
+if(filshowClientNotes.equals("Y")){
+	for (GenericValue entry: pricecheckList){
+		Map<String,Object> e = new HashMap<String,Object>()
+		e.put("noteId",entry.get("noteId"))
+		e.put("contractorName",entry.get("contractorName"))
+		e.put("noteDateTime",entry.get("noteDateTime"))
+		e.put("clientId",entry.get("clientId"))
+		e.put("clientName",entry.get("clientName"))
+		e.put("noteName",entry.get("noteName"))
+		e.put("noteInfo",entry.get("noteInfo"))
+	
+		hashMaps.add(e)
+	}
 }
 
 

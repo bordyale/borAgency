@@ -620,6 +620,7 @@
 				<set field="filproductId" from-field="parameters.filproductId" />
 				<set field="filclientId" from-field="parameters.filclientId" />
 				<set field="filactiv" from-field="parameters.filactiv" />
+				<set field="conditionPage" value="Y" />
 				<set field="headerItem" value="findConditions" />
 				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
 				<script location="component://borAgency/groovyScripts/ListConditions.groovy" />
@@ -760,7 +761,7 @@
 				<set field="filclientnoteFrom" from-field="parameters.filclientnoteFrom" />
 				<set field="filpromotionFrom" from-field="parameters.filpromotionFrom" />
 				<set field="filshowConditions" from-field="parameters.filshowConditions" />
-				<set field="filshowPromotions" from-field="parameters.filshowConditions" />
+				<set field="filshowPromotions" from-field="parameters.filshowPromotions" />
 				<set field="filshowClientNotes" from-field="parameters.filshowClientNotes" />
 				<set field="headerItem" value="findReports" />
 				<set field="reportPage" value="Y" />
@@ -821,7 +822,7 @@
 				<set field="filclientnoteFrom" from-field="parameters.filclientnoteFrom" />
 				<set field="filpromotionFrom" from-field="parameters.filpromotionFrom" />
 				<set field="filshowConditions" from-field="parameters.filshowConditions" />
-				<set field="filshowPromotions" from-field="parameters.filshowConditions" />
+				<set field="filshowPromotions" from-field="parameters.filshowPromotions" />
 				<set field="filshowClientNotes" from-field="parameters.filshowClientNotes" />
 				<set field="headerItem" value="findReports" />
 				<set field="reportPage" value="Y" />
@@ -834,20 +835,52 @@
 
 			<widgets>
 				<section>
-					<!-- <condition>
+
+					<widgets>
+						<decorator-screen name="FoReportDecorator" location="component://common/widget/CommonScreens.xml">
+
+							<decorator-section name="body">
+								<include-screen name="ConditionReportPdf" location="component://borAgency/widget/BorAgencyScreens.xml" />
+
+							</decorator-section>
+						</decorator-screen>
+
+					</widgets>
+				</section>
+
+			</widgets>
+		</section>
+	</screen>
+
+	<screen name="ConditionReportPdf">
+		<section>
+			<actions>
+				<set field="headerItem" value="findReports" />
+				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
+				<script location="component://borAgency/groovyScripts/ListConditions.groovy" />
+			</actions>
+
+			<widgets>
+				<section>
+					<condition>
 						<or>
 							<if-compare field="filshowConditions" operator="equals" value="Y" />
 						</or>
-					</condition> -->
+					</condition>
 					<widgets>
+
 						<platform-specific>
 							<xsl-fo>
 								<html-template location="component://borAgency/template/reports/ConditionsReportPdf.fo.ftl" />
 							</xsl-fo>
 						</platform-specific>
+
+
+
 					</widgets>
 				</section>
-				
+
 			</widgets>
 		</section>
 	</screen>
