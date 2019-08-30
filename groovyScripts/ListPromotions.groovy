@@ -31,7 +31,7 @@ filcontractorId = parameters.filcontractorId
 filproductId = parameters.filproductId
 filclientId = parameters.filclientId
 filactiv = parameters.filactiv
-filpromotionFrom = parameters.filpromotionFrom
+fildate2From = parameters.fildate2From
 filshowPromotions = parameters.filshowPromotions
 
 List searchCond = []
@@ -47,8 +47,8 @@ if (filclientId) {
 if (filactiv.equals("Y")) {
 	searchCond.add(EntityCondition.makeCondition("isValid",EntityOperator.EQUALS, "Y") )
 }
-if (filpromotionFrom) {
-	searchCond.add(EntityCondition.makeCondition("sellinFrom", EntityOperator.GREATER_THAN_EQUAL_TO, Timestamp.valueOf(filpromotionFrom)))
+if (fildate2From) {
+	searchCond.add(EntityCondition.makeCondition("sellinFrom", EntityOperator.GREATER_THAN_EQUAL_TO, Timestamp.valueOf(fildate2From)))
 }
 
 promotionList = from("BorPromotionView").where(searchCond).cache(false).queryList()

@@ -36,7 +36,8 @@
 								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
-											<link target="EditContractorLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
+											<link target="EditContractorLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}"
+												style="buttontext create" />
 										</container>
 									</decorator-section>
 									<decorator-section name="search-options">
@@ -226,7 +227,7 @@
 		<section>
 			<actions>
 				<set field="filcontractorId" from-field="parameters.filcontractorId" />
-				<set field="filclientnoteFrom" from-field="parameters.filclientnoteFrom" />
+				<set field="fildate1From" from-field="parameters.fildate1From" />
 				<set field="clientnotePage" value="Y" />
 				<set field="titleProperty" value="FindClient" />
 				<set field="headerItem" value="findclients" />
@@ -365,7 +366,8 @@
 								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
-											<link target="EditPriceListLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
+											<link target="EditPriceListLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}"
+												style="buttontext create" />
 										</container>
 									</decorator-section>
 									<decorator-section name="search-options">
@@ -495,8 +497,10 @@
 								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
-											<link target="EditContractLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
-											<link target="ContractExport.csv" text="${uiLabelMap.CommonExport}" style="buttontext create" target-window="_blank">
+											<link target="EditContractLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}"
+												style="buttontext create" />
+											<link target="ContractExport.csv" text="${uiLabelMap.CommonExport}" style="buttontext create"
+												target-window="_blank">
 												<parameter param-name="filcontractorId" />
 												<parameter param-name="filactiv" />
 											</link>
@@ -717,7 +721,7 @@
 				<set field="filproductId" from-field="parameters.filproductId" />
 				<set field="filclientId" from-field="parameters.filclientId" />
 				<set field="filactiv" from-field="parameters.filactiv" />
-				<set field="filpromotionFrom" from-field="parameters.filpromotionFrom" />
+				<set field="fildate2From" from-field="parameters.fildate2From" />
 				<set field="headerItem" value="findPromotions" />
 				<set field="promotionPage" value="Y" />
 				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
@@ -733,7 +737,7 @@
 								<parameter param-name="filproductId" />
 								<parameter param-name="filclientId" />
 								<parameter param-name="filactiv" />
-								<parameter param-name="filpromotionFrom" />
+								<parameter param-name="fildate2From" />
 							</link>
 						</container>
 						<screenlet title="${uiLabelMap.Filter}">
@@ -754,12 +758,16 @@
 	<screen name="FindReports">
 		<section>
 			<actions>
+				<!-- for uiLabelMap.filclientnoteFrom -->
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
 				<set field="filcontractorId" from-field="parameters.filcontractorId" />
 				<set field="filproductId" from-field="parameters.filproductId" />
 				<set field="filclientId" from-field="parameters.filclientId" />
 				<set field="filactiv" from-field="parameters.filactiv" />
-				<set field="filclientnoteFrom" from-field="parameters.filclientnoteFrom" />
-				<set field="filpromotionFrom" from-field="parameters.filpromotionFrom" />
+				<set field="fildate1From" from-field="parameters.fildate1From" />
+				<set field="fildate1FromTitle" value="${groovy: uiLabelMap.filclientnoteFrom}" />
+				<set field="fildate2From" from-field="parameters.fildate2From" />
+				<set field="fildate2FromTitle" value="${groovy: uiLabelMap.filpromotionFrom}" />
 				<set field="filshowConditions" from-field="parameters.filshowConditions" />
 				<set field="filshowPromotions" from-field="parameters.filshowPromotions" />
 				<set field="filshowClientNotes" from-field="parameters.filshowClientNotes" />
@@ -780,8 +788,8 @@
 								<parameter param-name="filproductId" />
 								<parameter param-name="filclientId" />
 								<parameter param-name="filactiv" />
-								<parameter param-name="filclientnoteFrom" />
-								<parameter param-name="filpromotionFrom" />
+								<parameter param-name="fildate1From" />
+								<parameter param-name="fildate2From" />
 								<parameter param-name="filshowConditions" />
 								<parameter param-name="filshowPromotions" />
 								<parameter param-name="filshowClientNotes" />
@@ -819,8 +827,8 @@
 				<set field="filproductId" from-field="parameters.filproductId" />
 				<set field="filclientId" from-field="parameters.filclientId" />
 				<set field="filactiv" from-field="parameters.filactiv" />
-				<set field="filclientnoteFrom" from-field="parameters.filclientnoteFrom" />
-				<set field="filpromotionFrom" from-field="parameters.filpromotionFrom" />
+				<set field="fildate1From" from-field="parameters.fildate1From" />
+				<set field="fildate2From" from-field="parameters.fildate2From" />
 				<set field="filshowConditions" from-field="parameters.filshowConditions" />
 				<set field="filshowPromotions" from-field="parameters.filshowPromotions" />
 				<set field="filshowClientNotes" from-field="parameters.filshowClientNotes" />
@@ -841,6 +849,8 @@
 
 							<decorator-section name="body">
 								<include-screen name="ConditionReportPdf" location="component://borAgency/widget/BorAgencyScreens.xml" />
+								<include-screen name="PromotionReportPdf" location="component://borAgency/widget/BorAgencyScreens.xml" />
+								<include-screen name="ClientNoteReportPdf" location="component://borAgency/widget/BorAgencyScreens.xml" />
 
 							</decorator-section>
 						</decorator-screen>
@@ -873,6 +883,7 @@
 						<platform-specific>
 							<xsl-fo>
 								<html-template location="component://borAgency/template/reports/ConditionsReportPdf.fo.ftl" />
+								
 							</xsl-fo>
 						</platform-specific>
 
@@ -883,7 +894,74 @@
 
 			</widgets>
 		</section>
-	</screen>
+		
+		</screen>
+		<screen name="PromotionReportPdf">
+			<section>
+				<actions>
+					<set field="headerItem" value="findReports" />
+					<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
+					<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
+					<script location="component://borAgency/groovyScripts/ListPromotions.groovy" />
+				</actions>
+
+				<widgets>
+					<section>
+						<condition>
+							<or>
+								<if-compare field="filshowPromotions" operator="equals" value="Y" />
+							</or>
+						</condition>
+						<widgets>
+
+							<platform-specific>
+								<xsl-fo>
+									<html-template location="component://borAgency/template/reports/PromotionsReportPdf.fo.ftl" />
+								</xsl-fo>
+							</platform-specific>
+
+
+
+						</widgets>
+					</section>
+
+				</widgets>
+			</section>
+
+		</screen>
+		<screen name="ClientNoteReportPdf">
+			<section>
+				<actions>
+					<set field="headerItem" value="findReports" />
+					<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
+					<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
+					<script location="component://borAgency/groovyScripts/ListClientNotes.groovy" />
+				</actions>
+
+				<widgets>
+					<section>
+						<condition>
+							<or>
+								<if-compare field="filshowClientNotes" operator="equals" value="Y" />
+							</or>
+						</condition>
+						<widgets>
+
+							<platform-specific>
+								<xsl-fo>
+									<html-template location="component://borAgency/template/reports/ClientNotesReportPdf.fo.ftl" />
+								</xsl-fo>
+							</platform-specific>
+
+
+
+						</widgets>
+					</section>
+
+				</widgets>
+			</section>
+
+		</screen>
 
 
 

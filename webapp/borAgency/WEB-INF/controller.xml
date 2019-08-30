@@ -117,7 +117,7 @@
 		<response name="success" type="request-redirect" value="EditClientNote">
 			<redirect-parameter name="clientId" />
 			<redirect-parameter name="filcontractorId" />
-			<redirect-parameter name="filclientnoteFrom" />
+			<redirect-parameter name="fildate1From" />
 		</response>
 		<response name="error" type="view" value="EditClientNote" />
 	</request-map>
@@ -400,14 +400,14 @@
 			<redirect-parameter name="filproductId" />
 			<redirect-parameter name="filclientId" />
 			<redirect-parameter name="filactiv" />
-			<redirect-parameter name="filpromotionFrom" />
+			<redirect-parameter name="fildate2From" />
 		</response>
 		<response name="error" type="request-redirect" value="findPromotions">
 			<redirect-parameter name="filcontractorId" />
 			<redirect-parameter name="filproductId" />
 			<redirect-parameter name="filclientId" />
 			<redirect-parameter name="filactiv" />
-			<redirect-parameter name="filpromotionFrom" />
+			<redirect-parameter name="fildate2From" />
 		</response>
 	</request-map>
 	<request-map uri="deletePromotion">

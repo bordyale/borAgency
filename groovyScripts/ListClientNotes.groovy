@@ -29,7 +29,7 @@ import java.sql.Timestamp
 
 filcontractorId = parameters.filcontractorId
 filclientId = parameters.filclientId
-filclientnoteFrom = parameters.filclientnoteFrom
+fildate1From = parameters.fildate1From
 filshowClientNotes = parameters.filshowClientNotes
 
 List searchCond = []
@@ -39,8 +39,8 @@ if (filcontractorId) {
 if (filclientId) {
 	searchCond.add(EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, filclientId))
 }
-if (filclientnoteFrom) {
-	searchCond.add(EntityCondition.makeCondition("noteDateTime", EntityOperator.GREATER_THAN_EQUAL_TO, Timestamp.valueOf(filclientnoteFrom)))
+if (fildate1From) {
+	searchCond.add(EntityCondition.makeCondition("noteDateTime", EntityOperator.GREATER_THAN_EQUAL_TO, Timestamp.valueOf(fildate1From)))
 }
 
 pricecheckList = from("BorNoteView").where(searchCond).cache(false).orderBy("noteDateTime DESC").queryList()
@@ -63,5 +63,5 @@ if(filshowClientNotes.equals("Y")){
 }
 
 
-
+//context.fildate1FromTitle ="xxx"
 context.listClientNotes = hashMaps
