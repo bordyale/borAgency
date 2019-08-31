@@ -30,11 +30,11 @@ under the License.
                   <fo:table-column column-width="10%" border-width="1px" border-style="solid" />        
 				  <fo:table-column column-width="5%" border-width="1px" border-style="solid" />
 				  <fo:table-column column-width="5%" border-width="1px" border-style="solid" />
-				  <fo:table-column column-width="3%" border-width="1px" border-style="solid" />
-				  <fo:table-column column-width="3%" border-width="1px" border-style="solid" />
-				  <fo:table-column column-width="3%" border-width="1px" border-style="solid" />
-				  <fo:table-column column-width="3%" border-width="1px" border-style="solid" />
-              	  <fo:table-column column-width="3%" border-width="1px" border-style="solid" />
+				  <fo:table-column column-width="4%" border-width="1px" border-style="solid" />
+				  <fo:table-column column-width="4%" border-width="1px" border-style="solid" />
+				  <fo:table-column column-width="4%" border-width="1px" border-style="solid" />
+				  <fo:table-column column-width="4%" border-width="1px" border-style="solid" />
+              	  <fo:table-column column-width="4%" border-width="1px" border-style="solid" />
                   <fo:table-column column-width="5%" border-width="1px" border-style="solid" />        
 				  <fo:table-column column-width="5%" border-width="1px" border-style="solid" />
 				  <fo:table-column column-width="5%" border-width="1px" border-style="solid" />

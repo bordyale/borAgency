@@ -221,8 +221,8 @@
 		<value xml:lang="it">Promozioni</value>
 	</property>
 	<property key="Discount">
-		<value xml:lang="en">Discount</value>
-		<value xml:lang="it">Sconto</value>
+		<value xml:lang="en">Discount (%)</value>
+		<value xml:lang="it">Sconto (%)</value>
 	</property>
 	<property key="SellInFrom">
 		<value xml:lang="en">Sell In From</value>
@@ -303,5 +303,9 @@
 	<property key="filshowClientNotes">
 		<value xml:lang="en">Show Client Notes</value>
 		<value xml:lang="it">Mostra Note Cliente</value>
+	</property>
+	<property key="ClientsNotBought">
+		<value xml:lang="en">Nog Bought Clients</value>
+		<value xml:lang="it">Clienti che non acquistano</value>
 	</property>
 </resource>

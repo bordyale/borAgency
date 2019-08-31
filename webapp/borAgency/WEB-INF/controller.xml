@@ -325,12 +325,14 @@
 			<redirect-parameter name="filproductId" />
 			<redirect-parameter name="filclientId" />
 			<redirect-parameter name="filactiv" />
+			<redirect-parameter name="filshowConditions" />
 		</response>
 		<response name="error" type="request-redirect" value="findConditions">
 			<redirect-parameter name="filcontractorId" />
 			<redirect-parameter name="filproductId" />
 			<redirect-parameter name="filclientId" />
 			<redirect-parameter name="filactiv" />
+			<redirect-parameter name="filshowConditions" />
 		</response>
 	</request-map>
 	<request-map uri="deleteCondition">

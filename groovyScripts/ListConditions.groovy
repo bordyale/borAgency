@@ -48,9 +48,9 @@ if (filactiv.equals("Y")) {
 	searchCond.add(EntityCondition.makeCondition("validTo",EntityOperator.EQUALS, null) )
 }
 
-conditionsList = from("ConditionView").where(searchCond).cache(false).queryList()
+conditionsList = from("ConditionView").where(searchCond).orderBy("productName","productId").cache(false).queryList()
 
-conditionsList = EntityUtil.orderBy(conditionsList,  ["productName"])
+//conditionsList = EntityUtil.orderBy(conditionsList,  ["productName"])
 
 List<HashMap<String,Object>> hashMaps = new ArrayList<HashMap<String,Object>>()
 if(filshowConditions.equals("Y")){
@@ -89,7 +89,7 @@ if(filshowConditions.equals("Y")){
 		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc3.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc3.divide(new BigDecimal(100))))
 		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc4.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc4.divide(new BigDecimal(100))))
 		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc5.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc5.divide(new BigDecimal(100))))
-		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(contractValue.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : contractValue.divide(new BigDecimal(100))))
+		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(contractValue.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : contractValue.divide(new BigDecimal(100)))).setScale(2,RoundingMode.HALF_UP)
 		e.put("resultPrice",resultPrice)
 	
 		String productId = entry.get("productId")
@@ -104,8 +104,8 @@ if(filshowConditions.equals("Y")){
 		if (pricecheckList){
 			BigDecimal priceCheckPrice = pricecheckList.get("price")
 			e.put("priceCheckPrice",priceCheckPrice)
-			//BigDecimal perc = priceCheckPrice.subtract(resultPrice).divide(resultPrice,2,RoundingMode.HALF_UP).multiply(new BigDecimal(100))
-			BigDecimal perc = priceCheckPrice.divide(resultPrice,2,RoundingMode.HALF_UP).multiply(new BigDecimal(100))
+			BigDecimal perc = priceCheckPrice.subtract(resultPrice).divide(priceCheckPrice,2,RoundingMode.HALF_UP).multiply(new BigDecimal(100))
+			//BigDecimal perc = priceCheckPrice.divide(resultPrice,2,RoundingMode.HALF_UP).multiply(new BigDecimal(100))
 			e.put("perc",perc)
 		}
 	

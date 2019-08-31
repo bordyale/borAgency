@@ -102,7 +102,7 @@
 				<set field="headerItem" value="findclients" />
 
 				<set field="formShippingListName" value="${groovy: return 'ListClients';}" />
-				<!-- <script location="component://vforder/groovyScripts/FindShipping.groovy" /> -->
+				<script location="component://borAgency/groovyScripts/ListClients.groovy" />
 
 				<!-- asmselect parameters, must be prefixed by asm_ for SetMultipleSelectJs.ftl -->
 
@@ -123,7 +123,11 @@
 									</decorator-section>
 									<decorator-section name="search-results">
 										<include-form name="${formShippingListName}" location="component://borAgency/widget/BorAgencyForms.xml" />
+										<screenlet title="${uiLabelMap.ClientsNotBought}">
+											<include-form name="ListClientsNotBought" location="component://borAgency/widget/BorAgencyForms.xml" />
+										</screenlet>
 									</decorator-section>
+
 								</decorator-screen>
 							</widgets>
 						</section>
@@ -624,6 +628,7 @@
 				<set field="filproductId" from-field="parameters.filproductId" />
 				<set field="filclientId" from-field="parameters.filclientId" />
 				<set field="filactiv" from-field="parameters.filactiv" />
+				<set field="filshowConditions" from-field="parameters.filshowConditions" />
 				<set field="conditionPage" value="Y" />
 				<set field="headerItem" value="findConditions" />
 				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
@@ -883,7 +888,7 @@
 						<platform-specific>
 							<xsl-fo>
 								<html-template location="component://borAgency/template/reports/ConditionsReportPdf.fo.ftl" />
-								
+
 							</xsl-fo>
 						</platform-specific>
 
@@ -894,74 +899,74 @@
 
 			</widgets>
 		</section>
-		
-		</screen>
-		<screen name="PromotionReportPdf">
-			<section>
-				<actions>
-					<set field="headerItem" value="findReports" />
-					<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
-					<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
-					<script location="component://borAgency/groovyScripts/ListPromotions.groovy" />
-				</actions>
 
-				<widgets>
-					<section>
-						<condition>
-							<or>
-								<if-compare field="filshowPromotions" operator="equals" value="Y" />
-							</or>
-						</condition>
-						<widgets>
+	</screen>
+	<screen name="PromotionReportPdf">
+		<section>
+			<actions>
+				<set field="headerItem" value="findReports" />
+				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
+				<script location="component://borAgency/groovyScripts/ListPromotions.groovy" />
+			</actions>
 
-							<platform-specific>
-								<xsl-fo>
-									<html-template location="component://borAgency/template/reports/PromotionsReportPdf.fo.ftl" />
-								</xsl-fo>
-							</platform-specific>
+			<widgets>
+				<section>
+					<condition>
+						<or>
+							<if-compare field="filshowPromotions" operator="equals" value="Y" />
+						</or>
+					</condition>
+					<widgets>
 
-
-
-						</widgets>
-					</section>
-
-				</widgets>
-			</section>
-
-		</screen>
-		<screen name="ClientNoteReportPdf">
-			<section>
-				<actions>
-					<set field="headerItem" value="findReports" />
-					<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
-					<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
-					<script location="component://borAgency/groovyScripts/ListClientNotes.groovy" />
-				</actions>
-
-				<widgets>
-					<section>
-						<condition>
-							<or>
-								<if-compare field="filshowClientNotes" operator="equals" value="Y" />
-							</or>
-						</condition>
-						<widgets>
-
-							<platform-specific>
-								<xsl-fo>
-									<html-template location="component://borAgency/template/reports/ClientNotesReportPdf.fo.ftl" />
-								</xsl-fo>
-							</platform-specific>
+						<platform-specific>
+							<xsl-fo>
+								<html-template location="component://borAgency/template/reports/PromotionsReportPdf.fo.ftl" />
+							</xsl-fo>
+						</platform-specific>
 
 
 
-						</widgets>
-					</section>
+					</widgets>
+				</section>
 
-				</widgets>
-			</section>
+			</widgets>
+		</section>
 
-		</screen>
+	</screen>
+	<screen name="ClientNoteReportPdf">
+		<section>
+			<actions>
+				<set field="headerItem" value="findReports" />
+				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
+				<script location="component://borAgency/groovyScripts/ListClientNotes.groovy" />
+			</actions>
+
+			<widgets>
+				<section>
+					<condition>
+						<or>
+							<if-compare field="filshowClientNotes" operator="equals" value="Y" />
+						</or>
+					</condition>
+					<widgets>
+
+						<platform-specific>
+							<xsl-fo>
+								<html-template location="component://borAgency/template/reports/ClientNotesReportPdf.fo.ftl" />
+							</xsl-fo>
+						</platform-specific>
+
+
+
+					</widgets>
+				</section>
+
+			</widgets>
+		</section>
+
+	</screen>
 
 
 

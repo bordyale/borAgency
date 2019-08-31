@@ -25,10 +25,10 @@ under the License.
 					${uiLabelMap.ClientNotes} 
 			  </fo:block>
               <fo:table width="100%" table-layout="fixed"> 
-                  <fo:table-column column-width="7%" border-width="1px" border-style="solid" />
-                  <fo:table-column column-width="7%" border-width="1px" border-style="solid" />
-                  <fo:table-column column-width="10%" border-width="1px" border-style="solid" />        
-				  <fo:table-column column-width="5%" border-width="1px" border-style="solid" />
+                  <fo:table-column column-width="10%" border-width="1px" border-style="solid" />
+                  <fo:table-column column-width="15%" border-width="1px" border-style="solid" />
+                  <fo:table-column column-width="65%" border-width="1px" border-style="solid" />        
+				  <fo:table-column column-width="10%" border-width="1px" border-style="solid" />
 				  
                <fo:table-header text-align="center" background-color="silver">
 					<fo:table-row>

@@ -661,6 +661,9 @@
 		<field name="filactiv">
 			<hidden />
 		</field>
+		<field name="filshowConditions">
+			<hidden />
+		</field>
 		<field name="conditionId" title="${uiLabelMap.GeneralId}">
 			<display />
 		</field>
@@ -953,6 +956,25 @@
 		<field name="submitButton" title="${uiLabelMap.CommonSave}" widget-style="smallSubmit">
 			<submit button-type="text-link" />
 		</field>
+	</form>
+
+
+	<form name="ListClientsNotBought" type="list" list-name="listClientsNotBought" target="updateClientNote"
+		separate-columns="true">
+
+
+
+		<field name="contractorName" title="${uiLabelMap.ContractorName}">
+			<display />
+		</field>
+		<field name="clientName" title="${uiLabelMap.ClientName}">
+			<display />
+		</field>
+		
+
+
+
+
 	</form>
 
 
