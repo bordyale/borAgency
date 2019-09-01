@@ -828,7 +828,7 @@
 			<lookup target-form-name="LookupPriceList?contractorId=${filcontractorId}" />
 		</field>
 		<field name="isProductBought" title="${uiLabelMap.IsProductBought}">
-			<drop-down allow-empty="true">
+			<drop-down>
 				<option key="Y" description="${uiLabelMap.CommonY}" />
 				<option key="N" description="${uiLabelMap.CommonN}" />
 			</drop-down>

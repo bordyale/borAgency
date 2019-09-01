@@ -232,6 +232,7 @@
 			<actions>
 				<set field="filcontractorId" from-field="parameters.filcontractorId" />
 				<set field="fildate1From" from-field="parameters.fildate1From" />
+				<set field="filshowClientNotes" from-field="parameters.filshowClientNotes" />
 				<set field="clientnotePage" value="Y" />
 				<set field="titleProperty" value="FindClient" />
 				<set field="headerItem" value="findclients" />

@@ -49,11 +49,18 @@ conditionBoughtYes.each { entry ->
 }
 
 
-//baseExprs = []
-baseExprs =EntityCondition.makeCondition([EntityCondition.makeCondition("clientId", EntityOperator.IN, clientsBoughtSetNot),EntityCondition.makeCondition("clientId", EntityOperator.NOT_IN, clientsBoughtSetYes)],EntityOperator.AND)
+baseExprs = []
+if (clientsBoughtSetNot.size()>0) {
+	baseExprs.add(EntityCondition.makeCondition("clientId", EntityOperator.IN, clientsBoughtSetNot))
+}
+if (clientsBoughtSetYes.size()>0) {
+	baseExprs.add(EntityCondition.makeCondition("clientId", EntityOperator.NOT_IN, clientsBoughtSetYes))
+}
+
+//baseExprs =EntityCondition.makeCondition([EntityCondition.makeCondition("clientId", EntityOperator.IN, clientsBoughtSetNot),EntityCondition.makeCondition("clientId", EntityOperator.NOT_IN, clientsBoughtSetYes)],EntityOperator.AND)
 //baseExprs.add(EntityCondition.makeCondition("clientId", EntityOperator.NOT_IN, clientsBoughtSetYes))
-//searchAND = EntityCondition.makeCondition(baseExprs, EntityOperator.AND)
-listClientsNotBought = select("contractorId","contractorName","clientId","clientName").from("ConditionView").where(baseExprs).distinct().cache(false).queryList()
+searchAND = EntityCondition.makeCondition(baseExprs, EntityOperator.AND)
+listClientsNotBought = select("contractorId","contractorName","clientId","clientName").from("ConditionView").where(searchAND).distinct().cache(false).queryList()
 
 
 
