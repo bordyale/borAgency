@@ -645,6 +645,7 @@
 								<parameter param-name="filclientId" />
 								<parameter param-name="filclientType" />
 								<parameter param-name="filactiv" />
+								<parameter param-name="filshowConditions" />
 							</link>
 						</container>
 						<screenlet title="${uiLabelMap.Filter}">
@@ -750,6 +751,7 @@
 								<parameter param-name="filclientId" />
 								<parameter param-name="filactiv" />
 								<parameter param-name="fildate2From" />
+								<parameter param-name="filshowPromotions" />
 							</link>
 						</container>
 						<screenlet title="${uiLabelMap.Filter}">
@@ -798,6 +800,21 @@
 
 						<container style="button-bar">
 							<link target="ReportExportPdf" text="${uiLabelMap.CommonPdf}" style="buttontext create" target-window="_blank">
+								<parameter param-name="filcontractorId" />
+								<parameter param-name="filproductId" />
+								<parameter param-name="filclientId" />
+								<parameter param-name="filactiv" />
+								<parameter param-name="fildate1From" />
+								<parameter param-name="fildate2From" />
+								<parameter param-name="fildate3From" />
+								<parameter param-name="filshowConditions" />
+								<parameter param-name="filshowPromotions" />
+								<parameter param-name="filshowClientNotes" />
+
+							</link>
+						</container>
+						<container style="button-bar">
+							<link target="ReportExport.csv" text="${uiLabelMap.CommonExport}" style="buttontext create" target-window="_blank">
 								<parameter param-name="filcontractorId" />
 								<parameter param-name="filproductId" />
 								<parameter param-name="filclientId" />
