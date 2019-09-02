@@ -36,8 +36,7 @@
 								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
-											<link target="EditContractorLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}"
-												style="buttontext create" />
+											<link target="EditContractorLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
 										</container>
 									</decorator-section>
 									<decorator-section name="search-options">
@@ -230,10 +229,13 @@
 	<screen name="EditClientNote">
 		<section>
 			<actions>
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
 				<set field="filcontractorId" from-field="parameters.filcontractorId" />
 				<set field="fildate1From" from-field="parameters.fildate1From" />
 				<set field="filshowClientNotes" from-field="parameters.filshowClientNotes" />
 				<set field="clientnotePage" value="Y" />
+				<set field="fildate1From" from-field="parameters.fildate1From" />
+				<set field="fildate1FromTitle" value="${groovy: uiLabelMap.filclientnoteFrom}" />
 				<set field="titleProperty" value="FindClient" />
 				<set field="headerItem" value="findclients" />
 				<set field="tabButtonItem" value="EditClientNotes" />
@@ -371,8 +373,7 @@
 								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
-											<link target="EditPriceListLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}"
-												style="buttontext create" />
+											<link target="EditPriceListLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
 										</container>
 									</decorator-section>
 									<decorator-section name="search-options">
@@ -502,10 +503,8 @@
 								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
-											<link target="EditContractLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}"
-												style="buttontext create" />
-											<link target="ContractExport.csv" text="${uiLabelMap.CommonExport}" style="buttontext create"
-												target-window="_blank">
+											<link target="EditContractLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
+											<link target="ContractExport.csv" text="${uiLabelMap.CommonExport}" style="buttontext create" target-window="_blank">
 												<parameter param-name="filcontractorId" />
 												<parameter param-name="filactiv" />
 											</link>
@@ -628,6 +627,7 @@
 				<set field="filcontractorId" from-field="parameters.filcontractorId" />
 				<set field="filproductId" from-field="parameters.filproductId" />
 				<set field="filclientId" from-field="parameters.filclientId" />
+				<set field="filclientType" from-field="parameters.filclientType" />
 				<set field="filactiv" from-field="parameters.filactiv" />
 				<set field="filshowConditions" from-field="parameters.filshowConditions" />
 				<set field="conditionPage" value="Y" />
@@ -643,6 +643,7 @@
 								<parameter param-name="filcontractorId" />
 								<parameter param-name="filproductId" />
 								<parameter param-name="filclientId" />
+								<parameter param-name="filclientType" />
 								<parameter param-name="filactiv" />
 							</link>
 						</container>
@@ -692,8 +693,9 @@
 	<screen name="FindPriceChecks">
 		<section>
 			<actions>
-				<!-- <set field="filcontractorId" from-field="parameters.filcontractorId" /> <set field="filproductId" from-field="parameters.filproductId" 
-					/> <set field="filclientId" from-field="parameters.filclientId" /> -->
+				<set field="filcontractorId" from-field="parameters.filcontractorId" />
+				<set field="filproductId" from-field="parameters.filproductId" />
+				<set field="filclientId" from-field="parameters.filclientId" />
 				<set field="headerItem" value="findPriceChecks" />
 				<set field="priceCheckPage" value="Y" />
 				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
@@ -723,11 +725,15 @@
 	<screen name="FindPromotions">
 		<section>
 			<actions>
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
 				<set field="filcontractorId" from-field="parameters.filcontractorId" />
 				<set field="filproductId" from-field="parameters.filproductId" />
 				<set field="filclientId" from-field="parameters.filclientId" />
 				<set field="filactiv" from-field="parameters.filactiv" />
 				<set field="fildate2From" from-field="parameters.fildate2From" />
+				<set field="fildate2FromTitle" value="${groovy: uiLabelMap.filpromotionFrom}" />
+				<set field="fildate3From" from-field="parameters.fildate3From" />
+				<set field="fildate3FromTitle" value="${groovy: uiLabelMap.filpromotionTo}" />
 				<set field="headerItem" value="findPromotions" />
 				<set field="promotionPage" value="Y" />
 				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
@@ -774,6 +780,8 @@
 				<set field="fildate1FromTitle" value="${groovy: uiLabelMap.filclientnoteFrom}" />
 				<set field="fildate2From" from-field="parameters.fildate2From" />
 				<set field="fildate2FromTitle" value="${groovy: uiLabelMap.filpromotionFrom}" />
+				<set field="fildate3From" from-field="parameters.fildate3From" />
+				<set field="fildate3FromTitle" value="${groovy: uiLabelMap.filpromotionTo}" />
 				<set field="filshowConditions" from-field="parameters.filshowConditions" />
 				<set field="filshowPromotions" from-field="parameters.filshowPromotions" />
 				<set field="filshowClientNotes" from-field="parameters.filshowClientNotes" />
@@ -796,6 +804,7 @@
 								<parameter param-name="filactiv" />
 								<parameter param-name="fildate1From" />
 								<parameter param-name="fildate2From" />
+								<parameter param-name="fildate3From" />
 								<parameter param-name="filshowConditions" />
 								<parameter param-name="filshowPromotions" />
 								<parameter param-name="filshowClientNotes" />

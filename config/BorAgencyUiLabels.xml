@@ -280,6 +280,10 @@
 		<value xml:lang="en">Sell in From</value>
 		<value xml:lang="it">Sell in Da</value>
 	</property>
+	<property key="filpromotionTo">
+		<value xml:lang="en">Sell in To</value>
+		<value xml:lang="it">Sell in A</value>
+	</property>
 	<property key="NoteName">
 		<value xml:lang="en">Note Name</value>
 		<value xml:lang="it">Nome Nota</value>

@@ -31,6 +31,7 @@ import java.math.RoundingMode
 filcontractorId = parameters.filcontractorId
 filproductId = parameters.filproductId
 filclientId = parameters.filclientId
+filclientType = parameters.filclientType
 filactiv = parameters.filactiv
 filshowConditions = parameters.filshowConditions
 
@@ -44,9 +45,13 @@ if (filproductId) {
 if (filclientId) {
 	searchCond.add(EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, filclientId))
 }
+if (filclientType) {
+	searchCond.add(EntityCondition.makeCondition("clientType", EntityOperator.EQUALS, filclientType))
+}
 if (filactiv.equals("Y")) {
 	searchCond.add(EntityCondition.makeCondition("validTo",EntityOperator.EQUALS, null) )
 }
+
 
 conditionsList = from("ConditionView").where(searchCond).orderBy("productName","productId").cache(false).queryList()
 

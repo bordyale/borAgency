@@ -114,6 +114,7 @@
 		<menu-item name="EditClientNotes" title="${uiLabelMap.ClientNotes}">
 			<link target="EditClientNote">
 				<parameter param-name="clientId" />
+				<parameter param-name="filshowClientNotes" value="Y" />
 			</link>
 		</menu-item>
 

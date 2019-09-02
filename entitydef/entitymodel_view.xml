@@ -6,8 +6,7 @@
 	the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License 
 	for the specific language governing permissions and limitations under the License. -->
 
-<entitymodel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/entitymodel.xsd">
+<entitymodel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/entitymodel.xsd">
 	<!-- ========================================================= -->
 	<!-- ======================== Defaults ======================= -->
 	<!-- ========================================================= -->
@@ -190,13 +189,20 @@
 		</entity-condition>
 	</view-entity>
 
-	
 
-	<!-- <view-entity entity-name="ConditionViewClientStillNotBought" package-name="org.apache.ofbiz.borAgency"> <member-entity entity-alias="CLI" 
-		entity-name="BorClient" /> <member-entity entity-alias="CONDN" entity-name="ConditionViewisBougghtNot" /> <member-entity entity-alias="CONDY" 
-		entity-name="ConditionViewisBougghtYes" /> <alias-all entity-alias="CONDN" /> <alias-all entity-alias="CLI" /> <view-link entity-alias="CONDN" 
-		rel-entity-alias="CLI"> <key-map field-name="clientId" /> </view-link> <view-link entity-alias="CONDN" rel-entity-alias="CONDY" rel-optional="true"> 
-		<key-map field-name="clientId" /> </view-link> </view-entity> -->
+	<view-entity entity-name="PriceListDetailProductView" package-name="org.apache.ofbiz.borAgency">
+		<member-entity entity-alias="PROD" entity-name="BorProduct" />
+		<member-entity entity-alias="PLISTD" entity-name="BorPriceListDetail" />
+		<alias-all entity-alias="PROD">
+			<exclude field="name" />
+		</alias-all>
+		<alias-all entity-alias="PLISTD" />
+		<alias name="productName" entity-alias="PROD" field="name" />
+		<view-link entity-alias="PLISTD" rel-entity-alias="PROD">
+			<key-map field-name="productId" />
+		</view-link>
+	</view-entity>
+
 
 
 

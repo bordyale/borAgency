@@ -141,6 +141,7 @@
 			</condition>
 			<actions>
 				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
+				<set field="clientId" from-field="parameters.filclientId" />
 				<set field="title" value="${uiLabelMap.borLookupClientShop}" />
 				<set field="queryString" from-field="result.queryString" />
 				<set field="viewIndex" from-field="parameters.VIEW_INDEX" type="Integer" default-value="0" />

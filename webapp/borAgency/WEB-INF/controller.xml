@@ -118,6 +118,7 @@
 			<redirect-parameter name="clientId" />
 			<redirect-parameter name="filcontractorId" />
 			<redirect-parameter name="fildate1From" />
+			<redirect-parameter name="filshowClientNotes" />
 		</response>
 		<response name="error" type="view" value="EditClientNote" />
 	</request-map>
@@ -324,6 +325,7 @@
 			<redirect-parameter name="filcontractorId" />
 			<redirect-parameter name="filproductId" />
 			<redirect-parameter name="filclientId" />
+			<redirect-parameter name="filclientType" />
 			<redirect-parameter name="filactiv" />
 			<redirect-parameter name="filshowConditions" />
 		</response>
@@ -331,6 +333,7 @@
 			<redirect-parameter name="filcontractorId" />
 			<redirect-parameter name="filproductId" />
 			<redirect-parameter name="filclientId" />
+			<redirect-parameter name="filclientType" />
 			<redirect-parameter name="filactiv" />
 			<redirect-parameter name="filshowConditions" />
 		</response>
@@ -403,6 +406,7 @@
 			<redirect-parameter name="filclientId" />
 			<redirect-parameter name="filactiv" />
 			<redirect-parameter name="fildate2From" />
+			<redirect-parameter name="fildate3From" />
 		</response>
 		<response name="error" type="request-redirect" value="findPromotions">
 			<redirect-parameter name="filcontractorId" />
@@ -410,6 +414,7 @@
 			<redirect-parameter name="filclientId" />
 			<redirect-parameter name="filactiv" />
 			<redirect-parameter name="fildate2From" />
+			<redirect-parameter name="fildate3From" />
 		</response>
 	</request-map>
 	<request-map uri="deletePromotion">
