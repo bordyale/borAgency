@@ -236,7 +236,7 @@
 		<permission-service service-name="borAgencyGenericPermission" main-action="CREATE" />
 		<auto-attributes include="pk" mode="OUT" optional="false" />
 		<auto-attributes include="nonpk" mode="IN" optional="true" />
-
+		<override name="contractorId" optional="false" />
 		<override name="clientId" optional="false" />
 
 	</service>

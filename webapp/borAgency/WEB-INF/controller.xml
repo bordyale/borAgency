@@ -147,22 +147,28 @@
 		<security https="true" auth="true" />
 		<event type="service" path="" invoke="createPromotion" />
 		<response name="success" type="request-redirect" value="findPromotions">
+			<redirect-parameter name="clientId" />
+			<redirect-parameter name="promotionId" />
 			<redirect-parameter name="filcontractorId" />
 			<redirect-parameter name="filproductId" />
 			<redirect-parameter name="filclientId" />
 			<redirect-parameter name="filactiv" />
+			<redirect-parameter name="filpromotionId" />
 			<redirect-parameter name="fildate2From" />
 			<redirect-parameter name="fildate3From" />
-			<redirect-parameter name="filpromotionId" />
+			<redirect-parameter name="filshowPromotions" />
 		</response>
 		<response name="error" type="request-redirect" value="findPromotions">
+			<redirect-parameter name="clientId" />
+			<redirect-parameter name="promotionId" />
 			<redirect-parameter name="filcontractorId" />
 			<redirect-parameter name="filproductId" />
 			<redirect-parameter name="filclientId" />
 			<redirect-parameter name="filactiv" />
+			<redirect-parameter name="filpromotionId" />
 			<redirect-parameter name="fildate2From" />
 			<redirect-parameter name="fildate3From" />
-			<redirect-parameter name="filpromotionId" />
+			<redirect-parameter name="filshowPromotions" />
 		</response>
 	</request-map>
 	<request-map uri="deletePromotion">

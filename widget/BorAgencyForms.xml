@@ -1206,9 +1206,13 @@
 		<!-- <field name="productId" title="${uiLabelMap.ProductId}" required-field="true"> <lookup target-form-name="LookupProduct?contractorId=${filcontractorId}" 
 			/> </field> -->
 
-		<field name="clientId" title="${uiLabelMap.ClientId}" required-field="true">
+		<field name="clientId">
 			<hidden />
 		</field>
+		<field name="contractorId">
+			<hidden />
+		</field>
+		
 
 		<field name="sellinFrom" title="${uiLabelMap.SellInFrom}">
 			<date-time type="date" />
@@ -1221,6 +1225,12 @@
 		</field>
 		<field name="selloutTo" title="${uiLabelMap.SellOutTo}">
 			<date-time type="date" />
+		</field>
+		<field name="contribute" title="${uiLabelMap.Contribute}">
+			<text />
+		</field>
+		<field name="name" title="${uiLabelMap.Name}">
+			<text />
 		</field>
 		<field name="dateIns" required-field="true">
 			<hidden value="${nowTimestamp}" />
