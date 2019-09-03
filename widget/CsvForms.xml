@@ -138,7 +138,7 @@
 			<display />
 		</field>
 		<field name="noteInfo" title="${uiLabelMap.Note}">
-			<display size="50" />
+			<display />
 		</field>
 		<field name="noteDateTime" title="${uiLabelMap.NoteDateTime}">
 			<display type="date" />

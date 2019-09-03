@@ -175,6 +175,7 @@
 							</condition>
 							<widgets>
 								<include-menu name="EditClient" location="component://borAgency/widget/BorAgencyMenus.xml" />
+								<label style="h1">${uiLabelMap[labelTitleProperty]} ${uiLabelMap.EditClient}: ${client.name} [${uiLabelMap.CommonId}:${client.clientId}]  ${${extraFunctionName}}</label>
 							</widgets>
 						</section>
 
@@ -212,6 +213,7 @@
 							</condition>
 							<widgets>
 								<include-menu name="EditClient" location="component://borAgency/widget/BorAgencyMenus.xml" />
+								<label style="h1">${uiLabelMap[labelTitleProperty]} ${uiLabelMap.EditClient}: ${client.name} [${uiLabelMap.CommonId}:${client.clientId}]  ${${extraFunctionName}}</label>
 							</widgets>
 						</section>
 
@@ -242,6 +244,7 @@
 				<set field="clientId" from-field="parameters.clientId" />
 				<!-- <set field="workpapersId" from-field="parameters.workpapersId" /> -->
 				<entity-one entity-name="BorNote" value-field="note" />
+				<entity-one entity-name="BorClient" value-field="client" />
 				<script location="component://borAgency/groovyScripts/ListClientNotes.groovy" />
 			</actions>
 			<widgets>
@@ -251,6 +254,7 @@
 
 							<widgets>
 								<include-menu name="EditClient" location="component://borAgency/widget/BorAgencyMenus.xml" />
+								<label style="h1">${uiLabelMap[labelTitleProperty]} ${uiLabelMap.EditClient}: ${client.name} [${uiLabelMap.CommonId}:${client.clientId}]  ${${extraFunctionName}}</label>
 							</widgets>
 						</section>
 						<screenlet title="${uiLabelMap.Filter}">
@@ -431,6 +435,7 @@
 							</condition>
 							<widgets>
 								<include-menu name="EditPriceList" location="component://borAgency/widget/BorAgencyMenus.xml" />
+								<label style="h1">${uiLabelMap[labelTitleProperty]} ${uiLabelMap.EditPriceList}: ${PriceList.name} [${uiLabelMap.CommonId}:${PriceList.pricelistId}]  ${${extraFunctionName}}</label>
 							</widgets>
 						</section>
 						<section>
@@ -465,6 +470,7 @@
 
 							<widgets>
 								<include-menu name="EditPriceList" location="component://borAgency/widget/BorAgencyMenus.xml" />
+								<label style="h1">${uiLabelMap[labelTitleProperty]} ${uiLabelMap.EditPriceList}: ${PriceList.name} [${uiLabelMap.CommonId}:${PriceList.pricelistId}]  ${${extraFunctionName}}</label>
 							</widgets>
 						</section>
 						<section>
@@ -565,6 +571,7 @@
 							</condition>
 							<widgets>
 								<include-menu name="EditContract" location="component://borAgency/widget/BorAgencyMenus.xml" />
+								<label style="h1">${uiLabelMap[labelTitleProperty]} ${uiLabelMap.EditContract}: ${Contract.name} [${uiLabelMap.CommonId}:${Contract.contractId}]  ${${extraFunctionName}}</label>
 							</widgets>
 						</section>
 
@@ -598,6 +605,7 @@
 
 							<widgets>
 								<include-menu name="EditContract" location="component://borAgency/widget/BorAgencyMenus.xml" />
+								<label style="h1">${uiLabelMap[labelTitleProperty]} ${uiLabelMap.EditContract}: ${Contract.name} [${uiLabelMap.CommonId}:${Contract.contractId}]  ${${extraFunctionName}}</label>
 							</widgets>
 						</section>
 						<section>

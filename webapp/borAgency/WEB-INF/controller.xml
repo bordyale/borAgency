@@ -486,7 +486,7 @@
 	</request-map>
 	<request-map uri="ReportExport.csv">
 		<security https="true" auth="true" />
-		<response name="success" type="view" value="PromotionExport" />
+		<response name="success" type="view" value="ReportExport" />
 	</request-map>
 	<request-map uri="main">
 		<security https="true" auth="true" />
