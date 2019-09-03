@@ -312,4 +312,20 @@
 		<value xml:lang="en">Nog Bought Clients</value>
 		<value xml:lang="it">Clienti che non acquistano</value>
 	</property>
+	<property key="PromotionId">
+		<value xml:lang="en">Promotion Id</value>
+		<value xml:lang="it">Id Promozione</value>
+	</property>
+	<property key="PromotionName">
+		<value xml:lang="en">Promotion Name</value>
+		<value xml:lang="it">Nome Promozione</value>
+	</property>
+	<property key="ClientPromotions">
+		<value xml:lang="en">Client Promotions</value>
+		<value xml:lang="it">Promozioni Cliente</value>
+	</property>
+	<property key="Contribute">
+		<value xml:lang="en">Contribute</value>
+		<value xml:lang="it">Contributo</value>
+	</property>
 </resource>

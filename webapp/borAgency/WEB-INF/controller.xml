@@ -67,6 +67,10 @@
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="EditClientNote" />
 	</request-map>
+	<request-map uri="findPromotions">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="findPromotions" />
+	</request-map>
 
 	<request-map uri="createClient">
 		<security https="true" auth="true" />
@@ -134,6 +138,92 @@
 		<response name="success" type="view" value="EditClientNote" />
 		<response name="error" type="view" value="EditClientNote" />
 	</request-map>
+
+	<request-map uri="findPromotions">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="findPromotions" />
+	</request-map>
+	<request-map uri="createPromotion">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="createPromotion" />
+		<response name="success" type="request-redirect" value="findPromotions">
+			<redirect-parameter name="filcontractorId" />
+			<redirect-parameter name="filproductId" />
+			<redirect-parameter name="filclientId" />
+			<redirect-parameter name="filactiv" />
+			<redirect-parameter name="fildate2From" />
+			<redirect-parameter name="fildate3From" />
+			<redirect-parameter name="filpromotionId" />
+		</response>
+		<response name="error" type="request-redirect" value="findPromotions">
+			<redirect-parameter name="filcontractorId" />
+			<redirect-parameter name="filproductId" />
+			<redirect-parameter name="filclientId" />
+			<redirect-parameter name="filactiv" />
+			<redirect-parameter name="fildate2From" />
+			<redirect-parameter name="fildate3From" />
+			<redirect-parameter name="filpromotionId" />
+		</response>
+	</request-map>
+	<request-map uri="deletePromotion">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="deletePromotion" />
+		<response name="success" type="view" value="findPromotions" />
+		<response name="error" type="view" value="findPromotions" />
+	</request-map>
+	<request-map uri="updatePromotion">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="updatePromotion" />
+		<response name="success" type="view" value="findPromotions" />
+		<response name="error" type="view" value="findPromotions" />
+	</request-map>
+	<request-map uri="findPromotionDetails">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="findPromotionDetails" />
+	</request-map>
+
+	<request-map uri="createPromotionDetail">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="createPromotionDetail" />
+		<response name="success" type="request-redirect" value="findPromotionDetails">
+			<redirect-parameter name="clientId" />
+			<redirect-parameter name="promotionId" />
+			<redirect-parameter name="filcontractorId" />
+			<redirect-parameter name="filproductId" />
+			<redirect-parameter name="filclientId" />
+			<redirect-parameter name="filactiv" />
+			<redirect-parameter name="filpromotionId" />
+			<redirect-parameter name="fildate2From" />
+			<redirect-parameter name="fildate3From" />
+			<redirect-parameter name="filshowPromotions" />
+		</response>
+		<response name="error" type="request-redirect" value="findPromotionDetails">
+			<redirect-parameter name="clientId" />
+			<redirect-parameter name="promotionId" />
+			<redirect-parameter name="filcontractorId" />
+			<redirect-parameter name="filproductId" />
+			<redirect-parameter name="filclientId" />
+			<redirect-parameter name="filactiv" />
+			<redirect-parameter name="filpromotionId" />
+			<redirect-parameter name="fildate2From" />
+			<redirect-parameter name="fildate3From" />
+			<redirect-parameter name="filshowPromotions" />
+		</response>
+	</request-map>
+	<request-map uri="deletePromotionDetail">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="deletePromotionDetail" />
+		<response name="success" type="view" value="findPromotionDetails" />
+		<response name="error" type="view" value="findPromotionDetails" />
+	</request-map>
+	<request-map uri="updatePromotionDetail">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="updatePromotionDetail" />
+		<response name="success" type="view" value="findPromotionDetails" />
+		<response name="error" type="view" value="findPromotionDetails" />
+	</request-map>
+
+
 
 
 
@@ -391,45 +481,6 @@
 	</request-map>
 
 
-
-
-	<request-map uri="findPromotions">
-		<security https="true" auth="true" />
-		<response name="success" type="view" value="findPromotions" />
-	</request-map>
-	<request-map uri="createPromotion">
-		<security https="true" auth="true" />
-		<event type="service" path="" invoke="createPromotion" />
-		<response name="success" type="request-redirect" value="findPromotions">
-			<redirect-parameter name="filcontractorId" />
-			<redirect-parameter name="filproductId" />
-			<redirect-parameter name="filclientId" />
-			<redirect-parameter name="filactiv" />
-			<redirect-parameter name="fildate2From" />
-			<redirect-parameter name="fildate3From" />
-		</response>
-		<response name="error" type="request-redirect" value="findPromotions">
-			<redirect-parameter name="filcontractorId" />
-			<redirect-parameter name="filproductId" />
-			<redirect-parameter name="filclientId" />
-			<redirect-parameter name="filactiv" />
-			<redirect-parameter name="fildate2From" />
-			<redirect-parameter name="fildate3From" />
-		</response>
-	</request-map>
-	<request-map uri="deletePromotion">
-		<security https="true" auth="true" />
-		<event type="service" path="" invoke="deletePromotion" />
-		<response name="success" type="view" value="findPromotions" />
-		<response name="error" type="view" value="findPromotions" />
-	</request-map>
-	<request-map uri="updatePromotion">
-		<security https="true" auth="true" />
-		<event type="service" path="" invoke="updatePromotion" />
-		<response name="success" type="view" value="findPromotions" />
-		<response name="error" type="view" value="findPromotions" />
-	</request-map>
-
 	<request-map uri="findReports">
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="findReports" />
@@ -464,6 +515,10 @@
 	<request-map uri="LookupClientShop">
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="LookupClientShop" />
+	</request-map>
+	<request-map uri="LookupPromotion">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="LookupPromotion" />
 	</request-map>
 
 
@@ -506,14 +561,14 @@
 		content-type="text/csv" encoding="none" />
 	<view-map name="PromotionExport" type="screencsv" page="component://borAgency/widget/CsvScreens.xml#PromotionExportCsv"
 		content-type="text/csv" encoding="none" />
-	<view-map name="ClientNoteExport" type="screencsv"
-		page="component://borAgency/widget/CsvScreens.xml#ClientNoteExportCsv" content-type="text/csv" encoding="none" />
+	<view-map name="ClientNoteExport" type="screencsv" page="component://borAgency/widget/CsvScreens.xml#ClientNoteExportCsv"
+		content-type="text/csv" encoding="none" />
 	<view-map name="ReportExport" type="screencsv" page="component://borAgency/widget/CsvScreens.xml#ReportExportCsv"
 		content-type="text/csv" encoding="none" />
 
 
-	<view-map name="ReportExportPdf" type="screenfop"
-		page="component://borAgency/widget/BorAgencyScreens.xml#ReportExportPdf" content-type="application/pdf" encoding="none" />
+	<view-map name="ReportExportPdf" type="screenfop" page="component://borAgency/widget/BorAgencyScreens.xml#ReportExportPdf"
+		content-type="application/pdf" encoding="none" />
 
 	<!-- Request Mappings -->
 
@@ -521,8 +576,7 @@
 	<!-- View Mappings -->
 	<view-map name="main" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#main" />
 	<view-map name="findcontractors" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindContractors" />
-	<view-map name="EditContractorLayer" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditContractorLayer" />
+	<view-map name="EditContractorLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditContractorLayer" />
 	<view-map name="EditContractor" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditContractor" />
 
 
@@ -531,37 +585,32 @@
 	<view-map name="EditClient" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditClient" />
 	<view-map name="EditClientShop" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditClientShop" />
 	<view-map name="EditClientNote" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditClientNote" />
+	<view-map name="findPromotions" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditClientPromotions" />
+	<view-map name="findPromotionDetails" type="screen"
+		page="component://borAgency/widget/BorAgencyScreens.xml#EditClientPromotionDetails" />
 
 
 	<view-map name="findProducts" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindProducts" />
-	<view-map name="EditProductLayer" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditProductLayer" />
+	<view-map name="EditProductLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditProductLayer" />
 	<view-map name="EditProduct" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditProduct" />
 
 
 	<view-map name="findPriceLists" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindPriceLists" />
-	<view-map name="EditPriceListLayer" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceListLayer" />
+	<view-map name="EditPriceListLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceListLayer" />
 	<view-map name="EditPriceList" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceList" />
-	<view-map name="EditPriceListDetail" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceListDetail" />
+	<view-map name="EditPriceListDetail" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditPriceListDetail" />
 
 
 	<view-map name="findContracts" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindContracts" />
-	<view-map name="EditContractLayer" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditContractLayer" />
+	<view-map name="EditContractLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditContractLayer" />
 	<view-map name="EditContract" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditContract" />
-	<view-map name="EditContractDetail" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#EditContractDetail" />
+	<view-map name="EditContractDetail" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditContractDetail" />
 
 
 	<view-map name="findConditions" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindConditions" />
-	<view-map name="ContractDetailLayer" type="screen"
-		page="component://borAgency/widget/BorAgencyScreens.xml#ContractDetailLayer" />
+	<view-map name="ContractDetailLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#ContractDetailLayer" />
 
 	<view-map name="findPriceChecks" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindPriceChecks" />
-
-	<view-map name="findPromotions" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindPromotions" />
 
 	<view-map name="findReports" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindReports" />
 
@@ -570,6 +619,7 @@
 	<view-map name="LookupProduct" type="screen" page="component://borAgency/widget/LookupScreens.xml#LookupProduct" />
 	<view-map name="LookupClient" type="screen" page="component://borAgency/widget/LookupScreens.xml#LookupClient" />
 	<view-map name="LookupClientShop" type="screen" page="component://borAgency/widget/LookupScreens.xml#LookupClientShop" />
+	<view-map name="LookupPromotion" type="screen" page="component://borAgency/widget/LookupScreens.xml#LookupPromotion" />
 	<view-map name="LookupPriceList" type="screen" page="component://borAgency/widget/LookupScreens.xml#LookupPriceList" />
 	<view-map name="LookupContract" type="screen" page="component://borAgency/widget/LookupScreens.xml#LookupContract" />
 

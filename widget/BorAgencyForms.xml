@@ -585,17 +585,17 @@
 		<field name="filcontractorId" title="${uiLabelMap.ContractorId}">
 			<lookup target-form-name="LookupContractor" />
 		</field>
-		<field use-when="clientnotePage!='Y' @and contractPage!='Y'" name="filclientId" title="${uiLabelMap.ClientId}">
+		<field use-when="clientnotePage!='Y' @and contractPage!='Y' @and promotionPage!='Y'" name="filclientId" title="${uiLabelMap.ClientId}">
 			<lookup target-form-name="LookupClient" />
 		</field>
 		<field use-when="clientnotePage!='Y' @and contractPage!='Y'" name="filproductId" title="${uiLabelMap.ProductId}">
 			<lookup target-form-name="LookupProduct?contractorId=${filcontractorId}" />
 		</field>
-		<field use-when="clientnotePage=='Y'" name="clientId">
+		<field use-when="clientnotePage=='Y' || promotionPage=='Y'" name="clientId">
 			<hidden />
 		</field>
 
-		<field use-when="clientnotePage!='Y' @and priceCheckPage!='Y'" name="filactiv" title="${uiLabelMap.Activ}">
+		<field use-when="promotionPage!='Y' @and clientnotePage!='Y' @and priceCheckPage!='Y'" name="filactiv" title="${uiLabelMap.Activ}">
 			<drop-down allow-empty="true">
 				<option key="Y" description="${uiLabelMap.CommonY}" />
 				<option key="N" description="${uiLabelMap.CommonN}" />
@@ -610,6 +610,10 @@
 		</field>
 		<field use-when="promotionPage=='Y' || reportPage=='Y'" name="fildate3From" title="${fildate3FromTitle}">
 			<date-time />
+		</field>
+
+		<field use-when="promotionPage=='Y' || reportPage=='Y'" name="filpromotionId" title="${uiLabelMap.PromotionId}">
+			<lookup target-form-name="LookupPromotion?clientId=${filclientId}" />
 		</field>
 
 		<field use-when="reportPage=='Y'" name="filshowConditions">
@@ -1096,36 +1100,45 @@
 		<field name="filactiv">
 			<hidden />
 		</field>
-
-		<field name="promotionId">
+		<field name="fildate2From">
+			<hidden />
+		</field>
+		<field name="fildate3From">
+			<hidden />
+		</field>
+		<field name="filshowPromotions">
 			<hidden />
 		</field>
 
-		<field name="clientName" title="${uiLabelMap.ClientName}">
+		<field name="promotionId">
 			<display />
+		</field>
+		<field name="clientId">
+			<hidden />
 		</field>
 
-		<field name="productName" title="${uiLabelMap.ProductName}">
-			<display />
-		</field>
-
-		<field name="discount" title="${uiLabelMap.Discount}">
-			<display />
-		</field>
+		<!-- <field name="clientName" title="${uiLabelMap.ClientName}"> <display /> </field> <field name="productName" title="${uiLabelMap.ProductName}"> 
+			<display /> </field> <field name="discount" title="${uiLabelMap.Discount}"> <display /> </field> -->
 		<field name="sellinFrom" title="${uiLabelMap.SellInFrom}">
-			<display type="date" />
+			<date-time type="date" />
 		</field>
 		<field name="sellinTo" title="${uiLabelMap.SellInTo}">
-			<display type="date" />
+			<date-time type="date" />
 		</field>
 		<field name="selloutFrom" title="${uiLabelMap.SellOutFrom}">
-			<display type="date" />
+			<date-time type="date" />
 		</field>
 		<field name="selloutTo" title="${uiLabelMap.SellOutTo}">
-			<display type="date" />
+			<date-time type="date" />
 		</field>
 		<field name="dateIns" title="${uiLabelMap.DateIns}">
 			<display type="date" />
+		</field>
+		<field name="contribute" title="${uiLabelMap.Contribute}">
+			<text />
+		</field>
+		<field name="name" title="${uiLabelMap.Name}">
+			<text />
 		</field>
 
 		<field name="deleteLink" title=" " widget-style="buttontext">
@@ -1136,14 +1149,28 @@
 				<parameter param-name="filproductId" />
 				<parameter param-name="filclientId" />
 				<parameter param-name="filactiv" />
+				<parameter param-name="filpromotionId" />
+				<parameter param-name="fildate2From" />
+				<parameter param-name="fildate3From" />
+				<parameter param-name="filshowPromotions" />
 			</hyperlink>
 		</field>
-		<field name="isValid" title="${uiLabelMap.IsValid}">
-			<drop-down>
-				<option key="Y" description="${uiLabelMap.CommonY}" />
-				<option key="N" description="${uiLabelMap.CommonN}" />
-			</drop-down>
+		<field use-when="filcontractorId!=''" name="addLink" title=" " widget-style="buttontext">
+			<hyperlink description="${uiLabelMap.CommonAdd}" target="findPromotionDetails" also-hidden="false">
+				<parameter param-name="promotionId" />
+				<parameter param-name="filcontractorId" />
+				<parameter param-name="filproductId" />
+				<parameter param-name="filclientId" />
+				<parameter param-name="filactiv" />
+				<parameter param-name="filpromotionId" />
+				<parameter param-name="fildate2From" />
+				<parameter param-name="fildate3From" />
+				<parameter param-name="clientId" />
+				<parameter param-name="filshowPromotions" />
+			</hyperlink>
 		</field>
+		<!-- <field name="isValid" title="${uiLabelMap.IsValid}"> <drop-down> <option key="Y" description="${uiLabelMap.CommonY}" /> <option 
+			key="N" description="${uiLabelMap.CommonN}" /> </drop-down> </field> -->
 		<field name="submitButton" title="${uiLabelMap.CommonUpdate}">
 			<submit button-type="button" />
 		</field>
@@ -1166,16 +1193,21 @@
 		<field name="filactiv">
 			<hidden />
 		</field>
+		<field name="fildate2From">
+			<hidden />
+		</field>
+		<field name="fildate3From">
+			<hidden />
+		</field>
 		<field name="filshowPromotions">
 			<hidden />
 		</field>
 
-		<field name="productId" title="${uiLabelMap.ProductId}" required-field="true">
-			<lookup target-form-name="LookupProduct?contractorId=${filcontractorId}" />
-		</field>
+		<!-- <field name="productId" title="${uiLabelMap.ProductId}" required-field="true"> <lookup target-form-name="LookupProduct?contractorId=${filcontractorId}" 
+			/> </field> -->
 
 		<field name="clientId" title="${uiLabelMap.ClientId}" required-field="true">
-			<lookup target-form-name="LookupClient" />
+			<hidden />
 		</field>
 
 		<field name="sellinFrom" title="${uiLabelMap.SellInFrom}">
@@ -1190,20 +1222,155 @@
 		<field name="selloutTo" title="${uiLabelMap.SellOutTo}">
 			<date-time type="date" />
 		</field>
-		<field name="discount" title="${uiLabelMap.Discount}">
-			<text size="10" maxlength="20" />
-		</field>
 		<field name="dateIns" required-field="true">
 			<hidden value="${nowTimestamp}" />
+		</field>
+
+
+
+		<field name="submitButton" title="${uiLabelMap.CommonAdd}">
+			<submit button-type="button" />
+		</field>
+	</form>
+
+	<form name="AddPromotionDetail" type="single" target="createPromotionDetail" title="">
+		<auto-fields-service service-name="createPromotionDetail" />
+
+		<field name="filcontractorId">
+			<hidden />
+		</field>
+		<field name="filproductId">
+			<hidden />
+		</field>
+		<field name="filclientId">
+			<hidden />
+		</field>
+		<field name="filactiv">
+			<hidden />
+		</field>
+		<field name="fildate2From">
+			<hidden />
+		</field>
+		<field name="fildate3From">
+			<hidden />
+		</field>
+		<field name="filshowPromotions">
+			<hidden />
+		</field>
+		<field name="promotionId">
+			<hidden />
 		</field>
 		<field name="isValid">
 			<hidden value="Y" />
 		</field>
-
+		<field name="dateIns">
+			<hidden value="${nowTimestamp}" />
+		</field>
+		<field name="clientId" title="${uiLabelMap.ClientId}" required-field="true">
+			<hidden />
+		</field>
+		<field name="productId" title="${uiLabelMap.ProductId}" required-field="true">
+			<lookup target-form-name="LookupProduct?contractorId=${filcontractorId}" />
+		</field>
+		<field name="discount" title="${uiLabelMap.Discount}">
+			<text />
+		</field>
 
 		<field name="submitButton" title="${uiLabelMap.CommonAdd}">
-			<submit button-type="button" request-confirmation="true" />
+			<submit button-type="button" />
 		</field>
+	</form>
+
+	<form name="ListPromotionDetails" type="list" list-name="listIt" target="updatePromotionDetail" paginate-target="updatePromotion"
+		odd-row-style="alternate-row" default-table-style="basic-table hover-bar" header-row-style="header-row-2" separate-columns="true">
+		<actions>
+			<set field="requestParameters.noConditionFind" value="Y" />
+			<set field="entityName" value="BorPromotionView" />
+			<service service-name="performFind" result-map="result" result-map-list="listIt">
+				<field-map field-name="inputFields" from-field="requestParameters" />
+				<field-map field-name="entityName" from-field="entityName" />
+				<field-map field-name="orderBy" from-field="sortField" />
+				<field-map field-name="viewIndex" from-field="viewIndex" />
+				<field-map field-name="viewSize" from-field="viewSize" />
+			</service>
+		</actions>
+
+		<field name="filcontractorId">
+			<hidden />
+		</field>
+		<field name="filproductId">
+			<hidden />
+		</field>
+		<field name="filclientId">
+			<hidden />
+		</field>
+		<field name="filactiv">
+			<hidden />
+		</field>
+		<field name="fildate2From">
+			<hidden />
+		</field>
+		<field name="fildate3From">
+			<hidden />
+		</field>
+		<field name="filshowPromotions">
+			<hidden />
+		</field>
+
+		<field name="promotionId">
+			<hidden />
+		</field>
+		<field name="clientId">
+			<hidden />
+		</field>
+		<field name="productId">
+			<hidden />
+		</field>
+
+
+		<field name="clientName" title="${uiLabelMap.ClientName}">
+			<display />
+		</field>
+		<field name="productName" title="${uiLabelMap.ProductName}">
+			<display />
+		</field>
+		<field name="discount" title="${uiLabelMap.Discount}">
+			<display />
+		</field>
+
+
+		<field name="dateIns" title="${uiLabelMap.DateIns}">
+			<display type="date" />
+		</field>
+
+		<field name="deleteLink" title=" " widget-style="buttontext">
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deletePromotionDetail" also-hidden="false"
+				confirmation-message="${uiLabelMap.CommonConfirmDelete}">
+				<parameter param-name="clientId" />
+				<parameter param-name="productId" />
+				<parameter param-name="promotionId" />
+				<parameter param-name="filcontractorId" />
+				<parameter param-name="filproductId" />
+				<parameter param-name="filclientId" />
+				<parameter param-name="filactiv" />
+				<parameter param-name="filpromotionId" />
+				<parameter param-name="fildate2From" />
+				<parameter param-name="fildate3From" />
+				<parameter param-name="filshowPromotions" />
+			</hyperlink>
+		</field>
+
+		<field name="isValid" title="${uiLabelMap.IsValid}">
+			<drop-down>
+				<option key="Y" description="${uiLabelMap.CommonY}" />
+				<option key="N" description="${uiLabelMap.CommonN}" />
+			</drop-down>
+		</field>
+		<field name="submitButton" title="${uiLabelMap.CommonUpdate}">
+			<submit button-type="button" />
+		</field>
+
+
 	</form>
 
 

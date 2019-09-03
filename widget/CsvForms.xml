@@ -97,6 +97,15 @@
 			<display />
 		</field>
 
+		<field name="name" title="${uiLabelMap.PromotionName}">
+			<display />
+		</field>
+		
+		<field name="contribute" title="${uiLabelMap.Contribute}">
+			<display />
+		</field>
+
+
 		<field name="productName" title="${uiLabelMap.ProductName}">
 			<display />
 		</field>

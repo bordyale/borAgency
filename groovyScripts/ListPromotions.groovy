@@ -73,6 +73,8 @@ if(filshowPromotions.equals("Y")){
 		e.put("discount",entry.get("discount"))
 		e.put("isValid",entry.get("isValid"))
 		e.put("dateIns",entry.get("dateIns"))
+		e.put("contribute",entry.get("contribute"))
+		e.put("name",entry.get("name"))
 
 		hashMaps.add(e)
 	}

@@ -52,12 +52,12 @@
 			<link target="findPriceChecks" />
 		</menu-item>
 
-		<menu-item name="findPromotions" title="${uiLabelMap.Promotion}">
+		<!-- <menu-item name="findPromotions" title="${uiLabelMap.Promotion}">
 			<condition>
 				<if-has-permission permission="BORAGENCY" action="_VIEW" />
 			</condition>
 			<link target="findPromotions" />
-		</menu-item>
+		</menu-item> -->
 
 		<menu-item name="findReports" title="${uiLabelMap.Report}">
 			<condition>
@@ -115,6 +115,20 @@
 			<link target="EditClientNote">
 				<parameter param-name="clientId" />
 				<parameter param-name="filshowClientNotes" value="Y" />
+			</link>
+		</menu-item>
+		<menu-item name="EditClientPromotions" title="${uiLabelMap.ClientPromotions}">
+			<link target="findPromotions">
+				<parameter param-name="clientId" />
+				<parameter param-name="promotionId" />
+				<parameter param-name="filcontractorId" />
+				<parameter param-name="filproductId" />
+				<parameter param-name="filclientId" />
+				<parameter param-name="filactiv" />
+				<parameter param-name="filpromotionId" />
+				<parameter param-name="fildate2From" />
+				<parameter param-name="fildate3From" />
+				<parameter param-name="filshowPromotions" />
 			</link>
 		</menu-item>
 
