@@ -286,10 +286,10 @@
 				<!-- required: fields to search a match -->
 				<!-- the first element from searchFields is returned after user selection -->
 				<!-- it might be hidden based on widget.autocompleter.displayReturnField property in widget.properties -->
-				<set field="searchFields" value="[promotionId, promotionName]" />
+				<set field="searchFields" value="[promotionId, name]" />
 
 				<!-- optional: fields to display in the given order, default is searchFields -->
-				<set field="displayFields" value="[promotionName]" />
+				<set field="displayFields" value="[name]" />
 
 				<!-- optional: additional entity condition (named andCondition) added to search query -->
 				<!-- <script location="component://party/groovyScripts/party/StatusCondition.groovy"/> -->

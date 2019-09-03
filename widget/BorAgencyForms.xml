@@ -1113,6 +1113,9 @@
 		<field name="promotionId">
 			<display />
 		</field>
+		<field name="contractorName" title="${uiLabelMap.ContractorName}">
+			<display />
+		</field>
 		<field name="clientId">
 			<hidden />
 		</field>
@@ -1210,7 +1213,7 @@
 			<hidden />
 		</field>
 		<field name="contractorId">
-			<hidden />
+			<hidden value="${filcontractorId}"/>
 		</field>
 		
 

@@ -354,6 +354,7 @@
 				<set field="promotionId" from-field="parameters.promotionId" />
 				<entity-one entity-name="BorClient" value-field="client" />
 				<entity-one entity-name="BorPromotion" value-field="promotion" />
+				<entity-one entity-name="BorPromotionView" value-field="promotionView" />
 				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
 			</actions>
 			<widgets>
@@ -368,6 +369,9 @@
 								</label>
 								<label style="h1">${uiLabelMap[labelTitleProperty]} ${uiLabelMap.ClientPromotions}: ${promotion.name}
 									[${uiLabelMap.CommonId}:${promotion.promotionId}] ${${extraFunctionName}}
+								</label>
+								<label style="h1">${uiLabelMap[labelTitleProperty]} ${uiLabelMap.ContractorName}: ${promotionView.contractorName}
+									[${uiLabelMap.CommonId}:${promotionView.contractorId}] ${${extraFunctionName}}
 								</label>
 							</widgets>
 						</section>

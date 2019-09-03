@@ -238,7 +238,6 @@
 		<auto-attributes include="nonpk" mode="IN" optional="true" />
 		<override name="contractorId" optional="false" />
 		<override name="clientId" optional="false" />
-
 	</service>
 	<service name="updatePromotion" default-entity-name="BorPromotion" engine="entity-auto" invoke="update" auth="true">
 		<description>Update a Example</description>
