@@ -6,8 +6,7 @@
 	the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License 
 	for the specific language governing permissions and limitations under the License. -->
 
-<entitymodel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/entitymodel.xsd">
+<entitymodel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/entitymodel.xsd">
 	<!-- ========================================================= -->
 	<!-- ======================== Defaults ======================= -->
 	<!-- ========================================================= -->
@@ -170,6 +169,20 @@
 		</view-link>
 		<view-link entity-alias="PROM" rel-entity-alias="CLI">
 			<key-map field-name="clientId" />
+		</view-link>
+	</view-entity>
+
+	<view-entity entity-name="BorPromotionDetailView" package-name="org.apache.ofbiz.borAgency">
+		<member-entity entity-alias="PROMD" entity-name="BorPromotionDetail" />
+		<member-entity entity-alias="PROD" entity-name="BorProduct" />
+		<alias-all entity-alias="PROD">
+			<exclude field="contractorId" />
+			<exclude field="name" />
+		</alias-all>
+		<alias-all entity-alias="PROMD" />
+		<alias name="productName" entity-alias="PROD" field="name" />
+		<view-link entity-alias="PROMD" rel-entity-alias="PROD">
+			<key-map field-name="productId" />
 		</view-link>
 	</view-entity>
 

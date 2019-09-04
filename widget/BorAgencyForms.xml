@@ -588,7 +588,7 @@
 		<field use-when="clientnotePage!='Y' @and contractPage!='Y' @and promotionPage!='Y'" name="filclientId" title="${uiLabelMap.ClientId}">
 			<lookup target-form-name="LookupClient" />
 		</field>
-		<field use-when="clientnotePage!='Y' @and contractPage!='Y'" name="filproductId" title="${uiLabelMap.ProductId}">
+		<field use-when="promotionPage!='Y' @and clientnotePage!='Y' @and contractPage!='Y'" name="filproductId" title="${uiLabelMap.ProductId}">
 			<lookup target-form-name="LookupProduct?contractorId=${filcontractorId}" />
 		</field>
 		<field use-when="clientnotePage=='Y' || promotionPage=='Y'" name="clientId">
@@ -1213,9 +1213,9 @@
 			<hidden />
 		</field>
 		<field name="contractorId">
-			<hidden value="${filcontractorId}"/>
+			<hidden value="${filcontractorId}" />
 		</field>
-		
+
 
 		<field name="sellinFrom" title="${uiLabelMap.SellInFrom}">
 			<date-time type="date" />
@@ -1298,7 +1298,7 @@
 		odd-row-style="alternate-row" default-table-style="basic-table hover-bar" header-row-style="header-row-2" separate-columns="true">
 		<actions>
 			<set field="requestParameters.noConditionFind" value="Y" />
-			<set field="entityName" value="BorPromotionView" />
+			<set field="entityName" value="BorPromotionDetailView" />
 			<service service-name="performFind" result-map="result" result-map-list="listIt">
 				<field-map field-name="inputFields" from-field="requestParameters" />
 				<field-map field-name="entityName" from-field="entityName" />
@@ -1341,9 +1341,7 @@
 		</field>
 
 
-		<field name="clientName" title="${uiLabelMap.ClientName}">
-			<display />
-		</field>
+		
 		<field name="productName" title="${uiLabelMap.ProductName}">
 			<display />
 		</field>

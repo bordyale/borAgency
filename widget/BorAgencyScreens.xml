@@ -310,7 +310,7 @@
 								<label style="h1">${uiLabelMap[labelTitleProperty]} ${uiLabelMap.EditClient}: ${client.name}
 									[${uiLabelMap.CommonId}:${client.clientId}] ${${extraFunctionName}}
 								</label>
-								
+
 							</widgets>
 						</section>
 
@@ -321,6 +321,8 @@
 						<screenlet title="${uiLabelMap.Filter}">
 							<include-form name="FilterGeneral" location="component://borAgency/widget/BorAgencyForms.xml" />
 						</screenlet>
+						<label style="h1">Selezionare un mandante prima di inserire una promozione o aggiungere un prodotto alla promo!!!
+						</label>
 						<screenlet title="${uiLabelMap.AddPromotion}">
 							<include-form name="AddPromotion" location="component://borAgency/widget/BorAgencyForms.xml" />
 						</screenlet>
@@ -352,9 +354,10 @@
 				<set field="promotionPage" value="Y" />
 				<set field="clientId" from-field="parameters.clientId" />
 				<set field="promotionId" from-field="parameters.promotionId" />
+				<set field="contractorId" from-field="parameters.filcontractorId" />
 				<entity-one entity-name="BorClient" value-field="client" />
+				<entity-one entity-name="BorContractor" value-field="contractor" />
 				<entity-one entity-name="BorPromotion" value-field="promotion" />
-				<entity-one entity-name="BorPromotionView" value-field="promotionView" />
 				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
 			</actions>
 			<widgets>
@@ -370,9 +373,10 @@
 								<label style="h1">${uiLabelMap[labelTitleProperty]} ${uiLabelMap.ClientPromotions}: ${promotion.name}
 									[${uiLabelMap.CommonId}:${promotion.promotionId}] ${${extraFunctionName}}
 								</label>
-								<label style="h1">${uiLabelMap[labelTitleProperty]} ${uiLabelMap.ContractorName}: ${promotionView.contractorName}
-									[${uiLabelMap.CommonId}:${promotionView.contractorId}] ${${extraFunctionName}}
+								<label style="h1">${uiLabelMap[labelTitleProperty]} ${uiLabelMap.ContractorName}: ${contractor.name}
+									[${uiLabelMap.CommonId}:${contractor.contractorId}] ${${extraFunctionName}}
 								</label>
+
 							</widgets>
 						</section>
 
