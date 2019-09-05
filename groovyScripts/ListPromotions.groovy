@@ -69,6 +69,7 @@ if(filshowPromotions.equals("Y")){
 		Map<String,Object> e = new HashMap<String,Object>()
 		e.put("promotionId",entry.get("promotionId"))
 		e.put("productName",entry.get("productName"))
+		e.put("contractorId",entry.get("contractorId"))
 		e.put("contractorName",entry.get("contractorName"))
 		e.put("clientName",entry.get("clientName"))
 		e.put("sellinFrom",entry.get("sellinFrom"))

@@ -354,7 +354,7 @@
 				<set field="promotionPage" value="Y" />
 				<set field="clientId" from-field="parameters.clientId" />
 				<set field="promotionId" from-field="parameters.promotionId" />
-				<set field="contractorId" from-field="parameters.filcontractorId" />
+				<set field="contractorId" from-field="parameters.contractorId" />
 				<entity-one entity-name="BorClient" value-field="client" />
 				<entity-one entity-name="BorContractor" value-field="contractor" />
 				<entity-one entity-name="BorPromotion" value-field="promotion" />

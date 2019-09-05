@@ -1119,6 +1119,9 @@
 		<field name="clientId">
 			<hidden />
 		</field>
+		<field name="contractorId">
+			<display />
+		</field>
 
 		<!-- <field name="clientName" title="${uiLabelMap.ClientName}"> <display /> </field> <field name="productName" title="${uiLabelMap.ProductName}"> 
 			<display /> </field> <field name="discount" title="${uiLabelMap.Discount}"> <display /> </field> -->
@@ -1158,7 +1161,7 @@
 				<parameter param-name="filshowPromotions" />
 			</hyperlink>
 		</field>
-		<field use-when="filcontractorId!=''" name="addLink" title=" " widget-style="buttontext">
+		<field name="addLink" title=" " widget-style="buttontext">
 			<hyperlink description="${uiLabelMap.CommonAdd}" target="findPromotionDetails" also-hidden="false">
 				<parameter param-name="promotionId" />
 				<parameter param-name="filcontractorId" />
@@ -1169,6 +1172,7 @@
 				<parameter param-name="fildate2From" />
 				<parameter param-name="fildate3From" />
 				<parameter param-name="clientId" />
+				<parameter param-name="contractorId" />
 				<parameter param-name="filshowPromotions" />
 			</hyperlink>
 		</field>
@@ -1212,8 +1216,8 @@
 		<field name="clientId">
 			<hidden />
 		</field>
-		<field name="contractorId">
-			<hidden value="${filcontractorId}" />
+		<field name="contractorId" title="${uiLabelMap.ContractorId}">
+			<lookup target-form-name="LookupContractor" />
 		</field>
 
 
@@ -1283,7 +1287,7 @@
 			<hidden />
 		</field>
 		<field name="productId" title="${uiLabelMap.ProductId}" required-field="true">
-			<lookup target-form-name="LookupProduct?contractorId=${filcontractorId}" />
+			<lookup target-form-name="LookupProduct?contractorId=${contractorId}" />
 		</field>
 		<field name="discount" title="${uiLabelMap.Discount}">
 			<text />
@@ -1341,7 +1345,7 @@
 		</field>
 
 
-		
+
 		<field name="productName" title="${uiLabelMap.ProductName}">
 			<display />
 		</field>
