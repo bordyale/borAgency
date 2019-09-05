@@ -29,7 +29,7 @@ import java.sql.Timestamp
 
 filcontractorId = parameters.filcontractorId
 filproductId = parameters.filproductId
-filclientId = parameters.filclientId
+//filclientId = parameters.filclientId
 filactiv = parameters.filactiv
 fildate2From = parameters.fildate2From
 fildate3From = parameters.fildate3From
@@ -81,6 +81,7 @@ if(filshowPromotions.equals("Y")){
 		e.put("dateIns",entry.get("dateIns"))
 		e.put("contribute",entry.get("contribute"))
 		e.put("name",entry.get("name"))
+		e.put("info",entry.get("info"))
 
 		hashMaps.add(e)
 	}

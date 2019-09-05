@@ -271,8 +271,8 @@
 			</condition>
 			<actions>
 				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
-				<set field="clientId" from-field="parameters.filclientId" />
-				<set field="contractorId" from-field="parameters.filcontractorId" />
+				<set field="clientId" from-field="parameters.clientId" />
+				<set field="contractorId" from-field="parameters.parm0" />
 				<set field="title" value="${uiLabelMap.borLookupPromotion}" />
 				<set field="queryString" from-field="result.queryString" />
 				<set field="viewIndex" from-field="parameters.VIEW_INDEX" type="Integer" default-value="0" />
@@ -281,7 +281,7 @@
 
 				<!-- entries needed for lookup ajax auto completer -->
 				<!-- required: entity to search in -->
-				<set field="entityName" value="BorPromotionView" />
+				<set field="entityName" value="BorPromotion" />
 
 				<!-- required: fields to search a match -->
 				<!-- the first element from searchFields is returned after user selection -->

@@ -320,6 +320,10 @@
 		<value xml:lang="en">Promotion Name</value>
 		<value xml:lang="it">Nome Promozione</value>
 	</property>
+	<property key="PromotionNote">
+		<value xml:lang="en">Promotion Note</value>
+		<value xml:lang="it">Note Promozione</value>
+	</property>
 	<property key="ClientPromotions">
 		<value xml:lang="en">Client Promotions</value>
 		<value xml:lang="it">Promozioni Cliente</value>

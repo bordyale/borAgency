@@ -284,7 +284,7 @@
 				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
 				<set field="filcontractorId" from-field="parameters.filcontractorId" />
 				<set field="filproductId" from-field="parameters.filproductId" />
-				<set field="filclientId" from-field="parameters.filclientId" />
+				<set field="filclientId" from-field="parameters.clientId" />
 				<set field="filactiv" from-field="parameters.filactiv" />
 				<set field="filpromotionId" from-field="parameters.filpromotionId" />
 				<set field="filshowPromotions" from-field="parameters.filshowPromotions" />
