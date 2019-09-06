@@ -1174,6 +1174,7 @@
 				<parameter param-name="fildate2From" />
 				<parameter param-name="fildate3From" />
 				<parameter param-name="filshowPromotions" />
+				<parameter param-name="clientId" />
 			</hyperlink>
 		</field>
 		<field name="addLink" title=" " widget-style="buttontext">
