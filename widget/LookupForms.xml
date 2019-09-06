@@ -257,7 +257,10 @@
 			<hidden />
 		</field>
 		<field name="parm0">
-			<hidden value="${contractorId}"/>
+			<hidden value="${contractorId}" />
+		</field>
+		<field name="parm1">
+			<hidden value="${clientId}" />
 		</field>
 		<field name="promotionId" title="${uiLabelMap.GeneralId}">
 			<text-find />
@@ -265,8 +268,9 @@
 		<field name="name" title="${uiLabelMap.Name}">
 			<text-find />
 		</field>
-		 <field name="noConditionFind">
-			<hidden value="Y" />if this isn't there then with all fields empty no query will be done
+		<field name="noConditionFind">
+			<hidden value="Y" />
+
 		</field>
 		<field name="submitButton" title="${uiLabelMap.CommonFind}">
 			<submit button-type="button" />
@@ -278,7 +282,8 @@
 		<!-- <actions> <set field="inputFields" from-field="parameters"/> <set field="orderBy" value="contractorId"/> <set field="entityName" 
 			value="BorClient"/> <script location="component://party/groovyScripts/party/FindLookUp.groovy"/> </actions> -->
 		<actions>
-			<set field="parameters.contractorId" from-field="parameters.parm0" default-value=""/>		
+			<set field="parameters.clientId" from-field="parameters.parm1" default-value="" />
+			<set field="parameters.contractorId" from-field="parameters.parm0" default-value="" />
 			<service service-name="performFind" result-map="result" result-map-list="listIt">
 				<field-map field-name="inputFields" from-field="parameters" />
 				<field-map field-name="entityName" value="BorPromotion" />

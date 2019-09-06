@@ -620,8 +620,11 @@
 			<date-time />
 		</field>
 
-		<field use-when="promotionPage=='Y' || reportPage=='Y'" name="filpromotionId" title="${uiLabelMap.PromotionId}">
-			<lookup target-form-name="LookupPromotion?clientId=${clientId}" target-parameter="filcontractorId" />
+		<field use-when="promotionPage=='Y'" name="filpromotionId" title="${uiLabelMap.PromotionId}">
+			<lookup target-form-name="LookupPromotion" target-parameter="filcontractorId,clientId" />
+		</field>
+		<field use-when="reportPage=='Y'" name="filpromotionId" title="${uiLabelMap.PromotionId}">
+			<lookup target-form-name="LookupPromotion" target-parameter="filcontractorId,filclientId" />
 		</field>
 		<field use-when="reportPage=='Y'" name="filshowConditions">
 			<check />
