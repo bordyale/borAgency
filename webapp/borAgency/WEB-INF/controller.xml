@@ -63,6 +63,10 @@
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="EditClientShop" />
 	</request-map>
+	<request-map uri="EditClientContact">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="EditClientContact" />
+	</request-map>
 	<request-map uri="EditClientNote">
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="EditClientNote" />
@@ -113,6 +117,27 @@
 		<event type="service" path="" invoke="deleteClientShop" />
 		<response name="success" type="view" value="EditClientShop" />
 		<response name="error" type="view" value="EditClientShop" />
+	</request-map>
+	
+	<request-map uri="createContact">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="createContact" />
+		<response name="success" type="request-redirect" value="EditClientContact">
+			<redirect-parameter name="clientId" />
+		</response>
+		<response name="error" type="view" value="EditClientContact" />
+	</request-map>
+	<request-map uri="updateContact">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="updateContact" />
+		<response name="success" type="view" value="EditClientContact" />
+		<response name="error" type="view" value="EditClientContact" />
+	</request-map>
+	<request-map uri="deleteContact">
+		<security https="true" auth="true" />
+		<event type="service" path="" invoke="deleteContact" />
+		<response name="success" type="view" value="EditClientContact" />
+		<response name="error" type="view" value="EditClientContact" />
 	</request-map>
 
 	<request-map uri="createClientNote">
@@ -590,6 +615,7 @@
 	<view-map name="EditClientLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditClientLayer" />
 	<view-map name="EditClient" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditClient" />
 	<view-map name="EditClientShop" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditClientShop" />
+	<view-map name="EditClientContact" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditClientContact" />
 	<view-map name="EditClientNote" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditClientNote" />
 	<view-map name="findPromotions" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditClientPromotions" />
 	<view-map name="findPromotionDetails" type="screen"

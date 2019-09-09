@@ -332,4 +332,12 @@
 		<value xml:lang="en">Contribute</value>
 		<value xml:lang="it">Contributo</value>
 	</property>
+	<property key="Contacts">
+		<value xml:lang="en">Contacts</value>
+		<value xml:lang="it">Contatti</value>
+	</property>
+	<property key="ProdCode">
+		<value xml:lang="en">Product Code</value>
+		<value xml:lang="it">Codice Prodotto</value>
+	</property>
 </resource>

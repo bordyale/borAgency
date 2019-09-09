@@ -111,6 +111,11 @@
 				<parameter param-name="clientId" />
 			</link>
 		</menu-item>
+		<menu-item name="EditContacts" title="${uiLabelMap.Contacts}">
+			<link target="EditClientContact">
+				<parameter param-name="clientId" />
+			</link>
+		</menu-item>
 		<menu-item name="EditClientNotes" title="${uiLabelMap.ClientNotes}">
 			<link target="EditClientNote">
 				<parameter param-name="clientId" />

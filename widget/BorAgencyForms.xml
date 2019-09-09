@@ -144,8 +144,7 @@
 
 
 	</form>
-	<form name="EditClient" type="single" target="updateClient" title="" default-map-name="client"
-		default-entity-name="BorClient">
+	<form name="EditClient" type="single" target="updateClient" title="" default-map-name="client" default-entity-name="BorClient">
 		<alt-target use-when="client==null" target="createClient" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
 		<field use-when="client!=null" name="clientId" title="${uiLabelMap.ClientId}">
@@ -242,8 +241,7 @@
 
 
 	</form>
-	<form name="EditProduct" type="single" target="updateProduct" title="" default-map-name="Product"
-		default-entity-name="BorProduct">
+	<form name="EditProduct" type="single" target="updateProduct" title="" default-map-name="Product" default-entity-name="BorProduct">
 		<alt-target use-when="Product==null" target="createProduct" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
 		<field use-when="Product!=null" name="productId" title="${uiLabelMap.ProductId}">
@@ -257,8 +255,11 @@
 		</field>
 
 
-		<field name="name">
-			<text size="10" maxlength="20" />
+		<field name="name" title="${uiLabelMap.Name}">
+			<text size="30" maxlength="20" />
+		</field>
+		<field name="prodCode" title="${uiLabelMap.ProdCode}">
+			<text size="30" maxlength="20" />
 		</field>
 
 
@@ -335,8 +336,7 @@
 
 
 	</form>
-	<form name="EditPriceList" type="single" target="updatePriceList" title="" default-map-name="PriceList"
-		default-entity-name="BorPriceList">
+	<form name="EditPriceList" type="single" target="updatePriceList" title="" default-map-name="PriceList" default-entity-name="BorPriceList">
 		<alt-target use-when="PriceList==null" target="createPriceList" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
 		<field use-when="PriceList!=null" name="pricelistId" title="${uiLabelMap.PriceListId}">
@@ -435,9 +435,8 @@
 	</form>
 
 
-	<form name="ListContracts" type="list" list-name="listContracts" paginate-target="findContracts"
-		odd-row-style="alternate-row" default-table-style="basic-table hover-bar" header-row-style="header-row-2"
-		override-list-size="true">
+	<form name="ListContracts" type="list" list-name="listContracts" paginate-target="findContracts" odd-row-style="alternate-row"
+		default-table-style="basic-table hover-bar" header-row-style="header-row-2" override-list-size="true">
 		<!-- <actions> <set field="requestParameters.noConditionFind" value="Y" /> <set field="entityName" value="ContractContractorView" 
 			/> <service service-name="performFind" result-map="result" result-map-list="listIt"> <field-map field-name="inputFields" from-field="requestParameters" 
 			/> <field-map field-name="entityName" from-field="entityName" /> <field-map field-name="orderBy" from-field="sortField" /> </service> 
@@ -474,8 +473,7 @@
 
 
 	</form>
-	<form name="EditContract" type="single" target="updateContract" title="" default-map-name="Contract"
-		default-entity-name="BorContract">
+	<form name="EditContract" type="single" target="updateContract" title="" default-map-name="Contract" default-entity-name="BorContract">
 		<alt-target use-when="Contract==null" target="createContract" />
 		<!-- <auto-fields-service service-name="updateShipment"/> -->
 		<field use-when="Contract!=null" name="contractId" title="${uiLabelMap.ContractId}">
@@ -576,7 +574,7 @@
 			<ignored /><!-- this will be auto-sequenced -->
 		</field>
 		<field name="submitButton" title="${uiLabelMap.CommonAdd}">
-			<submit button-type="button" request-confirmation="true" />
+			<submit button-type="button" />
 		</field>
 	</form>
 
@@ -590,20 +588,17 @@
 		<field name="filcontractorId" title="${uiLabelMap.ContractorId}">
 			<lookup target-form-name="LookupContractor" />
 		</field>
-		<field use-when="clientnotePage!='Y' @and contractPage!='Y' @and promotionPage!='Y'" name="filclientId"
-			title="${uiLabelMap.ClientId}">
+		<field use-when="clientnotePage!='Y' @and contractPage!='Y' @and promotionPage!='Y'" name="filclientId" title="${uiLabelMap.ClientId}">
 			<lookup target-form-name="LookupClient" />
 		</field>
-		<field use-when="promotionPage!='Y' @and clientnotePage!='Y' @and contractPage!='Y'" name="filproductId"
-			title="${uiLabelMap.ProductId}">
+		<field use-when="promotionPage!='Y' @and clientnotePage!='Y' @and contractPage!='Y'" name="filproductId" title="${uiLabelMap.ProductId}">
 			<lookup target-form-name="LookupProduct?contractorId=${filcontractorId}" />
 		</field>
 		<field use-when="clientnotePage=='Y' || promotionPage=='Y'" name="clientId">
 			<hidden />
 		</field>
 
-		<field use-when="promotionPage!='Y' @and clientnotePage!='Y' @and priceCheckPage!='Y'" name="filactiv"
-			title="${uiLabelMap.Activ}">
+		<field use-when="promotionPage!='Y' @and clientnotePage!='Y' @and priceCheckPage!='Y'" name="filactiv" title="${uiLabelMap.Activ}">
 			<drop-down allow-empty="true">
 				<option key="Y" description="${uiLabelMap.CommonY}" />
 				<option key="N" description="${uiLabelMap.CommonN}" />
@@ -666,9 +661,8 @@
 	</form>
 
 
-	<form name="ListConditions" type="list" list-name="listConditions" target="updateCondition"
-		paginate-target="updateCondition" odd-row-style="alternate-row" default-table-style="basic-table hover-bar"
-		header-row-style="header-row-2" separate-columns="true">
+	<form name="ListConditions" type="list" list-name="listConditions" target="updateCondition" paginate-target="updateCondition"
+		odd-row-style="alternate-row" default-table-style="basic-table hover-bar" header-row-style="header-row-2" separate-columns="true">
 		<!-- <actions> <set field="requestParameters.noConditionFind" value="Y" /> <set field="entityName" value="ConditionView" /> <service 
 			service-name="performFind" result-map="result" result-map-list="listIt"> <field-map field-name="inputFields" from-field="requestParameters" 
 			/> <field-map field-name="entityName" from-field="entityName" /> <field-map field-name="orderBy" from-field="sortField" /> </service> 
@@ -726,8 +720,8 @@
 			<display />
 		</field>
 		<field name="contractValue" title="${uiLabelMap.ContractValue}">
-			<hyperlink description="${contractValue}" text="${uiLabelMap.NewCommon}" link-type="layered-modal"
-				target="ContractDetailLayer" also-hidden="false">
+			<hyperlink description="${contractValue}" text="${uiLabelMap.NewCommon}" link-type="layered-modal" target="ContractDetailLayer"
+				also-hidden="false">
 				<parameter param-name="contractId" />
 			</hyperlink>
 		</field>
@@ -773,8 +767,7 @@
 		</field>
 
 	</form>
-	<form name="ConditionExport" type="list" list-name="listIt" odd-row-style="alternate-row"
-		default-table-style="basic-table hover-bar">
+	<form name="ConditionExport" type="list" list-name="listIt" odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
 		<field name="conditionId" title="${uiLabelMap.GeneralId}">
 			<display />
 		</field>
@@ -920,6 +913,54 @@
 		</field>
 	</form>
 
+	<form name="ListContact" type="list" list-name="listIt" target="updateContact" separate-columns="true">
+		<actions>
+			<entity-condition entity-name="BorContact">
+				<condition-expr field-name="clientId" from-field="clientId" />
+				<order-by field-name="name" />
+			</entity-condition>
+		</actions>
+
+
+
+		<auto-fields-service service-name="updateContact" />
+		<field name="clientId">
+			<hidden />
+		</field>
+		<field name="contactId">
+			<hidden />
+		</field>
+
+
+
+		<field name="deleteLink" use-when="modeLayer==null" title=" " widget-style="buttontext">
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteContact" also-hidden="false"
+				confirmation-message="${uiLabelMap.CommonConfirmDelete}">
+				<parameter param-name="clientId" />
+				<parameter param-name="contactId" />
+
+			</hyperlink>
+		</field>
+		<field name="submitButton" title="${uiLabelMap.CommonUpdate}">
+			<submit button-type="button" />
+		</field>
+	</form>
+
+	<form name="AddContact" type="single" target="createContact" title="">
+		<auto-fields-service service-name="createContact" />
+		<field name="clientId">
+			<hidden />
+		</field>
+
+		<field name="name">
+			<text size="10" maxlength="20" />
+		</field>
+
+		<field name="submitButton" title="${uiLabelMap.CommonAdd}">
+			<submit button-type="button" />
+		</field>
+	</form>
+
 
 	<form name="ListClientNote" type="list" list-name="listClientNotes" target="updateClientNote" separate-columns="true">
 
@@ -993,8 +1034,7 @@
 	</form>
 
 
-	<form name="ListClientsNotBought" type="list" list-name="listClientsNotBought" target="updateClientNote"
-		separate-columns="true">
+	<form name="ListClientsNotBought" type="list" list-name="listClientsNotBought" target="updateClientNote" separate-columns="true">
 
 
 
@@ -1013,9 +1053,8 @@
 
 
 
-	<form name="ListPriceChecks" type="list" list-name="listPriceChecks" target="updatePriceCheck"
-		paginate-target="updatePriceCheck" odd-row-style="alternate-row" default-table-style="basic-table hover-bar"
-		header-row-style="header-row-2" separate-columns="true">
+	<form name="ListPriceChecks" type="list" list-name="listPriceChecks" target="updatePriceCheck" paginate-target="updatePriceCheck"
+		odd-row-style="alternate-row" default-table-style="basic-table hover-bar" header-row-style="header-row-2" separate-columns="true">
 
 		<field name="pricecheckId">
 			<hidden />
@@ -1099,9 +1138,8 @@
 		</field>
 	</form>
 
-	<form name="ListPromotions" type="list" list-name="listPromotions" target="updatePromotion"
-		paginate-target="updatePromotion" odd-row-style="alternate-row" default-table-style="basic-table hover-bar"
-		header-row-style="header-row-2" separate-columns="true">
+	<form name="ListPromotions" type="list" list-name="listPromotions" target="updatePromotion" paginate-target="updatePromotion"
+		odd-row-style="alternate-row" default-table-style="basic-table hover-bar" header-row-style="header-row-2" separate-columns="true">
 
 		<field name="filcontractorId">
 			<hidden />
@@ -1320,9 +1358,8 @@
 		</field>
 	</form>
 
-	<form name="ListPromotionDetails" type="list" list-name="listIt" target="updatePromotionDetail"
-		paginate-target="updatePromotion" odd-row-style="alternate-row" default-table-style="basic-table hover-bar"
-		header-row-style="header-row-2" separate-columns="true">
+	<form name="ListPromotionDetails" type="list" list-name="listIt" target="updatePromotionDetail" paginate-target="updatePromotion"
+		odd-row-style="alternate-row" default-table-style="basic-table hover-bar" header-row-style="header-row-2" separate-columns="true">
 		<actions>
 			<set field="requestParameters.noConditionFind" value="Y" />
 			<set field="entityName" value="BorPromotionDetailView" />

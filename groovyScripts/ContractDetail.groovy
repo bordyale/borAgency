@@ -25,7 +25,10 @@ import org.apache.ofbiz.entity.condition.EntityConditionList
 import org.apache.ofbiz.entity.condition.EntityCondition
 import org.apache.ofbiz.entity.GenericValue
 import org.apache.ofbiz.entity.util.EntityUtil
+
 import java.sql.Timestamp
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 contractId = parameters.contractId
 
@@ -45,7 +48,7 @@ for (GenericValue entry: contractDetails){
 	if (contractDetailType.equals("CONR_TYPE_PERC")){
 		perc= value
 	}else{
-		perc = value.divide(refRevenue)
+		perc = value.divide(refRevenue,4,RoundingMode.HALF_UP).multiply(new BigDecimal(100))
 	}
 
 

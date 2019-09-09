@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
 	<description>BorAgency Services</description>
 	<vendor></vendor>
 	<version>1.0</version>
@@ -95,23 +94,20 @@
 	</service>
 
 
-	<service name="createPriceListDetail" default-entity-name="BorPriceListDetail" engine="entity-auto" invoke="create"
-		auth="true">
+	<service name="createPriceListDetail" default-entity-name="BorPriceListDetail" engine="entity-auto" invoke="create" auth="true">
 		<description>Create Work Papers entry</description>
 		<permission-service service-name="borAgencyGenericPermission" main-action="CREATE" />
 		<auto-attributes include="pk" mode="IN" optional="false" />
 		<auto-attributes include="nonpk" mode="IN" optional="true" />
 		<override name="name" optional="false" />
 	</service>
-	<service name="updatePriceListDetail" default-entity-name="BorPriceListDetail" engine="entity-auto" invoke="update"
-		auth="true">
+	<service name="updatePriceListDetail" default-entity-name="BorPriceListDetail" engine="entity-auto" invoke="update" auth="true">
 		<description>Update a Example</description>
 		<permission-service service-name="borAgencyGenericPermission" main-action="UPDATE" />
 		<auto-attributes include="pk" mode="IN" optional="false" />
 		<auto-attributes include="nonpk" mode="IN" optional="true" />
 	</service>
-	<service name="deletePriceListDetail" default-entity-name="BorPriceListDetail" engine="entity-auto" invoke="delete"
-		auth="true">
+	<service name="deletePriceListDetail" default-entity-name="BorPriceListDetail" engine="entity-auto" invoke="delete" auth="true">
 		<description>Delete a VfShipmentItem</description>
 		<permission-service service-name="borAgencyGenericPermission" main-action="DELETE" />
 		<auto-attributes include="pk" mode="IN" optional="false" />
@@ -142,8 +138,7 @@
 		<permission-service service-name="borAgencyGenericPermission" main-action="DELETE" />
 		<auto-attributes include="pk" mode="IN" optional="false" />
 	</service>
-	<service name="createContractDetail" default-entity-name="BorContractDetail" engine="entity-auto" invoke="create"
-		auth="true">
+	<service name="createContractDetail" default-entity-name="BorContractDetail" engine="entity-auto" invoke="create" auth="true">
 		<description>Create Work Papers entry</description>
 		<permission-service service-name="borAgencyGenericPermission" main-action="CREATE" />
 		<auto-attributes include="pk" mode="IN" optional="false" />
@@ -152,15 +147,13 @@
 		<override name="name" optional="false" />
 		<override name="contractDetailType" optional="false" />
 	</service>
-	<service name="updateContractDetail" default-entity-name="BorContractDetail" engine="entity-auto" invoke="update"
-		auth="true">
+	<service name="updateContractDetail" default-entity-name="BorContractDetail" engine="entity-auto" invoke="update" auth="true">
 		<description>Update a Example</description>
 		<permission-service service-name="borAgencyGenericPermission" main-action="UPDATE" />
 		<auto-attributes include="pk" mode="IN" optional="false" />
 		<auto-attributes include="nonpk" mode="IN" optional="true" />
 	</service>
-	<service name="deleteContractDetail" default-entity-name="BorContractDetail" engine="entity-auto" invoke="delete"
-		auth="true">
+	<service name="deleteContractDetail" default-entity-name="BorContractDetail" engine="entity-auto" invoke="delete" auth="true">
 		<description>Delete a VfShipmentItem</description>
 		<permission-service service-name="borAgencyGenericPermission" main-action="DELETE" />
 		<auto-attributes include="pk" mode="IN" optional="false" />
@@ -203,6 +196,26 @@
 		<auto-attributes include="nonpk" mode="IN" optional="true" />
 	</service>
 	<service name="deleteClientShop" default-entity-name="BorClientShop" engine="entity-auto" invoke="delete" auth="true">
+		<description>Delete a VfShipmentItem</description>
+		<permission-service service-name="borAgencyGenericPermission" main-action="DELETE" />
+		<auto-attributes include="pk" mode="IN" optional="false" />
+	</service>
+
+	<service name="createContact" default-entity-name="BorContact" engine="entity-auto" invoke="create" auth="true">
+		<description>Create Work Papers entry</description>
+		<permission-service service-name="borAgencyGenericPermission" main-action="CREATE" />
+		<auto-attributes include="pk" mode="IN" optional="false" />
+		<auto-attributes include="nonpk" mode="IN" optional="true" />
+		<override name="contactId" mode="OUT" />
+		<override name="name" optional="false" />
+	</service>
+	<service name="updateContact" default-entity-name="BorContact" engine="entity-auto" invoke="update" auth="true">
+		<description>Update a Example</description>
+		<permission-service service-name="borAgencyGenericPermission" main-action="UPDATE" />
+		<auto-attributes include="pk" mode="IN" optional="false" />
+		<auto-attributes include="nonpk" mode="IN" optional="true" />
+	</service>
+	<service name="deleteContact" default-entity-name="BorContact" engine="entity-auto" invoke="delete" auth="true">
 		<description>Delete a VfShipmentItem</description>
 		<permission-service service-name="borAgencyGenericPermission" main-action="DELETE" />
 		<auto-attributes include="pk" mode="IN" optional="false" />
@@ -251,8 +264,7 @@
 		<auto-attributes include="pk" mode="IN" optional="false" />
 	</service>
 
-	<service name="createPromotionDetail" default-entity-name="BorPromotionDetail" engine="entity-auto" invoke="create"
-		auth="true">
+	<service name="createPromotionDetail" default-entity-name="BorPromotionDetail" engine="entity-auto" invoke="create" auth="true">
 		<description>Create Work Papers entry</description>
 		<permission-service service-name="borAgencyGenericPermission" main-action="CREATE" />
 		<auto-attributes include="pk" mode="IN" optional="false" />
@@ -260,15 +272,13 @@
 		<override name="productId" optional="false" />
 
 	</service>
-	<service name="updatePromotionDetail" default-entity-name="BorPromotionDetail" engine="entity-auto" invoke="update"
-		auth="true">
+	<service name="updatePromotionDetail" default-entity-name="BorPromotionDetail" engine="entity-auto" invoke="update" auth="true">
 		<description>Update a Example</description>
 		<permission-service service-name="borAgencyGenericPermission" main-action="UPDATE" />
 		<auto-attributes include="pk" mode="IN" optional="false" />
 		<auto-attributes include="nonpk" mode="IN" optional="true" />
 	</service>
-	<service name="deletePromotionDetail" default-entity-name="BorPromotionDetail" engine="entity-auto" invoke="delete"
-		auth="true">
+	<service name="deletePromotionDetail" default-entity-name="BorPromotionDetail" engine="entity-auto" invoke="delete" auth="true">
 		<description>Delete a VfShipmentItem</description>
 		<permission-service service-name="borAgencyGenericPermission" main-action="DELETE" />
 		<auto-attributes include="pk" mode="IN" optional="false" />
@@ -296,8 +306,8 @@
 
 
 
-	<service name="borAgencyGenericPermission" engine="simple"
-		location="component://borAgency/minilang/borAgencyPermissionServices.xml" invoke="borAgencyPermissionService">
+	<service name="borAgencyGenericPermission" engine="simple" location="component://borAgency/minilang/borAgencyPermissionServices.xml"
+		invoke="borAgencyPermissionService">
 		<implements service="permissionInterface" />
 	</service>
 

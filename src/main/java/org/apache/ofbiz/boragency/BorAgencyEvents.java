@@ -31,6 +31,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.math.RoundingMode;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -121,7 +122,7 @@ public class BorAgencyEvents {
 					if (contractDetailType.equals("CONR_TYPE_PERC")) {
 						perc = value;
 					} else if (contractDetailType.equals("CONR_TYPE_FISSO")) {
-						perc = value.divide(refRevenue);
+						perc = value.divide(refRevenue,4,RoundingMode.HALF_UP).multiply(new BigDecimal(100));
 					}
 					totalValue = totalValue.add(perc);
 				}

@@ -232,6 +232,46 @@
 		</section>
 	</screen>
 
+	<screen name="EditClientContact">
+		<section>
+			<actions>
+				<set field="titleProperty" value="FindClient" />
+				<set field="headerItem" value="findclients" />
+				<set field="tabButtonItem" value="EditContacts" />
+				<set field="clientId" from-field="parameters.clientId" />
+				<!-- <set field="workpapersId" from-field="parameters.workpapersId" /> -->
+				<entity-one entity-name="BorClient" value-field="client" />
+			</actions>
+			<widgets>
+				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">
+					<decorator-section name="body">
+						<section>
+							<condition>
+								<and>
+									<not>
+										<if-empty field="client" />
+									</not><!-- This is a check useful when only seed data are loaded -->
+								</and>
+							</condition>
+							<widgets>
+								<include-menu name="EditClient" location="component://borAgency/widget/BorAgencyMenus.xml" />
+								<label style="h1">${uiLabelMap[labelTitleProperty]} ${uiLabelMap.EditClient}: ${client.name}
+									[${uiLabelMap.CommonId}:${client.clientId}] ${${extraFunctionName}}
+								</label>
+							</widgets>
+						</section>
+
+						<screenlet title="${groovy: clientId ? uiLabelMap.Contacts : uiLabelMap.NewContract}">
+							<include-form name="ListContact" location="component://borAgency/widget/BorAgencyForms.xml" />
+							<include-form name="AddContact" location="component://borAgency/widget/BorAgencyForms.xml" />
+						</screenlet>
+
+					</decorator-section>
+				</decorator-screen>
+			</widgets>
+		</section>
+	</screen>
+
 	<screen name="EditClientNote">
 		<section>
 			<actions>

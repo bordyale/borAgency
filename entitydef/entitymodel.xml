@@ -78,6 +78,7 @@
 		<field name="productId" type="id-ne"></field>
 		<field name="contractorId" type="id-ne"></field>
 		<field name="name" type="value"></field>
+		<field name="prodCode" type="value"></field>
 		<prim-key field="productId" />
 		<relation type="one" fk-name="contractorId" rel-entity-name="BorContractor">
 			<key-map field-name="contractorId" />
@@ -127,6 +128,20 @@
 		<field name="clientId" type="id-ne"></field>
 		<field name="name" type="value"></field>
 		<prim-key field="clientshopId" />
+		<relation type="one" fk-name="clientId" rel-entity-name="BorClient">
+			<key-map field-name="clientId" />
+		</relation>
+	</entity>
+	
+	<entity entity-name="BorContact" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
+		title="Condition Entity">
+		<field name="contactId" type="id-ne"></field>
+		<field name="clientId" type="id-ne"></field>
+		<field name="name" type="value"></field>
+		<field name="title" type="value"></field>
+		<field name="telefon" type="value"></field>
+		<field name="email" type="value"></field>
+		<prim-key field="contactId" />
 		<relation type="one" fk-name="clientId" rel-entity-name="BorClient">
 			<key-map field-name="clientId" />
 		</relation>
