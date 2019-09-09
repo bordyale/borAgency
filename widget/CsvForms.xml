@@ -24,9 +24,7 @@
 		<field name="price" title="${uiLabelMap.PriceListPrice}">
 			<display />
 		</field>
-		<field name="startingPrice" title="${uiLabelMap.PriceNet}">
-			<display />
-		</field>
+		<!-- <field name="startingPrice" title="${uiLabelMap.PriceNet}"> <display /> </field> -->
 		<field name="sc1">
 			<display />
 		</field>
@@ -43,6 +41,9 @@
 			<display />
 		</field>
 		<field name="contractValue" title="${uiLabelMap.ContractValue}">
+			<display />
+		</field>
+		<field name="invoicePrice" title="${uiLabelMap.InvoicePrice}">
 			<display />
 		</field>
 		<field name="resultPrice" title="${uiLabelMap.ResultPrice}">
@@ -62,6 +63,9 @@
 			<display type="date" />
 		</field>
 		<field name="isProductBought" title="${uiLabelMap.IsProductBought}">
+			<display />
+		</field>
+		<field name="note" title="${uiLabelMap.Note}">
 			<display />
 		</field>
 	</form>
@@ -100,7 +104,10 @@
 		<field name="name" title="${uiLabelMap.PromotionName}">
 			<display />
 		</field>
-		
+		<field name="info" title="${uiLabelMap.PromotionNote}">
+			<display />
+		</field>
+
 		<field name="contribute" title="${uiLabelMap.Contribute}">
 			<display />
 		</field>

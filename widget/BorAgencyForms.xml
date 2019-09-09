@@ -286,7 +286,6 @@
 			<lookup target-form-name="LookupContractor" />
 		</field>
 		<field name="name" title="${uiLabelMap.Name}">
-
 			<text size="10" maxlength="20" />
 		</field>
 
@@ -322,10 +321,11 @@
 
 		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext" sort-field="true">
 			<display />
-
-
 		</field>
 
+		<field name="date" title="${uiLabelMap.DateIns}">
+			<display type="date" />
+		</field>
 
 		<field name="deleteLink" title=" " widget-style="buttontext">
 			<hyperlink description="${uiLabelMap.CommonDelete}" target="deletePriceList" also-hidden="false"
@@ -351,8 +351,12 @@
 		</field>
 
 
-		<field name="name">
+		<field name="name" title="${uiLabelMap.Name}">
 			<text size="10" maxlength="20" />
+		</field>
+
+		<field name="date" title="${uiLabelMap.DateIns}">
+			<date-time type="date" />
 		</field>
 
 
@@ -387,7 +391,7 @@
 		</field>
 
 		<field name="price">
-			<display />
+			<text size="5" maxlength="20" />
 		</field>
 		<field name="deleteLink" title=" " widget-style="buttontext">
 			<hyperlink description="${uiLabelMap.CommonDelete}" target="deletePriceListDetail" also-hidden="false"
@@ -396,7 +400,9 @@
 				<parameter param-name="productId" />
 			</hyperlink>
 		</field>
-		<!-- <field name="submitButton" title="${uiLabelMap.CommonUpdate}"> <submit button-type="button" /> </field> -->
+		<field name="submitButton" title="${uiLabelMap.CommonUpdate}">
+			<submit button-type="button" />
+		</field>
 	</form>
 
 	<form name="AddPriceListDetails" type="single" target="createPriceListDetail" title="">
@@ -701,9 +707,7 @@
 		<field name="price" title="${uiLabelMap.PriceListPrice}">
 			<display />
 		</field>
-		<field name="startingPrice" title="${uiLabelMap.PriceNet}">
-			<display />
-		</field>
+		<!-- <field name="startingPrice" title="${uiLabelMap.PriceNet}"> <display /> </field> -->
 		<field name="sc1">
 			<display />
 		</field>
@@ -724,6 +728,9 @@
 				also-hidden="false">
 				<parameter param-name="contractId" />
 			</hyperlink>
+		</field>
+		<field name="invoicePrice" title="${uiLabelMap.InvoicePrice}">
+			<display />
 		</field>
 		<field name="resultPrice" title="${uiLabelMap.ResultPrice}">
 			<display />
@@ -766,52 +773,19 @@
 			<submit button-type="button" />
 		</field>
 
-	</form>
-	<form name="ConditionExport" type="list" list-name="listIt" odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
-		<field name="conditionId" title="${uiLabelMap.GeneralId}">
-			<display />
+		<field name="note" title="${uiLabelMap.Note}">
+			<text size="10" maxlength="20" />
 		</field>
-		<field name="contractorName" title="${uiLabelMap.ContractorName}">
-			<display />
-		</field>
-		<field name="clientName" title="${uiLabelMap.ClientName}">
-			<display />
-		</field>
-		<field name="pricelistName" title="${uiLabelMap.PriceListName}">
-			<display />
-		</field>
-		<field name="productName" title="${uiLabelMap.ProductName}">
-			<display />
-		</field>
-		<field name="price" title="${uiLabelMap.PriceListPrice}">
-			<display />
-		</field>
-		<field name="startingPrice" title="${uiLabelMap.PriceNet}">
-			<display />
-		</field>
-		<field name="sc1">
-			<display />
-		</field>
-		<field name="sc2">
-			<display />
-		</field>
-		<field name="sc3">
-			<display />
-		</field>
-		<field name="sc4">
-			<display />
-		</field>
-		<field name="sc5">
-			<display />
-		</field>
-		<field name="contractValue" title="${uiLabelMap.ContractValue}">
-			<display />
-		</field>
-		<field name="resultPrice" title="${uiLabelMap.ResultPrice}">
-			<display />
-		</field>
-	</form>
 
+	</form>
+	<!-- <form name="ConditionExport" type="list" list-name="listIt" odd-row-style="alternate-row" default-table-style="basic-table hover-bar"> 
+		<field name="conditionId" title="${uiLabelMap.GeneralId}"> <display /> </field> <field name="contractorName" title="${uiLabelMap.ContractorName}"> 
+		<display /> </field> <field name="clientName" title="${uiLabelMap.ClientName}"> <display /> </field> <field name="pricelistName" title="${uiLabelMap.PriceListName}"> 
+		<display /> </field> <field name="productName" title="${uiLabelMap.ProductName}"> <display /> </field> <field name="price" title="${uiLabelMap.PriceListPrice}"> 
+		<display /> </field> <field name="startingPrice" title="${uiLabelMap.PriceNet}"> <display /> </field> <field name="sc1"> <display /> 
+		</field> <field name="sc2"> <display /> </field> <field name="sc3"> <display /> </field> <field name="sc4"> <display /> </field> <field 
+		name="sc5"> <display /> </field> <field name="contractValue" title="${uiLabelMap.ContractValue}"> <display /> </field> <field name="resultPrice" 
+		title="${uiLabelMap.ResultPrice}"> <display /> </field> <field name="note" title="${uiLabelMap.Note}"> <display /> </field> </form> -->
 
 	<form name="AddCondition" type="single" target="createCondition" title="">
 		<auto-fields-service service-name="createCondition" />
@@ -832,6 +806,10 @@
 			<hidden />
 		</field>
 		<field name="filshowConditions">
+			<hidden />
+		</field>
+
+		<field name="startingPrice">
 			<hidden />
 		</field>
 

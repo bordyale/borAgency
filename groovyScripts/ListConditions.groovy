@@ -67,6 +67,7 @@ if(filshowConditions.equals("Y")){
 		e.put("clientName",entry.get("clientName"))
 		e.put("pricelistName",entry.get("pricelistName"))
 		e.put("productName",entry.get("productName"))
+		e.put("note",entry.get("note"))
 		e.put("price",entry.get("price"))
 		e.put("isProductBought",entry.get("isProductBought"))
 		e.put("validFrom",entry.get("validFrom"))
@@ -94,8 +95,10 @@ if(filshowConditions.equals("Y")){
 		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc3.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc3.divide(new BigDecimal(100))))
 		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc4.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc4.divide(new BigDecimal(100))))
 		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc5.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc5.divide(new BigDecimal(100))))
-		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(contractValue.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : contractValue.divide(new BigDecimal(100)))).setScale(2,RoundingMode.HALF_UP)
+		BigDecimal invoicePrice = resultPrice
+		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(contractValue.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : contractValue.divide(new BigDecimal(100)))).setScale(3,RoundingMode.HALF_UP)
 		e.put("resultPrice",resultPrice)
+		e.put("invoicePrice",invoicePrice)
 	
 		String productId = entry.get("productId")
 		String clientId = entry.get("clientId")
@@ -109,7 +112,7 @@ if(filshowConditions.equals("Y")){
 		if (pricecheckList){
 			BigDecimal priceCheckPrice = pricecheckList.get("price")
 			e.put("priceCheckPrice",priceCheckPrice)
-			BigDecimal perc = priceCheckPrice.subtract(resultPrice).divide(priceCheckPrice,2,RoundingMode.HALF_UP).multiply(new BigDecimal(100))
+			BigDecimal perc = priceCheckPrice.subtract(resultPrice).divide(priceCheckPrice,3,RoundingMode.HALF_UP).multiply(new BigDecimal(100))
 			//BigDecimal perc = priceCheckPrice.divide(resultPrice,2,RoundingMode.HALF_UP).multiply(new BigDecimal(100))
 			e.put("perc",perc)
 		}

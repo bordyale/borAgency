@@ -340,4 +340,12 @@
 		<value xml:lang="en">Product Code</value>
 		<value xml:lang="it">Codice Prodotto</value>
 	</property>
+	<property key="Note">
+		<value xml:lang="en">Note</value>
+		<value xml:lang="it">Note</value>
+	</property>
+	<property key="InvoicePrice">
+		<value xml:lang="en">Invoice Price</value>
+		<value xml:lang="it">Prezzo Fattura</value>
+	</property>
 </resource>
