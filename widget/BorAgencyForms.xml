@@ -668,11 +668,15 @@
 
 
 	<form name="ListConditions" type="list" list-name="listConditions" target="updateCondition" paginate-target="updateCondition"
-		odd-row-style="alternate-row" default-table-style="basic-table hover-bar" header-row-style="header-row-2" separate-columns="true">
+		odd-row-style="alternate-row" default-table-style="basic-table hover-bar" header-row-style="header-row-2" >
 		<!-- <actions> <set field="requestParameters.noConditionFind" value="Y" /> <set field="entityName" value="ConditionView" /> <service 
 			service-name="performFind" result-map="result" result-map-list="listIt"> <field-map field-name="inputFields" from-field="requestParameters" 
 			/> <field-map field-name="entityName" from-field="entityName" /> <field-map field-name="orderBy" from-field="sortField" /> </service> 
 			</actions> -->
+		
+		
+		
+		
 		<field name="filcontractorId">
 			<hidden />
 		</field>
@@ -685,10 +689,13 @@
 		<field name="filactiv">
 			<hidden />
 		</field>
+		<field name="filclientType">
+			<hidden />
+		</field>
 		<field name="filshowConditions">
 			<hidden />
 		</field>
-		<field name="conditionId" title="${uiLabelMap.GeneralId}">
+		<field name="conditionId" title="${uiLabelMap.GeneralId}" >
 			<display />
 		</field>
 		<field name="contractorName" title="${uiLabelMap.ContractorName}">
@@ -703,46 +710,74 @@
 		<field name="productName" title="${uiLabelMap.ProductName}">
 			<display />
 		</field>
-
-		<field name="price" title="${uiLabelMap.PriceListPrice}">
-			<display />
-		</field>
-		<!-- <field name="startingPrice" title="${uiLabelMap.PriceNet}"> <display /> </field> -->
-		<field name="sc1">
-			<display />
-		</field>
-		<field name="sc2">
-			<display />
-		</field>
-		<field name="sc3">
-			<display />
-		</field>
-		<field name="sc4">
-			<display />
-		</field>
-		<field name="sc5">
-			<display />
-		</field>
 		<field name="contractValue" title="${uiLabelMap.ContractValue}">
 			<hyperlink description="${contractValue}" text="${uiLabelMap.NewCommon}" link-type="layered-modal" target="ContractDetailLayer"
 				also-hidden="false">
 				<parameter param-name="contractId" />
 			</hyperlink>
 		</field>
-		<field name="invoicePrice" title="${uiLabelMap.InvoicePrice}">
-			<display />
-		</field>
-		<field name="resultPrice" title="${uiLabelMap.ResultPrice}">
-			<display />
-		</field>
+
+		
+		
 		<field name="priceCheckPrice" title="${uiLabelMap.PriceCheck}">
 			<display />
 		</field>
 		<field name="perc" title="${uiLabelMap.PercRic}">
 			<display />
 		</field>
+		<field name="validFrom" title="${uiLabelMap.ValidFrom}">
+			<display type="date" />
+		</field>
+		<!-- <field name="startingPrice" title="${uiLabelMap.PriceNet}"> <display /> </field> -->
+		<field name="price" title="${uiLabelMap.PriceListPrice}">
+			<text size="2" disabled="true" />
+		</field>
+		<field name="sc1">
+			<text size="3" maxlength="10" />
+		</field>
+		<field name="sc2">
+			<text size="3" maxlength="10" />
+		</field>
+		<field name="sc3">
+			<text size="3" maxlength="10" />
+		</field>
+		<field name="sc4">
+			<text size="3" maxlength="10" />
+		</field>
+		<field name="sc5">
+			<text size="3" maxlength="10" />
+		</field>
+		<field name="invoicePrice" title="${uiLabelMap.InvoicePrice}">
+			<text size="4" disabled="true" />
+		</field>
+		<field name="resultPrice" title="${uiLabelMap.ResultPrice}">
+			<text size="4" disabled="true" />
+		</field>
+		
+		
+		
+		<field name="note" title="${uiLabelMap.Note}">
+			<text size="10" maxlength="20" />
+		</field>
 
 
+		<field name="validTo" title="${uiLabelMap.ValidTo}">
+			<date-time type="date" />
+		</field>
+		
+		<field name="isProductBought" title="${uiLabelMap.IsProductBought}">
+			<drop-down>
+				<option key="Y" description="${uiLabelMap.CommonY}" />
+				<option key="N" description="${uiLabelMap.CommonN}" />
+			</drop-down>
+		</field>
+		
+		<field name="submitButton" title="${uiLabelMap.CommonUpdate}">
+			<submit button-type="button" />
+		</field>
+
+		
+		
 		<field name="deleteLink" title=" " widget-style="buttontext">
 			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteCondition" also-hidden="false"
 				confirmation-message="${uiLabelMap.CommonConfirmDelete}">
@@ -753,28 +788,6 @@
 				<parameter param-name="filclientType" />
 				<parameter param-name="filactiv" />
 			</hyperlink>
-		</field>
-
-
-		<field name="validFrom" title="${uiLabelMap.ValidFrom}">
-			<display type="date" />
-		</field>
-
-		<field name="validTo" title="${uiLabelMap.ValidTo}">
-			<date-time type="date" />
-		</field>
-		<field name="isProductBought" title="${uiLabelMap.IsProductBought}">
-			<drop-down>
-				<option key="Y" description="${uiLabelMap.CommonY}" />
-				<option key="N" description="${uiLabelMap.CommonN}" />
-			</drop-down>
-		</field>
-		<field name="submitButton" title="${uiLabelMap.CommonUpdate}">
-			<submit button-type="button" />
-		</field>
-
-		<field name="note" title="${uiLabelMap.Note}">
-			<text size="10" maxlength="20" />
 		</field>
 
 	</form>

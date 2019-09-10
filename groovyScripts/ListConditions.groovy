@@ -95,7 +95,7 @@ if(filshowConditions.equals("Y")){
 		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc3.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc3.divide(new BigDecimal(100),3,RoundingMode.HALF_UP)))
 		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc4.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc4.divide(new BigDecimal(100),3,RoundingMode.HALF_UP)))
 		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(sc5.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : sc5.divide(new BigDecimal(100),3,RoundingMode.HALF_UP)))
-		BigDecimal invoicePrice = resultPrice
+		BigDecimal invoicePrice = resultPrice.setScale(3,RoundingMode.HALF_UP)
 		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(contractValue.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : contractValue.divide(new BigDecimal(100)))).setScale(3,RoundingMode.HALF_UP)
 		e.put("resultPrice",resultPrice)
 		e.put("invoicePrice",invoicePrice)
