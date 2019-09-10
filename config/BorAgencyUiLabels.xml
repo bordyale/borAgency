@@ -202,7 +202,7 @@
 	</property>
 	<property key="PriceCheck">
 		<value xml:lang="en">Price Check</value>
-		<value xml:lang="it">Rilevamento Prezzi</value>
+		<value xml:lang="it">Ril. Pr.</value>
 	</property>
 	<property key="Price">
 		<value xml:lang="en">Price</value>
@@ -250,7 +250,7 @@
 	</property>
 	<property key="PercRic">
 		<value xml:lang="en">Percentage (%)</value>
-		<value xml:lang="it">Percentuale su ricavo (%)</value>
+		<value xml:lang="it">Perc.su ric.(%)</value>
 	</property>
 	<property key="ClientNotes">
 		<value xml:lang="en">Client Notes</value>
