@@ -348,4 +348,12 @@
 		<value xml:lang="en">Invoice Price</value>
 		<value xml:lang="it">Prezzo Fattura</value>
 	</property>
+	<property key="CLIENT_TYPE_GROS">
+		<value xml:lang="en">Normal Trade</value>
+		<value xml:lang="it">Grossista</value>
+	</property>
+	<property key="CLIENT_TYPE_GDO">
+		<value xml:lang="en">GDO</value>
+		<value xml:lang="it">GDO</value>
+	</property>
 </resource>

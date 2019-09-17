@@ -131,9 +131,8 @@
 			<display />
 		</field>
 		<field name="clientType" title="${uiLabelMap.ClientType}" widget-style="buttontext" sort-field="true">
-			<display />
+			<display description="${uiLabelMap.${clientType}}"/>
 		</field>
-
 
 		<field name="deleteLink" title=" " widget-style="buttontext">
 			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteClient" also-hidden="false"
