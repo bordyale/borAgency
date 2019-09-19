@@ -118,7 +118,7 @@
 		<response name="success" type="view" value="EditClientShop" />
 		<response name="error" type="view" value="EditClientShop" />
 	</request-map>
-	
+
 	<request-map uri="createContact">
 		<security https="true" auth="true" />
 		<event type="service" path="" invoke="createContact" />
@@ -282,8 +282,8 @@
 	<request-map uri="createProduct">
 		<security https="true" auth="true" />
 		<event type="service" path="" invoke="createBorProduct" />
-		<response name="success" type="request-redirect" value="EditProduct">
-			<redirect-parameter name="productId" />
+		<response name="success" type="request-redirect" value="findProducts">
+			<!-- <response name="success" type="request-redirect" value="EditProduct"> <redirect-parameter name="productId" /> -->
 		</response>
 		<response name="error" type="view" value="EditProduct" />
 	</request-map>

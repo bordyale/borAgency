@@ -126,7 +126,7 @@
 	</property>
 	<property key="PriceListPrice">
 		<value xml:lang="en">Price List Price</value>
-		<value xml:lang="it">Prezzo listno</value>
+		<value xml:lang="it">Prezzo listino</value>
 	</property>
 	<property key="PriceNet">
 		<value xml:lang="en">Net Price</value>

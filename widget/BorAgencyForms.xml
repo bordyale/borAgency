@@ -211,12 +211,12 @@
 			<service service-name="performFind" result-map="result" result-map-list="listIt">
 				<field-map field-name="inputFields" from-field="requestParameters" />
 				<field-map field-name="entityName" from-field="entityName" />
-				<field-map field-name="orderBy" from-field="sortField" />
+				<field-map field-name="orderBy" from-field="parameters.sortField" />
 			</service>
 		</actions>
 
-		<field name="productId" title="${uiLabelMap.GeneralId}" widget-style="buttontext" sort-field="true">
-			<hyperlink description="${productId}" target="EditProduct" also-hidden="false">
+		<field name="prodCode" title="${uiLabelMap.GeneralId}" widget-style="buttontext" sort-field="true">
+			<hyperlink description="${prodCode}" target="EditProduct" also-hidden="false">
 				<parameter param-name="productId" />
 				<parameter param-name="contractorId" />
 			</hyperlink>
@@ -702,7 +702,7 @@
 
 
 		<field name="conditionId" title="${uiLabelMap.GeneralId}">
-			<display />
+			<hidden />
 		</field>
 		<field name="contractorName" title="${uiLabelMap.ContractorName}">
 			<display />
@@ -711,6 +711,9 @@
 			<display />
 		</field>
 		<field name="pricelistName" title="${uiLabelMap.PriceListName}">
+			<display />
+		</field>
+		<field name="prodCode" title="${uiLabelMap.ProdCode}">
 			<display />
 		</field>
 		<field name="productName" title="${uiLabelMap.ProductName}">
@@ -728,7 +731,7 @@
 		</field>
 		<!-- <field name="startingPrice" title="${uiLabelMap.PriceNet}"> <display /> </field> -->
 		<field name="price" title="${uiLabelMap.PriceListPrice}">
-			<text size="2" disabled="true" />
+			<text size="3" disabled="true" />
 		</field>
 		<field name="sc1">
 			<text size="3" maxlength="10" />
