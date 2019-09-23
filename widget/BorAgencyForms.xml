@@ -131,7 +131,7 @@
 			<display />
 		</field>
 		<field name="clientType" title="${uiLabelMap.ClientType}" widget-style="buttontext" sort-field="true">
-			<display description="${uiLabelMap.${clientType}}"/>
+			<display description="${uiLabelMap.${clientType}}" />
 		</field>
 
 		<field name="deleteLink" title=" " widget-style="buttontext">
@@ -195,6 +195,8 @@
 			<text size="10" maxlength="20" />
 		</field>
 
+
+
 		<field name="searchButton" title="${uiLabelMap.CommonFind}" widget-style="smallSubmit">
 			<submit button-type="button" />
 		</field>
@@ -229,6 +231,12 @@
 		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext" sort-field="true">
 			<display />
 		</field>
+
+		<field name="resultPriceKg" use-when="productId==null">
+			<text />
+		</field>
+
+
 
 
 		<field name="deleteLink" title=" " widget-style="buttontext">
@@ -696,11 +704,6 @@
 		</field>
 
 
-
-
-
-
-
 		<field name="conditionId" title="${uiLabelMap.GeneralId}">
 			<hidden />
 		</field>
@@ -765,6 +768,7 @@
 
 
 
+
 		<field name="note" title="${uiLabelMap.Note}">
 			<text size="10" maxlength="20" />
 		</field>
@@ -788,8 +792,7 @@
 
 
 		<field name="deleteLink" title=" " widget-style="buttontext">
-			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteCondition" also-hidden="false"
-				confirmation-message="${uiLabelMap.CommonConfirmDelete}">
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteCondition" also-hidden="false">
 				<parameter param-name="conditionId" />
 				<parameter param-name="filcontractorId" />
 				<parameter param-name="filproductId" />
@@ -845,7 +848,7 @@
 		<field name="clientId" title="${uiLabelMap.ClientId}" required-field="true">
 			<lookup target-form-name="LookupClient" />
 		</field>
-		<field name="pricelistId" title="${uiLabelMap.PriceListId}">
+		<field name="pricelistId" title="${uiLabelMap.PriceListId}" required-field="true">
 			<lookup target-form-name="LookupPriceList?contractorId=${filcontractorId}" />
 		</field>
 		<field name="isProductBought" title="${uiLabelMap.IsProductBought}">
@@ -862,7 +865,7 @@
 		</field>
 
 		<field name="submitButton" title="${uiLabelMap.CommonAdd}">
-			<submit button-type="button" request-confirmation="true" />
+			<submit button-type="button" />
 		</field>
 	</form>
 
@@ -1337,6 +1340,9 @@
 		<field name="promotionId">
 			<hidden />
 		</field>
+		<field name="contractorId">
+			<hidden />
+		</field>
 		<field name="isValid">
 			<hidden value="Y" />
 		</field>
@@ -1375,6 +1381,9 @@
 		<field name="filcontractorId">
 			<hidden />
 		</field>
+		<field name="contractorId">
+			<hidden />
+		</field>
 		<field name="filproductId">
 			<hidden />
 		</field>
@@ -1394,6 +1403,9 @@
 			<hidden />
 		</field>
 
+		<field name="promotionDetailId">
+			<hidden />
+		</field>
 		<field name="promotionId">
 			<hidden />
 		</field>
@@ -1405,7 +1417,9 @@
 		</field>
 
 
-
+		<field name="prodCode" title="${uiLabelMap.ProdCode}">
+			<display />
+		</field>
 		<field name="productName" title="${uiLabelMap.ProductName}">
 			<display />
 		</field>
@@ -1424,6 +1438,8 @@
 				<parameter param-name="clientId" />
 				<parameter param-name="productId" />
 				<parameter param-name="promotionId" />
+				<parameter param-name="promotionDetailId" />
+				<parameter param-name="contractorId" />
 				<parameter param-name="filcontractorId" />
 				<parameter param-name="filproductId" />
 				<parameter param-name="filclientId" />

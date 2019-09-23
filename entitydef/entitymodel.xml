@@ -190,14 +190,13 @@
 
 	<entity entity-name="BorPromotionDetail" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
 		title="Condition Entity">
+		<field name="promotionDetailId" type="id-ne"></field>
 		<field name="promotionId" type="id-ne"></field>
 		<field name="productId" type="id-ne"></field>
 		<field name="discount" type="fixed-point"></field>
 		<field name="dateIns" type="date-time"></field>
 		<field name="isValid" type="value"></field>
-		<prim-key field="promotionId" />
-		<prim-key field="productId" />
-
+		<prim-key field="promotionDetailId" />
 		<relation type="one" fk-name="productId" rel-entity-name="BorProduct">
 			<key-map field-name="productId" />
 		</relation>

@@ -70,6 +70,9 @@ if(filshowConditions.equals("Y")){
 		e.put("prodCode",entry.get("prodCode"))
 		e.put("note",entry.get("note"))
 		BigDecimal price =entry.get("price")
+		if (price == null) {
+			price = BigDecimal.ZERO
+		}
 		e.put("price",price.setScale(3,RoundingMode.HALF_UP))
 		e.put("isProductBought",entry.get("isProductBought"))
 		e.put("validFrom",entry.get("validFrom"))

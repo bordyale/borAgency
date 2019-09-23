@@ -219,6 +219,7 @@
 		<response name="success" type="request-redirect" value="findPromotionDetails">
 			<redirect-parameter name="clientId" />
 			<redirect-parameter name="promotionId" />
+			<redirect-parameter name="contractorId" />
 			<redirect-parameter name="filcontractorId" />
 			<redirect-parameter name="filproductId" />
 			<redirect-parameter name="filclientId" />
@@ -231,6 +232,7 @@
 		<response name="error" type="request-redirect" value="findPromotionDetails">
 			<redirect-parameter name="clientId" />
 			<redirect-parameter name="promotionId" />
+			<redirect-parameter name="contractorId" />
 			<redirect-parameter name="filcontractorId" />
 			<redirect-parameter name="filproductId" />
 			<redirect-parameter name="filclientId" />

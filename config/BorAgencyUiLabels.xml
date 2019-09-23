@@ -176,6 +176,10 @@
 		<value xml:lang="en">Result Price</value>
 		<value xml:lang="it">Prezzo Risultante</value>
 	</property>
+	<property key="ResultPriceKg">
+		<value xml:lang="en">Res Pr Kg</value>
+		<value xml:lang="it">Pr Ris Kg</value>
+	</property>
 	<property key="ContractName">
 		<value xml:lang="en">Contract Name</value>
 		<value xml:lang="it">Nome Contratto</value>

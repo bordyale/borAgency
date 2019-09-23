@@ -267,9 +267,10 @@
 	<service name="createPromotionDetail" default-entity-name="BorPromotionDetail" engine="entity-auto" invoke="create" auth="true">
 		<description>Create Work Papers entry</description>
 		<permission-service service-name="borAgencyGenericPermission" main-action="CREATE" />
-		<auto-attributes include="pk" mode="IN" optional="false" />
+		<auto-attributes include="pk" mode="OUT" optional="false" />
 		<auto-attributes include="nonpk" mode="IN" optional="true" />
 		<override name="productId" optional="false" />
+		<override name="promotionId" optional="false" />
 
 	</service>
 	<service name="updatePromotionDetail" default-entity-name="BorPromotionDetail" engine="entity-auto" invoke="update" auth="true">
