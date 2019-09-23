@@ -81,6 +81,7 @@
 		<field name="contractorId" type="id-ne"></field>
 		<field name="name" type="value"></field>
 		<field name="prodCode" type="value"></field>
+		<field name="weight" type="fixed-point"></field>
 		<prim-key field="productId" />
 		<relation type="one" fk-name="contractorId" rel-entity-name="BorContractor">
 			<key-map field-name="contractorId" />

@@ -121,6 +121,13 @@ if(filshowConditions.equals("Y")){
 			//BigDecimal perc = priceCheckPrice.divide(resultPrice,2,RoundingMode.HALF_UP).multiply(new BigDecimal(100))
 			e.put("perc",perc)
 		}
+		
+		//price Kg
+		BigDecimal weight = entry.get("weight")
+		if (weight != null){
+			BigDecimal resultPriceKg = new BigDecimal(1).divide(weight,3,RoundingMode.HALF_UP).multiply(resultPrice).setScale(3,RoundingMode.HALF_UP)
+			e.put("resultPriceKg",resultPriceKg)
+		}
 	
 	
 		hashMaps.add(e)

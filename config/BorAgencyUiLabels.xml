@@ -174,7 +174,7 @@
 	</property>
 	<property key="ResultPrice">
 		<value xml:lang="en">Result Price</value>
-		<value xml:lang="it">Prezzo Risultante</value>
+		<value xml:lang="it">Pr Ris</value>
 	</property>
 	<property key="ResultPriceKg">
 		<value xml:lang="en">Res Pr Kg</value>
@@ -359,5 +359,9 @@
 	<property key="CLIENT_TYPE_GDO">
 		<value xml:lang="en">GDO</value>
 		<value xml:lang="it">GDO</value>
+	</property>
+	<property key="ProductWeightKg">
+		<value xml:lang="en">Weight (kg)</value>
+		<value xml:lang="it">Peso (kg)</value>
 	</property>
 </resource>

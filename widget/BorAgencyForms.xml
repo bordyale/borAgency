@@ -232,8 +232,8 @@
 			<display />
 		</field>
 
-		<field name="resultPriceKg" use-when="productId==null">
-			<text />
+		<field name="weight" title="${uiLabelMap.ProductWeightKg}" >
+			<display />
 		</field>
 
 
@@ -266,6 +266,9 @@
 			<text size="30" maxlength="20" />
 		</field>
 		<field name="prodCode" title="${uiLabelMap.ProdCode}">
+			<text size="30" maxlength="20" />
+		</field>
+		<field name="weight" title="${uiLabelMap.ProductWeightKg}" >
 			<text size="30" maxlength="20" />
 		</field>
 
@@ -763,6 +766,9 @@
 			</text>
 		</field>
 		<field name="resultPrice" title="${uiLabelMap.ResultPrice}">
+			<text size="4" disabled="true" />
+		</field>
+		<field name="resultPriceKg" title="${uiLabelMap.ResultPriceKg}">
 			<text size="4" disabled="true" />
 		</field>
 

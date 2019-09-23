@@ -18,6 +18,9 @@
 		<field name="pricelistName" title="${uiLabelMap.PriceListName}">
 			<display />
 		</field>
+		<field name="prodCode" title="${uiLabelMap.ProdCode}">
+			<display />
+		</field>
 		<field name="productName" title="${uiLabelMap.ProductName}">
 			<display />
 		</field>
@@ -47,6 +50,9 @@
 			<display />
 		</field>
 		<field name="resultPrice" title="${uiLabelMap.ResultPrice}">
+			<display />
+		</field>
+		<field name="resultPriceKg" title="${uiLabelMap.ResultPriceKg}">
 			<display />
 		</field>
 		<field name="priceCheckPrice" title="${uiLabelMap.PriceCheck}">
