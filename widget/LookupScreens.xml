@@ -73,7 +73,7 @@
 				<set field="searchFields" value="[productId, name]" />
 
 				<!-- optional: fields to display in the given order, default is searchFields -->
-				<set field="displayFields" value="[name]" />
+				<set field="displayFields" value="[prodCode, name]" />
 
 				<!-- optional: additional entity condition (named andCondition) added to search query -->
 				<script location="component://borAgency/groovyScripts/StatusCondition.groovy" />

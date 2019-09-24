@@ -232,7 +232,7 @@
 			<display />
 		</field>
 
-		<field name="weight" title="${uiLabelMap.ProductWeightKg}" >
+		<field name="weight" title="${uiLabelMap.ProductWeightKg}">
 			<display />
 		</field>
 
@@ -268,7 +268,7 @@
 		<field name="prodCode" title="${uiLabelMap.ProdCode}">
 			<text size="30" maxlength="20" />
 		</field>
-		<field name="weight" title="${uiLabelMap.ProductWeightKg}" >
+		<field name="weight" title="${uiLabelMap.ProductWeightKg}">
 			<text size="30" maxlength="20" />
 		</field>
 
@@ -388,15 +388,18 @@
 				<order-by field-name="productId" />
 			</entity-condition>
 		</actions>
-		<auto-fields-service service-name="updatePriceListDetail" />
+
 		<field name="pricelistId">
 			<hidden />
 		</field>
-
 		<field name="productId">
+			<hidden />
+		</field>
+
+		<field name="prodCode" title="${uiLabelMap.ProdCode}">
 			<display />
 		</field>
-		<field name="productName">
+		<field name="productName" title="${uiLabelMap.Name}">
 			<display />
 		</field>
 
@@ -405,7 +408,7 @@
 		</field>
 		<field name="deleteLink" title=" " widget-style="buttontext">
 			<hyperlink description="${uiLabelMap.CommonDelete}" target="deletePriceListDetail" also-hidden="false"
-				confirmation-message="${uiLabelMap.CommonConfirmDelete}" image-location="${iconsLocation}/delete.png">
+				image-location="${iconsLocation}/delete.png">
 				<parameter param-name="pricelistId" />
 				<parameter param-name="productId" />
 			</hyperlink>
@@ -424,7 +427,7 @@
 			<lookup target-form-name="LookupProduct?contractorId=${contractorId}" />
 		</field>
 		<field name="submitButton" title="${uiLabelMap.CommonAdd}">
-			<submit button-type="button" request-confirmation="true" />
+			<submit button-type="button" />
 		</field>
 	</form>
 
@@ -1079,6 +1082,9 @@
 		</field>
 
 		<field name="clientName" title="${uiLabelMap.ClientName}">
+			<display />
+		</field>
+		<field name="prodCode" title="${uiLabelMap.ProdCode}">
 			<display />
 		</field>
 

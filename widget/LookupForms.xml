@@ -79,8 +79,8 @@
 
 		</actions>
 		<!--<auto-fields-entity entity-name="PartyNameView" default-field-type="display"/> -->
-		<field name="productId" title="${uiLabelMap.GeneralId}" widget-style="smallSubmit">
-			<hyperlink description="${productId}" target="javascript:set_value('${productId}')" also-hidden="false" target-type="plain" />
+		<field name="prodCode" title="${uiLabelMap.ProdCode}" widget-style="smallSubmit">
+			<hyperlink description="${prodCode}" target="javascript:set_value('${productId}')" also-hidden="false" target-type="plain" />
 		</field>
 
 		<field name="name" title="${uiLabelMap.Name}">

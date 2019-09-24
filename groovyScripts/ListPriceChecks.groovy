@@ -50,6 +50,7 @@ List<HashMap<String,Object>> hashMaps = new ArrayList<HashMap<String,Object>>()
 for (GenericValue entry: pricecheckList){
 	Map<String,Object> e = new HashMap<String,Object>()
 	e.put("pricecheckId",entry.get("pricecheckId"))
+	e.put("prodCode",entry.get("prodCode"))
 	e.put("productName",entry.get("productName"))
 	e.put("clientName",entry.get("clientName"))
 	e.put("clientshopName",entry.get("clientshopName"))
