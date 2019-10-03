@@ -192,7 +192,7 @@
 		</field>
 		<field name="name" title="${uiLabelMap.Name}">
 
-			<text size="10" maxlength="20" />
+			<text size="25" maxlength="25" />
 		</field>
 
 
