@@ -29,6 +29,7 @@ import java.sql.Timestamp
 
 filcontractorId = parameters.filcontractorId
 filclientId = parameters.filclientId
+clientId = parameters.clientId
 fildate1From = parameters.fildate1From
 filshowClientNotes = parameters.filshowClientNotes
 
@@ -38,6 +39,9 @@ if (filcontractorId) {
 }
 if (filclientId) {
 	searchCond.add(EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, filclientId))
+}
+if (clientId) {
+	searchCond.add(EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, clientId))
 }
 if (fildate1From) {
 	searchCond.add(EntityCondition.makeCondition("noteDateTime", EntityOperator.GREATER_THAN_EQUAL_TO, Timestamp.valueOf(fildate1From)))
