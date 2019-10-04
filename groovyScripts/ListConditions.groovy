@@ -27,6 +27,9 @@ import org.apache.ofbiz.entity.GenericValue
 import org.apache.ofbiz.entity.util.EntityUtil
 import java.sql.Timestamp
 import java.math.RoundingMode
+import java.text.DecimalFormat
+import java.text.NumberFormat
+import java.util.Locale
 
 filcontractorId = parameters.filcontractorId
 filproductId = parameters.filproductId
@@ -69,17 +72,24 @@ if(filshowConditions.equals("Y")){
 		e.put("productName",entry.get("productName"))
 		e.put("prodCode",entry.get("prodCode"))
 		e.put("note",entry.get("note"))
-		BigDecimal price =entry.get("price")
-		if (price == null) {
-			price = BigDecimal.ZERO
+		BigDecimal listprice =entry.get("price")
+		BigDecimal price = BigDecimal.ZERO
+		if (listprice != null) {
+			price = listprice.setScale(3,RoundingMode.HALF_UP)
 		}
-		e.put("price",price.setScale(3,RoundingMode.HALF_UP))
+		Locale locale  = new Locale("it", "IT");
+		String pattern = "0.000"
+		DecimalFormat decimalFormat = (DecimalFormat)NumberFormat.getNumberInstance(locale)
+		decimalFormat.applyPattern(pattern)
+		String valueString = decimalFormat.format(price);
+		
+		e.put("price",valueString)
 		e.put("isProductBought",entry.get("isProductBought"))
 		e.put("validFrom",entry.get("validFrom"))
 		e.put("validTo",entry.get("validTo"))
 		BigDecimal startingPrice = entry.get("startingPrice")
 		e.put("startingPrice",startingPrice)
-		BigDecimal resultPrice = startingPrice ==null ? entry.get("price") : startingPrice
+		BigDecimal resultPrice = startingPrice ==null ? price : startingPrice
 		if (resultPrice == null) {
 			resultPrice = BigDecimal.ZERO
 		}
@@ -104,10 +114,10 @@ if(filshowConditions.equals("Y")){
 		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(contractValue.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : contractValue.divide(new BigDecimal(100)))).setScale(3,RoundingMode.HALF_UP)
 		e.put("resultPrice",resultPrice)
 		e.put("invoicePrice",invoicePrice)
-	
+
 		String productId = entry.get("productId")
 		String clientId = entry.get("clientId")
-	
+
 		exprBldr = new org.apache.ofbiz.entity.condition.EntityConditionBuilder()
 		expr = exprBldr.AND() {
 			EQUALS(productId: productId)
@@ -121,15 +131,15 @@ if(filshowConditions.equals("Y")){
 			//BigDecimal perc = priceCheckPrice.divide(resultPrice,2,RoundingMode.HALF_UP).multiply(new BigDecimal(100))
 			e.put("perc",perc)
 		}
-		
+
 		//price Kg
 		BigDecimal weight = entry.get("weight")
 		if (weight != null){
 			BigDecimal resultPriceKg = new BigDecimal(1).divide(weight,3,RoundingMode.HALF_UP).multiply(resultPrice).setScale(3,RoundingMode.HALF_UP)
 			e.put("resultPriceKg",resultPriceKg)
 		}
-	
-	
+
+
 		hashMaps.add(e)
 	}
 }
