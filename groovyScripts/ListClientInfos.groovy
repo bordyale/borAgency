@@ -31,7 +31,7 @@ filcontractorId = parameters.filcontractorId
 filclientId = parameters.filclientId
 clientId = parameters.clientId
 fildate1From = parameters.fildate1From
-filshowClientNotes = parameters.filshowClientNotes
+filshowClientInfos = parameters.filshowClientInfos
 
 List searchCond = []
 if (filcontractorId) {
@@ -46,12 +46,21 @@ if (clientId) {
 if (fildate1From) {
 	searchCond.add(EntityCondition.makeCondition("noteDateTime", EntityOperator.GREATER_THAN_EQUAL_TO, Timestamp.valueOf(fildate1From)))
 }
+paramCond = EntityCondition.makeCondition(searchCond, EntityOperator.AND)
 
-pricecheckList = from("BorNoteView").where(searchCond).cache(false).orderBy("noteDateTime DESC").queryList()
+List noteTypeCondList = []
+if (filshowClientInfos) {
+	noteTypeCondList.add(EntityCondition.makeCondition("noteType", EntityOperator.EQUALS, "NOTE_FATTURATO"))
+}
+noteTypeCond = EntityCondition.makeCondition(noteTypeCondList, EntityOperator.AND)
+
+combinedPaymentCond = EntityCondition.makeCondition([noteTypeCond, paramCond], EntityOperator.AND)
+
+pricecheckList = from("BorNoteView").where(combinedPaymentCond).cache(false).orderBy("noteDateTime DESC").queryList()
 
 
 List<HashMap<String,Object>> hashMaps = new ArrayList<HashMap<String,Object>>()
-if(filshowClientNotes.equals("Y")){
+if(filshowClientInfos.equals("Y")){
 	for (GenericValue entry: pricecheckList){
 		Map<String,Object> e = new HashMap<String,Object>()
 		e.put("noteId",entry.get("noteId"))
@@ -62,11 +71,37 @@ if(filshowClientNotes.equals("Y")){
 		e.put("noteType",entry.get("noteType"))
 		e.put("noteName",entry.get("noteName"))
 		e.put("noteInfo",entry.get("noteInfo"))
-	
+
 		hashMaps.add(e)
 	}
 }
 
 
+//Contacts
+searchCond = []
+if (filclientId) {
+	searchCond.add(EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, filclientId))
+}
+if (clientId) {
+	searchCond.add(EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, clientId))
+}
+pricecheckList = from("BorContact").where(searchCond).cache(false).queryList()
+
+List<HashMap<String,Object>> hashMaps2 = new ArrayList<HashMap<String,Object>>()
+if(filshowClientInfos.equals("Y")){
+	for (GenericValue entry: pricecheckList){
+		Map<String,Object> e = new HashMap<String,Object>()
+		e.put("clientId",entry.get("clientId"))
+		e.put("contactId",entry.get("contactId"))
+		e.put("name",entry.get("name"))
+		e.put("title",entry.get("title"))
+		e.put("telefon",entry.get("telefon"))
+		e.put("email",entry.get("email"))
+
+		hashMaps2.add(e)
+	}
+}
+
 //context.fildate1FromTitle ="xxx"
-context.listClientNotes = hashMaps
+context.listClientRevenues = hashMaps
+context.listClientContacts = hashMaps2

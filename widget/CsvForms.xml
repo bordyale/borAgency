@@ -156,6 +156,9 @@
 		<field name="contractorName" title="${uiLabelMap.ContractorName}">
 			<display />
 		</field>
+		<field name="noteType" title="${uiLabelMap.NoteType}">
+			<display />
+		</field>
 		<field name="noteName" title="${uiLabelMap.NoteName}">
 			<display />
 		</field>
@@ -164,6 +167,51 @@
 		</field>
 		<field name="noteDateTime" title="${uiLabelMap.NoteDateTime}">
 			<display type="date" />
+		</field>
+
+
+	</form>
+
+	<form name="ClientRevenueExport" type="list" list-name="listClientRevenues" odd-row-style="alternate-row"
+		default-table-style="basic-table hover-bar">
+		<field name="clientName" title="${uiLabelMap.ClientName}">
+			<display />
+		</field>
+
+		<field name="contractorName" title="${uiLabelMap.ContractorName}">
+			<display />
+		</field>
+		<field name="noteType" title="${uiLabelMap.NoteType}">
+			<display />
+		</field>
+		<field name="noteName" title="${uiLabelMap.NoteName}">
+			<display />
+		</field>
+		<field name="noteInfo" title="${uiLabelMap.Note}">
+			<display />
+		</field>
+		<field name="noteDateTime" title="${uiLabelMap.NoteDateTime}">
+			<display type="date" />
+		</field>
+
+	</form>
+
+	<form name="ClientContactsExport" type="list" list-name="listClientContacts" odd-row-style="alternate-row"
+		default-table-style="basic-table hover-bar">
+
+
+		<field name="name" title="${uiLabelMap.Name}">
+			<display />
+		</field>
+
+		<field name="title" title="${uiLabelMap.Title}">
+			<display />
+		</field>
+		<field name="telefon" title="${uiLabelMap.Telefon}">
+			<display />
+		</field>
+		<field name="email" title="${uiLabelMap.Email}">
+			<display />
 		</field>
 
 

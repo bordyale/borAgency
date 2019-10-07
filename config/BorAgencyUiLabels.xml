@@ -364,4 +364,12 @@
 		<value xml:lang="en">Weight (kg)</value>
 		<value xml:lang="it">Peso (kg)</value>
 	</property>
+	<property key="NoteType">
+		<value xml:lang="en">Note Type</value>
+		<value xml:lang="it">Tipo Nota</value>
+	</property>
+	<property key="ClientRevenues">
+		<value xml:lang="en">Client Revenuess</value>
+		<value xml:lang="it">Fatturati Cliente</value>
+	</property>
 </resource>

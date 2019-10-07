@@ -210,6 +210,7 @@
 	<entity entity-name="BorNote" package-name="org.apache.ofbiz.order.boragency" title="Note Data Entity">
 		<field name="noteId" type="id-ne"></field>
 		<field name="clientId" type="id-ne"></field>
+		<field name="noteType" type="id-ne"></field>
 		<field name="contractorId" type="id-ne"></field>
 		<field name="noteName" type="name"></field>
 		<field name="noteInfo" type="very-long"></field>

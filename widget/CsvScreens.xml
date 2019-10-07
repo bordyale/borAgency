@@ -113,6 +113,7 @@
 				<set field="filshowConditions" from-field="parameters.filshowConditions" />
 				<set field="filshowPromotions" from-field="parameters.filshowPromotions" />
 				<set field="filshowClientNotes" from-field="parameters.filshowClientNotes" />
+				<set field="filshowClientInfos" from-field="parameters.filshowClientInfos" />
 
 				<set field="viewIndex" from-field="parameters.VIEW_INDEX" type="Integer" default-value="0" />
 				<property-to-field resource="widget" property="widget.form.defaultViewSize" field="viewSizeDefaultValue" />
@@ -120,6 +121,7 @@
 				<script location="component://borAgency/groovyScripts/ListConditions.groovy" />
 				<script location="component://borAgency/groovyScripts/ListPromotions.groovy" />
 				<script location="component://borAgency/groovyScripts/ListClientNotes.groovy" />
+				<script location="component://borAgency/groovyScripts/ListClientInfos.groovy" />
 
 			</actions>
 			<widgets>
@@ -135,6 +137,14 @@
 					<label style="h2" text="${uiLabelMap.ClientNotes}" />
 				</container>
 				<include-form name="ClientNoteExport" location="component://borAgency/widget/CsvForms.xml" />
+				<container>
+					<label style="h2" text="${uiLabelMap.ClientRevenues}" />
+				</container>
+				<include-form name="ClientRevenueExport" location="component://borAgency/widget/CsvForms.xml" />
+				<container>
+					<label style="h2" text="${uiLabelMap.Contacts}" />
+				</container>
+				<include-form name="ClientContactsExport" location="component://borAgency/widget/CsvForms.xml" />
 
 			</widgets>
 		</section>
