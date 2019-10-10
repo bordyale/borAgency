@@ -46,6 +46,9 @@ if (clientId) {
 if (fildate1From) {
 	searchCond.add(EntityCondition.makeCondition("noteDateTime", EntityOperator.GREATER_THAN_EQUAL_TO, Timestamp.valueOf(fildate1From)))
 }
+if (reportPage=="Y") {
+	searchCond.add(EntityCondition.makeCondition("noteType", EntityOperator.EQUALS, "NOTE_STANDARD"))
+}
 
 pricecheckList = from("BorNoteView").where(searchCond).cache(false).orderBy("noteDateTime DESC").queryList()
 

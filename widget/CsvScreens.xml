@@ -134,17 +134,25 @@
 				</container>
 				<include-form name="PromotionExport" location="component://borAgency/widget/CsvForms.xml" />
 				<container>
-					<label style="h2" text="${uiLabelMap.ClientNotes}" />
-				</container>
-				<include-form name="ClientNoteExport" location="component://borAgency/widget/CsvForms.xml" />
-				<container>
 					<label style="h2" text="${uiLabelMap.ClientRevenues}" />
 				</container>
 				<include-form name="ClientRevenueExport" location="component://borAgency/widget/CsvForms.xml" />
 				<container>
+					<label style="h2" text="${uiLabelMap.ClientBuyGroup}" />
+				</container>
+				<include-form name="ClientBuyGroupExport" location="component://borAgency/widget/CsvForms.xml" />
+				<container>
+					<label style="h2" text="${uiLabelMap.ClientPayCond}" />
+				</container>
+				<include-form name="ClientPayCondExport" location="component://borAgency/widget/CsvForms.xml" />
+				<container>
 					<label style="h2" text="${uiLabelMap.Contacts}" />
 				</container>
 				<include-form name="ClientContactsExport" location="component://borAgency/widget/CsvForms.xml" />
+				<container>
+					<label style="h2" text="${uiLabelMap.ClientNotes}" />
+				</container>
+				<include-form name="ClientNoteExport" location="component://borAgency/widget/CsvForms.xml" />
 
 			</widgets>
 		</section>

@@ -48,6 +48,7 @@ if (fildate1From) {
 }
 paramCond = EntityCondition.makeCondition(searchCond, EntityOperator.AND)
 
+//Revenues - fatturati
 List noteTypeCondList = []
 if (filshowClientInfos) {
 	noteTypeCondList.add(EntityCondition.makeCondition("noteType", EntityOperator.EQUALS, "NOTE_FATTURATO"))
@@ -73,6 +74,64 @@ if(filshowClientInfos.equals("Y")){
 		e.put("noteInfo",entry.get("noteInfo"))
 
 		hashMaps.add(e)
+	}
+}
+
+//metodo pagamento
+noteTypeCondList = []
+if (filshowClientInfos) {
+	noteTypeCondList.add(EntityCondition.makeCondition("noteType", EntityOperator.EQUALS, "NOTE_METODPAG"))
+}
+noteTypeCond = EntityCondition.makeCondition(noteTypeCondList, EntityOperator.AND)
+
+combinedPaymentCond = EntityCondition.makeCondition([noteTypeCond, paramCond], EntityOperator.AND)
+
+pricecheckList = from("BorNoteView").where(combinedPaymentCond).cache(false).orderBy("noteDateTime DESC").queryList()
+
+
+List<HashMap<String,Object>> hashMaps3 = new ArrayList<HashMap<String,Object>>()
+if(filshowClientInfos.equals("Y")){
+	for (GenericValue entry: pricecheckList){
+		Map<String,Object> e = new HashMap<String,Object>()
+		e.put("noteId",entry.get("noteId"))
+		e.put("contractorName",entry.get("contractorName"))
+		e.put("noteDateTime",entry.get("noteDateTime"))
+		e.put("clientId",entry.get("clientId"))
+		e.put("clientName",entry.get("clientName"))
+		e.put("noteType",entry.get("noteType"))
+		e.put("noteName",entry.get("noteName"))
+		e.put("noteInfo",entry.get("noteInfo"))
+
+		hashMaps3.add(e)
+	}
+}
+
+//gruppo acq
+noteTypeCondList = []
+if (filshowClientInfos) {
+	noteTypeCondList.add(EntityCondition.makeCondition("noteType", EntityOperator.EQUALS, "NOTE_GRUPACQ"))
+}
+noteTypeCond = EntityCondition.makeCondition(noteTypeCondList, EntityOperator.AND)
+
+combinedPaymentCond = EntityCondition.makeCondition([noteTypeCond, paramCond], EntityOperator.AND)
+
+pricecheckList = from("BorNoteView").where(combinedPaymentCond).cache(false).orderBy("noteDateTime DESC").queryList()
+
+
+List<HashMap<String,Object>> hashMaps4 = new ArrayList<HashMap<String,Object>>()
+if(filshowClientInfos.equals("Y")){
+	for (GenericValue entry: pricecheckList){
+		Map<String,Object> e = new HashMap<String,Object>()
+		e.put("noteId",entry.get("noteId"))
+		e.put("contractorName",entry.get("contractorName"))
+		e.put("noteDateTime",entry.get("noteDateTime"))
+		e.put("clientId",entry.get("clientId"))
+		e.put("clientName",entry.get("clientName"))
+		e.put("noteType",entry.get("noteType"))
+		e.put("noteName",entry.get("noteName"))
+		e.put("noteInfo",entry.get("noteInfo"))
+
+		hashMaps4.add(e)
 	}
 }
 
@@ -105,3 +164,5 @@ if(filshowClientInfos.equals("Y")){
 //context.fildate1FromTitle ="xxx"
 context.listClientRevenues = hashMaps
 context.listClientContacts = hashMaps2
+context.listClientPayCond = hashMaps3
+context.listClientBuyGroup = hashMaps4

@@ -195,6 +195,53 @@
 		</field>
 
 	</form>
+	
+	<form name="ClientBuyGroupExport" type="list" list-name="listClientBuyGroup" odd-row-style="alternate-row"
+		default-table-style="basic-table hover-bar">
+		<field name="clientName" title="${uiLabelMap.ClientName}">
+			<display />
+		</field>
+
+		<field name="contractorName" title="${uiLabelMap.ContractorName}">
+			<display />
+		</field>
+		<field name="noteType" title="${uiLabelMap.NoteType}">
+			<display />
+		</field>
+		<field name="noteName" title="${uiLabelMap.NoteName}">
+			<display />
+		</field>
+		<field name="noteInfo" title="${uiLabelMap.Note}">
+			<display />
+		</field>
+		<field name="noteDateTime" title="${uiLabelMap.NoteDateTime}">
+			<display type="date" />
+		</field>
+
+	</form>
+	<form name="ClientPayCondExport" type="list" list-name="listClientPayCond" odd-row-style="alternate-row"
+		default-table-style="basic-table hover-bar">
+		<field name="clientName" title="${uiLabelMap.ClientName}">
+			<display />
+		</field>
+
+		<field name="contractorName" title="${uiLabelMap.ContractorName}">
+			<display />
+		</field>
+		<field name="noteType" title="${uiLabelMap.NoteType}">
+			<display />
+		</field>
+		<field name="noteName" title="${uiLabelMap.NoteName}">
+			<display />
+		</field>
+		<field name="noteInfo" title="${uiLabelMap.Note}">
+			<display />
+		</field>
+		<field name="noteDateTime" title="${uiLabelMap.NoteDateTime}">
+			<display type="date" />
+		</field>
+
+	</form>
 
 	<form name="ClientContactsExport" type="list" list-name="listClientContacts" odd-row-style="alternate-row"
 		default-table-style="basic-table hover-bar">

@@ -372,4 +372,12 @@
 		<value xml:lang="en">Client Revenuess</value>
 		<value xml:lang="it">Fatturati Cliente</value>
 	</property>
+	<property key="ClientBuyGroup">
+		<value xml:lang="en">Client Buy Group</value>
+		<value xml:lang="it">Gruppo Acquisto Cliente</value>
+	</property>
+	<property key="ClientPayCond">
+		<value xml:lang="en">Client Payment Conditions</value>
+		<value xml:lang="it">Condizioni Pagamento Cliente</value>
+	</property>
 </resource>
