@@ -263,7 +263,7 @@
 
 
 		<field name="name" title="${uiLabelMap.Name}">
-			<text size="30" maxlength="20" />
+			<text size="50" maxlength="50" />
 		</field>
 		<field name="prodCode" title="${uiLabelMap.ProdCode}">
 			<text size="30" maxlength="20" />
@@ -362,7 +362,7 @@
 
 
 		<field name="name" title="${uiLabelMap.Name}">
-			<text size="10" maxlength="20" />
+			<text size="50" maxlength="50" />
 		</field>
 
 		<field name="date" title="${uiLabelMap.DateIns}">
