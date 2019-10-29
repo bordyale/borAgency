@@ -372,6 +372,10 @@
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="EditContractLayer" />
 	</request-map>
+	<request-map uri="ApplyNewContractLayer">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="ApplyNewContractLayer" />
+	</request-map>
 	<request-map uri="EditContract">
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="EditContract" />
@@ -426,6 +430,16 @@
 		</response>
 		<response name="error" type="request-redirect" value="EditContractDetail">
 			<redirect-parameter name="contractId" />
+		</response>
+	</request-map>
+	<request-map uri="applyNewContract">
+		<security https="true" auth="true" />
+		<event type="java" path="org.apache.ofbiz.boragency.BorAgencyEvents" invoke="applyNewContract" />
+		<response name="success" type="request-redirect" value="findContracts">
+
+		</response>
+		<response name="error" type="request-redirect" value="findContracts">
+
 		</response>
 	</request-map>
 
@@ -637,6 +651,7 @@
 
 	<view-map name="findContracts" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindContracts" />
 	<view-map name="EditContractLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditContractLayer" />
+	<view-map name="ApplyNewContractLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#ApplyNewContractLayer" />
 	<view-map name="EditContract" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditContract" />
 	<view-map name="EditContractDetail" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditContractDetail" />
 

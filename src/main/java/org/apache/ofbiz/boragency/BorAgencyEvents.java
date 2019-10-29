@@ -52,6 +52,7 @@ import org.apache.ofbiz.entity.GenericEntityException;
 import org.apache.ofbiz.entity.GenericPK;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.condition.EntityCondition;
+import org.apache.ofbiz.entity.condition.EntityExpr;
 import org.apache.ofbiz.entity.condition.EntityOperator;
 import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.entity.util.EntityUtil;
@@ -122,7 +123,7 @@ public class BorAgencyEvents {
 					if (contractDetailType.equals("CONR_TYPE_PERC")) {
 						perc = value;
 					} else if (contractDetailType.equals("CONR_TYPE_FISSO")) {
-						perc = value.divide(refRevenue,4,RoundingMode.HALF_UP).multiply(new BigDecimal(100));
+						perc = value.divide(refRevenue, 4, RoundingMode.HALF_UP).multiply(new BigDecimal(100));
 					}
 					totalValue = totalValue.add(perc);
 				}
@@ -184,6 +185,125 @@ public class BorAgencyEvents {
 		} else {
 			return NO_ERROR;
 		}
+	}
+
+	public static String applyNewContract(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		GenericValue userLogin = (GenericValue) session.getAttribute("userLogin");
+		Delegator delegator = (Delegator) request.getAttribute("delegator");
+		LocalDispatcher dispatcher = (LocalDispatcher) request.getAttribute("dispatcher");
+
+		String controlDirective = null;
+		Map<String, Object> result = null;
+
+		Map<String, Object> paramMap = UtilHttp.getParameterMap(request);
+
+		// The number of multi form rows is retrieved
+
+		String contractIdFrom = null;
+		String contractIdTo = null;
+		String clientId = null;
+
+		// get the params
+		if (paramMap.containsKey("contractId")) {
+			contractIdFrom = (String) paramMap.get("contractId");
+		}
+		if (paramMap.containsKey("contractId2")) {
+			contractIdTo = (String) paramMap.get("contractId2");
+		}
+		if (paramMap.containsKey("clientId")) {
+			clientId = (String) paramMap.get("clientId");
+		}
+		if (contractIdFrom == null || contractIdTo == null || clientId == null) {
+			return "error";
+		}
+		try {
+			// contract1
+			List<EntityExpr> exprs = UtilMisc.toList(EntityCondition.makeCondition("contractId", EntityOperator.EQUALS, contractIdFrom),
+					EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, clientId), EntityCondition.makeCondition("validTo", EntityOperator.EQUALS, null));
+			EntityCondition cond = EntityCondition.makeCondition(exprs, EntityOperator.AND);
+			List<GenericValue> conditions = EntityQuery.use(delegator).from("BorCondition").where(cond).queryList();
+			for (GenericValue entry : conditions) {
+				String conditionId = (String) entry.get("conditionId");
+
+				try {
+					Map<String, Object> tmpResult = dispatcher.runSync("updateCondition",
+							UtilMisc.<String, Object> toMap("userLogin", userLogin, "conditionId", conditionId, "validTo", UtilDateTime.nowTimestamp()));
+
+					Map<String, Object> createCtx = new HashMap<String, Object>();
+					String finAccountId;
+
+					createCtx.put("userLogin", userLogin);
+					createCtx.put("productId", entry.get("productId"));
+					createCtx.put("pricelistId", entry.get("pricelistId"));
+					createCtx.put("contractId", contractIdTo);
+					createCtx.put("contractId2", entry.get("contractId2"));
+					createCtx.put("clientId", entry.get("clientId"));
+					createCtx.put("validFrom", entry.get("validFrom"));
+					// createCtx.put("validTo", entry.get("validTo"));
+					createCtx.put("startingPrice", entry.get("startingPrice"));
+					createCtx.put("sc1", entry.get("sc1"));
+					createCtx.put("sc2", entry.get("sc2"));
+					createCtx.put("sc3", entry.get("sc3"));
+					createCtx.put("sc4", entry.get("sc4"));
+					createCtx.put("sc5", entry.get("sc5"));
+					createCtx.put("isProductBought", entry.get("isProductBought"));
+					createCtx.put("note", entry.get("note"));
+
+					tmpResult = dispatcher.runSync("createCondition", createCtx);
+
+				} catch (GenericServiceException e) {
+					Debug.logError(e, module);
+				}
+
+			}
+			// contract2
+			exprs = UtilMisc.toList(EntityCondition.makeCondition("contractId2", EntityOperator.EQUALS, contractIdFrom), EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, clientId),
+					EntityCondition.makeCondition("validTo", EntityOperator.EQUALS, null));
+			cond = EntityCondition.makeCondition(exprs, EntityOperator.AND);
+			conditions = EntityQuery.use(delegator).from("BorCondition").where(cond).queryList();
+			for (GenericValue entry : conditions) {
+				String conditionId = (String) entry.get("conditionId");
+
+				try {
+					Map<String, Object> tmpResult = dispatcher.runSync("updateCondition",
+							UtilMisc.<String, Object> toMap("userLogin", userLogin, "conditionId", conditionId, "validTo", UtilDateTime.nowTimestamp()));
+
+					Map<String, Object> createCtx = new HashMap<String, Object>();
+					String finAccountId;
+
+					createCtx.put("userLogin", userLogin);
+					createCtx.put("productId", entry.get("productId"));
+					createCtx.put("pricelistId", entry.get("pricelistId"));
+					createCtx.put("contractId", entry.get("contractId"));
+					createCtx.put("contractId2", contractIdTo);
+					createCtx.put("clientId", entry.get("clientId"));
+					createCtx.put("validFrom", entry.get("validFrom"));
+					// createCtx.put("validTo", entry.get("validTo"));
+					createCtx.put("startingPrice", entry.get("startingPrice"));
+					createCtx.put("sc1", entry.get("sc1"));
+					createCtx.put("sc2", entry.get("sc2"));
+					createCtx.put("sc3", entry.get("sc3"));
+					createCtx.put("sc4", entry.get("sc4"));
+					createCtx.put("sc5", entry.get("sc5"));
+					createCtx.put("isProductBought", entry.get("isProductBought"));
+					createCtx.put("note", entry.get("note"));
+
+					tmpResult = dispatcher.runSync("createCondition", createCtx);
+
+				} catch (GenericServiceException e) {
+					Debug.logError(e, module);
+				}
+
+			}
+
+		} catch (GenericEntityException e) {
+			Debug.logError(e, module);
+
+		}
+
+		return "success";
+
 	}
 
 }

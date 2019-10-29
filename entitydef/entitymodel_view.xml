@@ -82,7 +82,10 @@
 			<exclude field="name" />
 			<exclude field="totalValue" />
 		</alias-all>
-		<alias-all entity-alias="COND" />
+		<alias-all entity-alias="COND">
+			<exclude field="validFrom" />
+			<exclude field="validTo" />
+		</alias-all>
 		<alias-all entity-alias="PLIST" />
 		<alias-all entity-alias="PLISTD" />
 		<alias-all entity-alias="CONTRACT" />
@@ -94,6 +97,8 @@
 		<alias name="contractName" entity-alias="CONTRACT" field="name" />
 		<alias name="contractName2" entity-alias="CONTRACT2" field="name" />
 		<alias name="totalValue2" entity-alias="CONTRACT2" field="totalValue" />
+		<alias name="validFrom" entity-alias="COND" field="validFrom" />
+		<alias name="validTo" entity-alias="COND" field="validTo" />
 		<view-link entity-alias="COND" rel-entity-alias="PROD">
 			<key-map field-name="productId" />
 		</view-link>

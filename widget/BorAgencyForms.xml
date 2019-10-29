@@ -530,6 +530,32 @@
 
 
 	</form>
+	<form name="ApplyNewContractLayer" type="single" target="applyNewContract" title="" default-map-name="Contract"
+		default-entity-name="BorContract">
+
+		<field name="clientId" title="${uiLabelMap.ClientId}" required-field="true">
+			<lookup target-form-name="LookupClient" />
+		</field>
+
+
+		<field name="contractId" title="${uiLabelMap.ContractId}" required-field="true">
+			<lookup target-form-name="LookupContract?contractorId=${filcontractorId}" />
+		</field>
+		<field name="contractId2" title="${uiLabelMap.ContractId2}" required-field="true">
+			<lookup target-form-name="LookupContract?contractorId=${filcontractorId}" />
+		</field>
+
+
+
+
+
+		<field name="submitButton" title="${uiLabelMap.CommonApply}">
+			<submit button-type="button" />
+		</field>
+
+
+
+	</form>
 
 
 	<form name="ListContractDetails" type="list" list-name="listIt" target="updateContractDetail">

@@ -679,6 +679,9 @@
 												<parameter param-name="filcontractorId" />
 												<parameter param-name="filactiv" />
 											</link>
+											<link target="ApplyNewContractLayer" link-type="layered-modal" text="${uiLabelMap.ApplyNewContract}" style="buttontext create">
+												<parameter param-name="filcontractorId" />
+											</link>
 										</container>
 
 									</decorator-section>
@@ -709,6 +712,23 @@
 			</actions>
 			<widgets>
 				<include-form name="EditContract" location="component://borAgency/widget/BorAgencyForms.xml" />
+			</widgets>
+		</section>
+	</screen>
+
+	<screen name="ApplyNewContractLayer">
+		<section>
+			<actions>
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
+				<property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true" />
+				<set field="filcontractorId" from-field="parameters.filcontractorId" />
+				<set field="titleProperty" value="PageTitleEditShipping" />
+				<set field="tabButtonItem" value="findContracts" />
+				<set field="ContractId" from-field="parameters.ContractId" />
+				<entity-one entity-name="BorContract" value-field="Contract" />
+			</actions>
+			<widgets>
+				<include-form name="ApplyNewContractLayer" location="component://borAgency/widget/BorAgencyForms.xml" />
 			</widgets>
 		</section>
 	</screen>

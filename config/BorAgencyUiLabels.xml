@@ -388,4 +388,8 @@
 		<value xml:lang="en">Contract Id 2</value>
 		<value xml:lang="it">Id Contratto 2</value>
 	</property>
+	<property key="ApplyNewContract">
+		<value xml:lang="en">Apply New Contract</value>
+		<value xml:lang="it">Applica Nuovo Contratto</value>
+	</property>
 </resource>
