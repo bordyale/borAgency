@@ -31,6 +31,7 @@ import java.math.BigDecimal
 import java.math.RoundingMode
 
 contractId = parameters.contractId
+contractId2 = parameters.contractId2
 
 
 contractDetails = from("BorContractDetail").where("contractId",contractId).cache(false).queryList()
@@ -61,6 +62,35 @@ for (GenericValue entry: contractDetails){
 	hashMaps.add(e)
 }
 
+contractDetails = from("BorContractDetail").where("contractId",contractId2).cache(false).queryList()
+
+contractDetails = EntityUtil.orderBy(contractDetails,  ["contractdetailId"])
+
+List<HashMap<String,Object>> hashMaps2 = new ArrayList<HashMap<String,Object>>()
+for (GenericValue entry: contractDetails){
+	Map<String,Object> e = new HashMap<String,Object>()
+	e.put("contractdetailId",entry.get("contractdetailId"))
+	String contractDetailType = entry.get("contractDetailType")
+	BigDecimal value = entry.get("value")
+	BigDecimal refRevenue = entry.get("refRevenue")
+	BigDecimal perc = BigDecimal.ZERO
+	if (contractDetailType.equals("CONR_TYPE_PERC")){
+		perc= value
+	}else{
+		perc = value.divide(refRevenue,4,RoundingMode.HALF_UP).multiply(new BigDecimal(100))
+	}
+
+
+	e.put("contractDetailType",contractDetailType)
+	e.put("name",entry.get("name"))
+	e.put("value",value)
+	e.put("refRevenue",refRevenue)
+	e.put("perc",perc)
+
+	hashMaps2.add(e)
+}
+
 
 
 context.listIt = hashMaps
+context.listIt2 = hashMaps2

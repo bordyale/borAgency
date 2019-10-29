@@ -62,6 +62,7 @@
 		<member-entity entity-alias="CLI" entity-name="BorClient" />
 		<member-entity entity-alias="COND" entity-name="BorCondition" />
 		<member-entity entity-alias="CONTRACT" entity-name="BorContract" />
+		<member-entity entity-alias="CONTRACT2" entity-name="BorContract" />
 		<alias-all entity-alias="CONTR">
 			<exclude field="name" />
 		</alias-all>
@@ -77,15 +78,22 @@
 		<alias-all entity-alias="CONTRACT">
 			<exclude field="name" />
 		</alias-all>
+		<alias-all entity-alias="CONTRACT2">
+			<exclude field="name" />
+			<exclude field="totalValue" />
+		</alias-all>
 		<alias-all entity-alias="COND" />
 		<alias-all entity-alias="PLIST" />
 		<alias-all entity-alias="PLISTD" />
 		<alias-all entity-alias="CONTRACT" />
+		<alias-all entity-alias="CONTRACT2" />
 		<alias name="contractorName" entity-alias="CONTR" field="name" />
 		<alias name="productName" entity-alias="PROD" field="name" />
 		<alias name="clientName" entity-alias="CLI" field="name" />
 		<alias name="pricelistName" entity-alias="PLIST" field="name" />
 		<alias name="contractName" entity-alias="CONTRACT" field="name" />
+		<alias name="contractName2" entity-alias="CONTRACT2" field="name" />
+		<alias name="totalValue2" entity-alias="CONTRACT2" field="totalValue" />
 		<view-link entity-alias="COND" rel-entity-alias="PROD">
 			<key-map field-name="productId" />
 		</view-link>
@@ -104,6 +112,9 @@
 		</view-link>
 		<view-link entity-alias="COND" rel-entity-alias="CONTRACT" rel-optional="true">
 			<key-map field-name="contractId" />
+		</view-link>
+		<view-link entity-alias="COND" rel-entity-alias="CONTRACT2" rel-optional="true">
+			<key-map field-name="contractId2"  rel-field-name="contractId"/>
 		</view-link>
 
 	</view-entity>

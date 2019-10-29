@@ -218,7 +218,7 @@
 		</actions>
 
 		<field name="prodCode" title="${uiLabelMap.GeneralId}" widget-style="buttontext" sort-field="true">
-			<hyperlink description="link - ${prodCode}" target="EditProduct" also-hidden="false" >
+			<hyperlink description="link - ${prodCode}" target="EditProduct" also-hidden="false">
 				<parameter param-name="productId" />
 				<parameter param-name="contractorId" />
 			</hyperlink>
@@ -567,6 +567,41 @@
 		</field>
 		<!-- <field name="submitButton" title="${uiLabelMap.CommonUpdate}"> <submit button-type="button" /> </field> -->
 	</form>
+	<form name="ListContractDetails2" type="list" list-name="listIt2" target="updateContractDetail">
+
+		<auto-fields-service service-name="updateContractDetail" />
+		<field name="contractId">
+			<hidden />
+		</field>
+		<field name="contractdetailId" title="${uiLabelMap.CommonItem}">
+			<display />
+		</field>
+		<field name="contractDetailType" title="${uiLabelMap.ContractDetailType}">
+			<display />
+		</field>
+		<field name="name">
+			<display />
+		</field>
+
+		<field name="value">
+			<display />
+		</field>
+		<field name="refRevenue" title="${uiLabelMap.RefRevenue}">
+			<display />
+		</field>
+		<field name="perc" title="${uiLabelMap.Percentage}">
+			<display />
+		</field>
+		<field name="deleteLink" use-when="modeLayer==null" title=" " widget-style="buttontext">
+			<hyperlink description="${uiLabelMap.CommonDelete}" target="deleteContractDetail" also-hidden="false"
+				confirmation-message="${uiLabelMap.CommonConfirmDelete}">
+				<parameter param-name="contractId" />
+				<parameter param-name="contractdetailId" />
+				<parameter param-name="contractorId" />
+			</hyperlink>
+		</field>
+		<!-- <field name="submitButton" title="${uiLabelMap.CommonUpdate}"> <submit button-type="button" /> </field> -->
+	</form>
 
 	<form name="AddContractDetails" type="single" target="createContractDetail" title="">
 		<field name="contractId">
@@ -767,6 +802,7 @@
 			<text disabled="true" size="5">
 				<sub-hyperlink description="${contractValue}" text="${uiLabelMap.NewCommon}" link-type="layered-modal" target="ContractDetailLayer">
 					<parameter param-name="contractId" />
+					<parameter param-name="contractId2" />
 
 				</sub-hyperlink>
 			</text>
@@ -855,6 +891,9 @@
 			<lookup target-form-name="LookupProduct?contractorId=${filcontractorId}" />
 		</field>
 		<field name="contractId" title="${uiLabelMap.ContractId}">
+			<lookup target-form-name="LookupContract?contractorId=${filcontractorId}" />
+		</field>
+		<field name="contractId2" title="${uiLabelMap.ContractId2}">
 			<lookup target-form-name="LookupContract?contractorId=${filcontractorId}" />
 		</field>
 		<field name="clientId" title="${uiLabelMap.ClientId}" required-field="true">
@@ -1046,9 +1085,9 @@
 				</entity-options>
 			</drop-down>
 		</field>
-		
-		
-		
+
+
+
 		<field name="noteName">
 			<textarea cols="30" rows="1" />
 		</field>

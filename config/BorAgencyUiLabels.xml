@@ -380,4 +380,12 @@
 		<value xml:lang="en">Client Payment Conditions</value>
 		<value xml:lang="it">Condizioni Pagamento Cliente</value>
 	</property>
+	<property key="ContractId">
+		<value xml:lang="en">Contract Id</value>
+		<value xml:lang="it">Id Contratto</value>
+	</property>
+	<property key="ContractId2">
+		<value xml:lang="en">Contract Id 2</value>
+		<value xml:lang="it">Id Contratto 2</value>
+	</property>
 </resource>

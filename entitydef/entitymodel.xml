@@ -15,6 +15,7 @@
 		<field name="productId" type="id-ne"></field>
 		<field name="pricelistId" type="id-ne"></field>
 		<field name="contractId" type="id-ne"></field>
+		<field name="contractId2" type="id-ne"></field>
 		<field name="clientId" type="id-ne"></field>
 		<field name="validFrom" type="date-time"></field>
 		<field name="validTo" type="date-time"></field>
@@ -34,6 +35,9 @@
 			<key-map field-name="productId" />
 		</relation>
 		<relation type="one" fk-name="contractId" rel-entity-name="BorContract">
+			<key-map field-name="contractId" />
+		</relation>
+		<relation type="one" fk-name="contractId2" rel-entity-name="BorContract">
 			<key-map field-name="contractId" />
 		</relation>
 		<relation type="one" fk-name="clientId" rel-entity-name="BorClient">
