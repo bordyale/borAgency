@@ -36,7 +36,8 @@
 								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
-											<link target="EditContractorLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
+											<link target="EditContractorLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}"
+												style="buttontext create" />
 										</container>
 									</decorator-section>
 									<decorator-section name="search-options">
@@ -538,7 +539,8 @@
 								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
-											<link target="EditPriceListLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
+											<link target="EditPriceListLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}"
+												style="buttontext create" />
 										</container>
 									</decorator-section>
 									<decorator-section name="search-options">
@@ -674,12 +676,15 @@
 								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
-											<link target="EditContractLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
-											<link target="ContractExport.csv" text="${uiLabelMap.CommonExport}" style="buttontext create" target-window="_blank">
+											<link target="EditContractLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}"
+												style="buttontext create" />
+											<link target="ContractExport.csv" text="${uiLabelMap.CommonExport}" style="buttontext create"
+												target-window="_blank">
 												<parameter param-name="filcontractorId" />
 												<parameter param-name="filactiv" />
 											</link>
-											<link target="ApplyNewContractLayer" link-type="layered-modal" text="${uiLabelMap.ApplyNewContract}" style="buttontext create">
+											<link target="ApplyNewContractLayer" link-type="layered-modal" text="${uiLabelMap.ApplyNewContract}"
+												style="buttontext create">
 												<parameter param-name="filcontractorId" />
 											</link>
 										</container>
@@ -983,6 +988,19 @@
 								<parameter param-name="filshowClientNotes" />
 								<parameter param-name="filshowClientInfos" />
 
+							</link>
+							<link target="ReportExportPdf" text="${uiLabelMap.CommonPdf}" style="buttontext create" target-window="_blank">
+								<parameter param-name="filcontractorId" />
+								<parameter param-name="filproductId" />
+								<parameter param-name="filclientId" />
+								<parameter param-name="filactiv" />
+								<parameter param-name="fildate1From" />
+								<parameter param-name="fildate2From" />
+								<parameter param-name="fildate3From" />
+								<parameter param-name="filshowConditions" />
+								<parameter param-name="filshowPromotions" />
+								<parameter param-name="filshowClientNotes" />
+								<parameter param-name="filshowClientInfos" />
 							</link>
 						</container>
 						<screenlet title="${uiLabelMap.Filter}">
