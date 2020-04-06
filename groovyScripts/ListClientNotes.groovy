@@ -33,6 +33,7 @@ clientId = parameters.clientId
 fildate1From = parameters.fildate1From
 filshowClientNotes = parameters.filshowClientNotes
 
+
 List searchCond = []
 if (filcontractorId) {
 	searchCond.add(EntityCondition.makeCondition("contractorId", EntityOperator.EQUALS, filcontractorId))

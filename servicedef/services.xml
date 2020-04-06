@@ -279,11 +279,15 @@
 		<auto-attributes include="pk" mode="IN" optional="false" />
 		<auto-attributes include="nonpk" mode="IN" optional="true" />
 	</service>
+
+
 	<service name="deletePromotionDetail" default-entity-name="BorPromotionDetail" engine="entity-auto" invoke="delete" auth="true">
 		<description>Delete a VfShipmentItem</description>
 		<permission-service service-name="borAgencyGenericPermission" main-action="DELETE" />
 		<auto-attributes include="pk" mode="IN" optional="false" />
 	</service>
+
+
 
 	<service name="createBorNote" default-entity-name="BorNote" engine="entity-auto" invoke="create" auth="true">
 		<description>Create Work Papers entry</description>

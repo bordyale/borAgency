@@ -246,13 +246,27 @@
 	<request-map uri="deletePromotionDetail">
 		<security https="true" auth="true" />
 		<event type="service" path="" invoke="deletePromotionDetail" />
-		<response name="success" type="view" value="findPromotionDetails" />
+		<response name="success" type="request-redirect" value="findPromotionDetails">
+			<redirect-parameter name="clientId" />
+			<redirect-parameter name="promotionId" />
+			<redirect-parameter name="contractorId" />
+			<redirect-parameter name="filcontractorId" />
+			<redirect-parameter name="filproductId" />
+			<redirect-parameter name="filclientId" />
+			<redirect-parameter name="filactiv" />
+			<redirect-parameter name="filpromotionId" />
+			<redirect-parameter name="fildate2From" />
+			<redirect-parameter name="fildate3From" />
+			<redirect-parameter name="filshowPromotions" />
+		</response>
 		<response name="error" type="view" value="findPromotionDetails" />
 	</request-map>
 	<request-map uri="updatePromotionDetail">
 		<security https="true" auth="true" />
 		<event type="service" path="" invoke="updatePromotionDetail" />
-		<response name="success" type="view" value="findPromotionDetails" />
+		<response name="success" type="view" value="findPromotionDetails">
+			
+		</response>
 		<response name="error" type="view" value="findPromotionDetails" />
 	</request-map>
 

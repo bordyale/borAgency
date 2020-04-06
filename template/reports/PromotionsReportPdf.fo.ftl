@@ -33,6 +33,7 @@ under the License.
 				  <fo:table-column column-width="10%" border-width="1px" border-style="solid" />
 				  <fo:table-column column-width="10%" border-width="1px" border-style="solid" />
 				  <fo:table-column column-width="10%" border-width="1px" border-style="solid" />
+				  <fo:table-column column-width="10%" border-width="1px" border-style="solid" />
 				  <fo:table-column column-width="5%" border-width="1px" border-style="solid" />
               	  
                <fo:table-header text-align="center" background-color="silver">
@@ -61,6 +62,9 @@ under the License.
 						</fo:table-cell>
 						<fo:table-cell padding="1mm" border-width="0.3mm" border-style="solid" font-size="8pt">
 							<fo:block font-weight="bold">${uiLabelMap.DateIns}</fo:block>
+						</fo:table-cell>
+						<fo:table-cell padding="1mm" border-width="0.3mm" border-style="solid" font-size="8pt">
+							<fo:block font-weight="bold">${uiLabelMap.DateLastMod}</fo:block>
 						</fo:table-cell>
 						<fo:table-cell padding="1mm" border-width="0.3mm" border-style="solid" font-size="8pt">
 							<fo:block font-weight="bold">${uiLabelMap.IsValid}</fo:block>
@@ -134,6 +138,15 @@ under the License.
 		                      <fo:block>
 		                        <#if item.dateIns?has_content>
 		                        	 ${item.dateIns?if_exists?string("yyyy.MM.dd")}
+		                        <#else>
+		                      		
+		                        </#if>
+		                      </fo:block>
+		                    </fo:table-cell>
+		                    <fo:table-cell border-style="solid" border-width="0.3mm" font-size="8pt">
+		                      <fo:block>
+		                        <#if item.dateLastModDis?has_content>
+		                        	 ${item.dateLastModDis?if_exists?string("yyyy.MM.dd")}
 		                        <#else>
 		                      		
 		                        </#if>

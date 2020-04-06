@@ -8,6 +8,7 @@
 			<actions>
 				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
 				<property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true" />
+				
 
 
 				<set field="viewIndex" from-field="parameters.VIEW_INDEX" type="Integer" default-value="0" />
@@ -106,6 +107,7 @@
 				<property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true" />
 				<set field="filcontractorId" from-field="parameters.filcontractorId" />
 				<set field="filproductId" from-field="parameters.filproductId" />
+				<set field="filpromotionId" from-field="parameters.filpromotionId" />
 				<set field="filclientId" from-field="parameters.filclientId" />
 				<set field="filactiv" from-field="parameters.filactiv" />
 				<set field="fildate1From" from-field="parameters.fildate1From" />
@@ -118,8 +120,9 @@
 				<set field="viewIndex" from-field="parameters.VIEW_INDEX" type="Integer" default-value="0" />
 				<property-to-field resource="widget" property="widget.form.defaultViewSize" field="viewSizeDefaultValue" />
 				<set field="viewSize" from-field="parameters.VIEW_SIZE" type="Integer" default-value="${viewSizeDefaultValue}" />
+				<set field="reportPage" value="Y" />
 				<script location="component://borAgency/groovyScripts/ListConditions.groovy" />
-				<script location="component://borAgency/groovyScripts/ListPromotions.groovy" />
+				<script location="component://borAgency/groovyScripts/ListPromotionsDetails.groovy" />
 				<script location="component://borAgency/groovyScripts/ListClientNotes.groovy" />
 				<script location="component://borAgency/groovyScripts/ListClientInfos.groovy" />
 

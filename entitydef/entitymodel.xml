@@ -183,6 +183,7 @@
 		<field name="info" type="value"></field>
 		<field name="contractorId" type="id-ne"></field>
 		<field name="dateIns" type="date-time"></field>
+		<field name="dateLastMod" type="date-time"></field>
 		<prim-key field="promotionId" />
 
 		<relation type="one" fk-name="contractorId" rel-entity-name="BorContractor">
@@ -200,6 +201,7 @@
 		<field name="productId" type="id-ne"></field>
 		<field name="discount" type="fixed-point"></field>
 		<field name="dateIns" type="date-time"></field>
+		<field name="dateLastMod" type="date-time"></field>
 		<field name="isValid" type="value"></field>
 		<prim-key field="promotionDetailId" />
 		<relation type="one" fk-name="productId" rel-entity-name="BorProduct">

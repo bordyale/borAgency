@@ -101,6 +101,9 @@
 			<hidden />
 		</field>
 
+	<field name="contractorName" title="${uiLabelMap.ContractorName}">
+			<display />
+		</field>
 
 
 		<field name="clientName" title="${uiLabelMap.ClientName}">
@@ -139,6 +142,9 @@
 			<display type="date" />
 		</field>
 		<field name="dateIns" title="${uiLabelMap.DateIns}">
+			<display type="date" />
+		</field>
+		<field name="dateLastModDis" title="${uiLabelMap.DateLastMod}">
 			<display type="date" />
 		</field>
 		<field name="isValid" title="${uiLabelMap.IsValid}">

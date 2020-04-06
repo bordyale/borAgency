@@ -381,11 +381,11 @@
 		<section>
 			<actions>
 				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
-				<set field="filcontractorId" from-field="parameters.filcontractorId" />
+				<set field="filcontractorId" from-field="parameters.contractorId" />
 				<set field="filproductId" from-field="parameters.filproductId" />
-				<set field="filclientId" from-field="parameters.filclientId" />
+				<set field="filclientId" from-field="parameters.clientId" />
 				<set field="filactiv" from-field="parameters.filactiv" />
-				<set field="filpromotionId" from-field="parameters.filpromotionId" />
+				<set field="filpromotionId" from-field="parameters.promotionId" />
 				<set field="filshowPromotions" from-field="parameters.filshowPromotions" />
 				<set field="fildate2From" from-field="parameters.fildate2From" />
 				<set field="fildate2FromTitle" value="${groovy: uiLabelMap.filpromotionFrom}" />
@@ -401,6 +401,7 @@
 				<entity-one entity-name="BorContractor" value-field="contractor" />
 				<entity-one entity-name="BorPromotion" value-field="promotion" />
 				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
+				<script location="component://borAgency/groovyScripts/ListPromotionsDetails.groovy" />
 			</actions>
 			<widgets>
 				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">
@@ -961,7 +962,7 @@
 				<set field="reportPage" value="Y" />
 				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
 				<script location="component://borAgency/groovyScripts/ListConditions.groovy" />
-				<script location="component://borAgency/groovyScripts/ListPromotions.groovy" />
+				<script location="component://borAgency/groovyScripts/ListPromotionsDetails.groovy" />
 				<script location="component://borAgency/groovyScripts/ListClientNotes.groovy" />
 				<script location="component://borAgency/groovyScripts/ListClientInfos.groovy" />
 			</actions>
@@ -1048,6 +1049,7 @@
 		<section>
 			<actions>
 				<set field="filcontractorId" from-field="parameters.filcontractorId" />
+				<set field="filpromotionId" from-field="parameters.filpromotionId" />
 				<set field="filproductId" from-field="parameters.filproductId" />
 				<set field="filclientId" from-field="parameters.filclientId" />
 				<set field="filactiv" from-field="parameters.filactiv" />
@@ -1061,7 +1063,7 @@
 				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
 				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
 				<script location="component://borAgency/groovyScripts/ListConditions.groovy" />
-				<script location="component://borAgency/groovyScripts/ListPromotions.groovy" />
+				<script location="component://borAgency/groovyScripts/ListPromotionsDetails.groovy" />
 				<script location="component://borAgency/groovyScripts/ListClientNotes.groovy" />
 			</actions>
 
@@ -1126,7 +1128,7 @@
 				<set field="headerItem" value="findReports" />
 				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
 				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
-				<script location="component://borAgency/groovyScripts/ListPromotions.groovy" />
+				<script location="component://borAgency/groovyScripts/ListPromotionsDetails.groovy" />
 			</actions>
 
 			<widgets>

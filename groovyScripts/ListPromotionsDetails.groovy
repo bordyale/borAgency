@@ -27,15 +27,20 @@ import org.apache.ofbiz.entity.GenericValue
 import org.apache.ofbiz.entity.util.EntityUtil
 import java.sql.Timestamp
 
+if (!filcontractorId) {
 filcontractorId = parameters.filcontractorId
+}
 filproductId = parameters.filproductId
-//filclientId = parameters.filclientId
+if (!filclientId) {
+filclientId = parameters.filclientId
+}
 filactiv = parameters.filactiv
 fildate2From = parameters.fildate2From
 fildate3From = parameters.fildate3From
 filshowPromotions = parameters.filshowPromotions
+if (!filpromotionId) {
 filpromotionId = parameters.filpromotionId
-
+}
 List searchCond = []
 if (filcontractorId) {
 	searchCond.add(EntityCondition.makeCondition("contractorId", EntityOperator.EQUALS, filcontractorId))
@@ -59,7 +64,7 @@ if (filpromotionId) {
 	searchCond.add(EntityCondition.makeCondition("promotionId", EntityOperator.EQUALS, filpromotionId))
 }
 
-promotionList = from("BorPromotionView").where(searchCond).cache(false).queryList()
+promotionList = from("BorPromotionDetailView").where(searchCond).cache(false).queryList()
 
 promotionList = EntityUtil.orderBy(promotionList,  ["sellinFrom"])
 
@@ -68,7 +73,10 @@ if(filshowPromotions.equals("Y")){
 	for (GenericValue entry: promotionList){
 		Map<String,Object> e = new HashMap<String,Object>()
 		e.put("promotionId",entry.get("promotionId"))
-		
+		e.put("promotionDetailId",entry.get("promotionDetailId"))
+		e.put("productId",entry.get("productId"))
+		e.put("prodCode",entry.get("prodCode"))
+		e.put("productName",entry.get("productName"))
 		e.put("contractorId",entry.get("contractorId"))
 		e.put("contractorName",entry.get("contractorName"))
 		e.put("clientName",entry.get("clientName"))
@@ -76,8 +84,8 @@ if(filshowPromotions.equals("Y")){
 		e.put("sellinTo",entry.get("sellinTo"))
 		e.put("selloutFrom",entry.get("selloutFrom"))
 		e.put("selloutTo",entry.get("selloutTo"))
-		
-		
+		e.put("discount",entry.get("discount"))
+		e.put("isValid",entry.get("isValid"))
 		e.put("dateIns",entry.get("dateIns"))
 		e.put("dateLastModDis",entry.get("dateLastMod"))
 		e.put("contribute",entry.get("contribute"))

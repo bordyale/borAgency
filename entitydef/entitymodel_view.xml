@@ -119,7 +119,7 @@
 			<key-map field-name="contractId" />
 		</view-link>
 		<view-link entity-alias="COND" rel-entity-alias="CONTRACT2" rel-optional="true">
-			<key-map field-name="contractId2"  rel-field-name="contractId"/>
+			<key-map field-name="contractId2" rel-field-name="contractId" />
 		</view-link>
 
 	</view-entity>
@@ -156,13 +156,7 @@
 	<view-entity entity-name="BorPromotionView" package-name="org.apache.ofbiz.borAgency">
 		<member-entity entity-alias="PROM" entity-name="BorPromotion" />
 		<member-entity entity-alias="CONTR" entity-name="BorContractor" />
-		<member-entity entity-alias="PROMD" entity-name="BorPromotionDetail" />
-		<member-entity entity-alias="PROD" entity-name="BorProduct" />
 		<member-entity entity-alias="CLI" entity-name="BorClient" />
-		<alias-all entity-alias="PROD">
-			<exclude field="contractorId" />
-			<exclude field="name" />
-		</alias-all>
 		<alias-all entity-alias="CLI">
 			<exclude field="name" />
 		</alias-all>
@@ -170,18 +164,10 @@
 			<exclude field="name" />
 		</alias-all>
 		<alias-all entity-alias="PROM" />
-		<alias-all entity-alias="PROMD" />
-		<alias name="productName" entity-alias="PROD" field="name" />
 		<alias name="contractorName" entity-alias="CONTR" field="name" />
 		<alias name="clientName" entity-alias="CLI" field="name" />
 		<view-link entity-alias="PROM" rel-entity-alias="CONTR">
 			<key-map field-name="contractorId" />
-		</view-link>
-		<view-link entity-alias="PROM" rel-entity-alias="PROMD" rel-optional="true">
-			<key-map field-name="promotionId" />
-		</view-link>
-		<view-link entity-alias="PROMD" rel-entity-alias="PROD" rel-optional="true">
-			<key-map field-name="productId" />
 		</view-link>
 		<view-link entity-alias="PROM" rel-entity-alias="CLI">
 			<key-map field-name="clientId" />
@@ -190,15 +176,23 @@
 
 	<view-entity entity-name="BorPromotionDetailView" package-name="org.apache.ofbiz.borAgency">
 		<member-entity entity-alias="PROMD" entity-name="BorPromotionDetail" />
+		<member-entity entity-alias="PROMV" entity-name="BorPromotionView" />
 		<member-entity entity-alias="PROD" entity-name="BorProduct" />
 		<alias-all entity-alias="PROD">
 			<exclude field="contractorId" />
 			<exclude field="name" />
 		</alias-all>
 		<alias-all entity-alias="PROMD" />
+		<alias-all entity-alias="PROMV">
+			<exclude field="dateLastMod" />
+		</alias-all>
 		<alias name="productName" entity-alias="PROD" field="name" />
+		<alias name="promdateLastMod" entity-alias="PROMV" field="dateLastMod" />
 		<view-link entity-alias="PROMD" rel-entity-alias="PROD">
 			<key-map field-name="productId" />
+		</view-link>
+		<view-link entity-alias="PROMD" rel-entity-alias="PROMV">
+			<key-map field-name="promotionId" />
 		</view-link>
 	</view-entity>
 

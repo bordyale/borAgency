@@ -248,6 +248,10 @@
 		<value xml:lang="en">Create Date</value>
 		<value xml:lang="it">Data Inserimento</value>
 	</property>
+	<property key="DateLastMod">
+		<value xml:lang="en">Last Mod Date</value>
+		<value xml:lang="it">Data Ult. Mod</value>
+	</property>
 	<property key="ClientType">
 		<value xml:lang="en">Client Type</value>
 		<value xml:lang="it">Tipo Cliente</value>
