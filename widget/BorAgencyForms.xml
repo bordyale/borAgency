@@ -426,7 +426,7 @@
 			<hidden />
 		</field>
 		<field name="productId" title="${uiLabelMap.ProductId}">
-			<lookup target-form-name="LookupProduct?contractorId=${contractorId}" />
+			<lookup target-form-name="LookupProduct?contractorId=${contractorId}" position="center"/>
 		</field>
 		<field name="submitButton" title="${uiLabelMap.CommonAdd}">
 			<submit button-type="button" />
@@ -644,7 +644,7 @@
 			</drop-down>
 		</field>
 		<field name="name">
-			<text size="10" maxlength="20" />
+			<text size="100" maxlength="200" />
 		</field>
 		<field name="value">
 			<text size="10" maxlength="20" />
@@ -913,6 +913,10 @@
 		<field name="startingPrice">
 			<hidden />
 		</field>
+		
+		<field name="note">
+			<text size="100" maxlength="200" />
+		</field>
 
 
 		<field name="productId" title="${uiLabelMap.ProductId}" required-field="true">
@@ -1121,6 +1125,11 @@
 		</field>
 		<field name="noteInfo">
 			<textarea cols="30" rows="10" />
+		</field>
+		
+		
+		<field name="noteDateTime" title="${uiLabelMap.CommonDate}">
+			<date-time type="date" />
 		</field>
 
 

@@ -25,22 +25,29 @@ under the License.
 					${uiLabelMap.Promotions} 
 			  </fo:block>
               <fo:table width="100%" table-layout="fixed"> 
+              	  <fo:table-column column-width="9%" border-width="1px" border-style="solid" />
+                  <fo:table-column column-width="7%" border-width="1px" border-style="solid" />
                   <fo:table-column column-width="7%" border-width="1px" border-style="solid" />
                   <fo:table-column column-width="7%" border-width="1px" border-style="solid" />
                   <fo:table-column column-width="6%" border-width="1px" border-style="solid" />        
-				  <fo:table-column column-width="10%" border-width="1px" border-style="solid" />
-				  <fo:table-column column-width="10%" border-width="1px" border-style="solid" />
-				  <fo:table-column column-width="10%" border-width="1px" border-style="solid" />
-				  <fo:table-column column-width="10%" border-width="1px" border-style="solid" />
-				  <fo:table-column column-width="10%" border-width="1px" border-style="solid" />
-				  <fo:table-column column-width="10%" border-width="1px" border-style="solid" />
+				  <fo:table-column column-width="8%" border-width="1px" border-style="solid" />
+				  <fo:table-column column-width="8%" border-width="1px" border-style="solid" />
+				  <fo:table-column column-width="8%" border-width="1px" border-style="solid" />
+				  <fo:table-column column-width="8%" border-width="1px" border-style="solid" />
+				  <fo:table-column column-width="9%" border-width="1px" border-style="solid" />
+				  <fo:table-column column-width="8%" border-width="1px" border-style="solid" />
 				  <fo:table-column column-width="5%" border-width="1px" border-style="solid" />
               	  
                <fo:table-header text-align="center" background-color="silver">
 					<fo:table-row>
-						
+						<fo:table-cell padding="1mm" border-width="0.3mm" border-style="solid" font-size="8pt">
+							<fo:block font-weight="bold">${uiLabelMap.ContractorName}</fo:block>
+						</fo:table-cell>
 						<fo:table-cell padding="1mm" border-width="0.3mm" border-style="solid" font-size="8pt">
 							<fo:block font-weight="bold">${uiLabelMap.ClientName}</fo:block>
+						</fo:table-cell>
+						<fo:table-cell padding="1mm" border-width="0.3mm" border-style="solid" font-size="8pt">
+							<fo:block font-weight="bold">${uiLabelMap.ProdCode}</fo:block>
 						</fo:table-cell>											
 						<fo:table-cell padding="1mm" border-width="0.3mm" border-style="solid" font-size="8pt">
 							<fo:block font-weight="bold">${uiLabelMap.ProductName}</fo:block>
@@ -78,10 +85,20 @@ under the License.
 	                <#list listPromotions as item>
 		                
 		                  <fo:table-row>
-		                  			            
+		                 	<fo:table-cell border-style="solid" border-width="0.3mm" font-size="8pt">
+		                      <fo:block>
+		                        ${item.contractorName}
+		                      </fo:block>
+		                    </fo:table-cell>
+		                  			                
 		                    <fo:table-cell border-style="solid" border-width="0.3mm" font-size="8pt">
 		                      <fo:block>
 		                        ${item.clientName}
+		                      </fo:block>
+		                    </fo:table-cell>
+		                    <fo:table-cell border-style="solid" border-width="0.3mm" font-size="8pt">
+		                      <fo:block>
+		                        ${item.prodCode}
 		                      </fo:block>
 		                    </fo:table-cell>		        
 		                    <fo:table-cell border-style="solid" border-width="0.3mm" font-size="8pt">

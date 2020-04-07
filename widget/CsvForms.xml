@@ -121,10 +121,15 @@
 			<display />
 		</field>
 
+		<field name="prodCode" title="${uiLabelMap.ProdCode}">
+			<display />
+		</field>
 
 		<field name="productName" title="${uiLabelMap.ProductName}">
 			<display />
 		</field>
+		
+		
 
 		<field name="discount" title="${uiLabelMap.Discount}">
 			<display />
