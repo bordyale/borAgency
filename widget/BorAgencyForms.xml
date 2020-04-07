@@ -1263,7 +1263,7 @@
 		</field>
 
 		<field name="promotionId">
-			<hidden />
+			<display />
 		</field>
 		<field name="contractorName" title="${uiLabelMap.ContractorName}">
 			<display />
@@ -1453,6 +1453,9 @@
 		</field>
 		<field name="dateIns">
 			<hidden value="${nowTimestamp}" />
+		</field>
+		<field name="dateLastMod">
+			<hidden />
 		</field>
 		<field name="clientId" title="${uiLabelMap.ClientId}" required-field="true">
 			<hidden />

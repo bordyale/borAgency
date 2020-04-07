@@ -130,7 +130,7 @@
 				<parameter param-name="filproductId" />
 				<parameter param-name="filclientId" />
 				<parameter param-name="filactiv" />
-				<parameter param-name="filpromotionId" />
+				<!-- <parameter param-name="filpromotionId" /> -->
 				<parameter param-name="fildate2From" />
 				<parameter param-name="fildate3From" />
 				<parameter param-name="filshowPromotions" />
