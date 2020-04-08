@@ -608,6 +608,10 @@
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="ClientNoteExport" />
 	</request-map>
+	<request-map uri="ContractDetailExport.csv">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="ContractDetailExport" />
+	</request-map>
 	<request-map uri="ReportExport.csv">
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="ReportExport" />
@@ -631,6 +635,8 @@
 	<view-map name="PromotionExport" type="screencsv" page="component://borAgency/widget/CsvScreens.xml#PromotionExportCsv"
 		content-type="text/csv" encoding="none" />
 	<view-map name="ClientNoteExport" type="screencsv" page="component://borAgency/widget/CsvScreens.xml#ClientNoteExportCsv"
+		content-type="text/csv" encoding="none" />
+	<view-map name="ContractDetailExport" type="screencsv" page="component://borAgency/widget/CsvScreens.xml#ContractDetailExportCvs"
 		content-type="text/csv" encoding="none" />
 	<view-map name="ReportExport" type="screencsv" page="component://borAgency/widget/CsvScreens.xml#ReportExportCsv"
 		content-type="text/csv" encoding="none" />

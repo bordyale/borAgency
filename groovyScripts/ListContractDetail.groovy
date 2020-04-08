@@ -34,7 +34,7 @@ contractId = parameters.contractId
 contractId2 = parameters.contractId2
 
 
-contractDetails = from("BorContractDetail").where("contractId",contractId).cache(false).queryList()
+contractDetails = from("ContractDetailView").where("contractId",contractId).cache(false).queryList()
 
 contractDetails = EntityUtil.orderBy(contractDetails,  ["contractdetailId"])
 
@@ -42,6 +42,8 @@ List<HashMap<String,Object>> hashMaps = new ArrayList<HashMap<String,Object>>()
 for (GenericValue entry: contractDetails){
 	Map<String,Object> e = new HashMap<String,Object>()
 	e.put("contractdetailId",entry.get("contractdetailId"))
+	e.put("contractorName",entry.get("contractorName"))
+	e.put("totalValue",entry.get("totalValue"))
 	String contractDetailType = entry.get("contractDetailType")
 	BigDecimal value = entry.get("value")
 	BigDecimal refRevenue = entry.get("refRevenue")
@@ -62,7 +64,7 @@ for (GenericValue entry: contractDetails){
 	hashMaps.add(e)
 }
 
-contractDetails = from("BorContractDetail").where("contractId",contractId2).cache(false).queryList()
+contractDetails = from("ContractDetailView").where("contractId",contractId2).cache(false).queryList()
 
 contractDetails = EntityUtil.orderBy(contractDetails,  ["contractdetailId"])
 

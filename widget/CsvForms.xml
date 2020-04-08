@@ -274,6 +274,40 @@
 
 
 	</form>
+	
+	<form name="ContractDetailExport" type="list" list-name="listIt" odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
+
+
+		<field name="contractorName" title="${uiLabelMap.Contractors}" widget-style="buttontext" sort-field="true">
+			<display />
+		</field>
+
+		<field name="contractDetailType" title="${uiLabelMap.ContractDetailType}" widget-style="buttontext" sort-field="true">
+			<display />
+		</field>
+		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext" sort-field="true">
+			<display />
+		</field>
+
+
+		<field name="value" title="${uiLabelMap.Name}" widget-style="buttontext" sort-field="true">
+			<display />
+		</field>
+		
+		<field name="refRevenue" title="${uiLabelMap.RefRevenue}" widget-style="buttontext" sort-field="true">
+			<display />
+		</field>
+		
+		<field name="perc" title="${uiLabelMap.Percentage}" widget-style="buttontext" sort-field="true">
+			<display />
+		</field>
+		
+		<field name="totalValue" title="${uiLabelMap.TotalValue}" widget-style="buttontext" sort-field="true">
+			<display />
+		</field>
+		
+
+	</form>
 
 
 

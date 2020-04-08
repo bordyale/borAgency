@@ -52,6 +52,19 @@
 			<key-map field-name="contractorId" />
 		</view-link>
 	</view-entity>
+	
+	<view-entity entity-name="ContractDetailView" package-name="org.apache.ofbiz.borAgency">
+		<member-entity entity-alias="CONTR" entity-name="ContractContractorView" />
+		<member-entity entity-alias="COND" entity-name="BorContractDetail" />
+		<alias-all entity-alias="CONTR">
+			<exclude field="name" />
+		</alias-all>
+		<alias-all entity-alias="COND" />
+		<alias name="contractName" entity-alias="CONTR" field="name" />
+		<view-link entity-alias="CONTR" rel-entity-alias="COND">
+			<key-map field-name="contractId" />
+		</view-link>
+	</view-entity>
 
 
 	<view-entity entity-name="ConditionView" package-name="org.apache.ofbiz.borAgency">
