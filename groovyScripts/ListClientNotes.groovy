@@ -60,6 +60,7 @@ if(filshowClientNotes.equals("Y")){
 		Map<String,Object> e = new HashMap<String,Object>()
 		e.put("noteId",entry.get("noteId"))
 		e.put("contractorName",entry.get("contractorName"))
+		e.put("contractorId",entry.get("contractorId"))
 		e.put("noteDateTime",entry.get("noteDateTime"))
 		e.put("clientId",entry.get("clientId"))
 		e.put("clientName",entry.get("clientName"))

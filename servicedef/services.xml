@@ -294,7 +294,7 @@
 		<permission-service service-name="borAgencyGenericPermission" main-action="CREATE" />
 		<auto-attributes include="pk" mode="OUT" optional="false" />
 		<auto-attributes include="nonpk" mode="IN" optional="true" />
-		<override name="noteDateTime" optional="false" />
+		<!-- <override name="noteDateTime" optional="false" /> -->
 	</service>
 	<service name="updateBorNote" default-entity-name="BorNote" engine="entity-auto" invoke="update" auth="true">
 		<description>Update a Example</description>

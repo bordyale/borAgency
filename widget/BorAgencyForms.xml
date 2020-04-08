@@ -426,7 +426,7 @@
 			<hidden />
 		</field>
 		<field name="productId" title="${uiLabelMap.ProductId}">
-			<lookup target-form-name="LookupProduct?contractorId=${contractorId}" position="center"/>
+			<lookup target-form-name="LookupProduct?contractorId=${contractorId}" position="center" />
 		</field>
 		<field name="submitButton" title="${uiLabelMap.CommonAdd}">
 			<submit button-type="button" />
@@ -913,7 +913,7 @@
 		<field name="startingPrice">
 			<hidden />
 		</field>
-		
+
 		<field name="note">
 			<text size="100" maxlength="200" />
 		</field>
@@ -1059,6 +1059,12 @@
 		<field name="filshowClientNotes">
 			<hidden />
 		</field>
+		<field name="filcontractorId">
+			<hidden />
+		</field>
+		<field name="fildate1From">
+			<hidden />
+		</field>
 		<field name="noteId">
 			<display />
 		</field>
@@ -1069,10 +1075,10 @@
 			<display />
 		</field>
 		<field name="noteName" title="${uiLabelMap.NoteName}">
-			<display />
+			<textarea cols="30" rows="1" />
 		</field>
 		<field name="noteInfo" title="${uiLabelMap.Note}">
-			<display size="50" />
+			<textarea cols="30" rows="10" />
 		</field>
 
 
@@ -1088,7 +1094,9 @@
 				<parameter param-name="clientId" />
 			</hyperlink>
 		</field>
-		<!-- <field name="submitButton" title="${uiLabelMap.CommonUpdate}"> <submit button-type="button" /> </field> -->
+		<field name="submitButton" title="${uiLabelMap.CommonUpdate}">
+			<submit button-type="button" />
+		</field>
 	</form>
 
 	<form name="AddClientNote" type="single" target="createClientNote" title="">
@@ -1126,8 +1134,8 @@
 		<field name="noteInfo">
 			<textarea cols="30" rows="10" />
 		</field>
-		
-		
+
+
 		<field name="noteDateTime" title="${uiLabelMap.CommonDate}">
 			<date-time type="date" />
 		</field>
@@ -1485,18 +1493,13 @@
 		odd-row-style="alternate-row" default-table-style="basic-table hover-bar" header-row-style="header-row-2" separate-columns="true">
 
 
-		
 
 
-		<!-- <actions>
-			<set field="requestParameters.noConditionFind" value="Y" />
-			<set field="entityName" value="BorPromotionDetailView" />
-			<service service-name="performFind" result-map="result" result-map-list="listIt">
-				<field-map field-name="inputFields" from-field="requestParameters" />
-				<field-map field-name="entityName" from-field="entityName" />
-				<field-map field-name="orderBy" from-field="sortField" />
-			</service>
-		</actions> -->
+
+		<!-- <actions> <set field="requestParameters.noConditionFind" value="Y" /> <set field="entityName" value="BorPromotionDetailView" 
+			/> <service service-name="performFind" result-map="result" result-map-list="listIt"> <field-map field-name="inputFields" from-field="requestParameters" 
+			/> <field-map field-name="entityName" from-field="entityName" /> <field-map field-name="orderBy" from-field="sortField" /> </service> 
+			</actions> -->
 
 		<field name="filcontractorId">
 			<hidden />

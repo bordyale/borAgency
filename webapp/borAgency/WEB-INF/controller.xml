@@ -154,9 +154,17 @@
 	<request-map uri="updateClientNote">
 		<security https="true" auth="true" />
 		<event type="service" path="" invoke="updateBorNote" />
-		<response name="success" type="view" value="EditClientNote" />
+		<response name="success" type="request-redirect" value="EditClientNote">
+			<redirect-parameter name="clientId" />
+			<redirect-parameter name="filcontractorId" />
+			<redirect-parameter name="fildate1From" />
+			<redirect-parameter name="filshowClientNotes" />
+		</response>
 		<response name="error" type="view" value="EditClientNote" />
 	</request-map>
+
+
+
 	<request-map uri="deleteClientNote">
 		<security https="true" auth="true" />
 		<event type="service" path="" invoke="deleteBorNote" />
@@ -265,7 +273,7 @@
 		<security https="true" auth="true" />
 		<event type="service" path="" invoke="updatePromotionDetail" />
 		<response name="success" type="view" value="findPromotionDetails">
-			
+
 		</response>
 		<response name="error" type="view" value="findPromotionDetails" />
 	</request-map>
