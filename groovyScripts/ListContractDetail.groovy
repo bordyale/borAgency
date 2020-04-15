@@ -33,7 +33,7 @@ import java.math.RoundingMode
 contractId = parameters.contractId
 contractId2 = parameters.contractId2
 
-
+//contractId
 contractDetails = from("ContractDetailView").where("contractId",contractId).cache(false).queryList()
 
 contractDetails = EntityUtil.orderBy(contractDetails,  ["contractdetailId"])
@@ -56,6 +56,7 @@ for (GenericValue entry: contractDetails){
 
 
 	e.put("contractDetailType",contractDetailType)
+	e.put("contractName",entry.get("contractName"))
 	e.put("name",entry.get("name"))
 	e.put("value",value)
 	e.put("refRevenue",refRevenue)

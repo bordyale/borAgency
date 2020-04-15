@@ -36,6 +36,7 @@ filproductId = parameters.filproductId
 filclientId = parameters.filclientId
 filclientType = parameters.filclientType
 filactiv = parameters.filactiv
+filisProductBought = parameters.filisProductBought
 filshowConditions = parameters.filshowConditions
 
 List searchCond = []
@@ -53,6 +54,9 @@ if (filclientType) {
 }
 if (filactiv.equals("Y")) {
 	searchCond.add(EntityCondition.makeCondition("validTo",EntityOperator.EQUALS, null) )
+}
+if (filisProductBought) {
+	searchCond.add(EntityCondition.makeCondition("isProductBought",EntityOperator.EQUALS, filisProductBought) )
 }
 
 
@@ -83,7 +87,7 @@ if(filshowConditions.equals("Y")){
 		DecimalFormat decimalFormat = (DecimalFormat)NumberFormat.getNumberInstance(locale)
 		decimalFormat.applyPattern(pattern)
 		String valueString = decimalFormat.format(price);
-		
+
 		e.put("price",valueString)
 		e.put("isProductBought",entry.get("isProductBought"))
 		e.put("validFrom",entry.get("validFrom"))
@@ -118,7 +122,7 @@ if(filshowConditions.equals("Y")){
 		e.put("invoicePrice",invoicePriceStr)
 		resultPrice = resultPrice.multiply(new BigDecimal(1).subtract(contractValue.compareTo(BigDecimal.ZERO)==0 ? BigDecimal.ZERO : contractValue.divide(new BigDecimal(100)))).setScale(3,RoundingMode.HALF_UP)
 		e.put("resultPrice",resultPrice)
-		
+
 
 		String productId = entry.get("productId")
 		String clientId = entry.get("clientId")

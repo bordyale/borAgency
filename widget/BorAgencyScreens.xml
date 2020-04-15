@@ -851,6 +851,7 @@
 				<set field="filclientId" from-field="parameters.filclientId" />
 				<set field="filclientType" from-field="parameters.filclientType" />
 				<set field="filactiv" from-field="parameters.filactiv" />
+				<set field="filisProductBought" from-field="parameters.filisProductBought" />
 				<set field="filshowConditions" from-field="parameters.filshowConditions" />
 				<set field="conditionPage" value="Y" />
 				<set field="headerItem" value="findConditions" />
@@ -867,6 +868,7 @@
 								<parameter param-name="filclientId" />
 								<parameter param-name="filclientType" />
 								<parameter param-name="filactiv" />
+								<parameter param-name="filshowConditions" />
 								<parameter param-name="filshowConditions" />
 							</link>
 						</container>
@@ -966,6 +968,7 @@
 				<set field="filproductId" from-field="parameters.filproductId" />
 				<set field="filclientId" from-field="parameters.filclientId" />
 				<set field="filactiv" from-field="parameters.filactiv" />
+				<set field="filisProductBought" from-field="parameters.filisProductBought" />
 				<set field="filpromotionId" from-field="parameters.filpromotionId" />
 				<set field="fildate1From" from-field="parameters.fildate1From" />
 				<set field="fildate1FromTitle" value="${groovy: uiLabelMap.filclientnoteFrom}" />

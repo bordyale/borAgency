@@ -686,6 +686,13 @@
 				<option key="N" description="${uiLabelMap.CommonN}" />
 			</drop-down>
 		</field>
+		
+		<field use-when="conditionPage=='Y' || reportPage=='Y'" name="filisProductBought" title="${uiLabelMap.IsProductBought}">
+			<drop-down allow-empty="true">
+				<option key="Y" description="${uiLabelMap.CommonY}" />
+				<option key="N" description="${uiLabelMap.CommonN}" />
+			</drop-down>
+		</field>
 
 		<field use-when="clientnotePage=='Y' || reportPage=='Y'" name="fildate1From" title="${groovy: fildate1FromTitle}">
 			<date-time />
@@ -1072,7 +1079,12 @@
 			<display />
 		</field>
 		<field name="noteType" title="${uiLabelMap.NoteType}">
-			<display />
+			<drop-down allow-empty="false">
+				<entity-options entity-name="Enumeration" key-field-name="enumId" description="${description} [${enumCode}]">
+					<entity-constraint name="enumTypeId" value="BOR_NOTE_TYPE" />
+					<entity-order-by field-name="sequenceId" />
+				</entity-options>
+			</drop-down>
 		</field>
 		<field name="noteName" title="${uiLabelMap.NoteName}">
 			<textarea cols="30" rows="1" />
@@ -1083,7 +1095,7 @@
 
 
 		<field name="noteDateTime" title="${uiLabelMap.NoteDateTime}">
-			<display type="date" />
+			<date-time type="date" />
 		</field>
 
 

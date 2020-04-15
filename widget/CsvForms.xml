@@ -101,7 +101,7 @@
 			<hidden />
 		</field>
 
-	<field name="contractorName" title="${uiLabelMap.ContractorName}">
+		<field name="contractorName" title="${uiLabelMap.ContractorName}">
 			<display />
 		</field>
 
@@ -128,8 +128,8 @@
 		<field name="productName" title="${uiLabelMap.ProductName}">
 			<display />
 		</field>
-		
-		
+
+
 
 		<field name="discount" title="${uiLabelMap.Discount}">
 			<display />
@@ -206,7 +206,7 @@
 		</field>
 
 	</form>
-	
+
 	<form name="ClientBuyGroupExport" type="list" list-name="listClientBuyGroup" odd-row-style="alternate-row"
 		default-table-style="basic-table hover-bar">
 		<field name="clientName" title="${uiLabelMap.ClientName}">
@@ -274,7 +274,7 @@
 
 
 	</form>
-	
+
 	<form name="ContractDetailExport" type="list" list-name="listIt" odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
 
 
@@ -282,7 +282,11 @@
 			<display />
 		</field>
 
+
 		<field name="contractDetailType" title="${uiLabelMap.ContractDetailType}" widget-style="buttontext" sort-field="true">
+			<display />
+		</field>
+		<field name="contractName" title="${uiLabelMap.ContractName}" widget-style="buttontext" sort-field="true">
 			<display />
 		</field>
 		<field name="name" title="${uiLabelMap.Name}" widget-style="buttontext" sort-field="true">
@@ -290,22 +294,22 @@
 		</field>
 
 
-		<field name="value" title="${uiLabelMap.Name}" widget-style="buttontext" sort-field="true">
+		<field name="value" title="${uiLabelMap.Value}" widget-style="buttontext" sort-field="true">
 			<display />
 		</field>
-		
+
 		<field name="refRevenue" title="${uiLabelMap.RefRevenue}" widget-style="buttontext" sort-field="true">
 			<display />
 		</field>
-		
+
 		<field name="perc" title="${uiLabelMap.Percentage}" widget-style="buttontext" sort-field="true">
 			<display />
 		</field>
-		
+
 		<field name="totalValue" title="${uiLabelMap.TotalValue}" widget-style="buttontext" sort-field="true">
 			<display />
 		</field>
-		
+
 
 	</form>
 

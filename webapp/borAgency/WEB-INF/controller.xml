@@ -486,6 +486,7 @@
 			<redirect-parameter name="filclientId" />
 			<redirect-parameter name="filclientType" />
 			<redirect-parameter name="filactiv" />
+			<redirect-parameter name="filisProductBought" />
 			<redirect-parameter name="filshowConditions" />
 		</response>
 		<response name="error" type="request-redirect" value="findConditions">
@@ -494,6 +495,7 @@
 			<redirect-parameter name="filclientId" />
 			<redirect-parameter name="filclientType" />
 			<redirect-parameter name="filactiv" />
+			<redirect-parameter name="filisProductBought" />
 			<redirect-parameter name="filshowConditions" />
 		</response>
 	</request-map>
