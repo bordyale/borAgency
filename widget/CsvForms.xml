@@ -74,6 +74,15 @@
 		<field name="note" title="${uiLabelMap.Note}">
 			<display />
 		</field>
+		<field name="weight" title="${uiLabelMap.ProductWeightKg}">
+			<display />
+		</field>
+		<field name="contractName" title="${uiLabelMap.ContractName}">
+			<display />
+		</field>
+		<field name="contractName2" title="${uiLabelMap.ContractName}">
+			<display />
+		</field>
 	</form>
 
 	<form name="ContractExport" type="list" list-name="listContracts" odd-row-style="alternate-row" default-table-style="basic-table hover-bar">

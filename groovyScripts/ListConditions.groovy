@@ -77,6 +77,9 @@ if(filshowConditions.equals("Y")){
 		e.put("productName",entry.get("productName"))
 		e.put("prodCode",entry.get("prodCode"))
 		e.put("note",entry.get("note"))
+		e.put("weight",entry.get("weight"))
+		e.put("contractName",entry.get("contractName"))
+		e.put("contractName2",entry.get("contractName2"))
 		BigDecimal listprice =entry.get("price")
 		BigDecimal price = BigDecimal.ZERO
 		if (listprice != null) {
