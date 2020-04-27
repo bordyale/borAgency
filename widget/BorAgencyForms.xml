@@ -853,7 +853,7 @@
 
 
 		<field name="note" title="${uiLabelMap.Note}">
-			<text size="10" maxlength="20" />
+			<text size="30" maxlength="200" />
 		</field>
 
 
