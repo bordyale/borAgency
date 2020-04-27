@@ -396,4 +396,8 @@
 		<value xml:lang="en">Apply New Contract</value>
 		<value xml:lang="it">Applica Nuovo Contratto</value>
 	</property>
+	<property key="RefRevenueZero">
+		<value xml:lang="en">Reference Revenue can't be 0</value>
+		<value xml:lang="it">Fatturato di Riferimento non puó essere 0</value>
+	</property>
 </resource>

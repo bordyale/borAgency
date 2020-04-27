@@ -147,6 +147,15 @@
 		<override name="name" optional="false" />
 		<override name="contractDetailType" optional="false" />
 	</service>
+	<service name="createContractDetailJava" default-entity-name="BorContractDetail" engine="java"
+		location="org.apache.ofbiz.boragency.BorAgencyServices" invoke="createContractDetailJava" auth="true">
+		<description>Create Work Papers entry</description>
+		<auto-attributes include="pk" mode="IN" optional="false" />
+		<auto-attributes include="nonpk" mode="IN" optional="true" />
+		<override name="contractdetailId" mode="OUT" />
+		<override name="name" optional="false" />
+		<override name="contractDetailType" optional="false" />
+	</service>
 	<service name="updateContractDetail" default-entity-name="BorContractDetail" engine="entity-auto" invoke="update" auth="true">
 		<description>Update a Example</description>
 		<permission-service service-name="borAgencyGenericPermission" main-action="UPDATE" />

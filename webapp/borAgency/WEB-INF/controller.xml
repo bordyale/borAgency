@@ -426,11 +426,11 @@
 
 	<request-map uri="createContractDetail">
 		<security https="true" auth="true" />
-		<event type="service" path="" invoke="createContractDetail" />
+		<event type="service" path="" invoke="createContractDetailJava" />
 		<response name="success" type="request-redirect" value="updateContractValue">
 			<redirect-parameter name="contractId" />
 		</response>
-		<response name="error" type="view" value="updateContractValue" />
+		<response name="error" type="view" value="EditContractDetail" />
 	</request-map>
 
 	<!-- <request-map uri="updateContractDetail"> <security https="true" auth="true" /> <event type="service" path="" invoke="updateContractDetail" 

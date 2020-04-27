@@ -48,6 +48,8 @@ for (GenericValue entry: contractDetails){
 	BigDecimal value = entry.get("value")
 	BigDecimal refRevenue = entry.get("refRevenue")
 	BigDecimal perc = BigDecimal.ZERO
+
+
 	if (contractDetailType.equals("CONR_TYPE_PERC")){
 		perc= value
 	}else{
