@@ -695,13 +695,13 @@
 		</field>
 
 		<field use-when="clientnotePage=='Y' || reportPage=='Y'" name="fildate1From" title="${groovy: fildate1FromTitle}">
-			<date-time />
+			<date-time type="date" />
 		</field>
 		<field use-when="promotionPage=='Y' || reportPage=='Y'" name="fildate2From" title="${fildate2FromTitle}">
-			<date-time />
+			<date-time type="date" />
 		</field>
 		<field use-when="promotionPage=='Y' || reportPage=='Y'" name="fildate3From" title="${fildate3FromTitle}">
-			<date-time />
+			<date-time type="date" />
 		</field>
 
 		<field use-when="promotionPage=='Y'" name="filpromotionId" title="${uiLabelMap.PromotionId}">

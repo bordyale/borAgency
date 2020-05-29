@@ -25,8 +25,12 @@ import org.apache.ofbiz.entity.condition.EntityConditionList
 import org.apache.ofbiz.entity.condition.EntityCondition
 import org.apache.ofbiz.entity.GenericValue
 import org.apache.ofbiz.entity.util.EntityUtil
+import org.apache.ofbiz.base.util.UtilDateTime
+import java.text.SimpleDateFormat
 import java.sql.Timestamp
 
+
+def sdf = new SimpleDateFormat("yyyy-MM-dd")
 if (!filcontractorId) {
 filcontractorId = parameters.filcontractorId
 }
@@ -55,10 +59,12 @@ if (filactiv.equals("Y")) {
 	searchCond.add(EntityCondition.makeCondition("isValid",EntityOperator.EQUALS, "Y") )
 }
 if (fildate2From) {
-	searchCond.add(EntityCondition.makeCondition("sellinFrom", EntityOperator.GREATER_THAN_EQUAL_TO, Timestamp.valueOf(fildate2From)))
+	def parseDate = sdf.parse(fildate2From)
+	searchCond.add(EntityCondition.makeCondition("sellinFrom", EntityOperator.GREATER_THAN_EQUAL_TO, UtilDateTime.toTimestamp(parseDate)))
 }
 if (fildate3From) {
-	searchCond.add(EntityCondition.makeCondition("sellinTo", EntityOperator.LESS_THAN_EQUAL_TO, Timestamp.valueOf(fildate3From)))
+	def parseDate = sdf.parse(fildate3From)
+	searchCond.add(EntityCondition.makeCondition("sellinTo", EntityOperator.LESS_THAN_EQUAL_TO, UtilDateTime.toTimestamp(parseDate)))
 }
 if (filpromotionId) {
 	searchCond.add(EntityCondition.makeCondition("promotionId", EntityOperator.EQUALS, filpromotionId))

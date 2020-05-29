@@ -26,6 +26,9 @@ import org.apache.ofbiz.entity.condition.EntityCondition
 import org.apache.ofbiz.entity.GenericValue
 import org.apache.ofbiz.entity.util.EntityUtil
 import java.sql.Timestamp
+import org.apache.ofbiz.base.util.UtilDateTime
+import java.text.SimpleDateFormat
+def sdf = new SimpleDateFormat("yyyy-MM-dd")
 
 filcontractorId = parameters.filcontractorId
 filclientId = parameters.filclientId
@@ -45,7 +48,8 @@ if (clientId) {
 	searchCond.add(EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, clientId))
 }
 if (fildate1From) {
-	searchCond.add(EntityCondition.makeCondition("noteDateTime", EntityOperator.GREATER_THAN_EQUAL_TO, Timestamp.valueOf(fildate1From)))
+	def parseDate = sdf.parse(fildate1From)
+	searchCond.add(EntityCondition.makeCondition("noteDateTime", EntityOperator.GREATER_THAN_EQUAL_TO, UtilDateTime.toTimestamp(parseDate)))
 }
 if (reportPage=="Y") {
 	searchCond.add(EntityCondition.makeCondition("noteType", EntityOperator.EQUALS, "NOTE_STANDARD"))
