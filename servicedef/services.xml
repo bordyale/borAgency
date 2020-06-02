@@ -261,6 +261,24 @@
 		<override name="contractorId" optional="false" />
 		<override name="clientId" optional="false" />
 	</service>
+	<service name="createPromotionJava" engine="java"
+		location="org.apache.ofbiz.boragency.BorAgencyServices" invoke="createPromotionJava" auth="true">
+		<description>Create Work Papers entry</description>
+		<attribute mode="IN" name="contractorId" optional="false" type="String"/>
+		<attribute mode="IN" name="clientId" optional="false" type="String"/>
+		<attribute mode="IN" name="sellInEquOut" optional="true" type="String"/>
+		<attribute mode="IN" name="sellinFrom" optional="true" type="String"/>
+		<attribute mode="IN" name="sellinTo" optional="true" type="String"/>
+		<attribute mode="IN" name="selloutFrom" optional="true" type="String"/>
+		<attribute mode="IN" name="selloutTo" optional="true" type="String"/>
+		<attribute mode="IN" name="dateIns" optional="true" type="String"/>
+		<attribute mode="IN" name="dateLastMod" optional="true" type="String"/>
+		<attribute mode="IN" name="contribute" optional="true" type="String"/>
+		<attribute mode="IN" name="name" optional="true" type="String"/>
+		<attribute mode="IN" name="info" optional="true" type="String"/>
+		<attribute mode="OUT" name="promotionId" optional="false" type="String"/>
+	</service>
+
 	<service name="updatePromotion" default-entity-name="BorPromotion" engine="entity-auto" invoke="update" auth="true">
 		<description>Update a Example</description>
 		<permission-service service-name="borAgencyGenericPermission" main-action="UPDATE" />

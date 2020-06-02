@@ -244,6 +244,10 @@
 		<value xml:lang="en">Sell Out To</value>
 		<value xml:lang="it">Sell Out A</value>
 	</property>
+	<property key="SellInEquOut">
+		<value xml:lang="en">In Equal Out</value>
+		<value xml:lang="it">Sell In uguale Out</value>
+	</property>
 	<property key="DateIns">
 		<value xml:lang="en">Create Date</value>
 		<value xml:lang="it">Data Inserimento</value>

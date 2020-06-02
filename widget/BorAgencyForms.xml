@@ -1424,6 +1424,10 @@
 		<field name="sellinTo" title="${uiLabelMap.SellInTo}">
 			<date-time type="date" />
 		</field>
+		<field name="sellInEquOut" title="${uiLabelMap.SellInEquOut}">
+			<check />
+		</field>
+		
 		<field name="selloutFrom" title="${uiLabelMap.SellOutFrom}">
 			<date-time type="date" />
 		</field>
