@@ -35,6 +35,8 @@ filproductId = parameters.filproductId
 filactiv = parameters.filactiv
 fildate2From = parameters.fildate2From
 fildate3From = parameters.fildate3From
+fildate4From = parameters.fildate4From
+fildate5From = parameters.fildate5From
 filshowPromotions = parameters.filshowPromotions
 filpromotionId = parameters.filpromotionId
 def sdf = new SimpleDateFormat("yyyy-MM-dd")
@@ -59,6 +61,14 @@ if (fildate2From) {
 if (fildate3From) {
 	def parseDate = sdf.parse(fildate3From)
 	searchCond.add(EntityCondition.makeCondition("sellinTo", EntityOperator.LESS_THAN_EQUAL_TO, UtilDateTime.toTimestamp(parseDate)))
+}
+if (fildate4From) {
+	def parseDate = sdf.parse(fildate4From)
+	searchCond.add(EntityCondition.makeCondition("selloutFrom", EntityOperator.GREATER_THAN_EQUAL_TO, UtilDateTime.toTimestamp(parseDate)))
+}
+if (fildate5From) {
+	def parseDate = sdf.parse(fildate5From)
+	searchCond.add(EntityCondition.makeCondition("selloutTo", EntityOperator.LESS_THAN_EQUAL_TO, UtilDateTime.toTimestamp(parseDate)))
 }
 if (filpromotionId) {
 	searchCond.add(EntityCondition.makeCondition("promotionId", EntityOperator.EQUALS, filpromotionId))

@@ -292,6 +292,14 @@
 		<value xml:lang="en">Sell in To</value>
 		<value xml:lang="it">Sell in A</value>
 	</property>
+	<property key="filpromotionOutFrom">
+		<value xml:lang="en">Sell out From</value>
+		<value xml:lang="it">Sell out Da</value>
+	</property>
+	<property key="filpromotionOutTo">
+		<value xml:lang="en">Sell out To</value>
+		<value xml:lang="it">Sell out A</value>
+	</property>
 	<property key="NoteName">
 		<value xml:lang="en">Note Name</value>
 		<value xml:lang="it">Nome Nota</value>

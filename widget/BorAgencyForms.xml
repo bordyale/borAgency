@@ -703,6 +703,12 @@
 		<field use-when="promotionPage=='Y' || reportPage=='Y'" name="fildate3From" title="${fildate3FromTitle}">
 			<date-time type="date" />
 		</field>
+		<field use-when="promotionPage=='Y' || reportPage=='Y'" name="fildate4From" title="${fildate4FromTitle}">
+			<date-time type="date" />
+		</field>
+		<field use-when="promotionPage=='Y' || reportPage=='Y'" name="fildate5From" title="${fildate5FromTitle}">
+			<date-time type="date" />
+		</field>
 
 		<field use-when="promotionPage=='Y'" name="filpromotionId" title="${uiLabelMap.PromotionId}">
 			<lookup target-form-name="LookupPromotion" target-parameter="filcontractorId,clientId" />

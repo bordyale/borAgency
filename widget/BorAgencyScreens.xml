@@ -333,6 +333,10 @@
 				<set field="fildate2FromTitle" value="${groovy: uiLabelMap.filpromotionFrom}" />
 				<set field="fildate3From" from-field="parameters.fildate3From" />
 				<set field="fildate3FromTitle" value="${groovy: uiLabelMap.filpromotionTo}" />
+				<set field="fildate4From" from-field="parameters.fildate4From" />
+				<set field="fildate4FromTitle" value="${groovy: uiLabelMap.filpromotionOutFrom}" />
+				<set field="fildate5From" from-field="parameters.fildate5From" />
+				<set field="fildate5FromTitle" value="${groovy: uiLabelMap.filpromotionOutTo}" />
 				<set field="headerItem" value="findclients" />
 				<set field="tabButtonItem" value="EditClientPromotions" />
 				<set field="promotionPage" value="Y" />
@@ -390,6 +394,10 @@
 				<set field="fildate2FromTitle" value="${groovy: uiLabelMap.filpromotionFrom}" />
 				<set field="fildate3From" from-field="parameters.fildate3From" />
 				<set field="fildate3FromTitle" value="${groovy: uiLabelMap.filpromotionTo}" />
+				<set field="fildate4From" from-field="parameters.fildate4From" />
+				<set field="fildate4FromTitle" value="${groovy: uiLabelMap.filpromotionOutFrom}" />
+				<set field="fildate5From" from-field="parameters.fildate5From" />
+				<set field="fildate5FromTitle" value="${groovy: uiLabelMap.filpromotionOutTo}" />
 				<set field="headerItem" value="findclients" />
 				<set field="tabButtonItem" value="EditClientPromotions" />
 				<set field="promotionPage" value="Y" />
@@ -976,6 +984,10 @@
 				<set field="fildate2FromTitle" value="${groovy: uiLabelMap.filpromotionFrom}" />
 				<set field="fildate3From" from-field="parameters.fildate3From" />
 				<set field="fildate3FromTitle" value="${groovy: uiLabelMap.filpromotionTo}" />
+				<set field="fildate4From" from-field="parameters.fildate4From" />
+				<set field="fildate4FromTitle" value="${groovy: uiLabelMap.filpromotionOutFrom}" />
+				<set field="fildate5From" from-field="parameters.fildate5From" />
+				<set field="fildate5FromTitle" value="${groovy: uiLabelMap.filpromotionOutTo}" />
 				<set field="filshowConditions" from-field="parameters.filshowConditions" />
 				<set field="filshowPromotions" from-field="parameters.filshowPromotions" />
 				<set field="filshowClientNotes" from-field="parameters.filshowClientNotes" />
