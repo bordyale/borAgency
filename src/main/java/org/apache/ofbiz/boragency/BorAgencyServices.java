@@ -92,6 +92,10 @@ public class BorAgencyServices {
 				context.put("selloutFrom", context.get("sellinFrom"));
 				context.put("selloutTo", context.get("sellinTo"));
 			}
+			String sellInAEquOutA = (String) context.get("sellInAEquOutA");
+			if (sellInAEquOutA!=null && sellInAEquOutA.equals("Y")) {
+				context.put("selloutTo", context.get("sellinTo"));
+			}
 
 			Map<String, Object> tmpResult = dispatcher.runSync("createPromotion", context);
 			result.put("promotionId", tmpResult.get("promotionId"));

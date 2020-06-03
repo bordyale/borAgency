@@ -267,6 +267,7 @@
 		<attribute mode="IN" name="contractorId" optional="false" type="String"/>
 		<attribute mode="IN" name="clientId" optional="false" type="String"/>
 		<attribute mode="IN" name="sellInEquOut" optional="true" type="String"/>
+		<attribute mode="IN" name="sellInAEquOutA" optional="true" type="String"/>
 		<attribute mode="IN" name="sellinFrom" optional="true" type="String"/>
 		<attribute mode="IN" name="sellinTo" optional="true" type="String"/>
 		<attribute mode="IN" name="selloutFrom" optional="true" type="String"/>
