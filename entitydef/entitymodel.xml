@@ -19,6 +19,7 @@
 		<field name="clientId" type="id-ne"></field>
 		<field name="validFrom" type="date-time"></field>
 		<field name="validTo" type="date-time"></field>
+		<field name="cvsValidTo" type="date-time"></field>
 		<field name="startingPrice" type="fixed-point"></field>
 		<field name="sc1" type="fixed-point"></field>
 		<field name="sc2" type="fixed-point"></field>

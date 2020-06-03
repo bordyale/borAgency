@@ -486,6 +486,7 @@
 			<redirect-parameter name="filclientId" />
 			<redirect-parameter name="filclientType" />
 			<redirect-parameter name="filactiv" />
+			<redirect-parameter name="filcvsactiv" />
 			<redirect-parameter name="filisProductBought" />
 			<redirect-parameter name="filshowConditions" />
 		</response>
@@ -495,6 +496,7 @@
 			<redirect-parameter name="filclientId" />
 			<redirect-parameter name="filclientType" />
 			<redirect-parameter name="filactiv" />
+			<redirect-parameter name="filcvsactiv" />
 			<redirect-parameter name="filisProductBought" />
 			<redirect-parameter name="filshowConditions" />
 		</response>

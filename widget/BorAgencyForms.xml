@@ -686,8 +686,15 @@
 				<option key="N" description="${uiLabelMap.CommonN}" />
 			</drop-down>
 		</field>
-		
+
 		<field use-when="conditionPage=='Y' || reportPage=='Y'" name="filisProductBought" title="${uiLabelMap.IsProductBought}">
+			<drop-down allow-empty="true">
+				<option key="Y" description="${uiLabelMap.CommonY}" />
+				<option key="N" description="${uiLabelMap.CommonN}" />
+			</drop-down>
+		</field>
+		
+		<field use-when="conditionPage=='Y' || reportPage=='Y'" name="filcvsactiv" title="${uiLabelMap.CvsActiv}">
 			<drop-down allow-empty="true">
 				<option key="Y" description="${uiLabelMap.CommonY}" />
 				<option key="N" description="${uiLabelMap.CommonN}" />
@@ -781,6 +788,9 @@
 		<field name="filactiv">
 			<hidden />
 		</field>
+		<field name="filcvsactiv">
+			<hidden />
+		</field>
 		<field name="filclientType">
 			<hidden />
 		</field>
@@ -815,7 +825,7 @@
 			<display size="5" />
 		</field>
 		<field name="validFrom" title="${uiLabelMap.ValidFrom}">
-			<display type="date" />
+			<date-time type="date" />
 		</field>
 		<!-- <field name="startingPrice" title="${uiLabelMap.PriceNet}"> <display /> </field> -->
 		<field name="price" title="${uiLabelMap.PriceListPrice}">
@@ -862,6 +872,9 @@
 			<text size="30" maxlength="200" />
 		</field>
 
+		<field name="cvsValidTo" title="${uiLabelMap.CvsValidTo}">
+			<date-time type="date" />
+		</field>
 
 		<field name="validTo" title="${uiLabelMap.ValidTo}">
 			<date-time type="date" />
@@ -888,6 +901,7 @@
 				<parameter param-name="filclientId" />
 				<parameter param-name="filclientType" />
 				<parameter param-name="filactiv" />
+				<parameter param-name="filcvsactiv" />
 			</hyperlink>
 		</field>
 
@@ -917,6 +931,9 @@
 			<hidden />
 		</field>
 		<field name="filactiv">
+			<hidden />
+		</field>
+		<field name="filcvsactiv">
 			<hidden />
 		</field>
 		<field name="filshowConditions">
@@ -1430,7 +1447,7 @@
 		<field name="sellInAEquOutA" title="${uiLabelMap.SellInAEquOutA}">
 			<check />
 		</field>
-		
+
 		<field name="selloutFrom" title="${uiLabelMap.SellOutFrom}">
 			<date-time type="date" />
 		</field>

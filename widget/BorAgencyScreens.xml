@@ -859,6 +859,7 @@
 				<set field="filclientId" from-field="parameters.filclientId" />
 				<set field="filclientType" from-field="parameters.filclientType" />
 				<set field="filactiv" from-field="parameters.filactiv" />
+				<set field="filcvsactiv" from-field="parameters.filcvsactiv" />
 				<set field="filisProductBought" from-field="parameters.filisProductBought" />
 				<set field="filshowConditions" from-field="parameters.filshowConditions" />
 				<set field="conditionPage" value="Y" />
@@ -876,6 +877,7 @@
 								<parameter param-name="filclientId" />
 								<parameter param-name="filclientType" />
 								<parameter param-name="filactiv" />
+								<parameter param-name="filcvsactiv" />
 								<parameter param-name="filshowConditions" />
 								<parameter param-name="filshowConditions" />
 							</link>
@@ -976,6 +978,7 @@
 				<set field="filproductId" from-field="parameters.filproductId" />
 				<set field="filclientId" from-field="parameters.filclientId" />
 				<set field="filactiv" from-field="parameters.filactiv" />
+				<set field="filcvsactiv" from-field="parameters.filcvsactiv" />
 				<set field="filisProductBought" from-field="parameters.filisProductBought" />
 				<set field="filpromotionId" from-field="parameters.filpromotionId" />
 				<set field="fildate1From" from-field="parameters.fildate1From" />
@@ -1015,6 +1018,7 @@
 								<parameter param-name="filproductId" />
 								<parameter param-name="filclientId" />
 								<parameter param-name="filactiv" />
+								<parameter param-name="filcvsactiv" />
 								<parameter param-name="fildate1From" />
 								<parameter param-name="fildate2From" />
 								<parameter param-name="fildate3From" />
@@ -1029,6 +1033,7 @@
 								<parameter param-name="filproductId" />
 								<parameter param-name="filclientId" />
 								<parameter param-name="filactiv" />
+								<parameter param-name="filcvsactiv" />
 								<parameter param-name="fildate1From" />
 								<parameter param-name="fildate2From" />
 								<parameter param-name="fildate3From" />
@@ -1087,6 +1092,7 @@
 				<set field="filproductId" from-field="parameters.filproductId" />
 				<set field="filclientId" from-field="parameters.filclientId" />
 				<set field="filactiv" from-field="parameters.filactiv" />
+				<set field="filcvsactiv" from-field="parameters.filcvsactiv" />
 				<set field="fildate1From" from-field="parameters.fildate1From" />
 				<set field="fildate2From" from-field="parameters.fildate2From" />
 				<set field="filshowConditions" from-field="parameters.filshowConditions" />

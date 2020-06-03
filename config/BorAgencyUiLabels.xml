@@ -190,7 +190,7 @@
 	</property>
 	<property key="IsProductBought">
 		<value xml:lang="en">Product Bought</value>
-		<value xml:lang="it">Prodotto Acquistato</value>
+		<value xml:lang="it">Prod. Acq.</value>
 	</property>
 	<property key="ValidFrom">
 		<value xml:lang="en">Valid From</value>
@@ -199,6 +199,10 @@
 	<property key="ValidTo">
 		<value xml:lang="en">Valid To</value>
 		<value xml:lang="it">Valido Fino A</value>
+	</property>
+	<property key="CvsValidTo">
+		<value xml:lang="en">CVS Valid To</value>
+		<value xml:lang="it">CVS Fino A</value>
 	</property>
 	<property key="ClientShops">
 		<value xml:lang="en">Client Shops</value>
@@ -279,6 +283,10 @@
 	<property key="Activ">
 		<value xml:lang="en">Activ</value>
 		<value xml:lang="it">Solo Attivi</value>
+	</property>
+	<property key="CvsActiv">
+		<value xml:lang="en">CVS Activ</value>
+		<value xml:lang="it">CVS Attivi</value>
 	</property>
 	<property key="IsValud">
 		<value xml:lang="en">Is Activ</value>

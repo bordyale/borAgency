@@ -25,6 +25,7 @@ import org.apache.ofbiz.entity.condition.EntityConditionList
 import org.apache.ofbiz.entity.condition.EntityCondition
 import org.apache.ofbiz.entity.GenericValue
 import org.apache.ofbiz.entity.util.EntityUtil
+import org.apache.ofbiz.base.util.UtilDateTime
 import java.sql.Timestamp
 import java.math.RoundingMode
 import java.text.DecimalFormat
@@ -35,30 +36,39 @@ filcontractorId = parameters.filcontractorId
 filproductId = parameters.filproductId
 filclientId = parameters.filclientId
 filclientType = parameters.filclientType
+filcvsactiv = parameters.filcvsactiv
 filactiv = parameters.filactiv
 filisProductBought = parameters.filisProductBought
 filshowConditions = parameters.filshowConditions
 
-List searchCond = []
+List filCond = []
+List cvsactivCond = []
 if (filcontractorId) {
-	searchCond.add(EntityCondition.makeCondition("contractorId", EntityOperator.EQUALS, filcontractorId))
+	filCond.add(EntityCondition.makeCondition("contractorId", EntityOperator.EQUALS, filcontractorId))
 }
 if (filproductId) {
-	searchCond.add(EntityCondition.makeCondition("productId", EntityOperator.EQUALS, filproductId))
+	filCond.add(EntityCondition.makeCondition("productId", EntityOperator.EQUALS, filproductId))
 }
 if (filclientId) {
-	searchCond.add(EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, filclientId))
+	filCond.add(EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, filclientId))
 }
 if (filclientType) {
-	searchCond.add(EntityCondition.makeCondition("clientType", EntityOperator.EQUALS, filclientType))
+	filCond.add(EntityCondition.makeCondition("clientType", EntityOperator.EQUALS, filclientType))
 }
 if (filactiv.equals("Y")) {
-	searchCond.add(EntityCondition.makeCondition("validTo",EntityOperator.EQUALS, null) )
+	filCond.add(EntityCondition.makeCondition("validTo",EntityOperator.EQUALS, null) )
+}
+if (filcvsactiv.equals("Y")) {
+	cvsactivCond.add(EntityCondition.makeCondition("cvsValidTo",EntityOperator.EQUALS, null) )
+	cvsactivCond.add(EntityCondition.makeCondition("cvsValidTo", EntityOperator.GREATER_THAN_EQUAL_TO, UtilDateTime.nowTimestamp()) )
 }
 if (filisProductBought) {
-	searchCond.add(EntityCondition.makeCondition("isProductBought",EntityOperator.EQUALS, filisProductBought) )
+	filCond.add(EntityCondition.makeCondition("isProductBought",EntityOperator.EQUALS, filisProductBought) )
 }
 
+cvsactivCondOR = EntityCondition.makeCondition(cvsactivCond,EntityOperator.OR)
+filCondAND = EntityCondition.makeCondition(filCond, EntityOperator.AND)
+searchCond = EntityCondition.makeCondition([filCondAND, cvsactivCondOR], EntityOperator.AND)
 
 conditionsList = from("ConditionView").where(searchCond).orderBy("productName","productId").cache(false).queryList()
 
@@ -95,6 +105,7 @@ if(filshowConditions.equals("Y")){
 		e.put("isProductBought",entry.get("isProductBought"))
 		e.put("validFrom",entry.get("validFrom"))
 		e.put("validTo",entry.get("validTo"))
+		e.put("cvsValidTo",entry.get("cvsValidTo"))
 		BigDecimal startingPrice = entry.get("startingPrice")
 		e.put("startingPrice",startingPrice)
 		BigDecimal resultPrice = startingPrice ==null ? price : startingPrice

@@ -134,6 +134,7 @@
 				<set field="filpromotionId" from-field="parameters.filpromotionId" />
 				<set field="filclientId" from-field="parameters.filclientId" />
 				<set field="filactiv" from-field="parameters.filactiv" />
+				<set field="filcvsactiv" from-field="parameters.filcvsactiv" />
 				<set field="filisProductBought" from-field="parameters.filisProductBought" />
 				<set field="fildate1From" from-field="parameters.fildate1From" />
 				<set field="fildate2From" from-field="parameters.fildate2From" />

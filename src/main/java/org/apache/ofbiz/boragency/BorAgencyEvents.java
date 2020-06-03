@@ -280,6 +280,7 @@ public class BorAgencyEvents {
 					createCtx.put("clientId", entry.get("clientId"));
 					createCtx.put("validFrom", entry.get("validFrom"));
 					// createCtx.put("validTo", entry.get("validTo"));
+					createCtx.put("cvsValidTo", entry.get("cvsValidTo"));
 					createCtx.put("startingPrice", entry.get("startingPrice"));
 					createCtx.put("sc1", entry.get("sc1"));
 					createCtx.put("sc2", entry.get("sc2"));
