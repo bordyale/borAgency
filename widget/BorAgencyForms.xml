@@ -973,6 +973,9 @@
 		<field name="validFrom" required-field="true">
 			<hidden value="${nowTimestamp}" />
 		</field>
+		<field name="cvsValidTo" title="${uiLabelMap.CvsValidTo}">
+			<date-time type="date" />
+		</field>
 		<field name="validTo" title="${uiLabelMap.ValidTo}">
 			<date-time type="date" />
 		</field>

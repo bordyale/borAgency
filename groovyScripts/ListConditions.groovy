@@ -43,6 +43,7 @@ filshowConditions = parameters.filshowConditions
 
 List filCond = []
 List cvsactivCond = []
+List activCond = []
 if (filcontractorId) {
 	filCond.add(EntityCondition.makeCondition("contractorId", EntityOperator.EQUALS, filcontractorId))
 }
@@ -56,7 +57,8 @@ if (filclientType) {
 	filCond.add(EntityCondition.makeCondition("clientType", EntityOperator.EQUALS, filclientType))
 }
 if (filactiv.equals("Y")) {
-	filCond.add(EntityCondition.makeCondition("validTo",EntityOperator.EQUALS, null) )
+	activCond.add(EntityCondition.makeCondition("validTo",EntityOperator.EQUALS, null) )
+	activCond.add(EntityCondition.makeCondition("validFrom",EntityOperator.LESS_THAN_EQUAL_TO, UtilDateTime.nowTimestamp()) )
 }
 if (filcvsactiv.equals("Y")) {
 	cvsactivCond.add(EntityCondition.makeCondition("cvsValidTo",EntityOperator.EQUALS, null) )
@@ -66,9 +68,10 @@ if (filisProductBought) {
 	filCond.add(EntityCondition.makeCondition("isProductBought",EntityOperator.EQUALS, filisProductBought) )
 }
 
+activCondAND = EntityCondition.makeCondition(activCond,EntityOperator.AND)
 cvsactivCondOR = EntityCondition.makeCondition(cvsactivCond,EntityOperator.OR)
 filCondAND = EntityCondition.makeCondition(filCond, EntityOperator.AND)
-searchCond = EntityCondition.makeCondition([filCondAND, cvsactivCondOR], EntityOperator.AND)
+searchCond = EntityCondition.makeCondition([filCondAND, cvsactivCondOR, activCondAND], EntityOperator.AND)
 
 conditionsList = from("ConditionView").where(searchCond).orderBy("productName","productId").cache(false).queryList()
 

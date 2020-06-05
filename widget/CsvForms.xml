@@ -64,6 +64,10 @@
 		<field name="validFrom" title="${uiLabelMap.ValidFrom}">
 			<display type="date" />
 		</field>
+		
+		<field name="cvsValidTo" title="${uiLabelMap.CvsValidTo}">
+			<display type="date" />
+		</field>
 
 		<field name="validTo" title="${uiLabelMap.ValidTo}">
 			<display type="date" />
