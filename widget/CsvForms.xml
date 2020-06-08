@@ -37,7 +37,7 @@
 		<field name="sc3">
 			<display />
 		</field>
-		<field name="sc4">
+		<field name="sc4" title="${uiLabelMap.CVS}">
 			<display />
 		</field>
 		<field name="sc5">

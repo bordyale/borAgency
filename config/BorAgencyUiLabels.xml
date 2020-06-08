@@ -424,4 +424,8 @@
 		<value xml:lang="en">Reference Revenue can't be 0</value>
 		<value xml:lang="it">Fatturato di Riferimento non puó essere 0</value>
 	</property>
+	<property key="CVS">
+		<value xml:lang="en">CVS</value>
+		<value xml:lang="it">CVS</value>
+	</property>
 </resource>

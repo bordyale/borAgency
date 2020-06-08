@@ -840,7 +840,7 @@
 		<field name="sc3">
 			<text size="3" maxlength="10" />
 		</field>
-		<field name="sc4">
+		<field name="sc4" title="${uiLabelMap.CVS}">
 			<text size="3" maxlength="10" />
 		</field>
 		<field name="sc5">
@@ -970,8 +970,8 @@
 				<option key="N" description="${uiLabelMap.CommonN}" />
 			</drop-down>
 		</field>
-		<field name="validFrom" required-field="true">
-			<hidden value="${nowTimestamp}" />
+		<field name="validFrom" required-field="true" title="${uiLabelMap.ValidFrom}">
+			<date-time type="date" default-value="${nowTimestamp}" />
 		</field>
 		<field name="cvsValidTo" title="${uiLabelMap.CvsValidTo}">
 			<date-time type="date" />
