@@ -548,7 +548,13 @@
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
 											<link target="EditPriceListLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
+											<link target="ApplyNewPriceListLayer" link-type="layered-modal" text="${uiLabelMap.ApplyNewPriceList}" style="buttontext create">
+												<parameter param-name="filcontractorId" />
+											</link>
 										</container>
+
+
+
 									</decorator-section>
 									<decorator-section name="search-options">
 										<include-form name="FindPriceLists" location="component://borAgency/widget/BorAgencyForms.xml" />
@@ -741,6 +747,22 @@
 			</widgets>
 		</section>
 	</screen>
+	<screen name="ApplyNewPriceListLayer">
+		<section>
+			<actions>
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
+				<property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true" />
+				<set field="filcontractorId" from-field="parameters.filcontractorId" />
+				<set field="titleProperty" value="PageTitleEditShipping" />
+				<set field="tabButtonItem" value="findContracts" />
+				<set field="priceListId" from-field="parameters.PriceListId" />
+				<entity-one entity-name="BorPriceList" value-field="PriceList" />
+			</actions>
+			<widgets>
+				<include-form name="ApplyNewPriceListLayer" location="component://borAgency/widget/BorAgencyForms.xml" />
+			</widgets>
+		</section>
+	</screen>
 
 	<screen name="EditContract">
 		<section>
@@ -811,22 +833,14 @@
 						<container style="button-bar">
 							<link target="ContractDetailExport.csv" text="${uiLabelMap.CommonExport}" style="buttontext create" target-window="_blank">
 								<parameter param-name="contractId" />
-								
+
 
 							</link>
-							<!-- <link target="ReportExportPdf" text="${uiLabelMap.CommonPdf}" style="buttontext create" target-window="_blank">
-								<parameter param-name="filcontractorId" />
-								<parameter param-name="filproductId" />
-								<parameter param-name="filclientId" />
-								<parameter param-name="filactiv" />
-								<parameter param-name="fildate1From" />
-								<parameter param-name="fildate2From" />
-								<parameter param-name="fildate3From" />
-								<parameter param-name="filshowConditions" />
-								<parameter param-name="filshowPromotions" />
-								<parameter param-name="filshowClientNotes" />
-								<parameter param-name="filshowClientInfos" />
-							</link> -->
+							<!-- <link target="ReportExportPdf" text="${uiLabelMap.CommonPdf}" style="buttontext create" target-window="_blank"> <parameter 
+								param-name="filcontractorId" /> <parameter param-name="filproductId" /> <parameter param-name="filclientId" /> <parameter param-name="filactiv" 
+								/> <parameter param-name="fildate1From" /> <parameter param-name="fildate2From" /> <parameter param-name="fildate3From" /> <parameter 
+								param-name="filshowConditions" /> <parameter param-name="filshowPromotions" /> <parameter param-name="filshowClientNotes" /> <parameter 
+								param-name="filshowClientInfos" /> </link> -->
 						</container>
 
 
@@ -952,6 +966,9 @@
 			<widgets>
 				<decorator-screen name="BorAgencyCommonDecorator" location="${parameters.mainDecoratorLocation}">
 					<decorator-section name="body">
+
+
+
 						<!-- <container style="button-bar"> <link target="PriceCheckExport.csv" text="${uiLabelMap.CommonExport}" style="buttontext create" 
 							target-window="_blank"> <parameter param-name="filcontractorId" /> <parameter param-name="filproductId" /> </link> </container> -->
 						<screenlet title="${uiLabelMap.Filter}">
@@ -991,6 +1008,8 @@
 				<set field="fildate4FromTitle" value="${groovy: uiLabelMap.filpromotionOutFrom}" />
 				<set field="fildate5From" from-field="parameters.fildate5From" />
 				<set field="fildate5FromTitle" value="${groovy: uiLabelMap.filpromotionOutTo}" />
+				<set field="fildate6From" from-field="parameters.fildate6From" />
+				<set field="fildate6FromTitle" value="${groovy: uiLabelMap.filRevenueFrom}" />
 				<set field="filshowConditions" from-field="parameters.filshowConditions" />
 				<set field="filshowPromotions" from-field="parameters.filshowPromotions" />
 				<set field="filshowClientNotes" from-field="parameters.filshowClientNotes" />
@@ -1022,6 +1041,9 @@
 								<parameter param-name="fildate1From" />
 								<parameter param-name="fildate2From" />
 								<parameter param-name="fildate3From" />
+								<parameter param-name="fildate4From" />
+								<parameter param-name="fildate5From" />
+								<parameter param-name="fildate6From" />
 								<parameter param-name="filshowConditions" />
 								<parameter param-name="filshowPromotions" />
 								<parameter param-name="filshowClientNotes" />
@@ -1037,6 +1059,9 @@
 								<parameter param-name="fildate1From" />
 								<parameter param-name="fildate2From" />
 								<parameter param-name="fildate3From" />
+								<parameter param-name="fildate4From" />
+								<parameter param-name="fildate5From" />
+								<parameter param-name="fildate6From" />
 								<parameter param-name="filshowConditions" />
 								<parameter param-name="filshowPromotions" />
 								<parameter param-name="filshowClientNotes" />

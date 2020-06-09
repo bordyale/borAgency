@@ -149,9 +149,13 @@
 		<field name="title" type="value"></field>
 		<field name="telefon" type="value"></field>
 		<field name="email" type="value"></field>
+		<field name="contractorId" type="id"></field>
 		<prim-key field="contactId" />
 		<relation type="one" fk-name="clientId" rel-entity-name="BorClient">
 			<key-map field-name="clientId" />
+		</relation>
+		<relation type="one" fk-name="contractorId" rel-entity-name="BorContractor">
+			<key-map field-name="contractorId" />
 		</relation>
 	</entity>
 

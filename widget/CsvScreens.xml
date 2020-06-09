@@ -138,6 +138,10 @@
 				<set field="filisProductBought" from-field="parameters.filisProductBought" />
 				<set field="fildate1From" from-field="parameters.fildate1From" />
 				<set field="fildate2From" from-field="parameters.fildate2From" />
+				<set field="fildate3From" from-field="parameters.fildate3From" />
+				<set field="fildate4From" from-field="parameters.fildate4From" />
+				<set field="fildate5From" from-field="parameters.fildate5From" />
+				<set field="fildate6From" from-field="parameters.fildate6From" />
 				<set field="filshowConditions" from-field="parameters.filshowConditions" />
 				<set field="filshowPromotions" from-field="parameters.filshowPromotions" />
 				<set field="filshowClientNotes" from-field="parameters.filshowClientNotes" />

@@ -270,6 +270,9 @@
 	<form name="ClientContactsExport" type="list" list-name="listClientContacts" odd-row-style="alternate-row"
 		default-table-style="basic-table hover-bar">
 
+		<field name="contractorName" title="${uiLabelMap.ContractorName}">
+			<display />
+		</field>
 
 		<field name="name" title="${uiLabelMap.Name}">
 			<display />

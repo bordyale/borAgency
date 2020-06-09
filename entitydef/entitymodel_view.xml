@@ -253,6 +253,19 @@
 			<key-map field-name="productId" />
 		</view-link>
 	</view-entity>
+	
+	<view-entity entity-name="ContactContractorView" package-name="org.apache.ofbiz.borAgency">
+		<member-entity entity-alias="CONTR" entity-name="BorContractor" />
+		<member-entity entity-alias="CON" entity-name="BorContact" />
+		<alias-all entity-alias="CONTR">
+			<exclude field="name" />
+		</alias-all>
+		<alias-all entity-alias="CON" />
+		<alias name="contractorName" entity-alias="CONTR" field="name" />
+		<view-link entity-alias="CON" rel-entity-alias="CONTR" rel-optional="true">
+			<key-map field-name="contractorId" />
+		</view-link>
+	</view-entity>
 
 
 

@@ -539,6 +539,25 @@
 			<lookup target-form-name="LookupClient" />
 		</field>
 
+		<field name="contractId" title="${uiLabelMap.ContractId}" required-field="true">
+			<lookup target-form-name="LookupContract?contractorId=${filcontractorId}" />
+		</field>
+		<field name="contractId2" title="${uiLabelMap.ContractId2}" required-field="true">
+			<lookup target-form-name="LookupContract?contractorId=${filcontractorId}" />
+		</field>
+
+		<field name="submitButton" title="${uiLabelMap.CommonApply}">
+			<submit button-type="button" />
+		</field>
+
+	</form>
+	
+	<form name="ApplyNewPriceListLayer" type="single" target="applyNewPriceList" title="" default-map-name="PriceList"
+		default-entity-name="BorPriceList">
+
+		<field name="clientId" title="${uiLabelMap.ClientId}" required-field="true">
+			<lookup target-form-name="LookupClient" />
+		</field>
 
 		<field name="contractId" title="${uiLabelMap.ContractId}" required-field="true">
 			<lookup target-form-name="LookupContract?contractorId=${filcontractorId}" />
@@ -547,15 +566,9 @@
 			<lookup target-form-name="LookupContract?contractorId=${filcontractorId}" />
 		</field>
 
-
-
-
-
 		<field name="submitButton" title="${uiLabelMap.CommonApply}">
 			<submit button-type="button" />
 		</field>
-
-
 
 	</form>
 
@@ -714,6 +727,9 @@
 			<date-time type="date" />
 		</field>
 		<field use-when="promotionPage=='Y' || reportPage=='Y'" name="fildate5From" title="${fildate5FromTitle}">
+			<date-time type="date" />
+		</field>
+		<field use-when="reportPage=='Y'" name="fildate6From" title="${fildate6FromTitle}">
 			<date-time type="date" />
 		</field>
 
@@ -1034,7 +1050,7 @@
 
 	<form name="ListContact" type="list" list-name="listIt" target="updateContact" separate-columns="true">
 		<actions>
-			<entity-condition entity-name="BorContact">
+			<entity-condition entity-name="ContactContractorView">
 				<condition-expr field-name="clientId" from-field="clientId" />
 				<order-by field-name="name" />
 			</entity-condition>
@@ -1048,6 +1064,12 @@
 		</field>
 		<field name="contactId">
 			<hidden />
+		</field>
+		<field name="contractorId" title="${uiLabelMap.ContractorName}">
+			<hidden />
+		</field>
+		<field name="contractorName">
+			<display />
 		</field>
 
 
@@ -1069,6 +1091,9 @@
 		<auto-fields-service service-name="createContact" />
 		<field name="clientId">
 			<hidden />
+		</field>
+		<field name="contractorId" title="${uiLabelMap.ContractorId}">
+			<lookup target-form-name="LookupContractor" />
 		</field>
 
 		<field name="name">

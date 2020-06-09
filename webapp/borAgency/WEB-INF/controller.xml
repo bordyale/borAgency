@@ -398,6 +398,10 @@
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="ApplyNewContractLayer" />
 	</request-map>
+	<request-map uri="ApplyNewPriceListLayer">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="ApplyNewPriceListLayer" />
+	</request-map>
 	<request-map uri="EditContract">
 		<security https="true" auth="true" />
 		<response name="success" type="view" value="EditContract" />
@@ -461,6 +465,17 @@
 
 		</response>
 		<response name="error" type="request-redirect" value="findContracts">
+
+		</response>
+	</request-map>
+	
+	<request-map uri="applyNewPriceList">
+		<security https="true" auth="true" />
+		<event type="java" path="org.apache.ofbiz.boragency.BorAgencyEvents" invoke="applyNewPriceList" />
+		<response name="success" type="request-redirect" value="findPriceLists">
+
+		</response>
+		<response name="error" type="request-redirect" value="findPriceLists">
 
 		</response>
 	</request-map>

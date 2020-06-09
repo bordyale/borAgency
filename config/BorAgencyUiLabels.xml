@@ -420,6 +420,10 @@
 		<value xml:lang="en">Apply New Contract</value>
 		<value xml:lang="it">Applica Nuovo Contratto</value>
 	</property>
+	<property key="ApplyNewPriceList">
+		<value xml:lang="en">Apply New Price List</value>
+		<value xml:lang="it">Applica Nuovo Listino</value>
+	</property>
 	<property key="RefRevenueZero">
 		<value xml:lang="en">Reference Revenue can't be 0</value>
 		<value xml:lang="it">Fatturato di Riferimento non puó essere 0</value>
@@ -427,5 +431,9 @@
 	<property key="CVS">
 		<value xml:lang="en">CVS</value>
 		<value xml:lang="it">CVS</value>
+	</property>
+	<property key="filRevenueFrom">
+		<value xml:lang="en">Revenue From</value>
+		<value xml:lang="it">Fatturati Da</value>
 	</property>
 </resource>

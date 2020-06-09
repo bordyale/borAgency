@@ -33,7 +33,7 @@ def sdf = new SimpleDateFormat("yyyy-MM-dd")
 filcontractorId = parameters.filcontractorId
 filclientId = parameters.filclientId
 clientId = parameters.clientId
-fildate1From = parameters.fildate1From
+fildate6From = parameters.fildate6From
 filshowClientInfos = parameters.filshowClientInfos
 
 List searchCond = []
@@ -46,9 +46,10 @@ if (filclientId) {
 if (clientId) {
 	searchCond.add(EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, clientId))
 }
-if (fildate1From) {
-	def parseDate = sdf.parse(fildate1From)
-	searchCond.add(EntityCondition.makeCondition("noteDateTime", EntityOperator.GREATER_THAN_EQUAL_TO, UtilDateTime.toTimestamp(parseDate)))
+List revenueCondList = []
+if (fildate6From) {
+	def parseDate = sdf.parse(fildate6From)
+	revenueCondList.add(EntityCondition.makeCondition("noteDateTime", EntityOperator.GREATER_THAN_EQUAL_TO, UtilDateTime.toTimestamp(parseDate)))
 }
 paramCond = EntityCondition.makeCondition(searchCond, EntityOperator.AND)
 
@@ -58,8 +59,9 @@ if (filshowClientInfos) {
 	noteTypeCondList.add(EntityCondition.makeCondition("noteType", EntityOperator.EQUALS, "NOTE_FATTURATO"))
 }
 noteTypeCond = EntityCondition.makeCondition(noteTypeCondList, EntityOperator.AND)
+revenueCond=EntityCondition.makeCondition(revenueCondList, EntityOperator.AND)
 
-combinedPaymentCond = EntityCondition.makeCondition([noteTypeCond, paramCond], EntityOperator.AND)
+combinedPaymentCond = EntityCondition.makeCondition([noteTypeCond, paramCond, revenueCond], EntityOperator.AND)
 
 pricecheckList = from("BorNoteView").where(combinedPaymentCond).cache(false).orderBy("noteDateTime DESC").queryList()
 
@@ -148,7 +150,7 @@ if (filclientId) {
 if (clientId) {
 	searchCond.add(EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, clientId))
 }
-pricecheckList = from("BorContact").where(searchCond).cache(false).queryList()
+pricecheckList = from("ContactContractorView").where(searchCond).cache(false).queryList()
 
 List<HashMap<String,Object>> hashMaps2 = new ArrayList<HashMap<String,Object>>()
 if(filshowClientInfos.equals("Y")){
@@ -160,6 +162,7 @@ if(filshowClientInfos.equals("Y")){
 		e.put("title",entry.get("title"))
 		e.put("telefon",entry.get("telefon"))
 		e.put("email",entry.get("email"))
+		e.put("contractorName",entry.get("contractorName"))
 
 		hashMaps2.add(e)
 	}
