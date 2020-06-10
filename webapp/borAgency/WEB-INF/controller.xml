@@ -699,6 +699,7 @@
 	<view-map name="findContracts" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#FindContracts" />
 	<view-map name="EditContractLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditContractLayer" />
 	<view-map name="ApplyNewContractLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#ApplyNewContractLayer" />
+	<view-map name="ApplyNewPriceListLayer" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#ApplyNewPriceListLayer" />
 	<view-map name="EditContract" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditContract" />
 	<view-map name="EditContractDetail" type="screen" page="component://borAgency/widget/BorAgencyScreens.xml#EditContractDetail" />
 

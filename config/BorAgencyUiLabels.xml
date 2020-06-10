@@ -124,6 +124,10 @@
 		<value xml:lang="en">Price List Id</value>
 		<value xml:lang="it">Id listino</value>
 	</property>
+	<property key="PriceListIdNew">
+		<value xml:lang="en">Price List Id New</value>
+		<value xml:lang="it">Id listino nuovo</value>
+	</property>
 	<property key="PriceListPrice">
 		<value xml:lang="en">Price List Price</value>
 		<value xml:lang="it">Prezzo listino</value>

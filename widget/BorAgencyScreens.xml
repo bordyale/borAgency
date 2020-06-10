@@ -531,7 +531,7 @@
 			<actions>
 				<set field="titleProperty" value="FindPriceList" />
 				<set field="headerItem" value="findPriceLists" />
-
+				<set field="filcontractorId" from-field="parameters.contractorId" />
 
 				<set field="formShippingListName" value="${groovy: return 'ListPriceLists';}" />
 				<!-- <script location="component://vforder/groovyScripts/FindShipping.groovy" /> -->

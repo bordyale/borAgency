@@ -117,7 +117,7 @@
 			<service service-name="performFind" result-map="result" result-map-list="listIt">
 				<field-map field-name="inputFields" from-field="requestParameters" />
 				<field-map field-name="entityName" from-field="entityName" />
-				<field-map field-name="orderBy" from-field="sortField" />
+				<field-map field-name="orderBy" from-field="parameters.sortField" />
 			</service>
 		</actions>
 
@@ -551,7 +551,7 @@
 		</field>
 
 	</form>
-	
+
 	<form name="ApplyNewPriceListLayer" type="single" target="applyNewPriceList" title="" default-map-name="PriceList"
 		default-entity-name="BorPriceList">
 
@@ -559,11 +559,11 @@
 			<lookup target-form-name="LookupClient" />
 		</field>
 
-		<field name="contractId" title="${uiLabelMap.ContractId}" required-field="true">
-			<lookup target-form-name="LookupContract?contractorId=${filcontractorId}" />
+		<field name="pricelistId" title="${uiLabelMap.PriceListId}" required-field="true">
+			<lookup target-form-name="LookupPriceList?contractorId=${filcontractorId}" />
 		</field>
-		<field name="contractId2" title="${uiLabelMap.ContractId2}" required-field="true">
-			<lookup target-form-name="LookupContract?contractorId=${filcontractorId}" />
+		<field name="pricelistId2" title="${uiLabelMap.PriceListIdNew}" required-field="true">
+			<lookup target-form-name="LookupPriceList?contractorId=${filcontractorId}" />
 		</field>
 
 		<field name="submitButton" title="${uiLabelMap.CommonApply}">
@@ -686,6 +686,14 @@
 		<field use-when="clientnotePage!='Y' @and contractPage!='Y' @and promotionPage!='Y'" name="filclientId" title="${uiLabelMap.ClientId}">
 			<lookup target-form-name="LookupClient" />
 		</field>
+		<field use-when="conditionPage=='Y' || reportPage=='Y'" name="filclientType" title="${uiLabelMap.ClientType}">
+			<drop-down allow-empty="true">
+				<entity-options entity-name="Enumeration" key-field-name="enumId" description="${description} [${enumCode}]">
+					<entity-constraint name="enumTypeId" value="BOR_CLIENT_TYPE" />
+					<entity-order-by field-name="sequenceId" />
+				</entity-options>
+			</drop-down>
+		</field>
 		<field use-when="promotionPage!='Y' @and clientnotePage!='Y' @and contractPage!='Y'" name="filproductId" title="${uiLabelMap.ProductId}">
 			<lookup target-form-name="LookupProduct?contractorId=${filcontractorId}" />
 		</field>
@@ -706,7 +714,7 @@
 				<option key="N" description="${uiLabelMap.CommonN}" />
 			</drop-down>
 		</field>
-		
+
 		<field use-when="conditionPage=='Y' || reportPage=='Y'" name="filcvsactiv" title="${uiLabelMap.CvsActiv}">
 			<drop-down allow-empty="true">
 				<option key="Y" description="${uiLabelMap.CommonY}" />
@@ -762,15 +770,6 @@
 		</field>
 		<field use-when="reportPage=='Y'" name="filshowClientInfos">
 			<check />
-		</field>
-
-		<field use-when="conditionPage=='Y'" name="filclientType" title="${uiLabelMap.ClientType}">
-			<drop-down allow-empty="true">
-				<entity-options entity-name="Enumeration" key-field-name="enumId" description="${description} [${enumCode}]">
-					<entity-constraint name="enumTypeId" value="BOR_CLIENT_TYPE" />
-					<entity-order-by field-name="sequenceId" />
-				</entity-options>
-			</drop-down>
 		</field>
 
 
@@ -1065,8 +1064,8 @@
 		<field name="contactId">
 			<hidden />
 		</field>
-		<field name="contractorId" title="${uiLabelMap.ContractorName}">
-			<hidden />
+		<field name="contractorId" title="${uiLabelMap.ContractorId}">
+			<lookup target-form-name="LookupContractor" />
 		</field>
 		<field name="contractorName">
 			<display />

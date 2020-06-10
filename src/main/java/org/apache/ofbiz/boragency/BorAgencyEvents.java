@@ -307,4 +307,84 @@ public class BorAgencyEvents {
 
 	}
 
+	public static String applyNewPriceList(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		GenericValue userLogin = (GenericValue) session.getAttribute("userLogin");
+		Delegator delegator = (Delegator) request.getAttribute("delegator");
+		LocalDispatcher dispatcher = (LocalDispatcher) request.getAttribute("dispatcher");
+
+		String controlDirective = null;
+		Map<String, Object> result = null;
+
+		Map<String, Object> paramMap = UtilHttp.getParameterMap(request);
+
+		// The number of multi form rows is retrieved
+
+		String priceListIdFrom = null;
+		String priceListIdTo = null;
+		String clientId = null;
+
+		// get the params
+		if (paramMap.containsKey("pricelistId")) {
+			priceListIdFrom = (String) paramMap.get("pricelistId");
+		}
+		if (paramMap.containsKey("pricelistId2")) {
+			priceListIdTo = (String) paramMap.get("pricelistId2");
+		}
+		if (paramMap.containsKey("clientId")) {
+			clientId = (String) paramMap.get("clientId");
+		}
+		if (priceListIdFrom == null || priceListIdTo == null || clientId == null) {
+			return "error";
+		}
+		try {
+			// priceList
+			List<EntityExpr> exprs = UtilMisc.toList(EntityCondition.makeCondition("pricelistId", EntityOperator.EQUALS, priceListIdFrom),
+					EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, clientId), EntityCondition.makeCondition("validTo", EntityOperator.EQUALS, null));
+			EntityCondition cond = EntityCondition.makeCondition(exprs, EntityOperator.AND);
+			List<GenericValue> conditions = EntityQuery.use(delegator).from("BorCondition").where(cond).queryList();
+			for (GenericValue entry : conditions) {
+				String conditionId = (String) entry.get("conditionId");
+
+				try {
+					Map<String, Object> tmpResult = dispatcher.runSync("updateCondition",
+							UtilMisc.<String, Object> toMap("userLogin", userLogin, "conditionId", conditionId, "validTo", UtilDateTime.nowTimestamp()));
+
+					Map<String, Object> createCtx = new HashMap<String, Object>();
+					String finAccountId;
+
+					createCtx.put("userLogin", userLogin);
+					createCtx.put("productId", entry.get("productId"));
+					createCtx.put("pricelistId", priceListIdTo);
+					createCtx.put("contractId", entry.get("contractId"));
+					createCtx.put("contractId2", entry.get("contractId2"));
+					createCtx.put("clientId", entry.get("clientId"));
+					createCtx.put("validFrom", entry.get("validFrom"));
+					// createCtx.put("validTo", entry.get("validTo"));
+					createCtx.put("startingPrice", entry.get("startingPrice"));
+					createCtx.put("sc1", entry.get("sc1"));
+					createCtx.put("sc2", entry.get("sc2"));
+					createCtx.put("sc3", entry.get("sc3"));
+					createCtx.put("sc4", entry.get("sc4"));
+					createCtx.put("sc5", entry.get("sc5"));
+					createCtx.put("isProductBought", entry.get("isProductBought"));
+					createCtx.put("note", entry.get("note"));
+
+					tmpResult = dispatcher.runSync("createCondition", createCtx);
+
+				} catch (GenericServiceException e) {
+					Debug.logError(e, module);
+				}
+
+			}
+
+		} catch (GenericEntityException e) {
+			Debug.logError(e, module);
+
+		}
+
+		return "success";
+
+	}
+
 }
