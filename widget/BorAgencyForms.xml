@@ -985,7 +985,7 @@
 				<option key="N" description="${uiLabelMap.CommonN}" />
 			</drop-down>
 		</field>
-		<field name="validFrom" required-field="true" title="${uiLabelMap.ValidFrom}">
+		<field name="validFrom" title="${uiLabelMap.ValidFrom}">
 			<date-time type="date" default-value="${nowTimestamp}" />
 		</field>
 		<field name="cvsValidTo" title="${uiLabelMap.CvsValidTo}">
