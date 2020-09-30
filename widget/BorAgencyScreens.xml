@@ -1044,6 +1044,7 @@
 								<parameter param-name="fildate4From" />
 								<parameter param-name="fildate5From" />
 								<parameter param-name="fildate6From" />
+								<parameter param-name="filisProductBought" />
 								<parameter param-name="filshowConditions" />
 								<parameter param-name="filshowPromotions" />
 								<parameter param-name="filshowClientNotes" />

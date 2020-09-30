@@ -150,6 +150,9 @@ if (filclientId) {
 if (clientId) {
 	searchCond.add(EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, clientId))
 }
+if (filcontractorId) {
+	searchCond.add(EntityCondition.makeCondition("contractorId", EntityOperator.EQUALS, filcontractorId))
+}
 pricecheckList = from("ContactContractorView").where(searchCond).cache(false).queryList()
 
 List<HashMap<String,Object>> hashMaps2 = new ArrayList<HashMap<String,Object>>()
