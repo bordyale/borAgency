@@ -11,7 +11,7 @@
 		</field>
 		<field name="name" title="${uiLabelMap.Name}">
 
-			<text size="10" maxlength="20" />
+			<text-find />
 		</field>
 
 		<field name="searchButton" title="${uiLabelMap.CommonFind}" widget-style="smallSubmit">
@@ -30,7 +30,7 @@
 			<service service-name="performFind" result-map="result" result-map-list="listIt">
 				<field-map field-name="inputFields" from-field="requestParameters" />
 				<field-map field-name="entityName" from-field="entityName" />
-				<field-map field-name="orderBy" from-field="sortField" />
+				<field-map field-name="orderBy" from-field="parameters.sortField" />
 				<field-map field-name="viewIndex" from-field="viewIndex" />
 				<field-map field-name="viewSize" from-field="viewSize" />
 			</service>
@@ -98,8 +98,9 @@
 		</field>
 		<field name="name" title="${uiLabelMap.Name}">
 
-			<text size="10" maxlength="20" />
+			<text-find />
 		</field>
+
 
 		<field name="searchButton" title="${uiLabelMap.CommonFind}" widget-style="smallSubmit">
 			<submit button-type="button" />
@@ -317,7 +318,7 @@
 			<service service-name="performFind" result-map="result" result-map-list="listIt">
 				<field-map field-name="inputFields" from-field="requestParameters" />
 				<field-map field-name="entityName" from-field="entityName" />
-				<field-map field-name="orderBy" from-field="sortField" />
+				<field-map field-name="orderBy" from-field="parameters.sortField" />
 			</service>
 		</actions>
 

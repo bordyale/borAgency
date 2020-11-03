@@ -32,6 +32,7 @@ filcontractorId = parameters.filcontractorId
 filproductId = parameters.filproductId
 filclientId = parameters.filclientId
 filactiv = parameters.filactiv
+sortField = parameters.sortField
 
 List filCond = []
 List activCond = []
@@ -53,7 +54,12 @@ activCondOR = EntityCondition.makeCondition(activCond,EntityOperator.OR)
 filCondAND = EntityCondition.makeCondition(filCond, EntityOperator.AND)
 searchCond = EntityCondition.makeCondition([filCondAND, activCondOR], EntityOperator.AND)
 
-pricecheckList = from("ContractContractorView").where(searchCond).orderBy("contractId").queryList()
+
+if (!sortField) {
+	sortField="contractId"
+}
+
+pricecheckList = from("ContractContractorView").where(searchCond).orderBy(sortField).queryList()
 
 
 List<HashMap<String,Object>> hashMaps = new ArrayList<HashMap<String,Object>>()
