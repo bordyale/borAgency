@@ -87,6 +87,12 @@
 		<field name="contractName2" title="${uiLabelMap.ContractName}">
 			<display />
 		</field>
+		<field name="lastPromoDiscount" title="${uiLabelMap.LastPromoDiscount}">
+			<display />
+		</field>
+		<field name="lastSellInTo" title="${uiLabelMap.LastSellInTo}">
+			<display type="date" />
+		</field>
 	</form>
 
 	<form name="ContractExport" type="list" list-name="listContracts" odd-row-style="alternate-row" default-table-style="basic-table hover-bar">

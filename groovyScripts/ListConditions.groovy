@@ -166,6 +166,13 @@ if(filshowConditions.equals("Y")){
 		}
 
 
+		//extract last promotion
+		lastPromotion = from("BorPromotionDetailView").where('productId', productId, 'clientId', clientId).orderBy("-sellinTo").queryFirst()
+		if (lastPromotion) {
+			e.put("lastPromoDiscount",lastPromotion.get("discount"))
+			e.put("lastSellInTo",lastPromotion.get("sellinTo"))
+		}
+
 		hashMaps.add(e)
 	}
 }

@@ -440,4 +440,12 @@
 		<value xml:lang="en">Revenue From</value>
 		<value xml:lang="it">Fatturati Da</value>
 	</property>
+	<property key="LastPromoDiscount">
+		<value xml:lang="en">Last Promo Disc.</value>
+		<value xml:lang="it">Ult.Sc.Promo</value>
+	</property>
+	<property key="LastSellInTo">
+		<value xml:lang="en">Last Sell In To</value>
+		<value xml:lang="it">Ult.Sell.In.A.</value>
+	</property>
 </resource>
