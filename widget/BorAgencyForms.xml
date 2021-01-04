@@ -193,7 +193,7 @@
 		</field>
 		<field name="name" title="${uiLabelMap.Name}">
 
-			<text size="25" maxlength="25" />
+			<text-find />
 		</field>
 
 
@@ -299,7 +299,7 @@
 			<lookup target-form-name="LookupContractor" />
 		</field>
 		<field name="name" title="${uiLabelMap.Name}">
-			<text size="10" maxlength="20" />
+			<text-find />
 		</field>
 
 		<field name="searchButton" title="${uiLabelMap.CommonFind}" widget-style="smallSubmit">
@@ -771,6 +771,11 @@
 		</field>
 		<field use-when="reportPage=='Y'" name="filshowClientInfos">
 			<check />
+		</field>
+		
+		<field use-when="contractPage=='Y'" name="name" title="${uiLabelMap.Name}">
+
+			<text size="30" maxlength="200" />
 		</field>
 
 

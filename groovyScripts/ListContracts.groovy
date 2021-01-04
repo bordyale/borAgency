@@ -31,6 +31,7 @@ import org.apache.ofbiz.base.util.UtilDateTime
 filcontractorId = parameters.filcontractorId
 filproductId = parameters.filproductId
 filclientId = parameters.filclientId
+filname = parameters.name
 filactiv = parameters.filactiv
 sortField = parameters.sortField
 
@@ -44,6 +45,9 @@ if (filproductId) {
 }
 if (filclientId) {
 	filCond.add(EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, filclientId))
+}
+if (filname) {
+	filCond.add(EntityCondition.makeCondition("name", EntityOperator.LIKE, filname + "%"))
 }
 if (filactiv.equals("Y")) {
 	activCond.add(EntityCondition.makeCondition("validTo",EntityOperator.EQUALS, null) )
