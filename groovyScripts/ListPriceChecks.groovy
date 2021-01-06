@@ -26,10 +26,17 @@ import org.apache.ofbiz.entity.condition.EntityCondition
 import org.apache.ofbiz.entity.GenericValue
 import org.apache.ofbiz.entity.util.EntityUtil
 import java.sql.Timestamp
+import java.text.SimpleDateFormat
+import org.apache.ofbiz.base.util.UtilDateTime
+
+def sdf = new SimpleDateFormat("yyyy-MM-dd")
 
 filcontractorId = parameters.filcontractorId
 filproductId = parameters.filproductId
 filclientId = parameters.filclientId
+fildate1From = parameters.fildate1From
+fildate2From = parameters.fildate2From
+
 
 List searchCond = []
 if (filcontractorId) {
@@ -40,6 +47,15 @@ if (filproductId) {
 }
 if (filclientId) {
 	searchCond.add(EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, filclientId))
+}
+
+if (fildate1From) {
+	def parseDate = sdf.parse(fildate1From)
+	searchCond.add(EntityCondition.makeCondition("date", EntityOperator.GREATER_THAN_EQUAL_TO, UtilDateTime.toTimestamp(parseDate)))
+}
+if (fildate2From) {
+	def parseDate = sdf.parse(fildate2From)
+	searchCond.add(EntityCondition.makeCondition("date", EntityOperator.LESS_THAN_EQUAL_TO, UtilDateTime.toTimestamp(parseDate)))
 }
 
 pricecheckList = from("BorPriceCheckView").where(searchCond).cache(false).queryList()

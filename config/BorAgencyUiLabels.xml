@@ -164,6 +164,10 @@
 		<value xml:lang="en">Client Name</value>
 		<value xml:lang="it">Nome Cliente</value>
 	</property>
+	<property key="ClientShopName">
+		<value xml:lang="en">Shop Name</value>
+		<value xml:lang="it">Punto Vendita</value>
+	</property>
 	<property key="PriceListName">
 		<value xml:lang="en">Price List Name</value>
 		<value xml:lang="it">Nome Listino</value>
@@ -315,6 +319,14 @@
 	<property key="filpromotionOutFrom">
 		<value xml:lang="en">Sell out From</value>
 		<value xml:lang="it">Sell out Da</value>
+	</property>
+	<property key="From">
+		<value xml:lang="en">From</value>
+		<value xml:lang="it">Da</value>
+	</property>
+	<property key="To">
+		<value xml:lang="en">To</value>
+		<value xml:lang="it">A</value>
 	</property>
 	<property key="filpromotionOutTo">
 		<value xml:lang="en">Sell out To</value>

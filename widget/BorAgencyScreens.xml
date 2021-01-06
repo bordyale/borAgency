@@ -955,9 +955,14 @@
 	<screen name="FindPriceChecks">
 		<section>
 			<actions>
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
 				<set field="filcontractorId" from-field="parameters.filcontractorId" />
 				<set field="filproductId" from-field="parameters.filproductId" />
 				<set field="filclientId" from-field="parameters.filclientId" />
+				<set field="fildate1From" from-field="parameters.fildate1From" />
+				<set field="fildate1FromTitle" value="${groovy: uiLabelMap.From}" />
+				<set field="fildate2From" from-field="parameters.fildate2From" />
+				<set field="fildate2FromTitle" value="${groovy: uiLabelMap.To}" />
 				<set field="headerItem" value="findPriceChecks" />
 				<set field="priceCheckPage" value="Y" />
 				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />

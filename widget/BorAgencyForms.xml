@@ -723,10 +723,10 @@
 			</drop-down>
 		</field>
 
-		<field use-when="clientnotePage=='Y' || reportPage=='Y'" name="fildate1From" title="${groovy: fildate1FromTitle}">
+		<field use-when="priceCheckPage=='Y' || clientnotePage=='Y' || reportPage=='Y'" name="fildate1From" title="${groovy: fildate1FromTitle}">
 			<date-time type="date" />
 		</field>
-		<field use-when="promotionPage=='Y' || reportPage=='Y'" name="fildate2From" title="${fildate2FromTitle}">
+		<field use-when="priceCheckPage=='Y' || promotionPage=='Y' || reportPage=='Y'" name="fildate2From" title="${fildate2FromTitle}">
 			<date-time type="date" />
 		</field>
 		<field use-when="promotionPage=='Y' || reportPage=='Y'" name="fildate3From" title="${fildate3FromTitle}">
@@ -1253,6 +1253,12 @@
 		<field name="clientName" title="${uiLabelMap.ClientName}">
 			<display />
 		</field>
+		
+		<field name="clientshopName" title="${uiLabelMap.ClientShopName}">
+			<display />
+		</field>
+		
+		
 		<field name="prodCode" title="${uiLabelMap.ProdCode}">
 			<display />
 		</field>
