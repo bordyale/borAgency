@@ -64,7 +64,7 @@
 		<field name="validFrom" title="${uiLabelMap.ValidFrom}">
 			<display type="date" />
 		</field>
-		
+
 		<field name="cvsValidTo" title="${uiLabelMap.CvsValidTo}">
 			<display type="date" />
 		</field>
@@ -329,6 +329,44 @@
 		</field>
 
 		<field name="totalValue" title="${uiLabelMap.TotalValue}" widget-style="buttontext" sort-field="true">
+			<display />
+		</field>
+
+
+	</form>
+
+	<form name="PriceCheckExport" type="list" list-name="listPriceChecks" odd-row-style="alternate-row" default-table-style="basic-table hover-bar">
+
+
+
+
+		<field name="clientName" title="${uiLabelMap.ClientName}">
+			<display />
+		</field>
+
+		<field name="clientshopName" title="${uiLabelMap.ClientShopName}">
+			<display />
+		</field>
+
+
+		<field name="prodCode" title="${uiLabelMap.ProdCode}">
+			<display />
+		</field>
+
+		<field name="productName" title="${uiLabelMap.ProductName}">
+			<display />
+		</field>
+
+		<field name="price" title="${uiLabelMap.Price}">
+			<display />
+		</field>
+		<field name="isInPromotion" title="${uiLabelMap.IsInPromotion}">
+			<display />
+		</field>
+		<field name="note" title="${uiLabelMap.Note}">
+			<display />
+		</field>
+		<field name="date" title="${uiLabelMap.CommonDate}">
 			<display />
 		</field>
 

@@ -149,13 +149,22 @@ if(filshowConditions.equals("Y")){
 			EQUALS(productId: productId)
 			EQUALS(clientId: clientId)
 		}
+		exprOR = exprBldr.OR() {
+			EQUALS(isInPromotion: "N")
+			EQUALS(isInPromotion: null)
+
+		}
+		expr = exprBldr.AND([expr, exprOR])
 		pricecheckList = from("BorPriceCheckView").where(expr).orderBy("date DESC").queryFirst()
 		if (pricecheckList){
 			BigDecimal priceCheckPrice = pricecheckList.get("price")
+			//String isInPromotion = pricecheckList.get("isInPromotion")
+			//if(isInPromotion == null || isInPromotion.equals("N")){
 			e.put("priceCheckPrice",priceCheckPrice)
 			BigDecimal perc = priceCheckPrice.subtract(resultPrice).divide(priceCheckPrice,3,RoundingMode.HALF_UP).multiply(new BigDecimal(100))
 			//BigDecimal perc = priceCheckPrice.divide(resultPrice,2,RoundingMode.HALF_UP).multiply(new BigDecimal(100))
 			e.put("perc",perc)
+			//}
 		}
 
 		//price Kg

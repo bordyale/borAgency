@@ -166,6 +166,8 @@
 		<field name="clientshopId" type="id-ne"></field>
 		<field name="date" type="date-time"></field>
 		<field name="price" type="fixed-point"></field>
+		<field name="isInPromotion" type="value"></field>
+		<field name="note" type="very-long"></field>
 		<prim-key field="pricecheckId" />
 		<relation type="one" fk-name="productId" rel-entity-name="BorProduct">
 			<key-map field-name="productId" />

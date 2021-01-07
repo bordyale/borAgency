@@ -72,7 +72,8 @@ for (GenericValue entry: pricecheckList){
 	e.put("clientshopName",entry.get("clientshopName"))
 	e.put("date",entry.get("date"))
 	e.put("price",entry.get("price"))
-
+	e.put("isInPromotion",entry.get("isInPromotion"))
+	e.put("note",entry.get("note"))
 	hashMaps.add(e)
 }
 

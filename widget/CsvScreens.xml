@@ -123,6 +123,31 @@
 			</widgets>
 		</section>
 	</screen>
+	
+	<screen name="PriceCheckExportCvs">
+		<section>
+			<actions>
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
+				<property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true" />
+
+
+
+				<set field="viewIndex" from-field="parameters.VIEW_INDEX" type="Integer" default-value="0" />
+				<property-to-field resource="widget" property="widget.form.defaultViewSize" field="viewSizeDefaultValue" />
+				<set field="viewSize" from-field="parameters.VIEW_SIZE" type="Integer" default-value="200" />
+
+				<!-- <entity-one entity-name="Facility" value-field="facility" use-cache="true"/> -->
+				<script location="component://borAgency/groovyScripts/ListPriceChecks.groovy" />
+			</actions>
+			<widgets>
+				<container>
+					<label style="h2" text="${uiLabelMap.Conditions}" />
+				</container>
+				<include-form name="PriceCheckExport" location="component://borAgency/widget/CsvForms.xml" />
+
+			</widgets>
+		</section>
+	</screen>
 
 	<screen name="ReportExportCsv">
 		<section>

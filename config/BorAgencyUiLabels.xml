@@ -232,6 +232,10 @@
 		<value xml:lang="en">Add Price Check</value>
 		<value xml:lang="it">Aggiungi rilevamento prezzi</value>
 	</property>
+	<property key="IsInPromotion">
+		<value xml:lang="en">Is In Prom.</value>
+		<value xml:lang="it">In Promo</value>
+	</property>
 	<property key="Promotion">
 		<value xml:lang="en">Promotion</value>
 		<value xml:lang="it">Promozioni</value>

@@ -772,7 +772,7 @@
 		<field use-when="reportPage=='Y'" name="filshowClientInfos">
 			<check />
 		</field>
-		
+
 		<field use-when="contractPage=='Y'" name="name" title="${uiLabelMap.Name}">
 
 			<text size="30" maxlength="200" />
@@ -1253,12 +1253,12 @@
 		<field name="clientName" title="${uiLabelMap.ClientName}">
 			<display />
 		</field>
-		
+
 		<field name="clientshopName" title="${uiLabelMap.ClientShopName}">
 			<display />
 		</field>
-		
-		
+
+
 		<field name="prodCode" title="${uiLabelMap.ProdCode}">
 			<display />
 		</field>
@@ -1270,6 +1270,20 @@
 		<field name="price" title="${uiLabelMap.Price}">
 			<text size="10" maxlength="20" />
 		</field>
+
+		<field name="isInPromotion" title="${uiLabelMap.IsInPromotion}">
+			<drop-down allow-empty="true">
+				<option key="Y" description="${uiLabelMap.CommonY}" />
+				<option key="N" description="${uiLabelMap.CommonN}" />
+			</drop-down>
+		</field>
+
+		<field name="note" title="${uiLabelMap.Note}">
+			<textarea cols="30" rows="2" />
+		</field>
+
+
+
 		<field name="date" title="${uiLabelMap.CommonDate}">
 			<date-time type="date" />
 		</field>
@@ -1321,6 +1335,21 @@
 		<field name="price">
 			<text size="10" maxlength="20" />
 		</field>
+
+		<field name="isInPromotion" title="${uiLabelMap.IsInPromotion}">
+			<drop-down allow-empty="true">
+				<option key="Y" description="${uiLabelMap.CommonY}" />
+				<option key="N" description="${uiLabelMap.CommonN}" />
+			</drop-down>
+		</field>
+
+		<field name="note" title="${uiLabelMap.Note}">
+			<textarea cols="30" rows="10" />
+		</field>
+
+
+
+
 
 
 		<field name="submitButton" title="${uiLabelMap.CommonAdd}">
