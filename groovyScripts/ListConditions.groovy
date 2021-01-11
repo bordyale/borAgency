@@ -164,6 +164,7 @@ if(filshowConditions.equals("Y")){
 			BigDecimal perc = priceCheckPrice.subtract(resultPrice).divide(priceCheckPrice,3,RoundingMode.HALF_UP).multiply(new BigDecimal(100))
 			//BigDecimal perc = priceCheckPrice.divide(resultPrice,2,RoundingMode.HALF_UP).multiply(new BigDecimal(100))
 			e.put("perc",perc)
+			e.put("priceCheckDate",pricecheckList.get("date"))
 			//}
 		}
 

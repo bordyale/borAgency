@@ -33,6 +33,7 @@ filproductId = parameters.filproductId
 filclientId = parameters.filclientId
 filname = parameters.name
 filactiv = parameters.filactiv
+filhideempty = parameters.filhideempty
 sortField = parameters.sortField
 
 List filCond = []
@@ -48,6 +49,9 @@ if (filclientId) {
 }
 if (filname) {
 	filCond.add(EntityCondition.makeCondition("name", EntityOperator.LIKE, filname + "%"))
+}
+if (filhideempty) {
+	filCond.add(EntityCondition.makeCondition("name", EntityOperator.NOT_LIKE, "VUOTO%"))
 }
 if (filactiv.equals("Y")) {
 	activCond.add(EntityCondition.makeCondition("validTo",EntityOperator.EQUALS, null) )
