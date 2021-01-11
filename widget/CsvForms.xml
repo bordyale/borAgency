@@ -62,9 +62,7 @@
 		<field name="perc" title="${uiLabelMap.PercRic}">
 			<display />
 		</field>
-		<field name="priceCheckDate" title="${uiLabelMap.PriceCheckDate}">
-			<display type="date" />
-		</field>
+		
 		<field name="validFrom" title="${uiLabelMap.ValidFrom}">
 			<display type="date" />
 		</field>
@@ -95,6 +93,9 @@
 			<display />
 		</field>
 		<field name="lastSellInTo" title="${uiLabelMap.LastSellInTo}">
+			<display type="date" />
+		</field>
+		<field name="priceCheckDate" title="${uiLabelMap.PriceCheckDate}">
 			<display type="date" />
 		</field>
 	</form>
