@@ -11,12 +11,12 @@
 
 	<entity entity-name="BorCondition" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
 		title="Condition Entity">
-		<field name="conditionId" type="id-ne"></field>
-		<field name="productId" type="id-ne"></field>
-		<field name="pricelistId" type="id-ne"></field>
-		<field name="contractId" type="id-ne"></field>
-		<field name="contractId2" type="id-ne"></field>
-		<field name="clientId" type="id-ne"></field>
+		<field name="conditionId" type="id"></field>
+		<field name="productId" type="id"></field>
+		<field name="pricelistId" type="id"></field>
+		<field name="contractId" type="id"></field>
+		<field name="contractId2" type="id"></field>
+		<field name="clientId" type="id"></field>
 		<field name="validFrom" type="date-time"></field>
 		<field name="validTo" type="date-time"></field>
 		<field name="cvsValidTo" type="date-time"></field>
@@ -48,15 +48,15 @@
 
 	<entity entity-name="BorContractor" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
 		title="Condition Entity">
-		<field name="contractorId" type="id-ne"></field>
+		<field name="contractorId" type="id"></field>
 		<field name="name" type="value"></field>
 		<prim-key field="contractorId" />
 	</entity>
 
 	<entity entity-name="BorPriceList" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
 		title="Condition Entity">
-		<field name="pricelistId" type="id-ne"></field>
-		<field name="contractorId" type="id-ne"></field>
+		<field name="pricelistId" type="id"></field>
+		<field name="contractorId" type="id"></field>
 		<field name="name" type="value"></field>
 		<field name="date" type="date-time"></field>
 		<prim-key field="pricelistId" />
@@ -67,8 +67,8 @@
 
 	<entity entity-name="BorPriceListDetail" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
 		title="Condition Entity">
-		<field name="pricelistId" type="id-ne"></field>
-		<field name="productId" type="id-ne"></field>
+		<field name="pricelistId" type="id"></field>
+		<field name="productId" type="id"></field>
 		<field name="price" type="fixed-point"></field>
 		<prim-key field="pricelistId" />
 		<prim-key field="productId" />
@@ -82,8 +82,8 @@
 
 	<entity entity-name="BorProduct" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
 		title="Condition Entity">
-		<field name="productId" type="id-ne"></field>
-		<field name="contractorId" type="id-ne"></field>
+		<field name="productId" type="id"></field>
+		<field name="contractorId" type="id"></field>
 		<field name="name" type="value"></field>
 		<field name="prodCode" type="value"></field>
 		<field name="weight" type="fixed-point"></field>
@@ -95,8 +95,8 @@
 
 	<entity entity-name="BorContract" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
 		title="Condition Entity">
-		<field name="contractId" type="id-ne"></field>
-		<field name="contractorId" type="id-ne"></field>
+		<field name="contractId" type="id"></field>
+		<field name="contractorId" type="id"></field>
 		<field name="name" type="value"></field>
 		<field name="totalValue" type="fixed-point"></field>
 		<field name="validFrom" type="date-time"></field>
@@ -109,9 +109,9 @@
 
 	<entity entity-name="BorContractDetail" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
 		title="Condition Entity">
-		<field name="contractId" type="id-ne"></field>
-		<field name="contractdetailId" type="id-ne"></field>
-		<field name="contractDetailType" type="id-ne"></field>
+		<field name="contractId" type="id"></field>
+		<field name="contractdetailId" type="id"></field>
+		<field name="contractDetailType" type="id"></field>
 		<field name="name" type="value"></field>
 		<field name="value" type="fixed-point"></field>
 		<field name="refRevenue" type="fixed-point"></field>
@@ -124,16 +124,16 @@
 
 	<entity entity-name="BorClient" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
 		title="Condition Entity">
-		<field name="clientId" type="id-ne"></field>
+		<field name="clientId" type="id"></field>
 		<field name="name" type="value"></field>
-		<field name="clientType" type="id-ne"></field>
+		<field name="clientType" type="id"></field>
 		<prim-key field="clientId" />
 	</entity>
 
 	<entity entity-name="BorClientShop" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
 		title="Condition Entity">
-		<field name="clientshopId" type="id-ne"></field>
-		<field name="clientId" type="id-ne"></field>
+		<field name="clientshopId" type="id"></field>
+		<field name="clientId" type="id"></field>
 		<field name="name" type="value"></field>
 		<prim-key field="clientshopId" />
 		<relation type="one" fk-name="clientId" rel-entity-name="BorClient">
@@ -143,13 +143,13 @@
 	
 	<entity entity-name="BorContact" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
 		title="Condition Entity">
-		<field name="contactId" type="id-ne"></field>
-		<field name="clientId" type="id-ne"></field>
+		<field name="contactId" type="id"></field>
+		<field name="clientId" type="id"></field>
 		<field name="name" type="value"></field>
 		<field name="title" type="value"></field>
 		<field name="telefon" type="value"></field>
 		<field name="email" type="value"></field>
-		<field name="contractorId" type="id-ne"></field>
+		<field name="contractorId" type="id"></field>
 		<prim-key field="contactId" />
 		<relation type="one" fk-name="clientId" rel-entity-name="BorClient">
 			<key-map field-name="clientId" />
@@ -161,9 +161,9 @@
 
 	<entity entity-name="BorPriceCheck" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
 		title="Condition Entity">
-		<field name="pricecheckId" type="id-ne"></field>
-		<field name="productId" type="id-ne"></field>
-		<field name="clientshopId" type="id-ne"></field>
+		<field name="pricecheckId" type="id"></field>
+		<field name="productId" type="id"></field>
+		<field name="clientshopId" type="id"></field>
 		<field name="date" type="date-time"></field>
 		<field name="price" type="fixed-point"></field>
 		<field name="isInPromotion" type="value"></field>
@@ -179,8 +179,8 @@
 
 	<entity entity-name="BorPromotion" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
 		title="Condition Entity">
-		<field name="promotionId" type="id-ne"></field>
-		<field name="clientId" type="id-ne"></field>
+		<field name="promotionId" type="id"></field>
+		<field name="clientId" type="id"></field>
 		<field name="sellinFrom" type="date-time"></field>
 		<field name="sellinTo" type="date-time"></field>
 		<field name="selloutFrom" type="date-time"></field>
@@ -188,7 +188,7 @@
 		<field name="contribute" type="fixed-point"></field>
 		<field name="name" type="value"></field>
 		<field name="info" type="value"></field>
-		<field name="contractorId" type="id-ne"></field>
+		<field name="contractorId" type="id"></field>
 		<field name="dateIns" type="date-time"></field>
 		<field name="dateLastMod" type="date-time"></field>
 		<prim-key field="promotionId" />
@@ -203,9 +203,9 @@
 
 	<entity entity-name="BorPromotionDetail" package-name="org.apache.ofbiz.order.boragency" never-cache="true"
 		title="Condition Entity">
-		<field name="promotionDetailId" type="id-ne"></field>
-		<field name="promotionId" type="id-ne"></field>
-		<field name="productId" type="id-ne"></field>
+		<field name="promotionDetailId" type="id"></field>
+		<field name="promotionId" type="id"></field>
+		<field name="productId" type="id"></field>
 		<field name="discount" type="fixed-point"></field>
 		<field name="dateIns" type="date-time"></field>
 		<field name="dateLastMod" type="date-time"></field>
@@ -221,10 +221,10 @@
 	</entity>
 
 	<entity entity-name="BorNote" package-name="org.apache.ofbiz.order.boragency" title="Note Data Entity">
-		<field name="noteId" type="id-ne"></field>
-		<field name="clientId" type="id-ne"></field>
-		<field name="noteType" type="id-ne"></field>
-		<field name="contractorId" type="id-ne"></field>
+		<field name="noteId" type="id"></field>
+		<field name="clientId" type="id"></field>
+		<field name="noteType" type="id"></field>
+		<field name="contractorId" type="id"></field>
 		<field name="noteName" type="name"></field>
 		<field name="noteInfo" type="very-long"></field>
 		<field name="noteDateTime" type="date-time"></field>
