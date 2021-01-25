@@ -172,7 +172,7 @@
 				<set field="filshowClientNotes" from-field="parameters.filshowClientNotes" />
 				<set field="filshowClientInfos" from-field="parameters.filshowClientInfos" />
 
-				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
+				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="10000" />
 				<set field="viewIndex" from-field="parameters.VIEW_INDEX" type="Integer" default-value="0" />
 				<property-to-field resource="widget" property="widget.form.defaultViewSize" field="viewSizeDefaultValue" />
 				<set field="reportPage" value="Y" />
