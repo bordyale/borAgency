@@ -134,7 +134,8 @@
 
 				<set field="viewIndex" from-field="parameters.VIEW_INDEX" type="Integer" default-value="0" />
 				<property-to-field resource="widget" property="widget.form.defaultViewSize" field="viewSizeDefaultValue" />
-				<set field="viewSize" from-field="parameters.VIEW_SIZE" type="Integer" default-value="200" />
+				<set field="viewSize" from-field="parameters.VIEW_SIZE" type="Integer" default-value="10000" />
+				
 
 				<!-- <entity-one entity-name="Facility" value-field="facility" use-cache="true"/> -->
 				<script location="component://borAgency/groovyScripts/ListPriceChecks.groovy" />
