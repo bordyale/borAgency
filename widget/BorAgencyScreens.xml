@@ -959,6 +959,7 @@
 				<set field="filcontractorId" from-field="parameters.filcontractorId" />
 				<set field="filproductId" from-field="parameters.filproductId" />
 				<set field="filclientId" from-field="parameters.filclientId" />
+				<set field="filclientshopId" from-field="parameters.filclientshopId" />
 				<set field="fildate1From" from-field="parameters.fildate1From" />
 				<set field="fildate1FromTitle" value="${groovy: uiLabelMap.From}" />
 				<set field="fildate2From" from-field="parameters.fildate2From" />
@@ -979,6 +980,7 @@
 								<parameter param-name="filcontractorId" />
 								<parameter param-name="filproductId" />
 								<parameter param-name="filclientId" />
+								<parameter param-name="filclientshopId" />
 								<parameter param-name="fildate1From" />
 								<parameter param-name="fildate2From" />
 

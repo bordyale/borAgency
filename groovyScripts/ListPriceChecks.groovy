@@ -34,6 +34,7 @@ def sdf = new SimpleDateFormat("yyyy-MM-dd")
 filcontractorId = parameters.filcontractorId
 filproductId = parameters.filproductId
 filclientId = parameters.filclientId
+filclientshopId = parameters.filclientshopId
 fildate1From = parameters.fildate1From
 fildate2From = parameters.fildate2From
 
@@ -47,6 +48,9 @@ if (filproductId) {
 }
 if (filclientId) {
 	searchCond.add(EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, filclientId))
+}
+if (filclientshopId) {
+	searchCond.add(EntityCondition.makeCondition("clientshopId", EntityOperator.EQUALS, filclientshopId))
 }
 
 if (fildate1From) {

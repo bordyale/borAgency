@@ -687,6 +687,9 @@
 		<field use-when="clientnotePage!='Y' @and contractPage!='Y' @and promotionPage!='Y'" name="filclientId" title="${uiLabelMap.ClientId}">
 			<lookup target-form-name="LookupClient" />
 		</field>
+		<field use-when="priceCheckPage=='Y'" name="filclientshopId" title="${uiLabelMap.ClientShopId}">
+			<lookup target-form-name="LookupClientShop?clientId=${filclientId}" />
+		</field>
 		<field use-when="conditionPage=='Y' || reportPage=='Y'" name="filclientType" title="${uiLabelMap.ClientType}">
 			<drop-down allow-empty="true">
 				<entity-options entity-name="Enumeration" key-field-name="enumId" description="${description} [${enumCode}]">
