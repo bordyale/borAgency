@@ -203,6 +203,7 @@ public class BorAgencyEvents {
 		String contractIdFrom = null;
 		String contractIdTo = null;
 		String clientId = null;
+		String useContractDate = null;
 
 		// get the params
 		if (paramMap.containsKey("contractId")) {
@@ -214,10 +215,23 @@ public class BorAgencyEvents {
 		if (paramMap.containsKey("clientId")) {
 			clientId = (String) paramMap.get("clientId");
 		}
+		if (paramMap.containsKey("clientId")) {
+			clientId = (String) paramMap.get("clientId");
+		}
+		if (paramMap.containsKey("useContractDate")) {
+			useContractDate = (String) paramMap.get("useContractDate");
+		}
 		if (contractIdFrom == null || contractIdTo == null || clientId == null) {
 			return "error";
 		}
 		try {
+			GenericValue contractFrom = delegator.findOne("BorContract", UtilMisc.toMap("contractId", contractIdFrom), false);
+			GenericValue contractTo = delegator.findOne("BorContract", UtilMisc.toMap("contractId", contractIdTo), false);
+			Timestamp validTo = UtilDateTime.nowTimestamp();
+			if ("Y".equals(useContractDate) && contractFrom.get("validTo") != null) {
+				validTo = (Timestamp) contractFrom.get("validTo");
+			}
+
 			// contract1
 			List<EntityExpr> exprs = UtilMisc.toList(EntityCondition.makeCondition("contractId", EntityOperator.EQUALS, contractIdFrom),
 					EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, clientId), EntityCondition.makeCondition("validTo", EntityOperator.EQUALS, null));
@@ -227,8 +241,7 @@ public class BorAgencyEvents {
 				String conditionId = (String) entry.get("conditionId");
 
 				try {
-					Map<String, Object> tmpResult = dispatcher.runSync("updateCondition",
-							UtilMisc.<String, Object> toMap("userLogin", userLogin, "conditionId", conditionId, "validTo", UtilDateTime.nowTimestamp()));
+					Map<String, Object> tmpResult = dispatcher.runSync("updateCondition", UtilMisc.<String, Object> toMap("userLogin", userLogin, "conditionId", conditionId, "validTo", validTo));
 
 					Map<String, Object> createCtx = new HashMap<String, Object>();
 					String finAccountId;
@@ -239,7 +252,11 @@ public class BorAgencyEvents {
 					createCtx.put("contractId", contractIdTo);
 					createCtx.put("contractId2", entry.get("contractId2"));
 					createCtx.put("clientId", entry.get("clientId"));
-					createCtx.put("validFrom", entry.get("validFrom"));
+					if ("Y".equals(useContractDate) && contractTo.get("validFrom") != null) {
+						createCtx.put("validFrom", contractTo.get("validFrom"));
+					} else {
+						createCtx.put("validFrom", entry.get("validFrom"));
+					}
 					// createCtx.put("validTo", entry.get("validTo"));
 					createCtx.put("startingPrice", entry.get("startingPrice"));
 					createCtx.put("sc1", entry.get("sc1"));
@@ -266,8 +283,7 @@ public class BorAgencyEvents {
 				String conditionId = (String) entry.get("conditionId");
 
 				try {
-					Map<String, Object> tmpResult = dispatcher.runSync("updateCondition",
-							UtilMisc.<String, Object> toMap("userLogin", userLogin, "conditionId", conditionId, "validTo", UtilDateTime.nowTimestamp()));
+					Map<String, Object> tmpResult = dispatcher.runSync("updateCondition", UtilMisc.<String, Object> toMap("userLogin", userLogin, "conditionId", conditionId, "validTo", validTo));
 
 					Map<String, Object> createCtx = new HashMap<String, Object>();
 					String finAccountId;
@@ -278,7 +294,12 @@ public class BorAgencyEvents {
 					createCtx.put("contractId", entry.get("contractId"));
 					createCtx.put("contractId2", contractIdTo);
 					createCtx.put("clientId", entry.get("clientId"));
-					createCtx.put("validFrom", entry.get("validFrom"));
+					if ("Y".equals(useContractDate) && contractTo.get("validFrom") != null) {
+						createCtx.put("validFrom", contractTo.get("validFrom"));
+					} else {
+						createCtx.put("validFrom", entry.get("validFrom"));
+					}
+					// createCtx.put("validFrom", entry.get("validFrom"));
 					// createCtx.put("validTo", entry.get("validTo"));
 					createCtx.put("cvsValidTo", entry.get("cvsValidTo"));
 					createCtx.put("startingPrice", entry.get("startingPrice"));

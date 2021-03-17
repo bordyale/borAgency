@@ -26,6 +26,7 @@ import org.apache.ofbiz.entity.condition.EntityCondition
 import org.apache.ofbiz.entity.GenericValue
 import org.apache.ofbiz.entity.util.EntityUtil
 import org.apache.ofbiz.base.util.UtilDateTime
+import java.text.SimpleDateFormat
 import java.sql.Timestamp
 import java.math.RoundingMode
 import java.text.DecimalFormat
@@ -35,11 +36,16 @@ import java.util.Locale
 filcontractorId = parameters.filcontractorId
 filproductId = parameters.filproductId
 filclientId = parameters.filclientId
+filcontractId = parameters.filcontractId
+filcontractId2 = parameters.filcontractId2
 filclientType = parameters.filclientType
 filcvsactiv = parameters.filcvsactiv
 filactiv = parameters.filactiv
 filisProductBought = parameters.filisProductBought
 filshowConditions = parameters.filshowConditions
+fildate7From = parameters.fildate7From
+fildate8From = parameters.fildate8From
+def sdf = new SimpleDateFormat("yyyy-MM-dd")
 
 List filCond = []
 List cvsactivCond = []
@@ -56,6 +62,13 @@ if (filclientId) {
 if (filclientType) {
 	filCond.add(EntityCondition.makeCondition("clientType", EntityOperator.EQUALS, filclientType))
 }
+if (filcontractId) {
+	filCond.add(EntityCondition.makeCondition("contractId", EntityOperator.EQUALS, filcontractId))
+}
+if (filcontractId2) {
+	filCond.add(EntityCondition.makeCondition("contractId2", EntityOperator.EQUALS, filcontractId))
+}
+
 if (filactiv.equals("Y")) {
 	activCond.add(EntityCondition.makeCondition("validTo",EntityOperator.EQUALS, null) )
 	activCond.add(EntityCondition.makeCondition("validFrom",EntityOperator.LESS_THAN_EQUAL_TO, UtilDateTime.nowTimestamp()) )
@@ -66,6 +79,14 @@ if (filcvsactiv.equals("Y")) {
 }
 if (filisProductBought) {
 	filCond.add(EntityCondition.makeCondition("isProductBought",EntityOperator.EQUALS, filisProductBought) )
+}
+if (fildate7From) {
+	def parseDate = sdf.parse(fildate7From)
+	filCond.add(EntityCondition.makeCondition("validFrom", EntityOperator.GREATER_THAN_EQUAL_TO, UtilDateTime.toTimestamp(parseDate)))
+}
+if (fildate8From) {
+	def parseDate = sdf.parse(fildate8From)
+	filCond.add(EntityCondition.makeCondition("validTo", EntityOperator.LESS_THAN_EQUAL_TO, UtilDateTime.toTimestamp(parseDate)))
 }
 
 activCondAND = EntityCondition.makeCondition(activCond,EntityOperator.AND)

@@ -546,6 +546,12 @@
 		<field name="contractId2" title="${uiLabelMap.ContractId2}" required-field="true">
 			<lookup target-form-name="LookupContract?contractorId=${filcontractorId}" />
 		</field>
+		<field  name="useContractDate" title="${uiLabelMap.useContractDate}">
+			<drop-down allow-empty="true">
+				<option key="Y" description="${uiLabelMap.CommonY}" />
+				<option key="N" description="${uiLabelMap.CommonN}" />
+			</drop-down>
+		</field>
 
 		<field name="submitButton" title="${uiLabelMap.CommonApply}">
 			<submit button-type="button" />
@@ -751,6 +757,19 @@
 		</field>
 		<field use-when="reportPage=='Y'" name="fildate6From" title="${fildate6FromTitle}">
 			<date-time type="date" />
+		</field>
+		<field use-when="conditionPage=='Y' || reportPage=='Y'" name="fildate7From" title="${fildate7FromTitle}">
+			<date-time type="date" />
+		</field>
+		<field use-when="conditionPage=='Y' || reportPage=='Y'" name="fildate8From" title="${fildate8FromTitle}">
+			<date-time type="date" />
+		</field>
+		
+		<field use-when="conditionPage=='Y' || reportPage=='Y'" name="filcontractId" title="${uiLabelMap.ContractId}">
+			<lookup target-form-name="LookupContract?contractorId=${filcontractorId}" />
+		</field>
+		<field use-when="conditionPage=='Y' || reportPage=='Y'" name="filcontractId2" title="${uiLabelMap.ContractId2}">
+			<lookup target-form-name="LookupContract?contractorId=${filcontractorId}" />
 		</field>
 
 		<field use-when="promotionPage=='Y'" name="filpromotionId" title="${uiLabelMap.PromotionId}">

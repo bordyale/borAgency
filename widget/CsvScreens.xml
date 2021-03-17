@@ -123,7 +123,7 @@
 			</widgets>
 		</section>
 	</screen>
-	
+
 	<screen name="PriceCheckExportCvs">
 		<section>
 			<actions>
@@ -135,6 +135,7 @@
 				<set field="viewIndex" from-field="parameters.VIEW_INDEX" type="Integer" default-value="0" />
 				<property-to-field resource="widget" property="widget.form.defaultViewSize" field="viewSizeDefaultValue" />
 				<set field="viewSize" from-field="parameters.VIEW_SIZE" type="Integer" default-value="10000" />
+
 
 				<!-- <entity-one entity-name="Facility" value-field="facility" use-cache="true"/> -->
 				<script location="component://borAgency/groovyScripts/ListPriceChecks.groovy" />
@@ -167,6 +168,11 @@
 				<set field="fildate4From" from-field="parameters.fildate4From" />
 				<set field="fildate5From" from-field="parameters.fildate5From" />
 				<set field="fildate6From" from-field="parameters.fildate6From" />
+				<set field="fildate7From" from-field="parameters.fildate7From" />
+				<set field="fildate8From" from-field="parameters.fildate8From" />
+				<set field="filcontractId" from-field="parameters.filcontractId" />
+				<set field="filcontractId2" from-field="parameters.filcontractId2" />
+
 				<set field="filshowConditions" from-field="parameters.filshowConditions" />
 				<set field="filshowPromotions" from-field="parameters.filshowPromotions" />
 				<set field="filshowClientNotes" from-field="parameters.filshowClientNotes" />

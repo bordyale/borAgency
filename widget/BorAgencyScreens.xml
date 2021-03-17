@@ -868,6 +868,7 @@
 	<screen name="FindConditions">
 		<section>
 			<actions>
+				<property-map resource="BorAgencyUiLabels" map-name="uiLabelMap" global="true" />
 				<set field="filcontractorId" from-field="parameters.filcontractorId" />
 				<set field="filproductId" from-field="parameters.filproductId" />
 				<set field="filclientId" from-field="parameters.filclientId" />
@@ -876,6 +877,12 @@
 				<set field="filcvsactiv" from-field="parameters.filcvsactiv" />
 				<set field="filisProductBought" from-field="parameters.filisProductBought" />
 				<set field="filshowConditions" from-field="parameters.filshowConditions" />
+				<set field="fildate7From" from-field="parameters.fildate7From" />
+				<set field="fildate7FromTitle" value="${groovy: uiLabelMap.filCondFrom}" />
+				<set field="fildate8From" from-field="parameters.fildate8From" />
+				<set field="fildate8FromTitle" value="${groovy: uiLabelMap.filCondTo}" />
+				<set field="filcontractId" from-field="parameters.filcontractId" />
+				<set field="filcontractId2" from-field="parameters.filcontractId2" />
 				<set field="conditionPage" value="Y" />
 				<set field="headerItem" value="findConditions" />
 				<set field="viewSize" from-field="parameters.VIEW_SIZE_1" type="Integer" default-value="200" />
@@ -1025,6 +1032,12 @@
 				<set field="fildate5FromTitle" value="${groovy: uiLabelMap.filpromotionOutTo}" />
 				<set field="fildate6From" from-field="parameters.fildate6From" />
 				<set field="fildate6FromTitle" value="${groovy: uiLabelMap.filRevenueFrom}" />
+				<set field="fildate7From" from-field="parameters.fildate7From" />
+				<set field="fildate7FromTitle" value="${groovy: uiLabelMap.filCondFrom}" />
+				<set field="fildate8From" from-field="parameters.fildate8From" />
+				<set field="fildate8FromTitle" value="${groovy: uiLabelMap.filCondTo}" />
+				<set field="filcontractId" from-field="parameters.filcontractId" />
+				<set field="filcontractId2" from-field="parameters.filcontractId2" />			
 				<set field="filshowConditions" from-field="parameters.filshowConditions" />
 				<set field="filshowPromotions" from-field="parameters.filshowPromotions" />
 				<set field="filshowClientNotes" from-field="parameters.filshowClientNotes" />
@@ -1051,6 +1064,8 @@
 								<parameter param-name="filcontractorId" />
 								<parameter param-name="filproductId" />
 								<parameter param-name="filclientId" />
+								<parameter param-name="filcontractId" />
+								<parameter param-name="filcontractId2" />
 								<parameter param-name="filactiv" />
 								<parameter param-name="filcvsactiv" />
 								<parameter param-name="fildate1From" />
@@ -1059,6 +1074,8 @@
 								<parameter param-name="fildate4From" />
 								<parameter param-name="fildate5From" />
 								<parameter param-name="fildate6From" />
+								<parameter param-name="fildate7From" />
+								<parameter param-name="fildate8From" />
 								<parameter param-name="filisProductBought" />
 								<parameter param-name="filshowConditions" />
 								<parameter param-name="filshowPromotions" />
