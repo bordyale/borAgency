@@ -472,4 +472,16 @@
 		<value xml:lang="en">Last Sell In To</value>
 		<value xml:lang="it">Ult.Sell.In.A.</value>
 	</property>
+	<property key="useContractDate">
+		<value xml:lang="en">Use Contract Date</value>
+		<value xml:lang="it">Usa Date Contratti</value>
+	</property>
+	<property key="filCondFrom">
+		<value xml:lang="en">Cond From</value>
+		<value xml:lang="it">Cond Da</value>
+	</property>
+	<property key="filCondTo">
+		<value xml:lang="en">Cond To</value>
+		<value xml:lang="it">Cond A</value>
+	</property>
 </resource>
