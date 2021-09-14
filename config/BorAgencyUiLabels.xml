@@ -476,6 +476,14 @@
 		<value xml:lang="en">Use Contract Date</value>
 		<value xml:lang="it">Usa Date Contratti</value>
 	</property>
+	<property key="usePriceListDate">
+		<value xml:lang="en">Use Price List Date</value>
+		<value xml:lang="it">Usa Data Listino</value>
+	</property>
+	<property key="PriceListDate">
+		<value xml:lang="en">Price List Date</value>
+		<value xml:lang="it">Data Listino</value>
+	</property>
 	<property key="filCondFrom">
 		<value xml:lang="en">Cond From</value>
 		<value xml:lang="it">Cond Da</value>

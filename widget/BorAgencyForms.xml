@@ -546,7 +546,7 @@
 		<field name="contractId2" title="${uiLabelMap.ContractId2}" required-field="true">
 			<lookup target-form-name="LookupContract?contractorId=${filcontractorId}" />
 		</field>
-		<field  name="useContractDate" title="${uiLabelMap.useContractDate}">
+		<field name="useContractDate" title="${uiLabelMap.useContractDate}">
 			<drop-down allow-empty="true">
 				<option key="Y" description="${uiLabelMap.CommonY}" />
 				<option key="N" description="${uiLabelMap.CommonN}" />
@@ -571,6 +571,17 @@
 		</field>
 		<field name="pricelistId2" title="${uiLabelMap.PriceListIdNew}" required-field="true">
 			<lookup target-form-name="LookupPriceList?contractorId=${filcontractorId}" />
+		</field>
+
+		<field name="priceListDate" title="${uiLabelMap.PriceListDate}">
+			<date-time type="date" />
+		</field>
+
+		<field name="usePriceListDate" title="${uiLabelMap.usePriceListDate}">
+			<drop-down allow-empty="true">
+				<option key="Y" description="${uiLabelMap.CommonY}" />
+				<option key="N" description="${uiLabelMap.CommonN}" />
+			</drop-down>
 		</field>
 
 		<field name="submitButton" title="${uiLabelMap.CommonApply}">
@@ -717,14 +728,14 @@
 				<option key="N" description="${uiLabelMap.CommonN}" />
 			</drop-down>
 		</field>
-		
+
 		<field use-when="contractPage=='Y'" name="filhideempty" title="${uiLabelMap.HideEmpty}">
 			<drop-down allow-empty="true">
 				<option key="Y" description="${uiLabelMap.CommonY}" />
 				<option key="N" description="${uiLabelMap.CommonN}" />
 			</drop-down>
 		</field>
-		
+
 
 		<field use-when="conditionPage=='Y' || reportPage=='Y'" name="filisProductBought" title="${uiLabelMap.IsProductBought}">
 			<drop-down allow-empty="true">
@@ -764,7 +775,7 @@
 		<field use-when="conditionPage=='Y' || reportPage=='Y'" name="fildate8From" title="${fildate8FromTitle}">
 			<date-time type="date" />
 		</field>
-		
+
 		<field use-when="conditionPage=='Y' || reportPage=='Y'" name="filcontractId" title="${uiLabelMap.ContractId}">
 			<lookup target-form-name="LookupContract?contractorId=${filcontractorId}" />
 		</field>

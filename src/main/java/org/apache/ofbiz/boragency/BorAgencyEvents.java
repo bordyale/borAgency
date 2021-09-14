@@ -31,6 +31,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Date;
 import java.math.RoundingMode;
 
 import javax.servlet.http.HttpServletRequest;
@@ -71,6 +72,7 @@ import org.apache.ofbiz.service.LocalDispatcher;
 import org.apache.ofbiz.service.ModelService;
 import org.apache.ofbiz.service.ServiceUtil;
 import org.apache.ofbiz.webapp.control.RequestHandler;
+import java.text.SimpleDateFormat;
 
 /**
  * Vforder events.
@@ -344,6 +346,8 @@ public class BorAgencyEvents {
 		String priceListIdFrom = null;
 		String priceListIdTo = null;
 		String clientId = null;
+		String usePriceListDate = null;
+		String priceListDate = null;
 
 		// get the params
 		if (paramMap.containsKey("pricelistId")) {
@@ -355,11 +359,25 @@ public class BorAgencyEvents {
 		if (paramMap.containsKey("clientId")) {
 			clientId = (String) paramMap.get("clientId");
 		}
+		if (paramMap.containsKey("usePriceListDate")) {
+			usePriceListDate = (String) paramMap.get("usePriceListDate");
+		}
+		if (paramMap.containsKey("priceListDate")) {
+			priceListDate = (String) paramMap.get("priceListDate");
+		}
+
 		if (priceListIdFrom == null || priceListIdTo == null || clientId == null) {
 			return "error";
 		}
 		try {
 			// priceList
+			Timestamp applicationDate = UtilDateTime.nowTimestamp();
+			if ("Y".equals(usePriceListDate) && priceListDate != null) {
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				Date parseDate = sdf.parse(priceListDate);
+				applicationDate = UtilDateTime.toTimestamp(parseDate);
+			}
+
 			List<EntityExpr> exprs = UtilMisc.toList(EntityCondition.makeCondition("pricelistId", EntityOperator.EQUALS, priceListIdFrom),
 					EntityCondition.makeCondition("clientId", EntityOperator.EQUALS, clientId), EntityCondition.makeCondition("validTo", EntityOperator.EQUALS, null));
 			EntityCondition cond = EntityCondition.makeCondition(exprs, EntityOperator.AND);
@@ -369,7 +387,7 @@ public class BorAgencyEvents {
 
 				try {
 					Map<String, Object> tmpResult = dispatcher.runSync("updateCondition",
-							UtilMisc.<String, Object> toMap("userLogin", userLogin, "conditionId", conditionId, "validTo", UtilDateTime.nowTimestamp()));
+							UtilMisc.<String, Object> toMap("userLogin", userLogin, "conditionId", conditionId, "validTo", applicationDate));
 
 					Map<String, Object> createCtx = new HashMap<String, Object>();
 					String finAccountId;
@@ -380,7 +398,12 @@ public class BorAgencyEvents {
 					createCtx.put("contractId", entry.get("contractId"));
 					createCtx.put("contractId2", entry.get("contractId2"));
 					createCtx.put("clientId", entry.get("clientId"));
-					createCtx.put("validFrom", entry.get("validFrom"));
+					createCtx.put("validFrom", applicationDate);
+					if ("Y".equals(usePriceListDate) && priceListDate != null) {
+						createCtx.put("validFrom", applicationDate);
+					} else {
+						createCtx.put("validFrom", entry.get("validFrom"));
+					}
 					// createCtx.put("validTo", entry.get("validTo"));
 					createCtx.put("startingPrice", entry.get("startingPrice"));
 					createCtx.put("sc1", entry.get("sc1"));
@@ -402,6 +425,8 @@ public class BorAgencyEvents {
 		} catch (GenericEntityException e) {
 			Debug.logError(e, module);
 
+		} catch (Exception e) {
+			Debug.logError(e, module);
 		}
 
 		return "success";
