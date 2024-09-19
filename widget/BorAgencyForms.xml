@@ -22,12 +22,12 @@
 	</form>
 
 
-	<form name="ListContractors" type="list" list-name="listIt" paginate-target="findcontractors" odd-row-style="alternate-row"
+	<form name="ListContractors" type="list" list-name="list" paginate-target="findcontractors" odd-row-style="alternate-row"
 		default-table-style="basic-table hover-bar" header-row-style="header-row-2" override-list-size="true">
 		<actions>
 			<set field="requestParameters.noConditionFind" value="Y" />
 			<set field="entityName" value="BorContractor" />
-			<service service-name="performFind" result-map="result" result-map-list="listIt">
+			<service service-name="performFindList" result-map="result" result-map-list="list">
 				<field-map field-name="inputFields" from-field="requestParameters" />
 				<field-map field-name="entityName" from-field="entityName" />
 				<field-map field-name="orderBy" from-field="parameters.sortField" />
@@ -110,12 +110,12 @@
 	</form>
 
 
-	<form name="ListClients" type="list" list-name="listIt" paginate-target="findclients" odd-row-style="alternate-row"
+	<form name="ListClients" type="list" list-name="list" paginate-target="findclients" odd-row-style="alternate-row"
 		default-table-style="basic-table hover-bar" header-row-style="header-row-2" override-list-size="true">
 		<actions>
 			<set field="requestParameters.noConditionFind" value="Y" />
 			<set field="entityName" value="BorClient" />
-			<service service-name="performFind" result-map="result" result-map-list="listIt">
+			<service service-name="performFindList" result-map="result" result-map-list="list">
 				<field-map field-name="inputFields" from-field="requestParameters" />
 				<field-map field-name="entityName" from-field="entityName" />
 				<field-map field-name="orderBy" from-field="parameters.sortField" />
@@ -310,17 +310,26 @@
 	</form>
 
 
-	<form name="ListPriceLists" type="list" list-name="listIt" paginate-target="findPriceLists" odd-row-style="alternate-row"
+
+
+	<form name="ListPriceLists" list-name="list" target="" title="" type="list" paginate-target="findPriceLists" odd-row-style="alternate-row"
 		default-table-style="basic-table hover-bar" header-row-style="header-row-2" override-list-size="true">
+
+
+
 		<actions>
 			<set field="requestParameters.noConditionFind" value="Y" />
 			<set field="entityName" value="PriceListContractorView" />
-			<service service-name="performFind" result-map="result" result-map-list="listIt">
+			<service service-name="performFindList" result-map="result" result-map-list="list">
 				<field-map field-name="inputFields" from-field="requestParameters" />
 				<field-map field-name="entityName" from-field="entityName" />
 				<field-map field-name="orderBy" from-field="parameters.sortField" />
+				
 			</service>
 		</actions>
+
+
+
 
 		<field name="pricelistId" title="${uiLabelMap.GeneralId}" widget-style="buttontext" sort-field="true">
 			<hyperlink description="${pricelistId}" target="EditPriceList" also-hidden="false">
@@ -457,8 +466,11 @@
 	</form>
 
 
-	<form name="ListContracts" type="list" list-name="listContracts" paginate-target="findContracts" odd-row-style="alternate-row"
-		default-table-style="basic-table hover-bar" header-row-style="header-row-2" override-list-size="true">
+
+	<form name="ListContracts" type="list" list-name="list" paginate-target="findContracts" odd-row-style="alternate-row"
+		default-table-style="basic-table hover-bar" header-row-style="header-row-2" separate-columns="true">
+
+
 		<!-- <actions> <set field="requestParameters.noConditionFind" value="Y" /> <set field="entityName" value="ContractContractorView" 
 			/> <service service-name="performFind" result-map="result" result-map-list="listIt"> <field-map field-name="inputFields" from-field="requestParameters" 
 			/> <field-map field-name="entityName" from-field="entityName" /> <field-map field-name="orderBy" from-field="sortField" /> </service> 
