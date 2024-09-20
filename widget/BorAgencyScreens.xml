@@ -467,11 +467,11 @@
 						<section>
 							<widgets>
 								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
-									<decorator-section name="menu-bar">
+									<!--<decorator-section name="menu-bar">
 										<container style="button-bar">
 											<link target="EditProductLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
 										</container>
-									</decorator-section>
+									</decorator-section>-->
 									<decorator-section name="search-options">
 										<include-form name="FindProducts" location="component://borAgency/widget/BorAgencyForms.xml" />
 									</decorator-section>
@@ -479,6 +479,12 @@
 										<include-form name="${formShippingListName}" location="component://borAgency/widget/BorAgencyForms.xml" />
 									</decorator-section>
 								</decorator-screen>
+								<container style="h2">
+									<label>${uiLabelMap.NewCommon}</label>
+								</container>
+								<container>
+									<include-form name="EditProduct" location="component://borAgency/widget/BorAgencyForms.xml" />
+								</container>
 							</widgets>
 						</section>
 					</decorator-section>
@@ -545,7 +551,7 @@
 						<section>
 							<widgets>
 								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
-									<decorator-section name="menu-bar">
+									<!--<decorator-section name="menu-bar">
 										<container style="button-bar">
 											<link target="EditPriceListLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
 											<link target="ApplyNewPriceListLayer" link-type="layered-modal" text="${uiLabelMap.ApplyNewPriceList}" style="buttontext create">
@@ -555,7 +561,7 @@
 
 
 
-									</decorator-section>
+									</decorator-section>-->
 									<decorator-section name="search-options">
 										<include-form name="FindPriceLists" location="component://borAgency/widget/BorAgencyForms.xml" />
 									</decorator-section>
@@ -563,6 +569,18 @@
 										<include-form name="${formShippingListName}" location="component://borAgency/widget/BorAgencyForms.xml" />
 									</decorator-section>
 								</decorator-screen>
+								<container style="h2">
+									<label>${uiLabelMap.NewCommon}</label>
+								</container>
+								<container>
+									<include-form name="EditPriceList" location="component://borAgency/widget/BorAgencyForms.xml" />
+								</container>
+								<container style="h2">
+									<label>${uiLabelMap.ApplyNewPriceList}</label>
+								</container>
+								<container>
+									<include-form name="ApplyNewPriceListLayer" location="component://borAgency/widget/BorAgencyForms.xml" />
+								</container>
 							</widgets>
 						</section>
 					</decorator-section>
@@ -689,13 +707,14 @@
 								<decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
 									<decorator-section name="menu-bar">
 										<container style="button-bar">
-											<link target="EditContractLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
+											<!--<link target="EditContractLayer" link-type="layered-modal" text="${uiLabelMap.NewCommon}" style="buttontext create" />
+											
+											<link target="ApplyNewContractLayer" link-type="layered-modal" text="${uiLabelMap.ApplyNewContract}" style="buttontext create">
+												<parameter param-name="filcontractorId" />
+											</link>-->
 											<link target="ContractExport.csv" text="${uiLabelMap.CommonExport}" style="buttontext create" target-window="_blank">
 												<parameter param-name="filcontractorId" />
 												<parameter param-name="filactiv" />
-											</link>
-											<link target="ApplyNewContractLayer" link-type="layered-modal" text="${uiLabelMap.ApplyNewContract}" style="buttontext create">
-												<parameter param-name="filcontractorId" />
 											</link>
 										</container>
 
@@ -707,6 +726,19 @@
 										<include-form name="${formShippingListName}" location="component://borAgency/widget/BorAgencyForms.xml" />
 									</decorator-section>
 								</decorator-screen>
+								<container style="h2">
+									<label>${uiLabelMap.NewCommon}</label>
+								</container>
+								<container>
+									<include-form name="EditContract" location="component://borAgency/widget/BorAgencyForms.xml" />
+								</container>
+								<container style="h2">
+									<label>${uiLabelMap.ApplyNewContract}</label>
+								</container>
+								<container>
+									<include-form name="ApplyNewContractLayer" location="component://borAgency/widget/BorAgencyForms.xml" />
+								</container>
+
 							</widgets>
 						</section>
 					</decorator-section>
